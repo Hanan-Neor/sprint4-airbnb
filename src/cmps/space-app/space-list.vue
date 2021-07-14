@@ -1,11 +1,13 @@
 <template>
-  <ul class="space-list grid" v-if="spaces">
+  <!-- <ul class="space-list grid" v-if="spaces"> -->
+  <section class="space-list" v-if="spaces">
 
 
-    <li v-for="space in spaces" :key="space._id" class="space-list grid">
-        <space-preview @liked="liked(spaceId)" />
-    </li>
-  </ul>
+    <!-- <div v-for="space in spaces" :key="space._id" class="space-list grid"> -->
+        <space-preview @liked="liked(spaceId)" :space="space" 
+         v-for="space in spaces" :key="space._id"/>
+    <!-- </div> -->
+  </section>
 </template>
 
 
