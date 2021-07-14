@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import appHeader from './../src/cmps/app-header.vue'
-import appFooter from './../src/cmps/app-footer.vue'
+import appHeader from './cmps/app-header.vue'
+import appFooter from './cmps/app-footer.vue'
 
 export default {
   data(){
