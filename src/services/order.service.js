@@ -57,8 +57,8 @@ function getEmptyOrder() {
   };
 }
 
-function _createOrders() {
-  let orders = storageService.query(ORDERS_KEY);
+async function _createOrders() {
+  let orders = await storageService.query(ORDERS_KEY);
   if (!orders || !orders.length) {
     orders = [];
     orders.push({
