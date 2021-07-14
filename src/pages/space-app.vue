@@ -1,7 +1,45 @@
-<template> </template>
+<template>
+  <div class="space-app">
+      <nav-filter />
+    <space-list @liked="liked(spaceId)" />
+
+<!-- TODO add numbers for pagination here -->
+    <p>Enter dates to see full pricing. Additional fees apply. Taxes may be added.</p>
+  </div>
+</template>
 
 <script>
-export default {};
-</script>
+import spaceList from '../cmps/space-list.vue';
+import navFilter from '../cmps/nav-filter.vue';
 
-<style></style>
+export default {
+  components: { 
+      spaceList,
+      navFilter, 
+    },
+  name: 'home',
+  data() {
+    return {
+      spaceToEdit: {
+        txt: '',
+        aboutUserId: null
+      }
+    }
+  },
+  computed: {
+    spaces() {
+      return this.$store.getters.spaces;
+    },
+  },
+  created() {
+    this.$store.dispatch({type: 'loadSpaces'})
+  },
+  methods: {
+    liked(){
+        //TODO send liked to space-store
+    }
+  }
+
+  
+}
+</script>

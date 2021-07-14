@@ -1,5 +1,5 @@
-import { userService } from '../services/user.service'
-import { socketService, SOCKET_EMIT_USER_WATCH, SOCKET_EVENT_USER_UPDATED } from '../services/socket.service'
+import { userService } from '../../services/user.service'
+// import { socketService, SOCKET_EMIT_USER_WATCH, SOCKET_EVENT_USER_UPDATED } from '../../services/socket.service'
 
 // var localLoggedinUser = null;
 // if (sessionStorage.user) localLoggedinUser = JSON.parse(sessionStorage.user || null);
@@ -13,25 +13,22 @@ export const userStore = {
     getters: {
         users({ users }) { return users },
         loggedinUser({ loggedinUser }) { return loggedinUser },
-        watchedUser({ watchedUser }) { return watchedUser }
+        // watchedUser({ watchedUser }) { return watchedUser }
     },
     mutations: {
         setLoggedinUser(state, { user }) {
             // Yaron: needed this workaround as for score not reactive from birth
             state.loggedinUser = (user)? {...user} : null;
         },
-        setWatchedUser(state, { user }) {
-            state.watchedUser = user;
-        },       
+        // setWatchedUser(state, { user }) {
+        //     state.watchedUser = user;
+        // },       
         setUsers(state, { users }) {
             state.users = users;
         },
-        removeUser(state, { userId }) {
-            state.users = state.users.filter(user => user._id !== userId)
-        },
-        setUserScore(state, { score }) {
-            state.loggedinUser.score = score
-        },
+        // removeUser(state, { userId }) {
+        //     state.users = state.users.filter(user => user._id !== userId)
+        // },
     },
     actions: {
         async login({ commit }, { userCred }) {
@@ -74,29 +71,29 @@ export const userStore = {
                 throw err
             }
         },        
-        async loadAndWatchUser({ commit }, { userId }) {
-            try {
-                const user = await userService.getById(userId);
-                commit({ type: 'setWatchedUser', user })
-                socketService.emit(SOCKET_EMIT_USER_WATCH, userId) 
-                socketService.off(SOCKET_EVENT_USER_UPDATED)
-                socketService.on(SOCKET_EVENT_USER_UPDATED, user => {
-                    commit({ type: 'setWatchedUser', user })
-                })
-            } catch (err) {
-                console.log('userStore: Error in loadAndWatchUser', err)
-                throw err
-            }
-        },
-        async removeUser({ commit }, { userId }) {
-            try {
-                await userService.remove(userId);
-                commit({ type: 'removeUser', userId })
-            } catch (err) {
-                console.log('userStore: Error in removeUser', err)
-                throw err
-            }
-        },
+        // async loadAndWatchUser({ commit }, { userId }) {
+        //     try {
+        //         const user = await userService.getById(userId);
+        //         commit({ type: 'setWatchedUser', user })
+        //         socketService.emit(SOCKET_EMIT_USER_WATCH, userId) 
+        //         socketService.off(SOCKET_EVENT_USER_UPDATED)
+        //         socketService.on(SOCKET_EVENT_USER_UPDATED, user => {
+        //             commit({ type: 'setWatchedUser', user })
+        //         })
+        //     } catch (err) {
+        //         console.log('userStore: Error in loadAndWatchUser', err)
+        //         throw err
+        //     }
+        // },
+        // async removeUser({ commit }, { userId }) {
+        //     try {
+        //         await userService.remove(userId);
+        //         commit({ type: 'removeUser', userId })
+        //     } catch (err) {
+        //         console.log('userStore: Error in removeUser', err)
+        //         throw err
+        //     }
+        // },
         async updateUser({ commit }, { user }) {
             try {
                 user = await userService.update(user);
@@ -107,15 +104,5 @@ export const userStore = {
             }
 
         },
-        async increaseScore({ commit }) {
-            try {
-                const score = await userService.increaseScore()
-                commit({ type: 'setUserScore', score })
-            } catch (err) {
-                console.log('userStore: Error in increaseScore', err)
-                throw err
-            }
-
-        }
     }
 }
