@@ -1,4 +1,4 @@
-import { httpService } from './http.service.js';
+// import { httpService } from './http.service.js';
 import { storageService } from './async-storage.service.js';
 import { utilService } from './util.service.js';
 const SPACE_KEY = 'space';
@@ -9,8 +9,9 @@ export const spaceService = {
   save,
   getEmptySpace,
   getById,
-  createSpaces,
 };
+
+_createSpaces();
 
 function query() {
   return storageService.query(SPACE_KEY);
@@ -69,9 +70,9 @@ function getEmptySpace() {
   };
 }
 
-// function _createSpaces() {
-function createSpaces() {
-  let spaces = utilService.loadFromStorage(SPACES_KEY);
+function _createSpaces() {
+  // function createSpaces() {
+  let spaces = utilService.loadFromStorage(SPACE_KEY);
   if (!spaces || !spaces.length) {
     spaces = [];
     spaces.push({
