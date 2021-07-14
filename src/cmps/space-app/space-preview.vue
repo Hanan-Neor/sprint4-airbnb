@@ -1,6 +1,6 @@
 <template>
   <section class="space-preview">
-    <router-link :to="'/space/details/' +space._id">
+    <router-link :to="'/space/' +space._id">
       <div class="buttons">
         <button @click.prevent="prevPic">◁</button>
         <button @click.prevent="nextPic">▷</button>
