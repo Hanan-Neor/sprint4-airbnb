@@ -29,8 +29,9 @@ function save(space) {
   }
 }
 
-function getById(spaceId) {
-  return storageService.get(SPACE_KEY, spaceId);
+async function getById(spaceId) {
+  const space = await storageService.get(SPACE_KEY, spaceId);
+  return space;
 }
 
 function getEmptySpace() {
@@ -42,6 +43,7 @@ function getEmptySpace() {
     description: '',
     capacity: 0,
     amenities: [],
+    type: '',
     host: {
       _id: '',
       fullname: '',
@@ -108,6 +110,7 @@ async function _createSpaces() {
         'air conditioning',
         'security cameras',
       ],
+      type: 'villa',
       host: {
         _id: 'u101',
         fullname: 'lkm; oorom',
