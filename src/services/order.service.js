@@ -58,7 +58,7 @@ function getEmptyOrder() {
 }
 
 function _createOrders() {
-  let orders = utilService.loadFromStorage(ORDERS_KEY);
+  let orders = storageService.query(ORDERS_KEY);
   if (!orders || !orders.length) {
     orders = [];
     orders.push({
@@ -83,7 +83,7 @@ function _createOrders() {
       },
       status: 'pending',
     });
-    utilService.saveToStorage(ORDERS_KEY, orders);
+    storageService.postMany(ORDERS_KEY, orders);
   }
   return orders;
 }

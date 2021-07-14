@@ -70,10 +70,19 @@ function getEmptySpace() {
   };
 }
 
-function _createSpaces() {
+async function _createSpaces() {
+  console.log('test');
   // function createSpaces() {
-  let spaces = utilService.loadFromStorage(SPACE_KEY);
+  let spaces = await storageService.query(SPACE_KEY);
   if (!spaces || !spaces.length) {
+    console.log(
+      '🚀 ~ file: space.service.js ~ line 78 ~ createSpaces ~ spaces.length',
+      spaces.length
+    );
+    console.log(
+      '🚀 ~ file: space.service.js ~ line 78 ~ createSpaces ~ spaces',
+      spaces
+    );
     spaces = [];
     spaces.push({
       _id: 's' + utilService.makeId(),
@@ -127,7 +136,7 @@ function _createSpaces() {
       ],
       likedByUserIds: ['u101', 'u102', 'u103'],
     });
-    utilService.saveToStorage(SPACE_KEY, spaces);
+    storageService.postMany(SPACE_KEY, spaces);
   }
   return spaces;
 }
