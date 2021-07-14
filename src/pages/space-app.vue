@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import spaceList from '../cmps/space-list.vue';
-import navFilter from '../cmps/nav-filter.vue';
+import spaceList from '../cmps/space-app/space-list.vue';
+import navFilter from '../cmps/space-app/nav-filter.vue';
 
 export default {
   components: { 

@@ -1,6 +1,8 @@
 <template>
   <div class="app-header">
-      this is the header
+      <router-link to="/">Home</router-link> |
+      <router-link to="/space">Explore</router-link> |
+      <router-link to="/space/host/edit">add space</router-link> |
   </div>
 </template>
 
