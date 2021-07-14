@@ -6,7 +6,7 @@ import { userService } from '../../services/user.service'
 
 export const userStore = {
     state: {
-        loggedinUser: userService.getLoggedinUser(),
+        loggedinUser: userService.getLoggedinUser() || null,
         users: [],
         watchedUser: null
     },
@@ -106,3 +106,5 @@ export const userStore = {
         },
     }
 }
+
+

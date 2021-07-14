@@ -2,8 +2,10 @@ import { storageService } from './async-storage.service';
 import { httpService } from './http.service';
 import { socketService, SOCKET_EVENT_USER_UPDATED } from './socket.service';
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser';
-const SCORE_FOR_REVIEW = 10;
+// const SCORE_FOR_REVIEW = 10;
 var gWatchedUser = null;
+
+
 
 export const userService = {
   login,
@@ -61,6 +63,9 @@ async function signup(userCred) {
   const user = await storageService.post('user', userCred);
   // const user = await httpService.post('auth/signup', userCred)
   // socketService.emit('set-user-socket', user._id);
+  console.log('just signed up', user);
+  const users = await getUsers()
+  console.log('users', users);
   return _saveLocalUser(user);
 }
 async function logout() {
@@ -82,35 +87,36 @@ function _saveLocalUser(user) {
 }
 
 function getLoggedinUser() {
-  return JSON.parse(
-    sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER) || 'null'
-  );
+  if (!sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER)) {
+    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, "null") ;
+}
+  return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER));
 }
 
-// This IIFE functions for Dev purposes
-// It allows testing of real time updates (such as sockets) by listening to storage events
-(async () => {
-  var user = getLoggedinUser();
-  // Dev Helper: Listens to when localStorage changes in OTHER browser
+// // This IIFE functions for Dev purposes
+// // It allows testing of real time updates (such as sockets) by listening to storage events
+// (async () => {
+//   var user = getLoggedinUser();
+//   // Dev Helper: Listens to when localStorage changes in OTHER browser
 
-  // Here we are listening to changes for the watched user (comming from other browsers)
-  window.addEventListener('storage', async () => {
-    if (!gWatchedUser) return;
-    const freshUsers = await storageService.query('user');
-    const watchedUser = freshUsers.find((u) => u._id === gWatchedUser._id);
-    if (!watchedUser) return;
-    if (gWatchedUser.score !== watchedUser.score) {
-      console.log(
-        'Watched user score changed - localStorage updated from another browser'
-      );
-      socketService.emit(SOCKET_EVENT_USER_UPDATED, watchedUser);
-    }
-    gWatchedUser = watchedUser;
-  });
-})();
+//   // Here we are listening to changes for the watched user (comming from other browsers)
+//   window.addEventListener('storage', async () => {
+//     if (!gWatchedUser) return;
+//     const freshUsers = await storageService.query('user');
+//     const watchedUser = freshUsers.find((u) => u._id === gWatchedUser._id);
+//     if (!watchedUser) return;
+//     if (gWatchedUser.score !== watchedUser.score) {
+//       console.log(
+//         'Watched user score changed - localStorage updated from another browser'
+//       );
+//       socketService.emit(SOCKET_EVENT_USER_UPDATED, watchedUser);
+//     }
+//     gWatchedUser = watchedUser;
+//   });
+// })();
 
-// This is relevant when backend is connected
-(async () => {
-  var user = getLoggedinUser();
-  if (user) socketService.emit('set-user-socket', user._id);
-})();
+// // This is relevant when backend is connected
+// (async () => {
+//   var user = getLoggedinUser();
+//   if (user) socketService.emit('set-user-socket', user._id);
+// })();
