@@ -1,7 +1,7 @@
 <template>
   <div class="space-app">
       <nav-filter />
-    <space-list @liked="liked(spaceId)" />
+    <space-list @liked="liked(spaceId)" :spaces="spaces" />
 
 <!-- TODO add numbers for pagination here -->
     <p>Enter dates to see full pricing. Additional fees apply. Taxes may be added.</p>

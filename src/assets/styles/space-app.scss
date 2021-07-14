@@ -1,0 +1,115 @@
+.space-app{
+    // background-color: lightsteelblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .space-list{
+        display: grid;
+        row-gap: 32px ;
+        column-gap: 24px;
+        margin-bottom: 32px ;
+     grid-template-columns: repeat(4, 1fr);
+        // list-style: none;
+        // margin: 0;
+        // padding: 0;
+        // gap: 5px;
+
+        .space-preview{
+            
+            // background-color: rgb(202, 199, 199);
+            padding: 0;
+            // border:1px solid black;
+            border-radius: 12px;
+            position: relative;
+            cursor: pointer;
+
+            &:hover .buttons{
+                opacity: 1;
+
+            } 
+            .img-container{
+                max-width: 314px;
+                max-height: 314px;
+            }
+            .buttons{
+                opacity: 0;
+                width: 100%;
+                position: absolute;
+                top: 50%;
+                // left: 50%;
+                transform: translateY(-100%);
+                // transform: translate(-50%,-50%);
+                display: flex;
+                justify-content: space-between;
+
+                
+                button{
+                    width: 30px;
+                    height: 30px;
+                border-radius: 3rem;
+                padding: 0;
+                text-align: center;
+                cursor: pointer;
+                }
+            }
+
+            img{
+            border-radius: 12px;
+                // display: block;
+                object-fit: cover;
+                width: 100%;
+
+                // max-width: 314px;
+                // height: 314px;
+                // width: auto;
+                // height: auto;
+
+                // object-fit: cover;
+                // width: 100%;
+                // height: 314px;
+                
+                margin-bottom: 10px;
+                
+                
+              }
+            .name-price{
+                justify-content: space-between;
+            }
+        }
+    }
+}
+
+
+
+
+
+// .card {
+//     @include aspect-ratio(1, 1);
+// }
+
+
+// //aspect ratio mixin
+// @mixin aspect-ratio($width, $height) {
+//     position: relative;
+//     overflow: hidden;
+//     &:before {
+//       content: "";
+//       display: block;
+//       width: 100%;
+//       padding-top: ($height / $width) * 100%;
+//     }
+//     > * {
+//       position: absolute;
+//       top: 0;
+//       left: 0;
+//       right: 0;
+//       bottom: 0;
+//     }  
+//     > img {
+//       height: 100%;
+//       object-fit: cover;
+//     }
+//   }
+// 
