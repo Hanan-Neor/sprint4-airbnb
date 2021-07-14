@@ -1,15 +1,21 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+import { userStore } from './modules/user.store.js'
+import { reviewStore } from './review.store.js'
+
 Vue.use(Vuex)
 
-export default new Vuex.Store({
+export const store = new Vuex.Store({
+  strict: true,
+  modules: {
+    userStore,
+    reviewStore
+  },
   state: {
   },
   mutations: {
   },
   actions: {
-  },
-  modules: {
   }
 })
