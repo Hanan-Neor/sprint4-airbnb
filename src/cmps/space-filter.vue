@@ -3,7 +3,7 @@
   <div class="space-filter">
     <form class="flex">
 <!-- <form @submit.prevent="setFilter" class="flex"> -->
-    <input type="text" placeholder="start your search">
+    <!-- <input type="text" placeholder="start your search"> -->
     <input @input="setFilter" type="text" placeholder="location" v-model="filterBy.location">
     <input type="number" placeholder="Guests" v-model="filterBy.numGuests">
     <input type="date" placeholder="checkin" v-model="filterBy.dates.startDate">
