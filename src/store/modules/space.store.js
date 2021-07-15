@@ -89,6 +89,7 @@ export const spaceStore = {
       }
     },
     async saveSpace({ commit }, payload) {
+      console.log('saving space', payload.space);
       const type = payload.space._id ? 'updateSpace' : 'addSpace';
       try {
         const savedSpace = await spaceService.save(payload.space);
