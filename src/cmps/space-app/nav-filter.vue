@@ -1,5 +1,20 @@
 <template>
-  <div class="nav-filter"></div>
+  <div class="nav-filter">
+<div class="space-types">Treehouse Cabins Islands</div>
+<!-- <div class="filter-buttons"> -->
+    <el-row>
+  <el-button round>Anytime</el-button>
+  <el-button round>Guests</el-button>
+  <el-button round>Filters</el-button>
+  
+</el-row>
+<!-- </div> -->
+
+
+  </div>
+
+
+
 </template>
 
 <script>
