@@ -43,6 +43,7 @@ export const spaceStore = {
       state.filterBy = filterBy;
     },
     setFilterField(state, { field, value }) {
+      console.log('setting filter field*****');
       state.filterBy[field] = value;
     },
     // addReview(state, { space }) {
@@ -95,7 +96,6 @@ export const spaceStore = {
       }
     },
     async saveSpace({ commit }, payload) {
-      console.log('saving space', payload.space);
       const type = payload.space._id ? 'updateSpace' : 'addSpace';
       try {
         const savedSpace = await spaceService.save(payload.space);

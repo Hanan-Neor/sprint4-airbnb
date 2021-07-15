@@ -1,6 +1,7 @@
 <template>
 
   <div class="space-filter">
+    <form class="flex">
 <!-- <form @submit.prevent="setFilter" class="flex"> -->
     <input type="text" placeholder="start your search">
     <input @input="setFilter" type="text" placeholder="location" v-model="filterBy.location">
@@ -8,7 +9,7 @@
     <input type="date" placeholder="checkin" v-model="filterBy.dates.startDate">
     <input type="date" placeholder="checkout" v-model="filterBy.dates.endDate">
     <button @click="setFilter">search</button>
-<!-- </form> -->
+</form>
   </div>
 
 </template>
@@ -33,8 +34,9 @@ export default {
       console.log('setting filter...', this.filterBy.location);
       try{
         await this.$store.commit({type:'setFilter', filterBy:this.filterBy})
+        this.$store.dispatch({type: 'loadSpaces'})
       } catch(err) {
-        console.log('error in space filter', this.filterBy);
+        console.log('error in space filter', 'this.filterBy');
         throw err
       }
     }

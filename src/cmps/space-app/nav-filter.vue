@@ -1,24 +1,32 @@
 <template>
   <div class="nav-filter">
     <div class="space-types flex pointer">
-      <p @click="updateFilterType('home')">Homes</p> |
-      <p @click="updateFilterType('villa')">Villas</p> |
-      <p @click="updateFilterType('cabin')">Cabins </p> |
-
+      <p @click="updateFilter('type', 'home')">Homes</p>
+      |
+      <p @click="updateFilter('type', 'villa')">Villas</p>
+      |
+      <p @click="updateFilter('type', 'cabin')">Cabins</p>
+      |
     </div>
     <el-row class="hover">
       <el-button @click="showFilterOptions()" round>Anytime</el-button>
-      <el-button @click="showGuestForm()" round>Guests</el-button>
+      <el-button @click="toggleForm()" round>Guests</el-button>
       <el-button @click="showFilters()" round>Filters</el-button>
-
     </el-row>
+    <filter-form v-if="isFormOpen" @set-filter="updateFilter" @close-form="toggleForm" />
   </div>
 </template>
 
 <script>
+import filterForm from "./../filter-form.vue";
 export default {
   name: "nav-filter",
   props: ["spaces"], //this is sent as a prop so the current display is filtered, not the entire database
+  computed:{
+    isFormOpen(){
+      return this.formOpen
+    }
+  },
   data() {
     return {
       filterBy: {
@@ -29,40 +37,42 @@ export default {
         numGuests: 0,
         dates: { startDate: 0, endDate: 0 },
         count: Infinity, //change this to PAGE_SIZE when add pagination
+        showFilterForm: false,
       },
+      formOpen: false,
     };
   },
   created() {
     this.filterBy = this.$store.getters.filterBy;
   },
   methods: {
-    filtered() {
-      this.$emit("filtered", filterBy);
+    closeForm() {
+      this.showFilterForm = false;
     },
-    async updateFilterType(type) {
-      this.filterBy.type = type;
-      console.log("setting filter...", this.filterBy.location);
+    async updateFilter(field, value) {
+      console.log("setting filter...", this.filterBy);
       try {
-        await this.$store.commit({
-          type: "setFilter",
-          filterBy: this.filterBy,
+        this.$store.commit({
+          type: "setFilterField",
+          field: field,
+          value: value,
         });
-        this.$store.dispatch({ type: "loadSpaces" });
+        await this.$store.dispatch({ type: "loadSpaces" });
       } catch (err) {
-        console.log("error in space filter", this.filterBy);
+        console.log("error in store moving to space-app from homepage", err);
         throw err;
       }
     },
+    toggleForm(){
+      this.formOpen = !this.formOpen
+    },
     //TODO eventually combine the 3 functions below into  function
-    showFilterOptions(){
-
-    },
-    showGuestOptions(){
-
-    },
-    showFilters(){
-
-    }
+    // showFilterOptions() {},
+    // showGuestOptions() {},
+    // showFilters() {},
+  },
+  components: {
+    filterForm,
   },
 };
 </script>
