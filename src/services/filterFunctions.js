@@ -31,8 +31,8 @@ function _getAverageReview(space) {
 }
 
 function _getReviewRate(review) {
-  var rates = review.rates;
-  totalRates = Object.values(rates).reduce((sum, rate) => sum + rate)
+  const rates = review.rate;
+  const totalRates = Object.values(rates).reduce((sum, rate) => sum + rate)
   return totalRates / Object.values(rates).length // or '/ 6'
 }
 
@@ -47,19 +47,19 @@ function getSpacesForDisplay(spaces, filterBy) {
       // && _isAvailable(space, filterBy.dates)
 
       //TODO try using google api to search by location
-      debugger;
       return (filterBy.type === 'all' || space.type === filterBy.type)
       && ((space.loc.address.includes(filterBy.location) || space.loc.countryCode.includes(filterBy.location) || space.loc.country.includes(filterBy.location)) 
       && space.capacity >= Number(filterBy.numGuests))
+    })
+    console.log('filtered', spaces);
+    //sort by reviews
+    spaces = spaces.sort((space1, space2) => {
+    debugger;
+    return _getAverageReview(space1) - _getAverageReview(space2)
   })
-  console.log('filtered', spaces);
-  //sort by reviews
-  // spaces = spaces.sort((space1, space2) => {
-  //   return _getAverageReview(space1) - _getAverageReview(space2)
-  // })
 
   //slice out the amount you want - THIS WILL HAPPEN IN FRONT END so fewer server calls
-  // if (filterBy.count !== Infinity) var spacesForDisplay = spaces.slice(0, filterBy.count)
+  if (filterBy.count !== Infinity) spaces = spaces.slice(0, filterBy.count)
 
     return spaces
   const spacesForDisplay = spaces

@@ -149,7 +149,7 @@
       <div class="img-container">
         <img :src="`${imgForDisplay}`" />
       </div>
-
+      
       <div class="name-price flex">
         <!-- <div>{{ space.name }}</div> -->
         <div>{{ space.loc.address }}

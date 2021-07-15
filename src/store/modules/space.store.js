@@ -4,9 +4,10 @@ export const spaceStore = {
   state: {
     spaces: [],
     filterBy: {
-      amenity: "all",
+      amenity: 'all',
       amenities:[],
-      location: "",
+      type: 'all',
+      location: '',
       numGuests:0,
       dates: { startDate:0, endDate:0},
       count:Infinity //change this to PAGE_SIZE when add pagination
@@ -41,12 +42,18 @@ export const spaceStore = {
     setFilter(state, { filterBy }) {
       state.filterBy = filterBy;
     },
+    setFilterField(state, { field, value }) {
+      state.filterBy[field] = value;
+    },
     // addReview(state, { space }) {
     //   const idx = state.spaces.findIndex((t) => t._id === space._id);
     //   state.spaces.splice(idx, 1, space);
     // },
   },
   actions: {
+    // async setFilterField(state, { field, value }) {
+    //   state.filterBy[field] = value;
+    // },
     async loadSpaces(context) {
       // spaceService
       //   .query(context.getters.filterBy)
