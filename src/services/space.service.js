@@ -118,6 +118,13 @@ async function _createSpaces() {
     );
     spaces = [];
 
+
+
+    // ==========================================================================
+    // 1 ===========================================================================
+
+
+
     spaces.push({
       _id: 's' + utilService.makeId(),
       type: 'home',
@@ -244,6 +251,11 @@ async function _createSpaces() {
       ],
       likedByUserIds: ['u101', 'u102', 'u103'],
     });
+
+    // ==========================================================================
+    // 2 ===========================================================================
+
+
     spaces.push({
       _id: 's' + utilService.makeId(),
       name: 'Chalet Eigernordwand',
@@ -287,8 +299,8 @@ async function _createSpaces() {
       },
       reviews: [
         {
-          _id: 'r102',
-          txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
+          _id: 'r101',
+          txt: 'Brilliant place. Modern, new, easy to park, 5 minute drive to center, fully equipped.',
           rate: {
             cleanliness: 2,
             checkin: 3,
@@ -298,69 +310,102 @@ async function _createSpaces() {
             location: 3,
           },
           by: {
-            _id: 'u894',
-            fullname: 'kslmv sojks',
+            _id: 'u891',
+            fullname: 'Lior',
             imgUrl:
-              'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+              'https://a0.muscache.com/im/pictures/user/79217452-8f8a-4786-8dfb-290eb2578bde.jpg?aki_policy=profile_large',
           },
         },
         {
           _id: 'r102',
-          txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
+          txt: `Matches the name perfectly - located right in front of the Eiger-Nordwand, the apartment offers an astonishing view of the mountains. While Grindelwald center is just a short walk away, the location is perfect for hiking in the region. The interior is extremely comfy and provides everything one would need during a weeks worth of vacation. All-in-all a really pleasant experience, a huge thanks for that!`,
           rate: 4,
           by: {
-            _id: 'u894',
-            fullname: 'kslmv sojks',
+            _id: 'u892',
+            fullname: 'Fabio',
             imgUrl:
-              'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+              'https://a0.muscache.com/im/pictures/user/f3d5d005-6a58-4cd8-9321-0bcdac9c8d18.jpg?aki_policy=profile_large',
           },
         },
         {
-          _id: 'r102',
-          txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
+          _id: 'r103',
+          txt: `Great location with the Eiger mountain as your backyard view and front view of Grindelwald. Easy walk to Männlichenbahn. Place was clean, modern, and plenty of space for our two young kids. Hermann was generous to provide an adapter after I found out I brought the wrong one.`,
           rate: 4,
           by: {
-            _id: 'u894',
-            fullname: 'kslmv sojks',
+            _id: 'u893',
+            fullname: 'Dennis',
             imgUrl:
-              'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+              'https://a0.muscache.com/im/pictures/user/8fc8cbeb-e888-4d19-9825-3fab7d72cac3.jpg?aki_policy=profile_large',
           },
         },
         {
-          _id: 'r102',
-          txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
+          _id: 'r104',
+          txt: `This was a terrific stay. It's a lovely place with beautiful views. It's also well located, outside of the village but walking distance. I started many hikes during my stay right from the chalet. When I arrived I walked with my luggage from the Terminal train station though it is an uphill climb. I mostly walked into the village and to the grocery store as the bus only comes once an hour and, well, the walk is simply stunning even in the rain. Bring your own umbrella if you feel you need one as there isn't one at the chalet. The place is well equipped otherwise. Hermann was also very responsive to messages I sent him through the website.`,
           rate: 4,
           by: {
             _id: 'u894',
-            fullname: 'kslmv sojks',
+            fullname: 'Sandeep',
             imgUrl:
-              'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+              'https://a0.muscache.com/im/pictures/user/50b4247d-f7b3-4b66-aed7-095a082ce1fd.jpg?aki_policy=profile_large',
           },
         },
         {
-          _id: 'r102',
-          txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
+          _id: 'r105',
+          txt: `Amazing views, ultra comfortable chalet and sparkling clean! Will stay again. Great spot to access all of Grindelwald.`,
           rate: 4,
           by: {
-            _id: 'u894',
-            fullname: 'kslmv sojks',
+            _id: 'u895',
+            fullname: 'Christina And Tim',
             imgUrl:
-              'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+              'https://a0.muscache.com/im/pictures/user/2062bf92-cd9a-46de-a851-8fb36ebf0273.jpg?aki_policy=profile_large',
           },
         },
         {
-          _id: 'r102',
-          txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
+          _id: 'r106',
+          txt: `Hermann’s place was better than what we expected. He provided us with everything we needed, including a high chair and a baby bed for our daughter. He was very helpful and super responsive during our stay. The view from the chalet is stunning, on both sides. We came by car but there was a bus stop just next to the chalet, so it’s easy accessible for people coming by train/bus.
+          Thanks again Hermann, we’ll be back!`,
           rate: 4,
           by: {
-            _id: 'u894',
-            fullname: 'kslmv sojks',
+            _id: 'u896',
+            fullname: 'Julian',
             imgUrl:
-              'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+              'https://a0.muscache.com/im/users/4417841/profile_pic/1355853603/original.jpg?aki_policy=profile_large',
+          },
+        },
+        {
+          _id: 'r107',
+          txt: `The vast space and the cleanliness of this home are second to none. The views were splendid. We appreciate the modern amenities. Indeed it is easier if you have a car as it is located about 10 mins or so from the centre however bus no. 123 runs hourly. Easy self check in & out, keep in view if you have many luggages, staircases on the side. Its winter, the large suitcases we had gave us quite a workout! Our experience: so much better than staying in a hotel!
+          `,
+          rate: 4,
+          by: {
+            _id: 'u897',
+            fullname: 'Angelina',
+            imgUrl:
+              'https://a0.muscache.com/im/pictures/user/d9f57e5b-e392-4c8a-aa17-2d200a3526f1.jpg?aki_policy=profile_large',
+          },
+        },
+        {
+          _id: 'r108',
+          txt: `We had a wonderful stay in Hermann’s place. It is very modern and new. The living area is very spacious and open with Eiger views. The 2 bedrooms and bathrooms are very comfortable and nice windows looking out. Hiking trails start right from your door and the views are incredible!!`,
+          rate: 4,
+          by: {
+            _id: 'u898',
+            fullname: 'Emma',
+            imgUrl:
+              'https://a0.muscache.com/im/pictures/user/9f75bd0c-d7f9-42a8-ba13-5c6201bd0b5c.jpg?aki_policy=profile_large',
           },
         },
       ],
       likedByUserIds: ['u101', 'u102', 'u103'],
+
+
+
+      // ==========================================================================
+      // 3 ===========================================================================
+
+
+
+
     });
     spaces.push({
       _id: 's' + utilService.makeId(),
@@ -424,6 +469,14 @@ async function _createSpaces() {
       ],
       likedByUserIds: ['u101', 'u102', 'u103'],
     });
+
+
+    // ==========================================================================
+    // 4 ===========================================================================
+
+
+
+
     spaces.push({
       _id: 's' + utilService.makeId(),
       name: 'Superbe chalet Hautes Vosges en pleine nature',
@@ -479,6 +532,15 @@ async function _createSpaces() {
       likedByUserIds: ['u101', 'u102', 'u103'],
     });
 
+
+
+
+    // ==========================================================================
+    // 5 ===========================================================================
+
+
+
+
     spaces.push({
       _id: 's' + utilService.makeId(),
       name: 'Jerusalem',
@@ -531,6 +593,13 @@ async function _createSpaces() {
       ],
       likedByUserIds: ['u101', 'u102', 'u103'],
     });
+
+
+    // ==========================================================================
+    // 6  ===========================================================================
+
+
+
     spaces.push({
       _id: 's' + utilService.makeId(),
       name: 'Jerusalem',
@@ -583,6 +652,13 @@ async function _createSpaces() {
       ],
       likedByUserIds: ['u101', 'u102', 'u103'],
     });
+
+
+    // ==========================================================================
+    // 7  ===========================================================================
+
+
+
     spaces.push({
       _id: 's' + utilService.makeId(),
       name: 'Jerusalem',
@@ -635,6 +711,13 @@ async function _createSpaces() {
       ],
       likedByUserIds: ['u101', 'u102', 'u103'],
     });
+
+
+    // ==========================================================================
+    // 8 ===========================================================================
+
+
+
     spaces.push({
       _id: 's' + utilService.makeId(),
       name: 'Jerusalem',
@@ -687,6 +770,13 @@ async function _createSpaces() {
       ],
       likedByUserIds: ['u101', 'u102', 'u103'],
     });
+
+
+    // ==========================================================================
+    // 9 ===========================================================================
+
+
+
     spaces.push({
       _id: 's' + utilService.makeId(),
       name: 'Jerusalem',
@@ -739,6 +829,12 @@ async function _createSpaces() {
       ],
       likedByUserIds: ['u101', 'u102', 'u103'],
     });
+
+    // ==========================================================================
+    // 10 ===========================================================================
+
+
+
     spaces.push({
       _id: 's' + utilService.makeId(),
       name: 'Jerusalem',
@@ -791,6 +887,12 @@ async function _createSpaces() {
       ],
       likedByUserIds: ['u101', 'u102', 'u103'],
     });
+
+    // ==========================================================================
+    // 11 ===========================================================================
+
+
+
     spaces.push({
       _id: 's' + utilService.makeId(),
       name: 'Jerusalem',
@@ -843,6 +945,14 @@ async function _createSpaces() {
       ],
       likedByUserIds: ['u101', 'u102', 'u103'],
     });
+
+
+
+    // ==========================================================================
+    // 12 ===========================================================================
+
+
+
     spaces.push({
       _id: 's' + utilService.makeId(),
       name: 'Jerusalem',
@@ -903,6 +1013,13 @@ async function _createSpaces() {
       ],
       likedByUserIds: ['u101', 'u102', 'u103'],
     });
+
+
+    // ==========================================================================
+    // 13 ===========================================================================
+
+
+
     spaces.push({
       _id: 's' + utilService.makeId(),
       name: 'Jerusalem',
@@ -963,6 +1080,13 @@ async function _createSpaces() {
       ],
       likedByUserIds: ['u101', 'u102', 'u103'],
     });
+
+
+    // ==========================================================================
+    // 14 ===========================================================================
+
+
+
     spaces.push({
       _id: 's' + utilService.makeId(),
       name: 'Jerusalem',
@@ -1024,6 +1148,14 @@ async function _createSpaces() {
       ],
       likedByUserIds: ['u101', 'u102', 'u103'],
     });
+
+
+
+    // ==========================================================================
+    // 15 ===========================================================================
+
+
+
     spaces.push({
       _id: 's' + utilService.makeId(),
       name: 'Jerusalem',
@@ -1084,6 +1216,13 @@ async function _createSpaces() {
       ],
       likedByUserIds: ['u101', 'u102', 'u103'],
     });
+
+
+    // ==========================================================================
+    // 16 ===========================================================================
+
+
+
     spaces.push({
       _id: 's' + utilService.makeId(),
       name: 'Jerusalem',
@@ -1144,6 +1283,13 @@ async function _createSpaces() {
       ],
       likedByUserIds: ['u101', 'u102', 'u103'],
     });
+
+
+
+    // ==========================================================================
+    // ===========================================================================
+
+
     storageService.postMany(SPACE_KEY, spaces);
   }
   return spaces;
