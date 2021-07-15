@@ -1,6 +1,6 @@
 <template>
-  <div class="space-imgs">
-    <img :src="img" alt="" v-for="img in imgUrls" :key="img" />
+  <div class="space-imgs pics-5">
+    <img :src="img" alt="" v-for="(img, idx) in imgUrls" :key="idx" />
   </div>
 </template>
 

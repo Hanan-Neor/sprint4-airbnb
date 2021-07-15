@@ -1,0 +1,33 @@
+.space-details {
+  font-family: cereal-regular;
+  .space-title-primary {
+    font-size: 1.625rem;
+    margin: 0;
+  }
+
+  .space-title-secondary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .left-part {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+
+      .rating {
+        display: flex;
+        gap: 10px;
+
+        &::before {
+          font-family: 'awesome';
+          content: '\f005';
+        }
+
+        .star-icon {
+          width: 15px;
+        }
+      }
+    }
+  }
+}
