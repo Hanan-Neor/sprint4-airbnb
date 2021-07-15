@@ -1,6 +1,7 @@
 // import { httpService } from './http.service.js';
 import { storageService } from './async-storage.service.js';
 import { utilService } from './util.service.js';
+import { filterService } from './filterFunctions.js';
 const SPACE_KEY = 'space';
 
 export const spaceService = {
@@ -13,8 +14,20 @@ export const spaceService = {
 
 _createSpaces();
 
-function query() {
-  return storageService.query(SPACE_KEY);
+async function query(filterBy) {
+  // return storageService.query(SPACE_KEY);
+  console.log('filter in service', filterBy);
+  try {
+    let spaces = await storageService.query(SPACE_KEY);
+    const spacesForDisplay = await filterService.getSpacesForDisplay(spaces, filterBy);
+    return spacesForDisplay
+  } catch(err) {
+    console.log('error getting spaces in service', this.filterBy);
+    throw err
+  }
+
+  return spaces;
+
 }
 
 function remove(spaceId) {
@@ -48,9 +61,9 @@ function getEmptySpace() {
     ],
     price: 0,
     description: '',
-    capacity: 0,
+    capacity: 6,
     amenities: [],
-    type: '',
+    type: 'home',
     host: {
       _id: '',
       fullname: '',
@@ -63,17 +76,24 @@ function getEmptySpace() {
       lat: 0,
       lng: 0,
     },
-    reviews: [
-      {
-        _id: '',
-        txt: '',
-        rate: 0,
-        by: {
-          _id: '',
-          fullname: '',
-          imgUrl: '',
-        },
-      },
+    reviews: [ //removed content because a new space has no reviews
+      // {
+      //   _id: '',
+      //   txt: '',
+      //   rate:{
+      //     "cleanliness":2,
+      //     "checkin":3,
+      //     "communication":3,
+      //     "accuracy":1,
+      //     "value":5,
+      //     "location":3
+      //   },
+      //   by: {
+      //     _id: '',
+      //     fullname: '',
+      //     imgUrl: '',
+      //   },
+      // },
     ],
     likedByUserIds: [],
   };
@@ -95,6 +115,7 @@ async function _createSpaces() {
     spaces = [];
     spaces.push({
       _id: 's' + utilService.makeId(),
+      type: 'home',
       name: 'OAKTREEHOUSE - SLEEP IN THE TREEHOUSE',
       imgUrls: [
         'https://a0.muscache.com/im/pictures/412e2eca-eddf-40fb-81b3-883335a894e0.jpg?im_w=720',
@@ -124,7 +145,6 @@ async function _createSpaces() {
         'air conditioning',
         'security cameras',
       ],
-      type: 'villa',
       host: {
         _id: 'u101',
         fullname: 'Ania & Peter',
@@ -142,7 +162,14 @@ async function _createSpaces() {
         {
           _id: 'r102',
           txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
-          rate: 4,
+          rate:{
+            "cleanliness":2,
+            "checkin":3,
+            "communication":3,
+            "accuracy":1,
+            "value":5,
+            "location":3
+          },
           by: {
             _id: 'u894',
             fullname: 'kslmv sojks',
@@ -156,6 +183,7 @@ async function _createSpaces() {
     spaces.push({
       _id: 's' + utilService.makeId(),
       name: 'Givat Shmuel',
+      type:'home',
       imgUrls: [
         'https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
         'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
@@ -194,7 +222,14 @@ async function _createSpaces() {
         {
           _id: 'r102',
           txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
-          rate: 4,
+          rate:{
+            "cleanliness":2,
+            "checkin":3,
+            "communication":3,
+            "accuracy":1,
+            "value":5,
+            "location":3
+          },
           by: {
             _id: 'u894',
             fullname: 'kslmv sojks',
@@ -208,6 +243,7 @@ async function _createSpaces() {
     spaces.push({
       _id: 's' + utilService.makeId(),
       name: 'Still Life St Paul\'s Executive',
+      type: 'home',
       imgUrls: [
         'https://a0.muscache.com/im/pictures/miso/Hosting-17823159/original/0a6eeebb-4c3e-4e6c-9bff-414012c215f4.jpeg?im_w=720',
         'https://a0.muscache.com/im/pictures/miso/Hosting-17823159/original/46ef9170-4b3d-42d4-b4e0-d7e7087c445e.jpeg?im_w=720',
@@ -218,7 +254,7 @@ async function _createSpaces() {
       price: 118,
       description:
         'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries',
-      capacity: 5,
+      capacity: 4,
       amenities: [
         'TV',
         'wifi',
@@ -248,7 +284,14 @@ async function _createSpaces() {
         {
           _id: 'r102',
           txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
-          rate: 4,
+          rate:{
+            "cleanliness":2,
+            "checkin":3,
+            "communication":3,
+            "accuracy":1,
+            "value":5,
+            "location":3
+          },
           by: {
             _id: 'u894',
             fullname: 'kslmv sojks',
@@ -262,6 +305,7 @@ async function _createSpaces() {
     spaces.push({
       _id: 's' + utilService.makeId(),
       name: 'Jerusalem',
+      type: 'home',
       imgUrls: [
         'https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
         'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
@@ -300,7 +344,14 @@ async function _createSpaces() {
         {
           _id: 'r102',
           txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
-          rate: 4,
+          rate:{
+            "cleanliness":2,
+            "checkin":3,
+            "communication":3,
+            "accuracy":1,
+            "value":5,
+            "location":3
+          },
           by: {
             _id: 'u894',
             fullname: 'kslmv sojks',
@@ -314,6 +365,7 @@ async function _createSpaces() {
     spaces.push({
       _id: 's' + utilService.makeId(),
       name: 'Jerusalem',
+      type: 'home',
       imgUrls: [
         'https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
         'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
@@ -352,7 +404,14 @@ async function _createSpaces() {
         {
           _id: 'r102',
           txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
-          rate: 4,
+          rate:{
+            "cleanliness":2,
+            "checkin":3,
+            "communication":3,
+            "accuracy":1,
+            "value":5,
+            "location":3
+          },
           by: {
             _id: 'u894',
             fullname: 'kslmv sojks',
@@ -366,6 +425,8 @@ async function _createSpaces() {
     spaces.push({
       _id: 's' + utilService.makeId(),
       name: 'Jerusalem',
+      type:'villa',
+
       imgUrls: [
         'https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
         'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
@@ -374,7 +435,7 @@ async function _createSpaces() {
       price: 100,
       description:
         'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries',
-      capacity: 5,
+      capacity: 3,
       amenities: [
         'TV',
         'wifi',
@@ -404,7 +465,14 @@ async function _createSpaces() {
         {
           _id: 'r102',
           txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
-          rate: 4,
+          rate:{
+            "cleanliness":2,
+            "checkin":3,
+            "communication":3,
+            "accuracy":1,
+            "value":5,
+            "location":3
+          },
           by: {
             _id: 'u894',
             fullname: 'kslmv sojks',
@@ -418,6 +486,7 @@ async function _createSpaces() {
     spaces.push({
       _id: 's' + utilService.makeId(),
       name: 'Jerusalem',
+      type: 'cabin',
       imgUrls: [
         'https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
         'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
@@ -426,7 +495,7 @@ async function _createSpaces() {
       price: 100,
       description:
         'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries',
-      capacity: 5,
+      capacity: 2,
       amenities: [
         'TV',
         'wifi',
@@ -456,7 +525,14 @@ async function _createSpaces() {
         {
           _id: 'r102',
           txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
-          rate: 4,
+          rate:{
+            "cleanliness":2,
+            "checkin":3,
+            "communication":3,
+            "accuracy":1,
+            "value":5,
+            "location":3
+          },
           by: {
             _id: 'u894',
             fullname: 'kslmv sojks',
@@ -470,6 +546,7 @@ async function _createSpaces() {
     spaces.push({
       _id: 's' + utilService.makeId(),
       name: 'Jerusalem',
+      type: 'cabin',
       imgUrls: [
         'https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
         'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
@@ -478,7 +555,7 @@ async function _createSpaces() {
       price: 100,
       description:
         'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries',
-      capacity: 5,
+      capacity: 1,
       amenities: [
         'TV',
         'wifi',
@@ -508,7 +585,14 @@ async function _createSpaces() {
         {
           _id: 'r102',
           txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
-          rate: 4,
+          rate:{
+            "cleanliness":2,
+            "checkin":3,
+            "communication":3,
+            "accuracy":1,
+            "value":5,
+            "location":3
+          },
           by: {
             _id: 'u894',
             fullname: 'kslmv sojks',
