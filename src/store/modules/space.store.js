@@ -4,10 +4,13 @@ export const spaceStore = {
   state: {
     spaces: [],
     filterBy: {
-      name: '',
-      inStock: '',
-      type: '',
-      sortBy: '',
+      amenity: 'all',
+      amenities:[],
+      type: 'all',
+      location: '',
+      numGuests:0,
+      dates: { startDate:0, endDate:0},
+      count:Infinity //change this to PAGE_SIZE when add pagination
     },
   },
   getters: {
@@ -17,12 +20,9 @@ export const spaceStore = {
     // allSpaces(state) {
     //   return state.spaces;
     // },
-    // filterBy(state) {
-    //   return state.filterBy;
-    // },
-    // spacesInStock(state) {
-    //   return state.spaces.filter((space) => space.inStock);
-    // },
+    filterBy(state) {
+      return state.filterBy;
+    },
   },
   mutations: {
     setSpaces(state, { spaces }) {
@@ -42,12 +42,18 @@ export const spaceStore = {
     setFilter(state, { filterBy }) {
       state.filterBy = filterBy;
     },
+    setFilterField(state, { field, value }) {
+      state.filterBy[field] = value;
+    },
     // addReview(state, { space }) {
     //   const idx = state.spaces.findIndex((t) => t._id === space._id);
     //   state.spaces.splice(idx, 1, space);
     // },
   },
   actions: {
+    // async setFilterField(state, { field, value }) {
+    //   state.filterBy[field] = value;
+    // },
     async loadSpaces(context) {
       // spaceService
       //   .query(context.getters.filterBy)
@@ -60,12 +66,12 @@ export const spaceStore = {
       //     throw err;
       //   });
       try {
-        // const spaces = await spaceService.query(context.getters.filterBy);
-        const spaces = await spaceService.query();
+        const spaces = await spaceService.query(context.getters.filterBy);
+        // const spaces = await spaceService.query();
         context.commit({ type: 'setSpaces', spaces });
         return spaces;
       } catch (err) {
-        console.log('Cannot load spaces', spaces);
+        console.log('Cannot load spaces in store');
         throw err;
       }
     },

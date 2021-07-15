@@ -1,66 +1,78 @@
 //TODO add orders:[{startDate, endDate}] to the spaces collection
 
+export const filterService = {
+  getSpacesForDisplay,
+
+}
 
 var filterBy = {
-    amenity: "",
-    amenities:[],
-    location: "",
-    numGuests:0,
-    dates: { startDate:0, endDate:0},
-    count:Infinity //change this to PAGE_SIZE when add pagination
-  };
+  amenity: "",
+  amenities: [],
+  location: "",
+  numGuests: 0,
+  dates: { startDate: 0, endDate: 0 },
+  count: Infinity //change this to PAGE_SIZE when add pagination
+};
 
-function isAvailable(space, date, orders){
-    return orders.every(order => {
-      return order.space._id !== space._id ||
-        space.dates.startDate >= order.startDate && space.dates.endDate <= order.endDate
-    })
-  }
+function _isAvailable(space, dates) {
+  let orders = orderService.query()
+  return orders.every(order => {
+    return order.space._id !== space._id ||
+      dates.startDate >= order.startDate && dates.endDate <= order.endDate
+  })
+}
 
-function  getSpacesForDisplay(spaces, filterBy){
-    if (filterBy.location.length) {}
+function _getAverageReview(space) {
+  const reviewSum = space.reviews.reduce((sum, review) => {
+    return sum + _getReviewRate(review)
+  },0)
+  return reviewSum / space.reviews.length
 
-    //filter space
-    spaces = spaces.filter(space => {
-      const filterLoc  = filterBy.location
-      return  space.amenities.includes(filterBy.amenity)
-      && filterBy.amenities.foreach(amenity => space.amenities.includes(amenity))
+}
+
+function _getReviewRate(review) {
+  const rates = review.rate;
+  const totalRates = Object.values(rates).reduce((sum, rate) => sum + rate)
+  return totalRates / Object.values(rates).length // or '/ 6'
+}
+
+function getSpacesForDisplay(spaces, filterBy) {
+  console.log('filter in filter function', filterBy);
+  console.log('spaces', spaces);
+  
+  //filter space
+  spaces = spaces.filter(space => {
+    // return (filterBy.amenity === 'all' || space.amenities.includes(filterBy.amenity))
+      // && filterBy.amenities.foreach(amenity => space.amenities.includes(amenity))
+      // && _isAvailable(space, filterBy.dates)
+
       //TODO try using google api to search by location
-      && space.loc.address.includes(filterLoc) || space.loc.countryCode.includes(filterLoc) || space.loc.country.includes(filterLoc)
-      && space.capacity <= filterBy.numGuests
+      return (filterBy.type === 'all' || space.type === filterBy.type)
+      && ((space.loc.address.includes(filterBy.location) || space.loc.countryCode.includes(filterBy.location) || space.loc.country.includes(filterBy.location)) 
+      && space.capacity >= Number(filterBy.numGuests))
     })
-
+    console.log('filtered', spaces);
     //sort by reviews
-    spaces = spaces.sort((space1, space2) => {
-      return space1.getAverageReview(space1) - space2.getAverageReview(space2)
-    })
+    // spaces = spaces.sort((space1, space2) => {
+    // debugger;
+    // return _getAverageReview(space1) - _getAverageReview(space2)
+  // })
 
-    //slice out the amount you want - THIS WILL HAPPEN IN FRONT END so fewer server calls
-    let spacesForDisplay = spaces.slice(0, filterBy.count)
-    
-    return spacesForDisplay;
-  }
+  //slice out the amount you want - THIS WILL HAPPEN IN FRONT END so fewer server calls
+  if (filterBy.count !== Infinity) spaces = spaces.slice(0, filterBy.count)
 
-  var rate = {
-    "cleanliness":2,
-    "checkin":3,
-    "communication":3,
-    "accuracy":1,
-    "value":5,
-    "location":3
-  }
-
-
-function getAverageReview(space){
-    const reviewSum = space.reviews.reduce(sum, review => {
-        return sum + getReviewRate(review)
-    })
-    return reviewSum / space.reviews.length
-
+    return spaces
+  const spacesForDisplay = spaces
+  return spacesForDisplay;
 }
 
-function getReviewRate(review){
-    var rates = review.rates;
-    totalRates = Object.values(rates).reduce((sum, rate) => sum + rate)
-    return totalRates / Object.values(rates).length // or '/ 6'
+var rate = {
+  "cleanliness": 2,
+  "checkin": 3,
+  "communication": 3,
+  "accuracy": 1,
+  "value": 5,
+  "location": 3
 }
+
+
