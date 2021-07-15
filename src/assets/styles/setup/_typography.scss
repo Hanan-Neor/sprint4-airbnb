@@ -1,8 +1,10 @@
 @font-face {
-  font-family: 'awesome';
-  //   src: url('../../fonts/font-awesome/fa-light-300.woff') format('woff');
-  //   src: url('../../fonts/font-awesome/fa-light-300.woff2') format('woff2');
+  font-family: 'awesome-light';
   src: url(~@/assets/fonts/font-awesome/fa-light-300.ttf);
+}
+@font-face {
+  font-family: 'awesome-solid';
+  src: url(~@/assets/fonts/font-awesome/fa-solid-900.ttf);
 }
 @font-face {
   font-family: 'cereal-regular';

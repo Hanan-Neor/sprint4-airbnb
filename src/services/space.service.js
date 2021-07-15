@@ -23,6 +23,7 @@ function remove(spaceId) {
 
 function save(space) {
   if (space._id) {
+    console.log('savingn space', space);
     return storageService.put(SPACE_KEY, space);
   } else {
     return storageService.post(SPACE_KEY, space);
@@ -36,9 +37,15 @@ async function getById(spaceId) {
 
 function getEmptySpace() {
   return {
-    _id: 's' + utilService.makeId(),
+    // _id: 's' + utilService.makeId(),
     name: '',
-    imgUrls: [],
+    imgUrls: [ //TODO change this when we start using cloudinary
+      'https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
+      'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
+      'https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
+      'https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
+      'https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
+    ],
     price: 0,
     description: '',
     capacity: 0,

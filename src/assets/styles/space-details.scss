@@ -1,31 +1,130 @@
 .space-details {
   font-family: cereal-regular;
   .space-title-primary {
-    font-size: 1.625rem;
+    font-size: 1.2rem;
     margin: 0;
+    margin-bottom: 12px;
+    color: $clr2;
   }
 
   .space-title-secondary {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
+    font-size: 0.65rem;
+    color: $clr3;
     .left-part {
       display: flex;
       justify-content: space-between;
+      align-items: center;
       gap: 10px;
 
       .rating {
         display: flex;
+        align-items: center;
         gap: 10px;
 
+        .total-rate {
+          color: $clr2;
+          font-weight: 600;
+        }
+
+        position: relative;
+
         &::before {
-          font-family: 'awesome';
+          font-family: 'awesome-solid';
           content: '\f005';
+          color: $clr1;
+          position: absolute;
+          right: 65px;
         }
 
         .star-icon {
           width: 15px;
+        }
+      }
+    }
+
+    .save-space {
+      display: flex;
+      align-items: center;
+      position: relative;
+      &::before {
+        font-family: 'awesome-light';
+        content: '\f004';
+        position: absolute;
+        right: 30px;
+      }
+    }
+  }
+
+  .space-description-container {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.3rem;
+
+    .space-description-wrap {
+      grid-column: span 2;
+
+      .space-description-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+        position: relative;
+
+        &::before {
+          content: '';
+          position: absolute;
+          width: 100%;
+          top: 42px;
+          border-bottom: 1px solid $clr4;
+        }
+
+        .title-sentence {
+          font-weight: 700;
+          font-size: 0.8rem;
+        }
+
+        .host-avatar {
+          width: 35px;
+          height: 35px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+      }
+
+      .space-description {
+        font-size: 0.65rem;
+        line-height: 1.5em;
+        margin-bottom: 2rem;
+        position: relative;
+
+        &::before {
+          content: '';
+          position: absolute;
+          width: 100%;
+          top: 74px;
+          border-bottom: 1px solid $clr4;
+        }
+      }
+
+      .space-ameneties-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+        row-gap: 0.4rem;
+        margin-bottom: 2rem;
+
+        .amenity-item {
+          font-size: 0.6rem;
+          text-transform: capitalize;
+          padding-left: 25px;
+
+          &.tv::before {
+            content: 'hi';
+          }
         }
       }
     }
