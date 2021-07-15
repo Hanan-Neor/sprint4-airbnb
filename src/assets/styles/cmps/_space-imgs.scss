@@ -2,7 +2,7 @@
   width: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(2, 165px);
+  grid-template-rows: 120px 120px;
   gap: 8px;
   justify-content: center;
   align-items: center;

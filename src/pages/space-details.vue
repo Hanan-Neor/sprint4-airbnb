@@ -1,12 +1,12 @@
 <template>
-  <div class="space-details">
+  <div class="space-details main-layout">
     <h2 class="space-title-primary">{{ space.name }}</h2>
     <div class="space-title-secondary">
       <div class="left-part">
         <div class="rating">
           <!-- <img class="star-icon" src="../assets/icons/star.svg" alt="" /> -->
           <p class="total-rate">{{ totalRate }}</p>
-          <p class="number-reviews">({{ numOfReviews }}) reviews</p>
+          <p class="number-reviews">({{ numOfReviews }} reviews)</p>
         </div>
         <span>•</span>
         <div class="space-location">
@@ -25,9 +25,12 @@
           </p>
           <img class="host-avatar" :src="host.imgUrl" alt="" />
         </div>
-        <div class="space-description">{{ space.description }}</div>
+        <div class="space-description">
+          {{ space.description }}
+        </div>
         <div class="space-ameneties">
-          <ul class="space-ameneties-list">
+          <p class="ameneties-title">What this place offers</p>
+          <ul class="space-ameneties-list clear-list">
             <li
               v-for="(amenity, idx) in space.amenities"
               :key="idx"
@@ -40,13 +43,14 @@
         <!-- <review-list :reviews="space.reviews"></review-list> -->
       </div>
       <!-- <reserve-space/> -->
+      <div class="reserve-space">HIIII</div>
     </div>
     <div class="map-container">
       <p class="map-title">Where you'll be</p>
       <p class="space-location">{{ space.loc.address }}</p>
       <!-- <map-cmp></map-cmp> -->
     </div>
-    <pre>{{ space }}</pre>
+    <!-- <pre>{{ space }}</pre> -->
   </div>
 </template>
 
@@ -84,6 +88,16 @@ export default {
     },
   },
 
+  methods: {
+    amenityIcon(amenity) {
+      console.log(
+        '🚀 ~ file: space-details.vue ~ line 92 ~ amenityIcon ~ amenity',
+        amenity
+      );
+      return;
+    },
+  },
+
   watch: {
     '$route.params.spaceId': {
       immediate: true,
@@ -91,7 +105,6 @@ export default {
         const { spaceId } = this.$route.params;
         try {
           const space = await spaceService.getById(spaceId);
-          console.log(space);
           this.space = space;
           this.host = space.host;
         } catch (error) {
