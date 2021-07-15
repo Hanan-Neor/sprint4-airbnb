@@ -4,7 +4,7 @@
 
 
     <!-- <div v-for="space in spaces" :key="space._id" class="space-list grid"> -->
-        <space-preview @liked="liked(spaceId)" :space="space" 
+        <space-preview @liked="liked" :space="space" 
          v-for="space in spaces" :key="space._id"/>
     <!-- </div> -->
   </section>

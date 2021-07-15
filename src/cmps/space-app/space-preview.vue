@@ -62,9 +62,10 @@
           <i class="el-icon-arrow-right"></i>
         </button>
       </div>
-      <!-- <?xml version='1.0' encoding='UTF-8'?> -->
+<!-- 
+      <?xml version='1.0' encoding='UTF-8'?>
       <svg
-      style="svgcolor"
+        style="svgcolor"
         class="svg"
         v-bind:class="{ liked: isLiked }"
         width="20px"
@@ -102,16 +103,63 @@
           </g>
         </g>
       </svg>
+ -->
+      <svg
+        @click.prevent="like"
+      
+        viewBox="0 0 32 32"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+        role="presentation"
+        focusable="false"
+        :style="{
+          'fill': likeColor,
+          'height': '25px',
+          'width': '25px',
+          'stroke': 'rgb(255, 255, 255)',
+          'stroke-Width': 2,
+        }"
+      >
+        <path
+          d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z"
+        ></path>
+      </svg>
+      <!-- <svg
+      
+        viewBox="0 0 32 32"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+        role="presentation"
+        focusable="false"
+        style="
+          display: block;
+          fill: rgb(255, 56, 92);
+          height: 16px;
+          width: 16px;
+          stroke: rgb(255, 56, 92);
+          stroke-width: 2;
+          overflow: visible;
+        "
+      >
+        <path
+          d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z"
+        ></path>
+      </svg> -->
 
       <div class="img-container">
         <img :src="`${imgForDisplay}`" />
       </div>
 
       <div class="name-price flex">
-        <div>{{ space.name }}</div>
+        <!-- <div>{{ space.name }}</div> -->
+        <div>{{ space.loc.address }}
+          <!-- ,{{ space.loc.country }} -->
+          </div>
         <div>{{ priceToShow }} / night</div>
       </div>
-      <div>200 Kilometers away</div>
+      <div class="distance">{{ distance }} kilometers away</div>
+      <!-- <div class="distance">{{ distance }} miles away</div> -->
+      <!-- <div class="distance">{{distanceToShow}} Kilometers away</div> -->
       <!-- <div class="like" @click="like"></div> -->
 
       <!-- <hr/>
@@ -127,15 +175,21 @@ export default {
   data() {
     return {
       picIdx: 0,
-      isLiked:false,
-
+      isLiked: false,
+      distance: 0,
+      likeColor: 'rgba(0, 0, 0, 0.5)'
+      // likeColor: 'rgb(255, 56, 92)'
     };
   },
   methods: {
     like() {
-      // this.$emit("liked", this.space._id);
-      this.isLiked = !this.isLiked
-      this.svgcolor()
+      this.isLiked = !this.isLiked;
+      if(this.isLiked)
+      this.likeColor = 'rgb(255, 56, 92)'
+      else
+      this.likeColor ='rgba(0, 0, 0, 0.5)'
+      this.$emit("liked", this.space._id);
+      // this.svgcolor();
     },
     prevPic() {
       if (this.picIdx === 0) this.picIdx = this.space.imgUrls.length - 1;
@@ -147,27 +201,59 @@ export default {
     },
   },
   computed: {
-    svgcolor(){
-     return{
-fill : (this.isLiked)? 'red': 'black'
-     }  
-    },
+    // svgcolor() {
+    //   return {
+    //     // fill: this.isLiked ? "red" : "black",
+    //     fill:  "red",
+    //   };
+    // },
     imgForDisplay() {
       return this.space.imgUrls[this.picIdx];
     },
     imgsForDisplay() {
       return this.space.imgUrls;
     },
+    distanceToShow() {
+      return navigator.geolocation.getCurrentPosition(
+        (position) => {
+          // console.log(position.coords.latitude,position.coords.longitude);
+          // console.log(Math.sqrt((position.coords.latitude - this.space.loc.lat)**2+(position.coords.longitude-this.space.loc.lng)**2));
+
+          // d = Math.acos(sin(lat1)*sin(lat2)+cos(lat1)*cos(lat2)*cos(lon1-lon2))
+          let d = Math.acos(
+            Math.sin(position.coords.latitude) * Math.sin(this.space.loc.lat) +
+              Math.cos(position.coords.latitude) *
+                Math.cos(this.space.loc.lat) *
+                Math.cos(position.coords.longitude - this.space.loc.lng)
+          );
+          // this.distance = (Math.sqrt((position.coords.latitude - this.space.loc.lat)**2+(position.coords.longitude-this.space.loc.lng)**2))
+          d = d * 6371;
+          this.distance = d.toLocaleString("en-US", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          });
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+      // return
+      // navigator.geolocation.getCurrentPosition(sucssessCb,errorCb)
+    },
     priceToShow() {
-      return this.space.price.toLocaleString(undefined, {
+      return this.space.price.toLocaleString("en-US", {
         style: "currency",
         currency: "USD",
+        // useGrouping:true,
         minimumFractionDigits: 0,
         maximumFractionDigits: 0,
       });
     },
   },
   components: {},
+  created() {
+    this.distanceToShow;
+  },
 };
 </script>
 

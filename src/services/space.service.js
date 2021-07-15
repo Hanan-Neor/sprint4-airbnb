@@ -88,17 +88,22 @@ async function _createSpaces() {
     spaces = [];
     spaces.push({
       _id: 's' + utilService.makeId(),
-      name: 'jkn kjlklm',
+      name: 'OAKTREEHOUSE - SLEEP IN THE TREEHOUSE',
       imgUrls: [
-        'https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
-        'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
-        'https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
-        'https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
-        'https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
+        'https://a0.muscache.com/im/pictures/412e2eca-eddf-40fb-81b3-883335a894e0.jpg?im_w=720',
+        'https://a0.muscache.com/im/pictures/b17c9174-3c3d-4e6e-8929-b5158b30c9c6.jpg?im_w=720',
+        'https://a0.muscache.com/im/pictures/eba6db58-fb72-4791-a86a-e646f3dae6bc.jpg?im_w=720',
+        'https://a0.muscache.com/im/pictures/a0f5c7cc-4d95-4843-889b-1f8ef5b2c873.jpg?im_w=720',
+        'https://a0.muscache.com/im/pictures/88473896-9f70-4c04-9f9b-68950f833c2b.jpg?im_w=720',
       ],
-      price: 100,
+      price: 135,
       description:
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries',
+        `TREEHOUSE is installed on four adult oaks. A wooden bridge leads directly to the terrace with a view of the surrounding trees. The house is connected to the electricity grid. Water is supplied in containers and is used for hand washing and basic hygiene. Inside our treehouse there is a chair and a sofa bed, basic kitchen equipment, electric kettle for water, plates etc. Dry toilet is located 15m from the treehouse. Attic is reserved for sleeping (2 people). Sofa bed is downstairs.
+        The space
+        Our tree house is designed for everyone who likes nature, would like to try, how it is to spend time during the day eg. sitting on the terrace or at night sleeping near trees at an altitude of almost 6 meters. We invite you to rest and “recharge the battery” in the unique atmosphere of the Little Carpathians. Youth, the elderly, families with children or couples – everyone is welcome. During your stay in our treehouse, your neighbors become squirrels, forest birds: titmouse, woodpeckers, cuckoos and other, stag beetle, salamanders, grass snakes, hedgehogs and seasonally skylights
+        Other things to note
+        We can rent two mountain bikes
+        Garden shower`,
       capacity: 5,
       amenities: [
         'TV',
@@ -115,16 +120,16 @@ async function _createSpaces() {
       type: 'villa',
       host: {
         _id: 'u101',
-        fullname: 'lkm; oorom',
+        fullname: 'Ania & Peter',
         imgUrl:
-          'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+          'https://a0.muscache.com/im/pictures/user/169c278f-2716-4789-a7b3-44d4fccb5035.jpg?aki_policy=profile_large',
       },
       loc: {
-        country: 'Israel',
+        country: 'Slovakia',
         countryCode: 'IL',
-        address: 'Tel Aviv, Israel',
-        lat: 0,
-        lng: 0,
+        address: 'Modra, Slovakia',
+        lat: 48.334632,
+        lng: 17.307569,
       },
       reviews: [
         {
@@ -195,13 +200,15 @@ async function _createSpaces() {
     });
     spaces.push({
       _id: 's' + utilService.makeId(),
-      name: 'London',
+      name: 'Still Life St Paul\'s Executive',
       imgUrls: [
-        'https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
-        'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
-        'https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
+        'https://a0.muscache.com/im/pictures/miso/Hosting-17823159/original/0a6eeebb-4c3e-4e6c-9bff-414012c215f4.jpeg?im_w=720',
+        'https://a0.muscache.com/im/pictures/miso/Hosting-17823159/original/46ef9170-4b3d-42d4-b4e0-d7e7087c445e.jpeg?im_w=720',
+        'https://a0.muscache.com/im/pictures/2e707f27-6214-4c56-b9de-751a25c2cfa8.jpg?im_w=720',
+        'https://a0.muscache.com/im/pictures/miso/Hosting-17823159/original/91a8e796-2828-4412-847d-38ea1cdc2890.jpeg?im_w=720',
+        'https://a0.muscache.com/im/pictures/miso/Hosting-17823159/original/7a7142c4-1e7c-4146-8d72-1efd04d872a9.jpeg?im_w=720',
       ],
-      price: 100,
+      price: 118,
       description:
         'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries',
       capacity: 5,
@@ -219,16 +226,16 @@ async function _createSpaces() {
       ],
       host: {
         _id: 'u101',
-        fullname: 'lkm; oorom',
+        fullname: 'Mar',
         imgUrl:
-          'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+          'https://a0.muscache.com/im/pictures/user/e456810a-e172-4a26-997a-53dfbbb08951.jpg?aki_policy=profile_large',
       },
       loc: {
-        country: 'Israel',
-        countryCode: 'IL',
-        address: 'Tel Aviv, Israel',
-        lat: 0,
-        lng: 0,
+        country: 'United Kingdom',
+        countryCode: 'GB',
+        address: 'London, England',
+        lat: 51.5033331,
+        lng: -0.0793664,
       },
       reviews: [
         {

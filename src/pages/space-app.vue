@@ -1,7 +1,7 @@
 <template>
   <div class="space-app">
       <nav-filter />
-    <space-list @liked="liked(spaceId)" :spaces="spaces" />
+    <space-list @liked="liked" :spaces="spaces" />
 
 <!-- TODO add numbers for pagination here -->
     <p>Enter dates to see full pricing. Additional fees apply. Taxes may be added.</p>
@@ -35,7 +35,8 @@ export default {
     this.$store.dispatch({type: 'loadSpaces'})
   },
   methods: {
-    liked(){
+    liked(spaceId){
+      // alert('hi!')
         //TODO send liked to space-store
     }
   }

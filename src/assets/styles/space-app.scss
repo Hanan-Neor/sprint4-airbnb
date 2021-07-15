@@ -12,6 +12,9 @@
 
 
 
+
+
+
 .space-app{
 
     box-sizing: border-box;
@@ -57,11 +60,15 @@
         // gap: 5px;
 
         .space-preview{
-            
             padding: 0;
             border-radius: 12px;
             position: relative;
             cursor: pointer;
+
+            &:hover a{
+            text-decoration: none;
+
+            }
 
             &:hover .buttons{
                 opacity: 1;
@@ -155,8 +162,39 @@
               }
             .name-price{
                 justify-content: space-between;
-               
+                color: #222222;
+                // font-size: 1rem;
+                // line-height: 20px;
+                margin-bottom: 2px;
+
+
+                & div:first-child{
+                    // font-weight:600;
+                    // color:#717171;
+                // color: #222222;
+
+                    font-family: 'cereal-Medium';
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+                }
+                & div:last-child{
+                    font-family: 'cereal-Book';
+
+                    margin-left: 0.5rem;
+                    font-weight: 400;
+                    white-space: nowrap;
+
+
+                }
+
+                
             }
+            .distance{
+                font-family: 'cereal-Book';
+
+             color: rgb(113, 113, 113)     
+         } 
         }
     }
 }
