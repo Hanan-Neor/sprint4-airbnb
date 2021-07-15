@@ -113,6 +113,8 @@ async function _createSpaces() {
       spaces
     );
     spaces = [];
+
+
     spaces.push({
       _id: 's' + utilService.makeId(),
       type: 'home',
@@ -160,7 +162,54 @@ async function _createSpaces() {
       },
       reviews: [
         {
+          _id: 'r101',
+          txt: 'Perfection to a very tiny detail, one of a kind experience! We really enjoyed the stay and especially the great sleep in the middle of forrest :) Would definitely love to come back.',
+          rate: 4,
+          
+          by: {
+            _id: 'u894',
+            fullname: 'Zuzana',
+            imgUrl:
+              'https://a0.muscache.com/im/pictures/user/38be01af-b895-4932-b301-0deefa2786f0.jpg?aki_policy=profile_large',
+          },
+        },
+        {
           _id: 'r102',
+          txt: `Ania and Peter are sympathetic couple with inspirational life style what changed our staying to the more amazing experience. Thanks for nature which gave us beautiful sounds and my opinion is that we were at the right time in the right place. In May, nature wakes up, so it is even more of an experience to sleep in the treehouse. You must see! We liked it everything and the most outside shower with refreshing water. We are giving them 10 from 10.
+          If you are nature lovers go and experience staying in OAKTREEHOUSE by your self. You can ask Ania and Peter what to do around, they will recommend it you hiking, biking, wine testing etc.`,
+          rate: 4,
+          by: {
+            _id: 'u895',
+            fullname: 'Anita',
+            imgUrl:
+              'https://a0.muscache.com/im/pictures/user/86e81cda-2769-43cf-b76f-8b3901e36f3b.jpg?aki_policy=profile_large',
+          },
+        },
+        {
+          _id: 'r103',
+          txt: `A extraordinary experience! In my opinion A BIT PRICY! Probably better in summertime... It was my first stay in a house built on trees. My small daughter and I choose it to celebrate our personal father/daughter’s day. She loved it! The house is very well built, nice and clean. It is equipped with a sink, separated with a small door (not sure why!) but for the toilet you have to walk outside in a separate shack with compost type of “collection”! Not the most convenient in cold weather conditions or if you need to go in the night especially when you try in the dark to go down the ladder form the sleeping mezzanine... :/
+          Peter was very helpful selecting the most dry wood from his stack which became humid with the rain and that helped a lot to start the fire for a nice evening barbecue. There’s not much to see or do in the area, but the house doesn’t really make you wanna go anywhere else. 1 night was ok... not sure October weather can allow more with an open air shower! All in all it was a memorable experience, but, as I said already, a bit pricy considering the services.`,
+          rate: 4,
+          by: {
+            _id: 'u896',
+            fullname: 'Onofrio',
+            imgUrl:
+              'https://a0.muscache.com/im/pictures/user/2e56e461-97d5-46b8-b594-7a380e8da459.jpg?aki_policy=profile_large',
+          },
+        },
+        {
+          _id: 'r104',
+          txt: `Great location, nice people, good communication - definitly to recommend! We booked as a birthday surprise for friends and they have been super happy!`,
+          rate: 4,
+          by: {
+            _id: 'u897',
+            fullname: 'Florian',
+            imgUrl:
+              'https://a0.muscache.com/im/pictures/user/2e7a5f78-744b-464d-9a49-3869bcc7600e.jpg?aki_policy=profile_large',
+          },
+        },
+        {
+          _id: 'r105',
           txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
           rate:{
             "cleanliness":2,
@@ -171,10 +220,22 @@ async function _createSpaces() {
             "location":3
           },
           by: {
-            _id: 'u894',
+            _id: 'u898',
             fullname: 'kslmv sojks',
             imgUrl:
               'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+          },
+        },
+        {
+          _id: 'r106',
+          txt: `Cosy place in the trees - very unique experience. Fire place to have a BBQ - cold shower outside, birds singing in the morning... Definitely recommended if you are up to experience something and don't want to have it "normal". Looking forward to coming back.
+          Lubos`,
+          rate: 4,
+          by: {
+            _id: 'u899',
+            fullname: 'Lars',
+            imgUrl:
+              'https://a0.muscache.com/im/pictures/user/abe04ca8-1483-4a60-9e0c-dd38dd6268f9.jpg?aki_policy=profile_large',
           },
         },
       ],
@@ -182,16 +243,20 @@ async function _createSpaces() {
     });
     spaces.push({
       _id: 's' + utilService.makeId(),
-      name: 'Givat Shmuel',
-      type:'home',
+      name: 'Chalet Eigernordwand',
       imgUrls: [
-        'https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
-        'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
-        'https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
+        'https://a0.muscache.com/im/pictures/b5a5444a-91ab-43cf-abf1-79832793a56d.jpg?im_w=720',
+        'https://a0.muscache.com/im/pictures/miso/Hosting-18153460/original/7e7fca56-6af0-491a-95ba-fa92e96a9a0c.jpeg?im_w=720',
+        'https://a0.muscache.com/im/pictures/a91d2c6f-e5b2-4e96-90f2-e0579d69038a.jpg?im_w=720',
+        'https://a0.muscache.com/im/pictures/7f273de4-b8eb-4242-8df4-3355c6df7223.jpg?im_w=720',
+        'https://a0.muscache.com/im/pictures/77cdae47-7827-4fa6-9b8d-5b9dfcbe15ef.jpg?im_w=720',
       ],
-      price: 100,
+      price: 153,
       description:
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries',
+        `3.5-room apartment in a beautiful, quiet location in Grindelwald with 2 double bedrooms and spacious bathroom with bath and shower. The heart of the apartment is the open kitchen as well as the cozy, bright living and dining area. The kitchen is fully equipped with a kettle, coffee maker, toaster, microwave and dishwasher. There is a hairdryer in the bathroom. Balcony with a beautiful view of the Eiger north wall.
+
+        Guest access
+        Parking and ski storage are available.`,
       capacity: 5,
       amenities: [
         'TV',
@@ -207,16 +272,16 @@ async function _createSpaces() {
       ],
       host: {
         _id: 'u101',
-        fullname: 'lkm; oorom',
+        fullname: 'Hermann',
         imgUrl:
-          'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+          'https://a0.muscache.com/im/pictures/user/235e5738-74a3-4390-a564-72d5a9417a92.jpg?aki_policy=profile_large',
       },
       loc: {
-        country: 'Israel',
+        country: 'Switzerland',
         countryCode: 'IL',
-        address: 'Tel Aviv, Israel',
-        lat: 0,
-        lng: 0,
+        address: 'Grindelwald, Bern',
+        lat: 46.624330,
+        lng: 8.034030,
       },
       reviews: [
         {
@@ -292,6 +357,428 @@ async function _createSpaces() {
             "value":5,
             "location":3
           },
+          by: {
+            _id: 'u894',
+            fullname: 'kslmv sojks',
+            imgUrl:
+              'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+          },
+        },
+      ],
+      likedByUserIds: ['u101', 'u102', 'u103'],
+
+
+    });
+    spaces.push({
+      _id: 's' + utilService.makeId(),
+      name: 'Superbe chalet Hautes Vosges en pleine nature',
+      imgUrls: [
+        'https://a0.muscache.com/im/pictures/3a8f8bf5-a0c4-4b9d-bb27-fff31d00e9b4.jpg?im_w=1200',
+        'https://a0.muscache.com/im/pictures/45b9ddd1-b259-40b9-a81d-dfef8258f9b9.jpg?im_w=720',
+        'https://a0.muscache.com/im/pictures/23464bb6-5525-4a91-901f-a50b758bd6c2.jpg?im_w=720',
+        'https://a0.muscache.com/im/pictures/fb848313-297b-4b64-8685-0bcd11e3e5ab.jpg?im_w=720',
+        'https://a0.muscache.com/im/pictures/b1b9395b-d418-407a-bf24-541fd2e4af77.jpg?im_w=720',
+      ],
+      price: 65,
+      description:
+        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries',
+      capacity: 5,
+      amenities: [
+        'TV',
+        'wifi',
+        'bath',
+        'kitchen',
+        'free parking',
+        'washing machine',
+        'smoke alarm',
+        'lockbox',
+        'air conditioning',
+        'security cameras',
+      ],
+      host: {
+        _id: 'u101',
+        fullname: 'Philippe',
+        imgUrl:
+          'https://a0.muscache.com/im/pictures/user/2062bf2d-8710-4204-9cc8-7ac24242a14c.jpg?aki_policy=profile_large',
+      },
+      loc: {
+        country: 'France',
+        countryCode: 'IL',
+        address: 'Fresse sur Moselle, Grand Est',
+        lat: 47.875560,
+        lng: 6.788650,
+      },
+      reviews: [
+        {
+          _id: 'r102',
+          txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
+          rate: 4,
+          by: {
+            _id: 'u894',
+            fullname: 'kslmv sojks',
+            imgUrl:
+              'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+          },
+        },
+      ],
+      likedByUserIds: ['u101', 'u102', 'u103'],
+    });
+
+
+    spaces.push({
+      _id: 's' + utilService.makeId(),
+      name: 'Jerusalem',
+      imgUrls: [
+        'https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
+        'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
+        'https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
+      ],
+      price: 100,
+      description:
+        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries',
+      capacity: 5,
+      amenities: [
+        'TV',
+        'wifi',
+        'bath',
+        'kitchen',
+        'free parking',
+        'washing machine',
+        'smoke alarm',
+        'lockbox',
+        'air conditioning',
+        'security cameras',
+      ],
+      host: {
+        _id: 'u101',
+        fullname: 'lkm; oorom',
+        imgUrl:
+          'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+      },
+      loc: {
+        country: 'Israel',
+        countryCode: 'IL',
+        address: 'Tel Aviv, Israel',
+        lat: 0,
+        lng: 0,
+      },
+      reviews: [
+        {
+          _id: 'r102',
+          txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
+          rate: 4,
+          by: {
+            _id: 'u894',
+            fullname: 'kslmv sojks',
+            imgUrl:
+              'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+          },
+        },
+      ],
+      likedByUserIds: ['u101', 'u102', 'u103'],
+    });
+    spaces.push({
+      _id: 's' + utilService.makeId(),
+      name: 'Jerusalem',
+      imgUrls: [
+        'https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
+        'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
+        'https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
+      ],
+      price: 100,
+      description:
+        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries',
+      capacity: 5,
+      amenities: [
+        'TV',
+        'wifi',
+        'bath',
+        'kitchen',
+        'free parking',
+        'washing machine',
+        'smoke alarm',
+        'lockbox',
+        'air conditioning',
+        'security cameras',
+      ],
+      host: {
+        _id: 'u101',
+        fullname: 'lkm; oorom',
+        imgUrl:
+          'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+      },
+      loc: {
+        country: 'Israel',
+        countryCode: 'IL',
+        address: 'Tel Aviv, Israel',
+        lat: 0,
+        lng: 0,
+      },
+      reviews: [
+        {
+          _id: 'r102',
+          txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
+          rate: 4,
+          by: {
+            _id: 'u894',
+            fullname: 'kslmv sojks',
+            imgUrl:
+              'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+          },
+        },
+      ],
+      likedByUserIds: ['u101', 'u102', 'u103'],
+    });
+    spaces.push({
+      _id: 's' + utilService.makeId(),
+      name: 'Jerusalem',
+      imgUrls: [
+        'https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
+        'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
+        'https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
+      ],
+      price: 100,
+      description:
+        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries',
+      capacity: 5,
+      amenities: [
+        'TV',
+        'wifi',
+        'bath',
+        'kitchen',
+        'free parking',
+        'washing machine',
+        'smoke alarm',
+        'lockbox',
+        'air conditioning',
+        'security cameras',
+      ],
+      host: {
+        _id: 'u101',
+        fullname: 'lkm; oorom',
+        imgUrl:
+          'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+      },
+      loc: {
+        country: 'Israel',
+        countryCode: 'IL',
+        address: 'Tel Aviv, Israel',
+        lat: 0,
+        lng: 0,
+      },
+      reviews: [
+        {
+          _id: 'r102',
+          txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
+          rate: 4,
+          by: {
+            _id: 'u894',
+            fullname: 'kslmv sojks',
+            imgUrl:
+              'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+          },
+        },
+      ],
+      likedByUserIds: ['u101', 'u102', 'u103'],
+    });
+    spaces.push({
+      _id: 's' + utilService.makeId(),
+      name: 'Jerusalem',
+      imgUrls: [
+        'https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
+        'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
+        'https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
+      ],
+      price: 100,
+      description:
+        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries',
+      capacity: 5,
+      amenities: [
+        'TV',
+        'wifi',
+        'bath',
+        'kitchen',
+        'free parking',
+        'washing machine',
+        'smoke alarm',
+        'lockbox',
+        'air conditioning',
+        'security cameras',
+      ],
+      host: {
+        _id: 'u101',
+        fullname: 'lkm; oorom',
+        imgUrl:
+          'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+      },
+      loc: {
+        country: 'Israel',
+        countryCode: 'IL',
+        address: 'Tel Aviv, Israel',
+        lat: 0,
+        lng: 0,
+      },
+      reviews: [
+        {
+          _id: 'r102',
+          txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
+          rate: 4,
+          by: {
+            _id: 'u894',
+            fullname: 'kslmv sojks',
+            imgUrl:
+              'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+          },
+        },
+      ],
+      likedByUserIds: ['u101', 'u102', 'u103'],
+    });
+    spaces.push({
+      _id: 's' + utilService.makeId(),
+      name: 'Jerusalem',
+      imgUrls: [
+        'https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
+        'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
+        'https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
+      ],
+      price: 100,
+      description:
+        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries',
+      capacity: 5,
+      amenities: [
+        'TV',
+        'wifi',
+        'bath',
+        'kitchen',
+        'free parking',
+        'washing machine',
+        'smoke alarm',
+        'lockbox',
+        'air conditioning',
+        'security cameras',
+      ],
+      host: {
+        _id: 'u101',
+        fullname: 'lkm; oorom',
+        imgUrl:
+          'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+      },
+      loc: {
+        country: 'Israel',
+        countryCode: 'IL',
+        address: 'Tel Aviv, Israel',
+        lat: 0,
+        lng: 0,
+      },
+      reviews: [
+        {
+          _id: 'r102',
+          txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
+          rate: 4,
+          by: {
+            _id: 'u894',
+            fullname: 'kslmv sojks',
+            imgUrl:
+              'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+          },
+        },
+      ],
+      likedByUserIds: ['u101', 'u102', 'u103'],
+    });
+    spaces.push({
+      _id: 's' + utilService.makeId(),
+      name: 'Jerusalem',
+      imgUrls: [
+        'https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
+        'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
+        'https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
+      ],
+      price: 100,
+      description:
+        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries',
+      capacity: 5,
+      amenities: [
+        'TV',
+        'wifi',
+        'bath',
+        'kitchen',
+        'free parking',
+        'washing machine',
+        'smoke alarm',
+        'lockbox',
+        'air conditioning',
+        'security cameras',
+      ],
+      host: {
+        _id: 'u101',
+        fullname: 'lkm; oorom',
+        imgUrl:
+          'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+      },
+      loc: {
+        country: 'Israel',
+        countryCode: 'IL',
+        address: 'Tel Aviv, Israel',
+        lat: 0,
+        lng: 0,
+      },
+      reviews: [
+        {
+          _id: 'r102',
+          txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
+          rate: 4,
+          by: {
+            _id: 'u894',
+            fullname: 'kslmv sojks',
+            imgUrl:
+              'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+          },
+        },
+      ],
+      likedByUserIds: ['u101', 'u102', 'u103'],
+    });
+    spaces.push({
+      _id: 's' + utilService.makeId(),
+      name: 'Jerusalem',
+      imgUrls: [
+        'https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
+        'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
+        'https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
+      ],
+      price: 100,
+      description:
+        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries',
+      capacity: 5,
+      amenities: [
+        'TV',
+        'wifi',
+        'bath',
+        'kitchen',
+        'free parking',
+        'washing machine',
+        'smoke alarm',
+        'lockbox',
+        'air conditioning',
+        'security cameras',
+      ],
+      host: {
+        _id: 'u101',
+        fullname: 'lkm; oorom',
+        imgUrl:
+          'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+      },
+      loc: {
+        country: 'Israel',
+        countryCode: 'IL',
+        address: 'Tel Aviv, Israel',
+        lat: 0,
+        lng: 0,
+      },
+      reviews: [
+        {
+          _id: 'r102',
+          txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
+          rate: 4,
           by: {
             _id: 'u894',
             fullname: 'kslmv sojks',

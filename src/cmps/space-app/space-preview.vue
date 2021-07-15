@@ -1,5 +1,7 @@
 <template>
   <section class="space-preview">
+    
+
     <router-link :to="'/space/' + space._id">
       <!-- <div class="block">
     
@@ -54,69 +56,29 @@
         </g>
       </svg> -->
 
-      <div class="buttons">
+      <!-- <div class="buttons">
         <button @click.prevent="prevPic">
           <i class="el-icon-arrow-left"></i>
         </button>
         <button @click.prevent="nextPic">
           <i class="el-icon-arrow-right"></i>
         </button>
-      </div>
-<!-- 
-      <?xml version='1.0' encoding='UTF-8'?>
-      <svg
-        style="svgcolor"
-        class="svg"
-        v-bind:class="{ liked: isLiked }"
-        width="20px"
-        height="20px"
-        viewBox="0.0025 0.0025 32 32"
-        xmlns="http://www.w3.org/2000/svg"
-        xmlns:xlink="http://www.w3.org/1999/xlink"
-      >
-        <g transform="translate(0.0025, 0.0025)">
-          <g transform="matrix(1.3333, 0, 0, 1.3333, 0, 0)">
-            <g transform="translate(-0.0025, -0.0025)">
-              <g transform="matrix(0.75, 0, 0, 0.75, 0, 0)">
-                <g transform="translate(0, 0)">
-                  <g transform="matrix(1.3333, 0, 0, 1.3333, 0, 0)">
-                    <g
-                      id="Layer_1"
-                      transform="translate(-4, -4)"
-                      style="enable-background: new 0 0 32 32"
-                    >
-                      <g id="Favorites_1_">
-                        <path
-                          d="M28, 11C28, 7.1 25.1, 4 21.5, 4C19.1, 4 17.1, 5.4 16, 7.4C14.9, 5.4 12.8, 4 10.5, 4C6.9, 4 4, 7.1 4, 11C4, 11 4, 11.2 4, 11.2C4, 16.1 8.1, 20.2 14.3, 26.3L16, 28L17.7, 26.3C23.9, 20.2 28, 16.1 28, 11.2C28, 11.2 28, 11 28, 11z"
-                          @click.prevent="like"
-                          stroke="white"
-                          stroke-width="2px"
-                          fill-opacity="50%"
-                          class="Yellow"
-                        />
-                      </g>
-                    </g>
-                  </g>
-                </g>
-              </g>
-            </g>
-          </g>
-        </g>
-      </svg>
- -->
+      </div> -->
+
+
+
       <svg
         @click.prevent="like"
-      
         viewBox="0 0 32 32"
         xmlns="http://www.w3.org/2000/svg"
         aria-hidden="true"
         role="presentation"
         focusable="false"
         :style="{
-          'fill': likeColor,
-          'height': '25px',
-          'width': '25px',
-          'stroke': 'rgb(255, 255, 255)',
+          fill: likeColor,
+          height: '25px',
+          width: '25px',
+          stroke: 'rgb(255, 255, 255)',
           'stroke-Width': 2,
         }"
       >
@@ -146,15 +108,37 @@
         ></path>
       </svg> -->
 
-      <div class="img-container">
+
+
+
+
+
+
+
+      <!-- <div class="img-container">
         <img :src="`${imgForDisplay}`" />
-      </div>
-      
+      </div> -->
+<carousel>
+      <carousel-slide
+        v-for="slide in slides"
+        :key="slide"
+        class="carousel-slider"
+      >
+        <img :src="slide" :alt="slide" />
+      </carousel-slide>
+    </carousel>
+
+
+
+
+
+
       <div class="name-price flex">
         <!-- <div>{{ space.name }}</div> -->
-        <div>{{ space.loc.address }}
+        <div>
+          {{ space.loc.address }}
           <!-- ,{{ space.loc.country }} -->
-          </div>
+        </div>
         <div>{{ priceToShow }} / night</div>
       </div>
       <div class="distance">{{ distance }} kilometers away</div>
@@ -169,6 +153,8 @@
 </template>
 
 <script>
+import carousel from "./carousel";
+import carouselSlide from "./carouselSlide";
 export default {
   name: "",
   props: ["space"], //TODO convert to object
@@ -177,17 +163,17 @@ export default {
       picIdx: 0,
       isLiked: false,
       distance: 0,
-      likeColor: 'rgba(0, 0, 0, 0.5)'
+      likeColor: "rgba(0, 0, 0, 0.5)",
       // likeColor: 'rgb(255, 56, 92)'
+
+      slides: this.space.imgUrls,
     };
   },
   methods: {
     like() {
       this.isLiked = !this.isLiked;
-      if(this.isLiked)
-      this.likeColor = 'rgb(255, 56, 92)'
-      else
-      this.likeColor ='rgba(0, 0, 0, 0.5)'
+      if (this.isLiked) this.likeColor = "rgb(255, 56, 92)";
+      else this.likeColor = "rgba(0, 0, 0, 0.5)";
       this.$emit("liked", this.space._id);
       // this.svgcolor();
     },
@@ -250,7 +236,10 @@ export default {
       });
     },
   },
-  components: {},
+  components: {
+    carouselSlide,
+    carousel,
+  },
   created() {
     this.distanceToShow;
   },
@@ -281,3 +270,37 @@ export default {
   }
 </style>
 -->
+
+<style>
+.app {
+  display: flex;
+  justify-content: center;
+}
+.carousel {
+  border-radius: 12px;
+  /* height: 100%; */
+
+  /* position: relative;
+  overflow: hidden;
+  width:100%;
+  height: 227px; */
+  /* z-index: 10; */
+                /* margin-bottom: 10px; */
+
+}
+.carousel-slider {
+  /* border-radius: 12px; */
+  /* position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0; */
+}
+.carousel-slider img {
+  /* border-radius: 12px; */
+
+  /* width: 100%; */
+  object-fit: cover;
+  height: 100%;
+}
+</style>

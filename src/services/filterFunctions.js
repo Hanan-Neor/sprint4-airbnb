@@ -53,10 +53,10 @@ function getSpacesForDisplay(spaces, filterBy) {
     })
     console.log('filtered', spaces);
     //sort by reviews
-    spaces = spaces.sort((space1, space2) => {
-    debugger;
-    return _getAverageReview(space1) - _getAverageReview(space2)
-  })
+    // spaces = spaces.sort((space1, space2) => {
+    // debugger;
+    // return _getAverageReview(space1) - _getAverageReview(space2)
+  // })
 
   //slice out the amount you want - THIS WILL HAPPEN IN FRONT END so fewer server calls
   if (filterBy.count !== Infinity) spaces = spaces.slice(0, filterBy.count)
