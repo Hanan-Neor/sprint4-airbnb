@@ -1,12 +1,19 @@
 <template>
-  <div class="app-header">
-      <nav>
-        <router-link to="/">Home</router-link> |
-        <router-link to="/space">Explore</router-link> |
-        <router-link to="/space/host/edit">add space</router-link> |
-      </nav>
-    <login v-if="isLoginOpen" @close-login="closeLogin"/>
-    <button v-else @click="showLogin">login</button>
+  <div class="app-header flex">
+      <img class="logo"  src="../assets/img/logo.png" alt="">
+      
+      <p>Become a host</p>
+      <space-filter />
+      <button class="flex pointer" @click="toggleNav">
+          <img class="hamburger" src="../assets/img/icons/hamburger.png" alt="">
+          <img class="avatar" src="https://www.cnet.com/a/img/liJ9UZA87zs1viJiuEfVnL7YYfw=/940x0/2020/05/18/5bac8cc1-4bd5-4496-a8c3-66a6cd12d0cb/fb-avatar-2.jpg" alt="avatar">
+      </button>
+      <ul class="nav pointer clear-list" v-if="isNavOpen">
+          <li @click="showLogin">login</li>
+          <li @click="showLogin">signup</li>
+          <li>Host your home</li>
+      </ul>
+
   </div>
 
 
@@ -24,11 +31,17 @@ export default {
     computed: {
         isLoginOpen(){
             return this.loginOpen
+        },
+        loggedInUser(){
+        },
+        isNavOpen(){
+            return this.navOpen;
         }
     },
     data(){
         return {
             loginOpen:false,
+            navOpen: false,
         }
     },
     methods:{
@@ -37,6 +50,9 @@ export default {
         },
         closeLogin(){
             this.loginOpen = false;
+        },
+        toggleNav(){
+            this.navOpen = !this.navOpen
         }
     }
 }
