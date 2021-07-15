@@ -1,5 +1,5 @@
 <template>
-  <div class="login">
+  <div class="login popup-form">
     <!-- <p>{{ msg }}</p> -->
 
       
@@ -17,25 +17,28 @@
       <h2>Welcome to Airbnb</h2>
       <form @submit.prevent="doLogin">
 
-        <input type="text" placeholder="username" v-model="loginCred.username">
+        <input class="text-input" type="text" placeholder="username" v-model="loginCred.username">
 
-        <input type="text" v-model="loginCred.password" placeholder="User name" />
+        <input class="text-input" type="text" v-model="loginCred.password" placeholder="User name" />
         <button>Login</button>
       </form>
 <hr>
       <form @submit.prevent="doSignup">
         <h2>signup</h2>
         <input
+        class="text-input"
           type="text"
           v-model="signupCred.fullname"
           placeholder="Your full name"
         />
         <input
+        class="text-input"
           type="text"
           v-model="signupCred.password"
           placeholder="Password"
         />
         <input
+        class="text-input"
           type="text"
           v-model="signupCred.username"
           placeholder="Username"

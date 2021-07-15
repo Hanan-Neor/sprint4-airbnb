@@ -24,7 +24,7 @@ const routes = [
     component: spaceDetails,
   },
   {
-    path: '/host/edit/:spaceId?',
+    path: '/space/host/edit/:spaceId?',
     name: 'space-edit-add',
     component: spaceEditAdd,
   },

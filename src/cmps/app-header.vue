@@ -8,6 +8,7 @@
           <img class="hamburger" src="../assets/img/icons/hamburger.png" alt="">
           <img class="avatar" src="https://www.cnet.com/a/img/liJ9UZA87zs1viJiuEfVnL7YYfw=/940x0/2020/05/18/5bac8cc1-4bd5-4496-a8c3-66a6cd12d0cb/fb-avatar-2.jpg" alt="avatar">
       </button>
+      <login v-if="isLoginOpen" @close-login="closeLogin"/>
       <ul class="nav pointer clear-list" v-if="isNavOpen">
           <li @click="showLogin">login</li>
           <li @click="showLogin">signup</li>
@@ -46,6 +47,7 @@ export default {
     },
     methods:{
         showLogin(){
+            this.toggleNav();
             this.loginOpen = true;
         },
         closeLogin(){
