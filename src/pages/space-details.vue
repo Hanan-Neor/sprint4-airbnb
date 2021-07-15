@@ -2,9 +2,16 @@
   <div class="space-details">
     <h2 class="space-title-primary">{{ space.name }}</h2>
     <div class="space-title-secondary">
-      <div class="rating">
-        <p class="total-rate">{{ totalRate }}</p>
-        <p class="number-reviews">({{ numOfReviews }})</p>
+      <div class="left-part">
+        <div class="rating">
+          <!-- <img class="star-icon" src="../assets/icons/star.svg" alt="" /> -->
+          <p class="total-rate">{{ totalRate }}</p>
+          <p class="number-reviews">({{ numOfReviews }}) reviews</p>
+        </div>
+        <span>•</span>
+        <div class="space-location">
+          {{ space.loc.address }}
+        </div>
       </div>
       <div class="save-space">Save</div>
     </div>
