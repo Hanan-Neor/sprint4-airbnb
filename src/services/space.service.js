@@ -543,15 +543,45 @@ async function _createSpaces() {
 
     spaces.push({
       _id: 's' + utilService.makeId(),
-      name: 'Jerusalem',
+      name: 'Dizengof area - Superb 1BR Balcony on the square',
       imgUrls: [
-        'https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
-        'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
-        'https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
+        'https://a0.muscache.com/im/pictures/905bcbe9-a7d9-446f-8f25-e29c0d454d86.jpg?im_w=720',
+        'https://a0.muscache.com/im/pictures/030089eb-0419-417e-8784-eb9c912e7f51.jpg?im_w=720',
+        'https://a0.muscache.com/im/pictures/adf2e011-1ca4-4eff-abda-fefddbbbb39f.jpg?im_w=720',
+        'https://a0.muscache.com/im/pictures/33657269-f87b-4e61-be86-db3dd3fe11e7.jpg?im_w=720',
+        'https://a0.muscache.com/im/pictures/c1b98710-577a-4f7a-a2a0-ab4ea4a3b72a.jpg?im_w=720',
+        'https://a0.muscache.com/im/pictures/5f54bfab-4ce9-4c98-bedd-f25710755c25.jpg?im_w=720',
       ],
-      price: 100,
+      price: 128,
       description:
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries',
+        `The space
+        Located in a prime location at the intersection of Ben Yehouda and Bograshov.
+        You will find everything you need right by the apartment. A few minutes walk to the beach, restaurants, bakeries, bars etc..
+        There is a living room, two bedrooms, a fully equipped kitchen, a bathroom, and a balcony. 
+        The bedrooms are equipped with a comfortable double bed and a large wardrobe.
+         The bathroom has a shower and a toilet.
+        In the living room you have a nice sitting area with TV including international channels, a high-speed internet connection.
+        The sofa bed can accommodate 2 additional travelers.
+        In the kitchen, there are all the needed appliances to accommodate your stay. ​ 
+        Your comfort is important to us; we make sure our apartments are equipped with all the necessary appliances you will need while you are away, so we provide: coffee, cleaning supplies, home appliances and cooking utensils and an iron. ​
+        Fresh, clean sheets and towels are of course provided.
+        Perfect for family and friends.The apartment can accommodate up to 6 people.
+        We are happy to assist you with further services as needed. ​
+        Guest access
+        Check-in process is automatic (Check-in instructions will be sent prior to arrival).
+        We are available for any questions or assistance during the stay.
+        Other things to note
+        - After each check-out, a team of professional cleaners, clean our apartments for the comfort of our guests.
+        
+        - Please note that if the apartment is returned in a very dirty condition, you will be overcharged.
+        
+        - A deposit has to be paid before the check in .
+        
+        - It is also imperative to return the exact number of towels and bedsheets on the day of check out, each unreturned item will be charged 40 ILS.
+        
+        - None of our apartments can be rented by groups of minors, in order to confirm the identity of our guest, we ask before each check in the picture of passports.
+        
+        - !!!!!It is strictly forbidden to organize parties and make noise after 10 p.m.`,
       capacity: 5,
       amenities: [
         'TV',
@@ -567,16 +597,16 @@ async function _createSpaces() {
       ],
       host: {
         _id: 'u101',
-        fullname: 'lkm; oorom',
+        fullname: 'Benjamin',
         imgUrl:
-          'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+          'https://a0.muscache.com/im/pictures/user/faea6454-bfb0-4176-9fc8-734502dba969.jpg?aki_policy=profile_large',
       },
       loc: {
         country: 'Israel',
         countryCode: 'IL',
         address: 'Tel Aviv, Israel',
-        lat: 0,
-        lng: 0,
+        lat: 32.072407,
+        lng: 34.782362,
       },
       reviews: [
         {
@@ -602,15 +632,25 @@ async function _createSpaces() {
 
     spaces.push({
       _id: 's' + utilService.makeId(),
-      name: 'Jerusalem',
+      name: 'Snug Holiday Home in Thale with Netflix, Garden, Terrace',
       imgUrls: [
-        'https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
-        'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
-        'https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
+        'https://a0.muscache.com/im/pictures/3017154f-d54b-4bfd-bc01-eb8184bc9732.jpg?im_w=720',
+        'https://a0.muscache.com/im/pictures/7f1c5c59-f717-462e-8116-a04faaad5094.jpg?im_w=720',
+        'https://a0.muscache.com/im/pictures/97a83afb-720b-4d46-9d68-777753731e0e.jpg?im_w=720',
+        'https://a0.muscache.com/im/pictures/11cf3107-77d5-4dc8-b6e5-fed5ff0d6811.jpg?im_w=720',
+        'https://a0.muscache.com/im/pictures/b030cd7e-1e18-405b-af10-6f5295e1efd4.jpg?im_w=720',
+        'https://a0.muscache.com/im/pictures/5f7ae8bf-109e-43c7-b421-ec019523dc01.jpg?im_w=720',
       ],
-      price: 100,
+      price: 219,
       description:
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries',
+        `This exclusive holiday home is situated within a nature reserve on a 500-metre high plateau in Altenbrak, a district of Thale. You will be staying at a tastefully and individually furnished house in a quiet, rural location. The interior, open floor plan and use of light woods meets the highest demands when it comes to quality, shape and colour. The upscale furnishings as well as the design provide maximum comfort and cosiness. This panoramic chalet offers everything you could wish for: fast WiFi, a state of the art smart TV and much more. Large windows and a balcony that runs around the facade offer panoramic vistas of the adjacent meadows and hilly forests. Enjoy the romantic ambiance by the crackling fireplace - especially after dark. The terrace and garden are ideal for sunbathing and barbecuing. Here in these exclusive surroundings, your daily stress will melt way on the first day of your stay. Another highlight of this holiday home: there are no street lights nearby. This guarantees a fantastic view of the surroundings from the plateau, even at night. And you shouldn't miss out on the extraordinary experience of watching the animals that tend to roam the beautiful landscape below the plateau. All this creates a very special, unforgettable flair you most likely won't find anywhere else. The hilly landscape of the north-eastern Harz region makes one want to go hiking or take walks. A well-marked network of hiking trails leads through the idyllic Bodetal and to the plateaus Hexentanzplatz and Rosstrappe. Cyclists will also get their money's worth enjoying tours on various routes or downhill slopes. Recommended excursions into the region: Seilbahnen Thale Erlebniswelt (amusement park), Rappbode Dam, Rübeländer Caves, Pullman City Harz, Brocken mountain, Quedlinburg.
+
+
+        Layout: Ground floor: (Entrance, hall, open kitchen(electric kettle, toaster, cooker(ceramic), coffee machine(filter), oven, microwave, dishwasher, fridge-freezer), Living/diningroom(seating area), bedroom(double bed(160 x 200 cm), TV(satellite, smart TV)), bathroom(shower, washbasin, toilet))
+        
+        On the 1st floor: (Living room(TV(satellite, smart TV), stove(wood)), bedroom(double bed(180 x 200 cm), TV(satellite, smart TV)), Gallery bedroom(double bed(140 x 200 cm)), bathroom(bath tub, shower, washbasin, toilet), Landing)
+        
+        storage, Netflix, radio, stereo unit, balcony, heating(central, floor heating), terrace(private, roofed, 30 m2), garden(private, 500 m2), garden furniture, BBQ(charcoal), parking, deckchairs, hairdryer`,
       capacity: 5,
       amenities: [
         'TV',
@@ -626,16 +666,16 @@ async function _createSpaces() {
       ],
       host: {
         _id: 'u101',
-        fullname: 'lkm; oorom',
+        fullname: 'Karen - BELVILLA',
         imgUrl:
-          'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+          'https://a0.muscache.com/im/pictures/user/42e39ba5-0cd4-4e3d-a734-c2b3226b1701.jpg?aki_policy=profile_large',
       },
       loc: {
-        country: 'Israel',
+        country: 'Germany',
         countryCode: 'IL',
-        address: 'Tel Aviv, Israel',
-        lat: 0,
-        lng: 0,
+        address: 'Thale, Sachsen-Anhalt',
+        lat: 51.755650,
+        lng: 11.045630,
       },
       reviews: [
         {
@@ -661,15 +701,32 @@ async function _createSpaces() {
 
     spaces.push({
       _id: 's' + utilService.makeId(),
-      name: 'Jerusalem',
+      name: `Charming water-front cottage on Martha's Vineyard!`,
       imgUrls: [
-        'https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
-        'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
-        'https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
+        'https://a0.muscache.com/im/pictures/56e5d85c-1752-48f1-83a8-1ca347e93474.jpg?im_w=720',
+        'https://a0.muscache.com/im/pictures/efe0d953-692a-4d40-8e78-e7062d6a81e2.jpg?im_w=720',
+        'https://a0.muscache.com/im/pictures/fa4a5619-c80e-4495-bdbb-3aeac1435017.jpg?im_w=720',
+        'https://a0.muscache.com/im/pictures/4e770f87-496e-43a5-95c1-00e0e8a5cb72.jpg?im_w=720',
+        'https://a0.muscache.com/im/pictures/51a93acb-dd8d-4395-b523-806e8cee663a.jpg?im_w=720',
+        'https://a0.muscache.com/im/pictures/c34086ff-712c-430c-9e1a-3ae915d8f406.jpg?im_w=720',
+        'https://a0.muscache.com/im/pictures/4c4ba749-fa63-45e6-9759-8c3847e1218b.jpg?im_w=720',
       ],
-      price: 100,
+      price: 410,
       description:
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries',
+        `Quiet, charming cottage right on the beach with gorgeous sunsets! Perfect for a relaxing stay on Martha's Vineyard during any time of the year. Tell us about your vacation plans so we can help you enjoy our little piece of paradise.
+        The space
+        - 1 bedroom, 1 bath; and outdoor shower
+        - Perfect couples retreat
+        - Right on the beach with a beautiful view of Lagoon Pond
+        - Full kitchen
+        - Wifi and cable TV available
+        - Towels / linens are provided
+        - Washer & dryer available
+        - Parking available at cottage
+        - Dogs (on leashes) only; no other pets. No pit bull/mixes, Dobermans, Rottweilers or other guard/attack dog breeds; insurance will not cover.
+        - No smoking inside the cottage
+        Guest access
+        Fire pit area is accessible to cottage guests. Outdoor games are available in the garage.`,
       capacity: 5,
       amenities: [
         'TV',
@@ -685,16 +742,16 @@ async function _createSpaces() {
       ],
       host: {
         _id: 'u101',
-        fullname: 'lkm; oorom',
+        fullname: 'Anne',
         imgUrl:
-          'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+          'https://a0.muscache.com/im/pictures/user/d049a05d-0e95-4fb0-bdc2-07781e0f9090.jpg?aki_policy=profile_large',
       },
       loc: {
-        country: 'Israel',
-        countryCode: 'IL',
-        address: 'Tel Aviv, Israel',
-        lat: 0,
-        lng: 0,
+        country: 'United States',
+        countryCode: 'US',
+        address: 'Oak Bluffs, Massachusetts',
+        lat: 41.455550,
+        lng: -70.567820,
       },
       reviews: [
         {

@@ -32,11 +32,11 @@ export default {
     .slide-left-leave-active {
         animation: slide-left-out 0.2s ease-in;
     }
-    @keyframes slide-right-in{
+    @keyframes slide-left-in{
         from  { transform: translateX(-100%);}
         to { transform: translateX(0);} 
     }
-    @keyframes slide-right-out{
+    @keyframes slide-left-out{
         from  { transform: translateX(0%);}
         to { transform: translateX(100%);} 
     }
@@ -47,11 +47,11 @@ export default {
     .slide-right-leave-active {
         animation: slide-right-out 0.2s ease-in;
     }
-    @keyframes slide-left-out{
+    @keyframes slide-right-out{
         from  { transform: translateX(0%);}
         to { transform: translateX(-100%);} 
     }
-    @keyframes slide-left-in{
+    @keyframes slide-right-in{
         from  { transform: translateX(100%);}
         to { transform: translateX(0);} 
     }

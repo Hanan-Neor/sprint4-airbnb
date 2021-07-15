@@ -1,7 +1,5 @@
 <template>
   <section class="space-preview">
-    
-
     <router-link :to="'/space/' + space._id">
       <!-- <div class="block">
     
@@ -65,8 +63,6 @@
         </button>
       </div> -->
 
-
-
       <svg
         @click.prevent="like"
         viewBox="0 0 32 32"
@@ -108,30 +104,18 @@
         ></path>
       </svg> -->
 
-
-
-
-
-
-
-
       <!-- <div class="img-container">
         <img :src="`${imgForDisplay}`" />
       </div> -->
-<carousel>
-      <carousel-slide
-        v-for="slide in slides"
-        :key="slide"
-        class="carousel-slider"
-      >
-        <img :src="slide" :alt="slide" />
-      </carousel-slide>
-    </carousel>
-
-
-
-
-
+      <carousel>
+        <carousel-slide
+          v-for="slide in slides"
+          :key="slide"
+          class="carousel-slider"
+        >
+          <img :src="slide" :alt="slide" />
+        </carousel-slide>
+      </carousel>
 
       <div class="name-price flex">
         <!-- <div>{{ space.name }}</div> -->
@@ -202,18 +186,32 @@ export default {
     distanceToShow() {
       return navigator.geolocation.getCurrentPosition(
         (position) => {
-          // console.log(position.coords.latitude,position.coords.longitude);
-          // console.log(Math.sqrt((position.coords.latitude - this.space.loc.lat)**2+(position.coords.longitude-this.space.loc.lng)**2));
+          //This function takes in latitude and longitude of two location and returns the distance between them as the crow flies (in km)
+          const Lat1 = position.coords.latitude;
+          const Lat2 = this.space.loc.lat;
+          const Lon1 = position.coords.longitude;
+          const Lon2 = this.space.loc.lng;
 
-          // d = Math.acos(sin(lat1)*sin(lat2)+cos(lat1)*cos(lat2)*cos(lon1-lon2))
-          let d = Math.acos(
-            Math.sin(position.coords.latitude) * Math.sin(this.space.loc.lat) +
-              Math.cos(position.coords.latitude) *
-                Math.cos(this.space.loc.lat) *
-                Math.cos(position.coords.longitude - this.space.loc.lng)
-          );
+          // console.log(Lat1, Lat2, Lon1, Lon2);
+
+          let R = 6371; // km
+          let dLat = ((Lat2 - Lat1) * Math.PI) / 180;
+          let dLon = ((Lon2 - Lon1) * Math.PI) / 180;
+          let lat1 = (Lat1 * Math.PI) / 180;
+          let lat2 = (Lat2 * Math.PI) / 180;
+
+          let a =
+            Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.sin(dLon / 2) *
+              Math.sin(dLon / 2) *
+              Math.cos(lat1) *
+              Math.cos(lat2);
+          let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+          let d = R * c;
+          // console.log(d);
+
           // this.distance = (Math.sqrt((position.coords.latitude - this.space.loc.lat)**2+(position.coords.longitude-this.space.loc.lng)**2))
-          d = d * 6371;
+          // d = d * 6371;
           this.distance = d.toLocaleString("en-US", {
             minimumFractionDigits: 0,
             maximumFractionDigits: 0,
@@ -285,8 +283,7 @@ export default {
   width:100%;
   height: 227px; */
   /* z-index: 10; */
-                /* margin-bottom: 10px; */
-
+  /* margin-bottom: 10px; */
 }
 .carousel-slider {
   /* border-radius: 12px; */
