@@ -82,6 +82,8 @@
                 // max-height: 314px;
                 // width: 314px;
     @include aspect-ratio(1, 1);
+    // @include aspect-ratio(3, 2);
+    // @include aspect-ratio(16, 9);
     margin-bottom: 10px;
 
             }

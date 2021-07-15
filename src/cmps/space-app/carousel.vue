@@ -4,10 +4,10 @@
 
         <slot></slot>
               <div class="buttons">
-        <button @click.prevent="next">
+        <button @click.prevent="prev">
           <i class="el-icon-arrow-left"></i>
         </button>
-        <button @click.prevent="prev">
+        <button @click.prevent="next">
           <i class="el-icon-arrow-right"></i>
         </button>
       </div>

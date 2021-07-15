@@ -118,6 +118,13 @@ async function _createSpaces() {
     );
     spaces = [];
 
+
+
+    // ==========================================================================
+    // 1 ===========================================================================
+
+
+
     spaces.push({
       _id: 's' + utilService.makeId(),
       type: 'home',
@@ -244,6 +251,11 @@ async function _createSpaces() {
       ],
       likedByUserIds: ['u101', 'u102', 'u103'],
     });
+
+    // ==========================================================================
+    // 2 ===========================================================================
+
+
     spaces.push({
       _id: 's' + utilService.makeId(),
       name: 'Chalet Eigernordwand',
@@ -287,8 +299,8 @@ async function _createSpaces() {
       },
       reviews: [
         {
-          _id: 'r102',
-          txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
+          _id: 'r101',
+          txt: 'Brilliant place. Modern, new, easy to park, 5 minute drive to center, fully equipped.',
           rate: {
             cleanliness: 2,
             checkin: 3,
@@ -298,69 +310,102 @@ async function _createSpaces() {
             location: 3,
           },
           by: {
-            _id: 'u894',
-            fullname: 'kslmv sojks',
+            _id: 'u891',
+            fullname: 'Lior',
             imgUrl:
-              'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+              'https://a0.muscache.com/im/pictures/user/79217452-8f8a-4786-8dfb-290eb2578bde.jpg?aki_policy=profile_large',
           },
         },
         {
           _id: 'r102',
-          txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
+          txt: `Matches the name perfectly - located right in front of the Eiger-Nordwand, the apartment offers an astonishing view of the mountains. While Grindelwald center is just a short walk away, the location is perfect for hiking in the region. The interior is extremely comfy and provides everything one would need during a weeks worth of vacation. All-in-all a really pleasant experience, a huge thanks for that!`,
           rate: 4,
           by: {
-            _id: 'u894',
-            fullname: 'kslmv sojks',
+            _id: 'u892',
+            fullname: 'Fabio',
             imgUrl:
-              'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+              'https://a0.muscache.com/im/pictures/user/f3d5d005-6a58-4cd8-9321-0bcdac9c8d18.jpg?aki_policy=profile_large',
           },
         },
         {
-          _id: 'r102',
-          txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
+          _id: 'r103',
+          txt: `Great location with the Eiger mountain as your backyard view and front view of Grindelwald. Easy walk to Männlichenbahn. Place was clean, modern, and plenty of space for our two young kids. Hermann was generous to provide an adapter after I found out I brought the wrong one.`,
           rate: 4,
           by: {
-            _id: 'u894',
-            fullname: 'kslmv sojks',
+            _id: 'u893',
+            fullname: 'Dennis',
             imgUrl:
-              'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+              'https://a0.muscache.com/im/pictures/user/8fc8cbeb-e888-4d19-9825-3fab7d72cac3.jpg?aki_policy=profile_large',
           },
         },
         {
-          _id: 'r102',
-          txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
+          _id: 'r104',
+          txt: `This was a terrific stay. It's a lovely place with beautiful views. It's also well located, outside of the village but walking distance. I started many hikes during my stay right from the chalet. When I arrived I walked with my luggage from the Terminal train station though it is an uphill climb. I mostly walked into the village and to the grocery store as the bus only comes once an hour and, well, the walk is simply stunning even in the rain. Bring your own umbrella if you feel you need one as there isn't one at the chalet. The place is well equipped otherwise. Hermann was also very responsive to messages I sent him through the website.`,
           rate: 4,
           by: {
             _id: 'u894',
-            fullname: 'kslmv sojks',
+            fullname: 'Sandeep',
             imgUrl:
-              'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+              'https://a0.muscache.com/im/pictures/user/50b4247d-f7b3-4b66-aed7-095a082ce1fd.jpg?aki_policy=profile_large',
           },
         },
         {
-          _id: 'r102',
-          txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
+          _id: 'r105',
+          txt: `Amazing views, ultra comfortable chalet and sparkling clean! Will stay again. Great spot to access all of Grindelwald.`,
           rate: 4,
           by: {
-            _id: 'u894',
-            fullname: 'kslmv sojks',
+            _id: 'u895',
+            fullname: 'Christina And Tim',
             imgUrl:
-              'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+              'https://a0.muscache.com/im/pictures/user/2062bf92-cd9a-46de-a851-8fb36ebf0273.jpg?aki_policy=profile_large',
           },
         },
         {
-          _id: 'r102',
-          txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
+          _id: 'r106',
+          txt: `Hermann’s place was better than what we expected. He provided us with everything we needed, including a high chair and a baby bed for our daughter. He was very helpful and super responsive during our stay. The view from the chalet is stunning, on both sides. We came by car but there was a bus stop just next to the chalet, so it’s easy accessible for people coming by train/bus.
+          Thanks again Hermann, we’ll be back!`,
           rate: 4,
           by: {
-            _id: 'u894',
-            fullname: 'kslmv sojks',
+            _id: 'u896',
+            fullname: 'Julian',
             imgUrl:
-              'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+              'https://a0.muscache.com/im/users/4417841/profile_pic/1355853603/original.jpg?aki_policy=profile_large',
+          },
+        },
+        {
+          _id: 'r107',
+          txt: `The vast space and the cleanliness of this home are second to none. The views were splendid. We appreciate the modern amenities. Indeed it is easier if you have a car as it is located about 10 mins or so from the centre however bus no. 123 runs hourly. Easy self check in & out, keep in view if you have many luggages, staircases on the side. Its winter, the large suitcases we had gave us quite a workout! Our experience: so much better than staying in a hotel!
+          `,
+          rate: 4,
+          by: {
+            _id: 'u897',
+            fullname: 'Angelina',
+            imgUrl:
+              'https://a0.muscache.com/im/pictures/user/d9f57e5b-e392-4c8a-aa17-2d200a3526f1.jpg?aki_policy=profile_large',
+          },
+        },
+        {
+          _id: 'r108',
+          txt: `We had a wonderful stay in Hermann’s place. It is very modern and new. The living area is very spacious and open with Eiger views. The 2 bedrooms and bathrooms are very comfortable and nice windows looking out. Hiking trails start right from your door and the views are incredible!!`,
+          rate: 4,
+          by: {
+            _id: 'u898',
+            fullname: 'Emma',
+            imgUrl:
+              'https://a0.muscache.com/im/pictures/user/9f75bd0c-d7f9-42a8-ba13-5c6201bd0b5c.jpg?aki_policy=profile_large',
           },
         },
       ],
       likedByUserIds: ['u101', 'u102', 'u103'],
+
+
+
+      // ==========================================================================
+      // 3 ===========================================================================
+
+
+
+
     });
     spaces.push({
       _id: 's' + utilService.makeId(),
@@ -424,6 +469,14 @@ async function _createSpaces() {
       ],
       likedByUserIds: ['u101', 'u102', 'u103'],
     });
+
+
+    // ==========================================================================
+    // 4 ===========================================================================
+
+
+
+
     spaces.push({
       _id: 's' + utilService.makeId(),
       name: 'Superbe chalet Hautes Vosges en pleine nature',
@@ -479,6 +532,249 @@ async function _createSpaces() {
       likedByUserIds: ['u101', 'u102', 'u103'],
     });
 
+
+
+
+    // ==========================================================================
+    // 5 ===========================================================================
+
+
+
+
+    spaces.push({
+      _id: 's' + utilService.makeId(),
+      name: 'Dizengof area - Superb 1BR Balcony on the square',
+      imgUrls: [
+        'https://a0.muscache.com/im/pictures/905bcbe9-a7d9-446f-8f25-e29c0d454d86.jpg?im_w=720',
+        'https://a0.muscache.com/im/pictures/030089eb-0419-417e-8784-eb9c912e7f51.jpg?im_w=720',
+        'https://a0.muscache.com/im/pictures/adf2e011-1ca4-4eff-abda-fefddbbbb39f.jpg?im_w=720',
+        'https://a0.muscache.com/im/pictures/33657269-f87b-4e61-be86-db3dd3fe11e7.jpg?im_w=720',
+        'https://a0.muscache.com/im/pictures/c1b98710-577a-4f7a-a2a0-ab4ea4a3b72a.jpg?im_w=720',
+        'https://a0.muscache.com/im/pictures/5f54bfab-4ce9-4c98-bedd-f25710755c25.jpg?im_w=720',
+      ],
+      price: 128,
+      description:
+        `The space
+        Located in a prime location at the intersection of Ben Yehouda and Bograshov.
+        You will find everything you need right by the apartment. A few minutes walk to the beach, restaurants, bakeries, bars etc..
+        There is a living room, two bedrooms, a fully equipped kitchen, a bathroom, and a balcony. 
+        The bedrooms are equipped with a comfortable double bed and a large wardrobe.
+         The bathroom has a shower and a toilet.
+        In the living room you have a nice sitting area with TV including international channels, a high-speed internet connection.
+        The sofa bed can accommodate 2 additional travelers.
+        In the kitchen, there are all the needed appliances to accommodate your stay. ​ 
+        Your comfort is important to us; we make sure our apartments are equipped with all the necessary appliances you will need while you are away, so we provide: coffee, cleaning supplies, home appliances and cooking utensils and an iron. ​
+        Fresh, clean sheets and towels are of course provided.
+        Perfect for family and friends.The apartment can accommodate up to 6 people.
+        We are happy to assist you with further services as needed. ​
+        Guest access
+        Check-in process is automatic (Check-in instructions will be sent prior to arrival).
+        We are available for any questions or assistance during the stay.
+        Other things to note
+        - After each check-out, a team of professional cleaners, clean our apartments for the comfort of our guests.
+        
+        - Please note that if the apartment is returned in a very dirty condition, you will be overcharged.
+        
+        - A deposit has to be paid before the check in .
+        
+        - It is also imperative to return the exact number of towels and bedsheets on the day of check out, each unreturned item will be charged 40 ILS.
+        
+        - None of our apartments can be rented by groups of minors, in order to confirm the identity of our guest, we ask before each check in the picture of passports.
+        
+        - !!!!!It is strictly forbidden to organize parties and make noise after 10 p.m.`,
+      capacity: 5,
+      amenities: [
+        'TV',
+        'wifi',
+        'bath',
+        'kitchen',
+        'free parking',
+        'washing machine',
+        'smoke alarm',
+        'lockbox',
+        'air conditioning',
+        'security cameras',
+      ],
+      host: {
+        _id: 'u101',
+        fullname: 'Benjamin',
+        imgUrl:
+          'https://a0.muscache.com/im/pictures/user/faea6454-bfb0-4176-9fc8-734502dba969.jpg?aki_policy=profile_large',
+      },
+      loc: {
+        country: 'Israel',
+        countryCode: 'IL',
+        address: 'Tel Aviv, Israel',
+        lat: 32.072407,
+        lng: 34.782362,
+      },
+      reviews: [
+        {
+          _id: 'r102',
+          txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
+          rate: 4,
+          by: {
+            _id: 'u894',
+            fullname: 'kslmv sojks',
+            imgUrl:
+              'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+          },
+        },
+      ],
+      likedByUserIds: ['u101', 'u102', 'u103'],
+    });
+
+
+    // ==========================================================================
+    // 6  ===========================================================================
+
+
+
+    spaces.push({
+      _id: 's' + utilService.makeId(),
+      name: 'Snug Holiday Home in Thale with Netflix, Garden, Terrace',
+      imgUrls: [
+        'https://a0.muscache.com/im/pictures/3017154f-d54b-4bfd-bc01-eb8184bc9732.jpg?im_w=720',
+        'https://a0.muscache.com/im/pictures/7f1c5c59-f717-462e-8116-a04faaad5094.jpg?im_w=720',
+        'https://a0.muscache.com/im/pictures/97a83afb-720b-4d46-9d68-777753731e0e.jpg?im_w=720',
+        'https://a0.muscache.com/im/pictures/11cf3107-77d5-4dc8-b6e5-fed5ff0d6811.jpg?im_w=720',
+        'https://a0.muscache.com/im/pictures/b030cd7e-1e18-405b-af10-6f5295e1efd4.jpg?im_w=720',
+        'https://a0.muscache.com/im/pictures/5f7ae8bf-109e-43c7-b421-ec019523dc01.jpg?im_w=720',
+      ],
+      price: 219,
+      description:
+        `This exclusive holiday home is situated within a nature reserve on a 500-metre high plateau in Altenbrak, a district of Thale. You will be staying at a tastefully and individually furnished house in a quiet, rural location. The interior, open floor plan and use of light woods meets the highest demands when it comes to quality, shape and colour. The upscale furnishings as well as the design provide maximum comfort and cosiness. This panoramic chalet offers everything you could wish for: fast WiFi, a state of the art smart TV and much more. Large windows and a balcony that runs around the facade offer panoramic vistas of the adjacent meadows and hilly forests. Enjoy the romantic ambiance by the crackling fireplace - especially after dark. The terrace and garden are ideal for sunbathing and barbecuing. Here in these exclusive surroundings, your daily stress will melt way on the first day of your stay. Another highlight of this holiday home: there are no street lights nearby. This guarantees a fantastic view of the surroundings from the plateau, even at night. And you shouldn't miss out on the extraordinary experience of watching the animals that tend to roam the beautiful landscape below the plateau. All this creates a very special, unforgettable flair you most likely won't find anywhere else. The hilly landscape of the north-eastern Harz region makes one want to go hiking or take walks. A well-marked network of hiking trails leads through the idyllic Bodetal and to the plateaus Hexentanzplatz and Rosstrappe. Cyclists will also get their money's worth enjoying tours on various routes or downhill slopes. Recommended excursions into the region: Seilbahnen Thale Erlebniswelt (amusement park), Rappbode Dam, Rübeländer Caves, Pullman City Harz, Brocken mountain, Quedlinburg.
+
+
+        Layout: Ground floor: (Entrance, hall, open kitchen(electric kettle, toaster, cooker(ceramic), coffee machine(filter), oven, microwave, dishwasher, fridge-freezer), Living/diningroom(seating area), bedroom(double bed(160 x 200 cm), TV(satellite, smart TV)), bathroom(shower, washbasin, toilet))
+        
+        On the 1st floor: (Living room(TV(satellite, smart TV), stove(wood)), bedroom(double bed(180 x 200 cm), TV(satellite, smart TV)), Gallery bedroom(double bed(140 x 200 cm)), bathroom(bath tub, shower, washbasin, toilet), Landing)
+        
+        storage, Netflix, radio, stereo unit, balcony, heating(central, floor heating), terrace(private, roofed, 30 m2), garden(private, 500 m2), garden furniture, BBQ(charcoal), parking, deckchairs, hairdryer`,
+      capacity: 5,
+      amenities: [
+        'TV',
+        'wifi',
+        'bath',
+        'kitchen',
+        'free parking',
+        'washing machine',
+        'smoke alarm',
+        'lockbox',
+        'air conditioning',
+        'security cameras',
+      ],
+      host: {
+        _id: 'u101',
+        fullname: 'Karen - BELVILLA',
+        imgUrl:
+          'https://a0.muscache.com/im/pictures/user/42e39ba5-0cd4-4e3d-a734-c2b3226b1701.jpg?aki_policy=profile_large',
+      },
+      loc: {
+        country: 'Germany',
+        countryCode: 'IL',
+        address: 'Thale, Sachsen-Anhalt',
+        lat: 51.755650,
+        lng: 11.045630,
+      },
+      reviews: [
+        {
+          _id: 'r102',
+          txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
+          rate: 4,
+          by: {
+            _id: 'u894',
+            fullname: 'kslmv sojks',
+            imgUrl:
+              'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+          },
+        },
+      ],
+      likedByUserIds: ['u101', 'u102', 'u103'],
+    });
+
+
+    // ==========================================================================
+    // 7  ===========================================================================
+
+
+
+    spaces.push({
+      _id: 's' + utilService.makeId(),
+      name: `Charming water-front cottage on Martha's Vineyard!`,
+      imgUrls: [
+        'https://a0.muscache.com/im/pictures/56e5d85c-1752-48f1-83a8-1ca347e93474.jpg?im_w=720',
+        'https://a0.muscache.com/im/pictures/efe0d953-692a-4d40-8e78-e7062d6a81e2.jpg?im_w=720',
+        'https://a0.muscache.com/im/pictures/fa4a5619-c80e-4495-bdbb-3aeac1435017.jpg?im_w=720',
+        'https://a0.muscache.com/im/pictures/4e770f87-496e-43a5-95c1-00e0e8a5cb72.jpg?im_w=720',
+        'https://a0.muscache.com/im/pictures/51a93acb-dd8d-4395-b523-806e8cee663a.jpg?im_w=720',
+        'https://a0.muscache.com/im/pictures/c34086ff-712c-430c-9e1a-3ae915d8f406.jpg?im_w=720',
+        'https://a0.muscache.com/im/pictures/4c4ba749-fa63-45e6-9759-8c3847e1218b.jpg?im_w=720',
+      ],
+      price: 410,
+      description:
+        `Quiet, charming cottage right on the beach with gorgeous sunsets! Perfect for a relaxing stay on Martha's Vineyard during any time of the year. Tell us about your vacation plans so we can help you enjoy our little piece of paradise.
+        The space
+        - 1 bedroom, 1 bath; and outdoor shower
+        - Perfect couples retreat
+        - Right on the beach with a beautiful view of Lagoon Pond
+        - Full kitchen
+        - Wifi and cable TV available
+        - Towels / linens are provided
+        - Washer & dryer available
+        - Parking available at cottage
+        - Dogs (on leashes) only; no other pets. No pit bull/mixes, Dobermans, Rottweilers or other guard/attack dog breeds; insurance will not cover.
+        - No smoking inside the cottage
+        Guest access
+        Fire pit area is accessible to cottage guests. Outdoor games are available in the garage.`,
+      capacity: 5,
+      amenities: [
+        'TV',
+        'wifi',
+        'bath',
+        'kitchen',
+        'free parking',
+        'washing machine',
+        'smoke alarm',
+        'lockbox',
+        'air conditioning',
+        'security cameras',
+      ],
+      host: {
+        _id: 'u101',
+        fullname: 'Anne',
+        imgUrl:
+          'https://a0.muscache.com/im/pictures/user/d049a05d-0e95-4fb0-bdc2-07781e0f9090.jpg?aki_policy=profile_large',
+      },
+      loc: {
+        country: 'United States',
+        countryCode: 'US',
+        address: 'Oak Bluffs, Massachusetts',
+        lat: 41.455550,
+        lng: -70.567820,
+      },
+      reviews: [
+        {
+          _id: 'r102',
+          txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
+          rate: 4,
+          by: {
+            _id: 'u894',
+            fullname: 'kslmv sojks',
+            imgUrl:
+              'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+          },
+        },
+      ],
+      likedByUserIds: ['u101', 'u102', 'u103'],
+    });
+
+
+    // ==========================================================================
+    // 8 ===========================================================================
+
+
+
     spaces.push({
       _id: 's' + utilService.makeId(),
       name: 'Jerusalem',
@@ -531,6 +827,13 @@ async function _createSpaces() {
       ],
       likedByUserIds: ['u101', 'u102', 'u103'],
     });
+
+
+    // ==========================================================================
+    // 9 ===========================================================================
+
+
+
     spaces.push({
       _id: 's' + utilService.makeId(),
       name: 'Jerusalem',
@@ -583,6 +886,12 @@ async function _createSpaces() {
       ],
       likedByUserIds: ['u101', 'u102', 'u103'],
     });
+
+    // ==========================================================================
+    // 10 ===========================================================================
+
+
+
     spaces.push({
       _id: 's' + utilService.makeId(),
       name: 'Jerusalem',
@@ -635,6 +944,12 @@ async function _createSpaces() {
       ],
       likedByUserIds: ['u101', 'u102', 'u103'],
     });
+
+    // ==========================================================================
+    // 11 ===========================================================================
+
+
+
     spaces.push({
       _id: 's' + utilService.makeId(),
       name: 'Jerusalem',
@@ -687,162 +1002,14 @@ async function _createSpaces() {
       ],
       likedByUserIds: ['u101', 'u102', 'u103'],
     });
-    spaces.push({
-      _id: 's' + utilService.makeId(),
-      name: 'Jerusalem',
-      imgUrls: [
-        'https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
-        'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
-        'https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
-      ],
-      price: 100,
-      description:
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries',
-      capacity: 5,
-      amenities: [
-        'TV',
-        'wifi',
-        'bath',
-        'kitchen',
-        'free parking',
-        'washing machine',
-        'smoke alarm',
-        'lockbox',
-        'air conditioning',
-        'security cameras',
-      ],
-      host: {
-        _id: 'u101',
-        fullname: 'lkm; oorom',
-        imgUrl:
-          'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
-      },
-      loc: {
-        country: 'Israel',
-        countryCode: 'IL',
-        address: 'Tel Aviv, Israel',
-        lat: 0,
-        lng: 0,
-      },
-      reviews: [
-        {
-          _id: 'r102',
-          txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
-          rate: 4,
-          by: {
-            _id: 'u894',
-            fullname: 'kslmv sojks',
-            imgUrl:
-              'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
-          },
-        },
-      ],
-      likedByUserIds: ['u101', 'u102', 'u103'],
-    });
-    spaces.push({
-      _id: 's' + utilService.makeId(),
-      name: 'Jerusalem',
-      imgUrls: [
-        'https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
-        'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
-        'https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
-      ],
-      price: 100,
-      description:
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries',
-      capacity: 5,
-      amenities: [
-        'TV',
-        'wifi',
-        'bath',
-        'kitchen',
-        'free parking',
-        'washing machine',
-        'smoke alarm',
-        'lockbox',
-        'air conditioning',
-        'security cameras',
-      ],
-      host: {
-        _id: 'u101',
-        fullname: 'lkm; oorom',
-        imgUrl:
-          'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
-      },
-      loc: {
-        country: 'Israel',
-        countryCode: 'IL',
-        address: 'Tel Aviv, Israel',
-        lat: 0,
-        lng: 0,
-      },
-      reviews: [
-        {
-          _id: 'r102',
-          txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
-          rate: 4,
-          by: {
-            _id: 'u894',
-            fullname: 'kslmv sojks',
-            imgUrl:
-              'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
-          },
-        },
-      ],
-      likedByUserIds: ['u101', 'u102', 'u103'],
-    });
-    spaces.push({
-      _id: 's' + utilService.makeId(),
-      name: 'Jerusalem',
-      imgUrls: [
-        'https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
-        'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
-        'https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
-      ],
-      price: 100,
-      description:
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries',
-      capacity: 5,
-      amenities: [
-        'TV',
-        'wifi',
-        'bath',
-        'kitchen',
-        'free parking',
-        'washing machine',
-        'smoke alarm',
-        'lockbox',
-        'air conditioning',
-        'security cameras',
-      ],
-      host: {
-        _id: 'u101',
-        fullname: 'lkm; oorom',
-        imgUrl:
-          'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
-      },
-      loc: {
-        country: 'Israel',
-        countryCode: 'IL',
-        address: 'Tel Aviv, Israel',
-        lat: 0,
-        lng: 0,
-      },
-      reviews: [
-        {
-          _id: 'r102',
-          txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
-          rate: 4,
-          by: {
-            _id: 'u894',
-            fullname: 'kslmv sojks',
-            imgUrl:
-              'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
-          },
-        },
-      ],
-      likedByUserIds: ['u101', 'u102', 'u103'],
-    });
+
+
+
+    // ==========================================================================
+    // 12 ===========================================================================
+
+
+
     spaces.push({
       _id: 's' + utilService.makeId(),
       name: 'Jerusalem',
@@ -903,6 +1070,13 @@ async function _createSpaces() {
       ],
       likedByUserIds: ['u101', 'u102', 'u103'],
     });
+
+
+    // ==========================================================================
+    // 13 ===========================================================================
+
+
+
     spaces.push({
       _id: 's' + utilService.makeId(),
       name: 'Jerusalem',
@@ -963,6 +1137,13 @@ async function _createSpaces() {
       ],
       likedByUserIds: ['u101', 'u102', 'u103'],
     });
+
+
+    // ==========================================================================
+    // 14 ===========================================================================
+
+
+
     spaces.push({
       _id: 's' + utilService.makeId(),
       name: 'Jerusalem',
@@ -1024,6 +1205,14 @@ async function _createSpaces() {
       ],
       likedByUserIds: ['u101', 'u102', 'u103'],
     });
+
+
+
+    // ==========================================================================
+    // 15 ===========================================================================
+
+
+
     spaces.push({
       _id: 's' + utilService.makeId(),
       name: 'Jerusalem',
@@ -1084,6 +1273,13 @@ async function _createSpaces() {
       ],
       likedByUserIds: ['u101', 'u102', 'u103'],
     });
+
+
+    // ==========================================================================
+    // 16 ===========================================================================
+
+
+
     spaces.push({
       _id: 's' + utilService.makeId(),
       name: 'Jerusalem',
@@ -1144,6 +1340,13 @@ async function _createSpaces() {
       ],
       likedByUserIds: ['u101', 'u102', 'u103'],
     });
+
+
+
+    // ==========================================================================
+    // ===========================================================================
+
+
     storageService.postMany(SPACE_KEY, spaces);
   }
   return spaces;
