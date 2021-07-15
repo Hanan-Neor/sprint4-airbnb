@@ -4,7 +4,6 @@
     <div class="space-title-secondary">
       <div class="left-part">
         <div class="rating">
-          <!-- <img class="star-icon" src="../assets/icons/star.svg" alt="" /> -->
           <p class="total-rate">{{ totalRate }}</p>
           <p class="number-reviews">({{ numOfReviews }} reviews)</p>
         </div>
@@ -49,10 +48,9 @@
 
     <div class="map-container">
       <p class="map-title">Where you'll be</p>
-      <google-maps></google-maps>
+      <google-maps :loc="space.loc"></google-maps>
       <p class="space-location">{{ space.loc.address }}</p>
     </div>
-    <!-- <pre>{{ space }}</pre> -->
   </div>
 </template>
 <script>
