@@ -13,10 +13,11 @@
 
 // Components
 @import 'cmps/app-header';
+@import 'cmps/review-preview';
 @import 'cmps/review-list';
 @import 'cmps/login';
 @import 'cmps/space-imgs';
 
-@import "./space-app";
-@import "app";
+@import './space-app';
+@import 'app';
 @import './space-details';

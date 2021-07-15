@@ -1,25 +1,23 @@
 <template>
-    <ul class="review-list grid" v-if="reviews">
-        <li v-for="review in reviews" :key="review._id" class="review-preview-container flex" >
-            <review-preview :review="review" />
-        
-        </li>
-    </ul>
+  <ul class="review-list clear-list" v-if="reviews">
+    <li
+      v-for="(review, idx) in reviews"
+      :key="idx"
+      class="review-preview-container"
+    >
+      <review-preview :review="review" />
+    </li>
+  </ul>
 </template>
 
-
-
 <script>
-import reviewPreview from './review-preview.vue'
+import reviewPreview from './review-preview.vue';
 export default {
-    props: ['reviews'], 
+  props: ['reviews'],
   name: 'reviewList',
-  methods: {
-    },
-    components:{
-        reviewPreview
-    }
-
-}
+  methods: {},
+  components: {
+    reviewPreview,
+  },
+};
 </script>
-

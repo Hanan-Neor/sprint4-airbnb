@@ -39,7 +39,8 @@ function getEmptySpace() {
   return {
     // _id: 's' + utilService.makeId(),
     name: '',
-    imgUrls: [ //TODO change this when we start using cloudinary
+    imgUrls: [
+      //TODO change this when we start using cloudinary
       'https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
       'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
       'https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
@@ -104,8 +105,7 @@ async function _createSpaces() {
         'https://a0.muscache.com/im/pictures/88473896-9f70-4c04-9f9b-68950f833c2b.jpg?im_w=720',
       ],
       price: 135,
-      description:
-        `TREEHOUSE is installed on four adult oaks. A wooden bridge leads directly to the terrace with a view of the surrounding trees. The house is connected to the electricity grid. Water is supplied in containers and is used for hand washing and basic hygiene. Inside our treehouse there is a chair and a sofa bed, basic kitchen equipment, electric kettle for water, plates etc. Dry toilet is located 15m from the treehouse. Attic is reserved for sleeping (2 people). Sofa bed is downstairs.
+      description: `TREEHOUSE is installed on four adult oaks. A wooden bridge leads directly to the terrace with a view of the surrounding trees. The house is connected to the electricity grid. Water is supplied in containers and is used for hand washing and basic hygiene. Inside our treehouse there is a chair and a sofa bed, basic kitchen equipment, electric kettle for water, plates etc. Dry toilet is located 15m from the treehouse. Attic is reserved for sleeping (2 people). Sofa bed is downstairs.
         The space
         Our tree house is designed for everyone who likes nature, would like to try, how it is to spend time during the day eg. sitting on the terrace or at night sleeping near trees at an altitude of almost 6 meters. We invite you to rest and “recharge the battery” in the unique atmosphere of the Little Carpathians. Youth, the elderly, families with children or couples – everyone is welcome. During your stay in our treehouse, your neighbors become squirrels, forest birds: titmouse, woodpeckers, cuckoos and other, stag beetle, salamanders, grass snakes, hedgehogs and seasonally skylights
         Other things to note
@@ -139,6 +139,61 @@ async function _createSpaces() {
         lng: 17.307569,
       },
       reviews: [
+        {
+          _id: 'r102',
+          txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
+          rate: 4,
+          by: {
+            _id: 'u894',
+            fullname: 'kslmv sojks',
+            imgUrl:
+              'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+          },
+        },
+        {
+          _id: 'r102',
+          txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
+          rate: 4,
+          by: {
+            _id: 'u894',
+            fullname: 'kslmv sojks',
+            imgUrl:
+              'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+          },
+        },
+        {
+          _id: 'r102',
+          txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
+          rate: 4,
+          by: {
+            _id: 'u894',
+            fullname: 'kslmv sojks',
+            imgUrl:
+              'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+          },
+        },
+        {
+          _id: 'r102',
+          txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
+          rate: 4,
+          by: {
+            _id: 'u894',
+            fullname: 'kslmv sojks',
+            imgUrl:
+              'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+          },
+        },
+        {
+          _id: 'r102',
+          txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
+          rate: 4,
+          by: {
+            _id: 'u894',
+            fullname: 'kslmv sojks',
+            imgUrl:
+              'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+          },
+        },
         {
           _id: 'r102',
           txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
@@ -207,7 +262,7 @@ async function _createSpaces() {
     });
     spaces.push({
       _id: 's' + utilService.makeId(),
-      name: 'Still Life St Paul\'s Executive',
+      name: "Still Life St Paul's Executive",
       imgUrls: [
         'https://a0.muscache.com/im/pictures/miso/Hosting-17823159/original/0a6eeebb-4c3e-4e6c-9bff-414012c215f4.jpeg?im_w=720',
         'https://a0.muscache.com/im/pictures/miso/Hosting-17823159/original/46ef9170-4b3d-42d4-b4e0-d7e7087c445e.jpeg?im_w=720',

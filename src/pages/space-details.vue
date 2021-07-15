@@ -23,7 +23,7 @@
           <p class="title-sentence">
             Entire {{ space.type }}, hosted by {{ host.fullname }}
           </p>
-          <img class="host-avatar" :src="host.imgUrl" alt="" />
+          <img class="avatar" :src="host.imgUrl" alt="" />
         </div>
         <div class="space-description">
           {{ space.description }}
@@ -35,25 +35,26 @@
               v-for="(amenity, idx) in space.amenities"
               :key="idx"
               class="amenity-item"
+              :class="icon(amenity)"
             >
               {{ amenity }}
             </li>
           </ul>
         </div>
-        <!-- <review-list :reviews="space.reviews"></review-list> -->
       </div>
       <!-- <reserve-space/> -->
       <div class="reserve-space">HIIII</div>
     </div>
+    <review-list :reviews="space.reviews"></review-list>
+
     <div class="map-container">
       <p class="map-title">Where you'll be</p>
-      <p class="space-location">{{ space.loc.address }}</p>
       <!-- <map-cmp></map-cmp> -->
+      <p class="space-location">{{ space.loc.address }}</p>
     </div>
     <!-- <pre>{{ space }}</pre> -->
   </div>
 </template>
-
 <script>
 import chatApp from './../cmps/space-details/chat-app.vue';
 import orderForm from './../cmps/space-details/order-form.vue';
@@ -86,15 +87,16 @@ export default {
     numOfReviews() {
       return this.space.reviews.length;
     },
+
+    // icon(amenity) {
+    //   console.log('hi');
+    //   return;
+    // },
   },
 
   methods: {
-    amenityIcon(amenity) {
-      console.log(
-        '🚀 ~ file: space-details.vue ~ line 92 ~ amenityIcon ~ amenity',
-        amenity
-      );
-      return;
+    icon(amenity) {
+      return amenity.toLowerCase().replace(' ', '-');
     },
   },
 
@@ -113,7 +115,6 @@ export default {
       },
     },
   },
-  methods: {},
   components: {
     chatApp,
     orderForm,

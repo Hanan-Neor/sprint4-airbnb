@@ -1,26 +1,18 @@
 <template>
   <section class="review-preview">
-        <p>Review: {{review}} </p>
-
-        <div class="like" @click="like"></div>
-        <img src="" alt="">
-        <button>next img</button>
-        <button>prev img</button>
-
-    </section>
+    <div class="review-details">
+      <img :src="review.by.imgUrl" alt="" class="avatar" />
+      <p class="user-name">{{ review.by.fullname }}</p>
+    </div>
+    <div class="review-txt">{{ review.txt }}</div>
+  </section>
 </template>
 
 <script>
-
 export default {
   name: '',
-  props: ['review'], 
-  methods: {
-      
-  },
-  components: {
-  }
-  
-}
+  props: { review: Object },
+  methods: {},
+  components: {},
+};
 </script>
-

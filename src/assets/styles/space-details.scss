@@ -1,7 +1,7 @@
 .space-details {
   font-family: cereal-regular;
   .space-title-primary {
-    font-size: 1.2rem;
+    font-size: 1.625rem;
     margin: 0;
     margin-bottom: 12px;
     color: $clr2;
@@ -11,7 +11,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 0.65rem;
+    font-size: 0.875rem;
     color: $clr3;
     .left-part {
       display: flex;
@@ -36,11 +36,7 @@
           content: '\f005';
           color: $clr1;
           position: absolute;
-          right: 65px;
-        }
-
-        .star-icon {
-          width: 15px;
+          right: 90px;
         }
       }
     }
@@ -53,7 +49,7 @@
         font-family: 'awesome-light';
         content: '\f004';
         position: absolute;
-        right: 30px;
+        right: 35px;
       }
     }
   }
@@ -84,10 +80,10 @@
 
         .title-sentence {
           font-weight: 700;
-          font-size: 0.8rem;
+          font-size: 1.375rem;
         }
 
-        .host-avatar {
+        .avatar {
           width: 35px;
           height: 35px;
           border-radius: 50%;
@@ -96,7 +92,6 @@
       }
 
       .space-description {
-        font-size: 0.65rem;
         line-height: 1.5em;
         margin-bottom: 2rem;
         position: relative;
@@ -105,9 +100,14 @@
           content: '';
           position: absolute;
           width: 100%;
-          top: 74px;
           border-bottom: 1px solid $clr4;
+          bottom: -15px;
         }
+      }
+
+      .ameneties-title {
+        font-size: 1.375rem;
+        font-family: cereal-Bold;
       }
 
       .space-ameneties-list {
@@ -116,17 +116,105 @@
         grid-template-rows: auto;
         row-gap: 0.4rem;
         margin-bottom: 2rem;
+        position: relative;
 
         .amenity-item {
-          font-size: 0.6rem;
           text-transform: capitalize;
           padding-left: 25px;
+          position: relative;
 
           &.tv::before {
-            content: 'hi';
+            content: '\f26c';
+            font-family: 'awesome-light';
+            position: absolute;
+            left: 0px;
+            top: 3px;
+          }
+
+          &.wifi::before {
+            content: '\f1eb';
+            font-family: 'awesome-light';
+            position: absolute;
+            left: 0px;
+            top: 3px;
+          }
+
+          &.bath::before {
+            content: '\f2cd';
+            font-family: 'awesome-light';
+            position: absolute;
+            left: 0px;
+            top: 3px;
+          }
+
+          &.kitchen::before {
+            content: '\f2e7';
+            font-family: 'awesome-light';
+            position: absolute;
+            left: 0px;
+            top: 3px;
+          }
+
+          &.free-parking::before {
+            content: '\f540';
+            font-family: 'awesome-light';
+            position: absolute;
+            left: 0px;
+            top: 3px;
+          }
+
+          &.washing-machine::before {
+            content: '\f898';
+            font-family: 'awesome-light';
+            position: absolute;
+            left: 0px;
+            top: 3px;
+          }
+          &.smoke-alarm::before {
+            content: '\f7e4';
+            font-family: 'awesome-light';
+            position: absolute;
+            left: 0px;
+            top: 3px;
+          }
+          &.lockbox::before {
+            content: '\f023';
+            font-family: 'awesome-light';
+            position: absolute;
+            left: 0px;
+            top: 3px;
+          }
+          &.air-conditioning::before {
+            content: '\f8f4';
+            font-family: 'awesome-light';
+            position: absolute;
+            left: 0px;
+            top: 3px;
+          }
+          &.security-cameras::before {
+            content: '\f8ac';
+            font-family: 'awesome-light';
+            position: absolute;
+            left: 0px;
+            top: 3px;
           }
         }
+
+        &::before {
+          content: '';
+          position: absolute;
+          width: 100%;
+          border-bottom: 1px solid $clr4;
+          bottom: -15px;
+        }
       }
+    }
+  }
+
+  .map-container {
+    .map-title {
+      font-family: 'cereal-Medium';
+      font-size: 1.375rem;
     }
   }
 }
