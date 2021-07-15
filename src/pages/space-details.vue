@@ -49,7 +49,7 @@
 
     <div class="map-container">
       <p class="map-title">Where you'll be</p>
-      <!-- <map-cmp></map-cmp> -->
+      <google-maps></google-maps>
       <p class="space-location">{{ space.loc.address }}</p>
     </div>
     <!-- <pre>{{ space }}</pre> -->
@@ -60,7 +60,7 @@ import chatApp from './../cmps/space-details/chat-app.vue';
 import orderForm from './../cmps/space-details/order-form.vue';
 import reviewList from './../cmps/space-details/review-list.vue';
 import spaceImgs from './../cmps/space-details/space-imgs.vue';
-
+import googleMaps from './../cmps/google-maps.vue';
 import { spaceService } from '../services/space.service.js';
 
 export default {
@@ -120,6 +120,7 @@ export default {
     orderForm,
     reviewList,
     spaceImgs,
+    googleMaps,
   },
 };
 </script>
