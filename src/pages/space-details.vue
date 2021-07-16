@@ -43,8 +43,9 @@
           </ul>
         </div>
       </div>
-      <!-- <reserve-space/> -->
+
       <div class="reserve-space">HIIII</div>
+      <space-reserve :space="space" @reserve="reserveToSave" />
     </div>
     <div class="reviews-container">
       <div class="rating">
@@ -86,6 +87,7 @@ import spaceImgs from './../cmps/space-details/space-imgs.vue';
 import googleMaps from './../cmps/google-maps.vue';
 import showMore from './../cmps/show-more.vue';
 import { spaceService } from '../services/space.service.js';
+import spaceReserve from './../cmps/space-details/space-reserve.vue';
 
 export default {
   name: 'space-details',
@@ -145,6 +147,9 @@ export default {
     icon(amenity) {
       return amenity.toLowerCase().replace(' ', '-');
     },
+    reserveToSave(reserve) {
+      console.log(reserve);
+    },
   },
 
   watch: {
@@ -169,6 +174,7 @@ export default {
     spaceImgs,
     googleMaps,
     showMore,
+    spaceReserve,
   },
 };
 </script>

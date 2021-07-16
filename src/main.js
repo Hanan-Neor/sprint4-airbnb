@@ -4,11 +4,13 @@ import './registerServiceWorker';
 import router from './router';
 import store from './store';
 import './assets/styles/main.scss';
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
 import * as VueGoogleMaps from 'vue2-google-maps';
 
-Vue.use(ElementUI);
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+import locale from 'element-ui/lib/locale/lang/en'
+
+Vue.use(ElementUI, { locale });
 
 import './assets/styles/main.scss';
 
