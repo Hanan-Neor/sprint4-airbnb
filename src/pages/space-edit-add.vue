@@ -5,6 +5,7 @@
       <h3>Edit/ add a space</h3>
       <!-- edit/add computed TODO -->
       <form @submit.prevent="save">
+        <label for="name">Space name</label>
         <input
           id="name"
           type="text"
@@ -12,7 +13,6 @@
           placeholder="name"
           v-model="spaceToEdit.name"
         />
-        <label for="name">Space name</label>
         <input
           type="file"
           id="imgFiles"

@@ -2,7 +2,7 @@
   <div class="home">
    <p>this is the home</p>
 <img class="top-bg" src="https://a0.muscache.com/im/pictures/0c38042b-8685-4180-8d9b-12a6892ac6d8.jpg?im_q=highq&amp;im_w=720" alt="">
-  <button @click="gotoSpaces({'count': Infinity})">I'm flexible</button>
+  <button @click="gotoSpaces({field:'count',value: Infinity})">I'm flexible</button>
   <space-list :spaces="spaces"/>
   
   </div>
@@ -31,9 +31,8 @@ computed: {
   methods:{
     async gotoSpaces({field, value}){
       try {
-        await this.$store.commit({type: 'setFilterField', field, value})
-        this.$store.dispatch({type: 'loadSpaces'})//TODO this does not need to be here - they are also loaded in the app page, lets move all filtering to the load function
-        console.log('filter before push:', this.$store.getters.filterBy );
+        this.$store.commit({type: 'setFilterField', field:field, value:value})
+        await this.$store.dispatch({type: 'loadSpaces'})//TODO this does not need to be here - they are also loaded in the app page, lets move all filtering to the load function
         this.$router.push('/space');
 
       } catch(err) {

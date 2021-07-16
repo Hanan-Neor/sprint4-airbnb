@@ -37,8 +37,6 @@ function _getReviewRate(review) {
 }
 
 function getSpacesForDisplay(spaces, filterBy) {
-  console.log('filter in filter function', filterBy);
-  console.log('spaces', spaces);
   
   //filter space
   spaces = spaces.filter(space => {
@@ -48,10 +46,9 @@ function getSpacesForDisplay(spaces, filterBy) {
 
       //TODO try using google api to search by location
       return (filterBy.type === 'all' || space.type === filterBy.type)
-      && ((space.loc.address.includes(filterBy.location) || space.loc.countryCode.includes(filterBy.location) || space.loc.country.includes(filterBy.location)) 
+      && ((space.loc.address.toLowerCase().includes(filterBy.location.toLowerCase()) || space.loc.countryCode.toLowerCase().includes(filterBy.location.toLowerCase()) || space.loc.country.toLowerCase().includes(filterBy.location.toLowerCase())) 
       && space.capacity >= Number(filterBy.numGuests))
     })
-    console.log('filtered', spaces);
     //sort by reviews
     // spaces = spaces.sort((space1, space2) => {
     // debugger;

@@ -5,12 +5,12 @@ export const spaceStore = {
     spaces: [],
     filterBy: {
       amenity: 'all',
-      amenities:[],
+      amenities: [],
       type: 'all',
       location: '',
-      numGuests:0,
-      dates: { startDate:0, endDate:0},
-      count:Infinity //change this to PAGE_SIZE when add pagination
+      numGuests: 0,
+      dates: { startDate: 0, endDate: 0 },
+      count: Infinity, //change this to PAGE_SIZE when add pagination
     },
   },
   getters: {
@@ -20,6 +20,7 @@ export const spaceStore = {
     // allSpaces(state) {
     //   return state.spaces;
     // },
+
     filterBy(state) {
       return state.filterBy;
     },
@@ -43,6 +44,7 @@ export const spaceStore = {
       state.filterBy = filterBy;
     },
     setFilterField(state, { field, value }) {
+      console.log('setting filter field*****');
       state.filterBy[field] = value;
     },
     // addReview(state, { space }) {
@@ -95,7 +97,6 @@ export const spaceStore = {
       }
     },
     async saveSpace({ commit }, payload) {
-      console.log('saving space', payload.space);
       const type = payload.space._id ? 'updateSpace' : 'addSpace';
       try {
         const savedSpace = await spaceService.save(payload.space);
