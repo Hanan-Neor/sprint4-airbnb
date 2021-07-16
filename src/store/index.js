@@ -15,6 +15,7 @@ export default new Vuex.Store({
     screenWidth({ screenWidth }) { return screenWidth },
     isMobScreen({ screenWidth }) { return screenWidth <= 460 },
     isSmallScreen({ screenWidth }) { return screenWidth <= 720 },
+    isLargeScreen({ screenWidth }) { return screenWidth > 720 },
   },
   mutations: {},
   actions: {},

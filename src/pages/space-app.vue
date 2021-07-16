@@ -32,6 +32,7 @@ export default {
     },
   },
   created() {
+    this.$store.commit({type: 'setFilterField', field:'count', value:Infinity})
     this.$store.dispatch({type: 'loadSpaces'})
   },
   methods: {

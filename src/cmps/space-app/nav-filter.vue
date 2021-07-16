@@ -1,14 +1,16 @@
 <template>
   <div class="nav-filter">
     <div class="space-types flex pointer">
+      <p @click="updateFilter('type', 'all')">All</p>
+      
       <p @click="updateFilter('type', 'home')">Homes</p>
-      |
+      
       <p @click="updateFilter('type', 'villa')">Villas</p>
-      |
+      
       <p @click="updateFilter('type', 'cabin')">Cabins</p>
-      |
+      
     </div>
-    <el-row class="hover">
+    <el-row v-if="isLargeScreen" class="hover">
       <el-button @click="showFilterOptions()" round>Anytime</el-button>
       <el-button @click="toggleForm()" round>Guests</el-button>
       <el-button @click="showFilters()" round>Filters</el-button>
@@ -25,7 +27,8 @@ export default {
   computed:{
     isFormOpen(){
       return this.formOpen
-    }
+    },
+    isLargeScreen(){ return this.$store.getters.isLargeScreen}
   },
   data() {
     return {

@@ -2,7 +2,7 @@
   <!-- <div class="app-header flex" :style="diplayState"> -->
   <div class="app-header flex" :style="headerPos">
     <img v-if="isLarge" class="logo" src="../assets/img/logo.png" alt="" />
-
+    <login v-if="isLoginOpen" @close-login="closeLogin" />
     <p v-if="isLarge">Become a host</p>
     <space-filter :style="searchPos" />
 
@@ -15,7 +15,7 @@
           alt="avatar"
         />
       </button>
-      <login v-if="isLoginOpen" @close-login="closeLogin" />
+      
       <ul class="nav pointer clear-list" v-if="isNavOpen">
         <li @click="showLogin">login</li>
         <li @click="showLogin">signup</li>
@@ -24,11 +24,9 @@
     </template>
 
     <div v-if="!isLarge" class="bottom-nav ">
-      <div class="explore nav-item"><p></p><p>explore</p>
-        
-          </div>
-      <div class="wishlists nav-item"><p></p>wishlists</div>
-      <div class="login nav-item"><p></p> <p>login</p> </div>
+      <div @click="showExplore" class="explore nav-item"><p class="text">explore</p> </div>
+      <div @click="showLogin" class="nav-login nav-item"><p class="text">login</p></div>
+      <div @click="showWhishlist" class="wishlists nav-item"><p  class="text">wishlists</p></div>
     </div>
   </div>
 </template>
@@ -40,17 +38,10 @@ import { eventBusService } from "./../services/event-bus.service.js";
 
 export default {
   created() {
-    console.log("width", this.screenWidth);
-    console.log(this.isSmall);
-
-// this.state = true
-    // setTimeout(()=>{
-      
       eventBusService.$on('headerFixed', (state) =>{
         this.state = state
       });
-      
-    // },3000)
+
   },
   components: {
     spaceFilter,
@@ -100,8 +91,9 @@ export default {
   },
   methods: {
     showLogin() {
-      this.toggleNav();
+      console.log('logging in...');
       this.loginOpen = true;
+      console.log(this.isLoginOpen);
     },
     closeLogin() {
       this.loginOpen = false;
@@ -109,7 +101,8 @@ export default {
     toggleNav() {
       this.navOpen = !this.navOpen;
     },
-    
+    showWhishlist(){alert('please add wishlists')},
+    showExplore(){alert('what would you like to explore... coming soon...') }
   },
 };
 </script>
