@@ -46,7 +46,7 @@
     </div>
     <review-list :reviews="space.reviews"></review-list>
 
-    <div class="map-container">
+    <div class="map-container" v-if="this.space.loc.lat">
       <p class="map-title">Where you'll be</p>
       <google-maps :loc="space.loc"></google-maps>
       <p class="space-location">{{ space.loc.address }}</p>
