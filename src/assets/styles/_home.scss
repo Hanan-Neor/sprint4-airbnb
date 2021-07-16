@@ -5,4 +5,26 @@
         z-index: -1;
         // opacity: 50%;
     }
+    .breaker-image{
+        width:100vw;
+        img {
+            object-fit: fill;
+            width:100%;
+            height:402px;
+            @include for-mobile-layout {
+            }
+        
+            @include for-narrow-layout {
+            }
+        
+            @include for-normal-layout {
+          height:320px;
+            }
+        
+            @include for-wide-layout {
+            }
+        }
+        
+
+    }
 }
