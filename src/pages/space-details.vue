@@ -44,14 +44,18 @@
         </div>
       </div>
 
-      <div class="reserve-space">HIIII</div>
-      <space-reserve :space="space" @reserve="reserveToSave" />
+      <space-reserve
+        :space="space"
+        :rate="totalRate"
+        :reviews="numOfReviews"
+        @reserve="reserveToSave"
+      />
     </div>
     <div class="reviews-container">
       <div class="rating">
         <p class="total-rate star">{{ totalRate }}</p>
         <span>•</span>
-        <p class="number-reviews">{{ numOfReviews }} reviews</p>
+        <p class="number-reviews">({{ numOfReviews }})</p>
       </div>
       <ul class="rate-categories-list clear-list">
         <li

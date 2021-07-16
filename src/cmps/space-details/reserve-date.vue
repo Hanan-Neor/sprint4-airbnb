@@ -1,77 +1,29 @@
 <template>
-  <section class="space-resere">
-
-<div class="block">
+  <section class="date-picker">
     <el-date-picker
-    @change="date"
-      v-model="value1"
+      @change="date"
+      v-model="dates"
       type="daterange"
-      range-separator="To"
-      start-placeholder="Start date"
-      end-placeholder="End date">
+      range-separator=""
+      start-placeholder="CHECK-IN"
+      end-placeholder="CHECKOUT"
+    >
     </el-date-picker>
-  </div>
-  <!-- <div class="block">
-    <span class="demonstration">With quick options</span>
-    <el-date-picker
-      v-model="value2"
-      type="monthrange"
-      align="right"
-      unlink-panels
-      range-separator="To"
-      start-placeholder="Start month"
-      end-placeholder="End month"
-      :picker-options="pickerOptions">
-    </el-date-picker>
-  </div> -->
-
-
-
-       
   </section>
 </template>
 
-
-
 <script>
-  export default {
-    data() {
-      return {
-        pickerOptions: {
-          shortcuts: [{
-            text: 'Last week',
-            onClick(picker) {
-              const end = new Date();
-              const start = new Date();
-              start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
-              picker.$emit('pick', [start, end]);
-            }
-          }, {
-            text: 'Last month',
-            onClick(picker) {
-              const end = new Date();
-              const start = new Date();
-              start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
-              picker.$emit('pick', [start, end]);
-            }
-          }, {
-            text: 'Last 3 months',
-            onClick(picker) {
-              const end = new Date();
-              const start = new Date();
-              start.setTime(start.getTime() - 3600 * 1000 * 24 * 90);
-              picker.$emit('pick', [start, end]);
-            }
-          }]
-        },
-        value1: '',
-        value2: ''
-      };
+export default {
+  data() {
+    return {
+      dates: '',
+    };
+  },
+
+  methods: {
+    date() {
+      this.$emit('dateToReserve', this.dates);
     },
-    methods:{
-        date(){
-            this.$emit('dateToReserve',  this.value1,this.value2)
-        }
-    }
-  };
+  },
+};
 </script>

@@ -5,7 +5,7 @@
       <p class="user-name">{{ review.by.fullname }}</p>
     </div>
     <!-- <div class="review-txt">{{ review.txt }}</div> -->
-    <show-more :text="review.txt" class="review-txt pointer"></show-more>
+    <show-more :text="review.txt" class="review-txt"></show-more>
   </section>
 </template>
 
