@@ -87,10 +87,26 @@ $header-side-padding: 42px;
     font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
     justify-content: center;
     margin: 0px auto;
-    // max-width: 560px
-    .explore{
-            content: "\002B";
+    .nav-item{
+        display: flex;
+        flex-direction: column;
     }
+    // max-width: 560px
+    .explore::after, .wishlists::after, .login::after {
+        margin-bottom: 2px;
+        content: '\f002';
+        height:30px;
+        width:30px;
+        :hover{
+            color: rgb(255, 56, 92)
+        }
+      }
+    }
+    .wishlists::after{
+        content: '\f004';
+    }
+    .login::after{
+        content: '\f2bd';
     }
 }
 

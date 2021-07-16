@@ -22,10 +22,12 @@
       </ul>
     </template>
 
-    <div v-if="!isLarge" class="bottom-nav">
-      <div class="explore">explore</div>
-      <div class="wishlists">wishlists</div>
-      <div class="login">login</div>
+    <div v-if="!isLarge" class="bottom-nav ">
+      <div class="explore nav-item"><p></p><p>explore</p>
+        
+          </div>
+      <div class="wishlists nav-item"><p></p>wishlists</div>
+      <div class="login nav-item"><p></p> <p>login</p> </div>
     </div>
   </div>
 </template>
