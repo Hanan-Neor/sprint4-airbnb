@@ -37,8 +37,6 @@ function _getReviewRate(review) {
 }
 
 function getSpacesForDisplay(spaces, filterBy) {
-  console.log('filter in filter function', filterBy);
-  console.log('spaces', spaces);
   
   //filter space
   spaces = spaces.filter(space => {
@@ -51,7 +49,6 @@ function getSpacesForDisplay(spaces, filterBy) {
       && ((space.loc.address.toLowerCase().includes(filterBy.location.toLowerCase()) || space.loc.countryCode.toLowerCase().includes(filterBy.location.toLowerCase()) || space.loc.country.toLowerCase().includes(filterBy.location.toLowerCase())) 
       && space.capacity >= Number(filterBy.numGuests))
     })
-    console.log('filtered', spaces);
     //sort by reviews
     // spaces = spaces.sort((space1, space2) => {
     // debugger;

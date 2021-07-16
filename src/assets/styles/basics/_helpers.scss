@@ -73,3 +73,17 @@
   margin: 0;
   padding: 0;
 }
+
+.big-screen{
+  display: none;
+}
+
+// @include for-mobile-layout{
+
+// }
+@include for-wide-layout {
+  .mob{
+    display: none;
+  }
+
+}
