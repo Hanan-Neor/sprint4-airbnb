@@ -44,15 +44,35 @@
       <!-- <reserve-space/> -->
       <div class="reserve-space">HIIII</div>
     </div>
-    <review-list :reviews="space.reviews"></review-list>
+    <pre>{{ space.reviews }}</pre>
+    <div class="reviews-container">
+      <div class="rating">
+        <p class="total-rate">{{ totalRate }}</p>
+        <p class="number-reviews">({{ numOfReviews }} reviews)</p>
+      </div>
+      <div class="rate-categories">
+        <ul class="rate-categories-list clear-list">
+          <li
+            class="rate-categories-item"
+            v-for="(cr, idx) in categoryRate"
+            :key="idx"
+          >
+            {{ cr }}
+          </li>
+        </ul>
+      </div>
+      <review-list :reviews="space.reviews"></review-list>
+    </div>
 
     <div class="map-container">
       <p class="map-title">Where you'll be</p>
-      <google-maps :loc="space.loc"></google-maps>
+      <google-maps :loc="space.loc" v-if="space.loc.lat"></google-maps>
+      <div class="" v-else>loading</div>
       <p class="space-location">{{ space.loc.address }}</p>
     </div>
   </div>
 </template>
+
 <script>
 import chatApp from './../cmps/space-details/chat-app.vue';
 import orderForm from './../cmps/space-details/order-form.vue';
@@ -76,20 +96,43 @@ export default {
 
   computed: {
     totalRate() {
-      const sum = this.space.reviews.reduce((acc, r) => {
-        return (acc += r.rate);
+      const { reviews } = this.space;
+      const sums = reviews.map((r) => {
+        const rateCategory = Object.values(r.rate);
+        return rateCategory.reduce((acc, rc) => {
+          return (acc += rc);
+        }, 0);
+      });
+      const sum = sums.reduce((acc, ps) => {
+        return (acc += ps);
       }, 0);
-      return sum / this.space.reviews.length;
+      return (sum / (reviews.length * 6)).toFixed(2);
     },
 
     numOfReviews() {
       return this.space.reviews.length;
     },
 
-    // icon(amenity) {
-    //   console.log('hi');
-    //   return;
-    // },
+    categoryRate() {
+      const { reviews } = this.space;
+      const acc = {
+        accuracy: 0,
+        checkin: 0,
+        cleanliness: 0,
+        communication: 0,
+        value: 0,
+        location: 0,
+      };
+      return reviews.reduce((acc, r) => {
+        acc.accuracy += r.rate.accuracy;
+        acc.checkin += r.rate.checkin;
+        acc.communication += r.rate.communication;
+        acc.cleanliness += r.rate.cleanliness;
+        acc.value += r.rate.value;
+        acc.location += r.rate.location;
+        return acc;
+      }, acc);
+    },
   },
 
   methods: {

@@ -5,12 +5,12 @@ export const spaceStore = {
     spaces: [],
     filterBy: {
       amenity: 'all',
-      amenities:[],
+      amenities: [],
       type: 'all',
       location: '',
-      numGuests:0,
-      dates: { startDate:0, endDate:0},
-      count:Infinity //change this to PAGE_SIZE when add pagination
+      numGuests: 0,
+      dates: { startDate: 0, endDate: 0 },
+      count: Infinity, //change this to PAGE_SIZE when add pagination
     },
   },
   getters: {
@@ -20,6 +20,7 @@ export const spaceStore = {
     // allSpaces(state) {
     //   return state.spaces;
     // },
+
     filterBy(state) {
       return state.filterBy;
     },

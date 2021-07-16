@@ -1,6 +1,5 @@
 <template>
-  <section v-if="center">
-    <!-- {{ center }} -->
+  <section>
     <GmapMap
       :center="center"
       :zoom="7"
@@ -10,9 +9,9 @@
       <GmapMarker
         :key="index"
         v-for="(m, index) in markers"
-        :position="m.position"
+        :position="m"
         :clickable="true"
-        @click="center = m.position"
+        @click="center = m"
         :icon="{ url: require('../assets/img/icons/home.svg') }"
       />
     </GmapMap>
@@ -25,17 +24,23 @@ export default {
 
   data() {
     return {
-      center: {},
-      markers: [{ lat: 0, lng: 0 }],
-      location: { lat: 0, lng: 0 },
+      markers: [],
     };
   },
 
+  computed: {
+    center() {
+      return {
+        lat: parseFloat(this.loc.lat),
+        lng: parseFloat(this.loc.lng),
+      };
+    },
+  },
+
   created() {
-    this.center = { lat: this.loc.lat, lng: this.loc.lng };
-    console.log(this.center);
     this.markers.push({
-      position: this.center,
+      lat: parseFloat(this.loc.lat),
+      lng: parseFloat(this.loc.lng),
     });
   },
 };

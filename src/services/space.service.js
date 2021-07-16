@@ -104,26 +104,12 @@ function getEmptySpace() {
 }
 
 async function _createSpaces() {
-  console.log('test');
-  // function createSpaces() {
   let spaces = await storageService.query(SPACE_KEY);
   if (!spaces || !spaces.length) {
-    console.log(
-      '🚀 ~ file: space.service.js ~ line 78 ~ createSpaces ~ spaces.length',
-      spaces.length
-    );
-    console.log(
-      '🚀 ~ file: space.service.js ~ line 78 ~ createSpaces ~ spaces',
-      spaces
-    );
     spaces = [];
-
-
 
     // ==========================================================================
     // 1 ===========================================================================
-
-
 
     spaces.push({
       _id: 's' + utilService.makeId(),
@@ -255,7 +241,6 @@ async function _createSpaces() {
     // ==========================================================================
     // 2 ===========================================================================
 
-
     spaces.push({
       _id: 's' + utilService.makeId(),
       name: 'Chalet Eigernordwand',
@@ -300,7 +285,8 @@ async function _createSpaces() {
       reviews: [
         {
           _id: 'r101',
-          txt: 'Brilliant place. Modern, new, easy to park, 5 minute drive to center, fully equipped.',
+          txt:
+            'Brilliant place. Modern, new, easy to park, 5 minute drive to center, fully equipped.',
           rate: {
             cleanliness: 2,
             checkin: 3,
@@ -398,14 +384,8 @@ async function _createSpaces() {
       ],
       likedByUserIds: ['u101', 'u102', 'u103'],
 
-
-
       // ==========================================================================
       // 3 ===========================================================================
-
-
-
-
     });
     spaces.push({
       _id: 's' + utilService.makeId(),
@@ -470,12 +450,8 @@ async function _createSpaces() {
       likedByUserIds: ['u101', 'u102', 'u103'],
     });
 
-
     // ==========================================================================
     // 4 ===========================================================================
-
-
-
 
     spaces.push({
       _id: 's' + utilService.makeId(),
@@ -532,14 +508,8 @@ async function _createSpaces() {
       likedByUserIds: ['u101', 'u102', 'u103'],
     });
 
-
-
-
     // ==========================================================================
     // 5 ===========================================================================
-
-
-
 
     spaces.push({
       _id: 's' + utilService.makeId(),
@@ -553,8 +523,7 @@ async function _createSpaces() {
         'https://a0.muscache.com/im/pictures/5f54bfab-4ce9-4c98-bedd-f25710755c25.jpg?im_w=720',
       ],
       price: 128,
-      description:
-        `The space
+      description: `The space
         Located in a prime location at the intersection of Ben Yehouda and Bograshov.
         You will find everything you need right by the apartment. A few minutes walk to the beach, restaurants, bakeries, bars etc..
         There is a living room, two bedrooms, a fully equipped kitchen, a bathroom, and a balcony. 
@@ -624,11 +593,8 @@ async function _createSpaces() {
       likedByUserIds: ['u101', 'u102', 'u103'],
     });
 
-
     // ==========================================================================
     // 6  ===========================================================================
-
-
 
     spaces.push({
       _id: 's' + utilService.makeId(),
@@ -642,8 +608,7 @@ async function _createSpaces() {
         'https://a0.muscache.com/im/pictures/5f7ae8bf-109e-43c7-b421-ec019523dc01.jpg?im_w=720',
       ],
       price: 219,
-      description:
-        `This exclusive holiday home is situated within a nature reserve on a 500-metre high plateau in Altenbrak, a district of Thale. You will be staying at a tastefully and individually furnished house in a quiet, rural location. The interior, open floor plan and use of light woods meets the highest demands when it comes to quality, shape and colour. The upscale furnishings as well as the design provide maximum comfort and cosiness. This panoramic chalet offers everything you could wish for: fast WiFi, a state of the art smart TV and much more. Large windows and a balcony that runs around the facade offer panoramic vistas of the adjacent meadows and hilly forests. Enjoy the romantic ambiance by the crackling fireplace - especially after dark. The terrace and garden are ideal for sunbathing and barbecuing. Here in these exclusive surroundings, your daily stress will melt way on the first day of your stay. Another highlight of this holiday home: there are no street lights nearby. This guarantees a fantastic view of the surroundings from the plateau, even at night. And you shouldn't miss out on the extraordinary experience of watching the animals that tend to roam the beautiful landscape below the plateau. All this creates a very special, unforgettable flair you most likely won't find anywhere else. The hilly landscape of the north-eastern Harz region makes one want to go hiking or take walks. A well-marked network of hiking trails leads through the idyllic Bodetal and to the plateaus Hexentanzplatz and Rosstrappe. Cyclists will also get their money's worth enjoying tours on various routes or downhill slopes. Recommended excursions into the region: Seilbahnen Thale Erlebniswelt (amusement park), Rappbode Dam, Rübeländer Caves, Pullman City Harz, Brocken mountain, Quedlinburg.
+      description: `This exclusive holiday home is situated within a nature reserve on a 500-metre high plateau in Altenbrak, a district of Thale. You will be staying at a tastefully and individually furnished house in a quiet, rural location. The interior, open floor plan and use of light woods meets the highest demands when it comes to quality, shape and colour. The upscale furnishings as well as the design provide maximum comfort and cosiness. This panoramic chalet offers everything you could wish for: fast WiFi, a state of the art smart TV and much more. Large windows and a balcony that runs around the facade offer panoramic vistas of the adjacent meadows and hilly forests. Enjoy the romantic ambiance by the crackling fireplace - especially after dark. The terrace and garden are ideal for sunbathing and barbecuing. Here in these exclusive surroundings, your daily stress will melt way on the first day of your stay. Another highlight of this holiday home: there are no street lights nearby. This guarantees a fantastic view of the surroundings from the plateau, even at night. And you shouldn't miss out on the extraordinary experience of watching the animals that tend to roam the beautiful landscape below the plateau. All this creates a very special, unforgettable flair you most likely won't find anywhere else. The hilly landscape of the north-eastern Harz region makes one want to go hiking or take walks. A well-marked network of hiking trails leads through the idyllic Bodetal and to the plateaus Hexentanzplatz and Rosstrappe. Cyclists will also get their money's worth enjoying tours on various routes or downhill slopes. Recommended excursions into the region: Seilbahnen Thale Erlebniswelt (amusement park), Rappbode Dam, Rübeländer Caves, Pullman City Harz, Brocken mountain, Quedlinburg.
 
 
         Layout: Ground floor: (Entrance, hall, open kitchen(electric kettle, toaster, cooker(ceramic), coffee machine(filter), oven, microwave, dishwasher, fridge-freezer), Living/diningroom(seating area), bedroom(double bed(160 x 200 cm), TV(satellite, smart TV)), bathroom(shower, washbasin, toilet))
@@ -674,8 +639,8 @@ async function _createSpaces() {
         country: 'Germany',
         countryCode: 'IL',
         address: 'Thale, Sachsen-Anhalt',
-        lat: 51.755650,
-        lng: 11.045630,
+        lat: 51.75565,
+        lng: 11.04563,
       },
       reviews: [
         {
@@ -693,11 +658,8 @@ async function _createSpaces() {
       likedByUserIds: ['u101', 'u102', 'u103'],
     });
 
-
     // ==========================================================================
     // 7  ===========================================================================
-
-
 
     spaces.push({
       _id: 's' + utilService.makeId(),
@@ -712,8 +674,7 @@ async function _createSpaces() {
         'https://a0.muscache.com/im/pictures/4c4ba749-fa63-45e6-9759-8c3847e1218b.jpg?im_w=720',
       ],
       price: 410,
-      description:
-        `Quiet, charming cottage right on the beach with gorgeous sunsets! Perfect for a relaxing stay on Martha's Vineyard during any time of the year. Tell us about your vacation plans so we can help you enjoy our little piece of paradise.
+      description: `Quiet, charming cottage right on the beach with gorgeous sunsets! Perfect for a relaxing stay on Martha's Vineyard during any time of the year. Tell us about your vacation plans so we can help you enjoy our little piece of paradise.
         The space
         - 1 bedroom, 1 bath; and outdoor shower
         - Perfect couples retreat
@@ -750,8 +711,8 @@ async function _createSpaces() {
         country: 'United States',
         countryCode: 'US',
         address: 'Oak Bluffs, Massachusetts',
-        lat: 41.455550,
-        lng: -70.567820,
+        lat: 41.45555,
+        lng: -70.56782,
       },
       reviews: [
         {
@@ -769,11 +730,8 @@ async function _createSpaces() {
       likedByUserIds: ['u101', 'u102', 'u103'],
     });
 
-
     // ==========================================================================
     // 8 ===========================================================================
-
-
 
     spaces.push({
       _id: 's' + utilService.makeId(),
@@ -828,11 +786,8 @@ async function _createSpaces() {
       likedByUserIds: ['u101', 'u102', 'u103'],
     });
 
-
     // ==========================================================================
     // 9 ===========================================================================
-
-
 
     spaces.push({
       _id: 's' + utilService.makeId(),
@@ -890,8 +845,6 @@ async function _createSpaces() {
     // ==========================================================================
     // 10 ===========================================================================
 
-
-
     spaces.push({
       _id: 's' + utilService.makeId(),
       name: 'Jerusalem',
@@ -948,8 +901,6 @@ async function _createSpaces() {
     // ==========================================================================
     // 11 ===========================================================================
 
-
-
     spaces.push({
       _id: 's' + utilService.makeId(),
       name: 'Jerusalem',
@@ -1003,12 +954,8 @@ async function _createSpaces() {
       likedByUserIds: ['u101', 'u102', 'u103'],
     });
 
-
-
     // ==========================================================================
     // 12 ===========================================================================
-
-
 
     spaces.push({
       _id: 's' + utilService.makeId(),
@@ -1070,13 +1017,10 @@ async function _createSpaces() {
       ],
       likedByUserIds: ['u101', 'u102', 'u103'],
     });
-
 
     // ==========================================================================
     // 13 ===========================================================================
 
-
-
     spaces.push({
       _id: 's' + utilService.makeId(),
       name: 'Jerusalem',
@@ -1138,11 +1082,8 @@ async function _createSpaces() {
       likedByUserIds: ['u101', 'u102', 'u103'],
     });
 
-
     // ==========================================================================
     // 14 ===========================================================================
-
-
 
     spaces.push({
       _id: 's' + utilService.makeId(),
@@ -1206,12 +1147,8 @@ async function _createSpaces() {
       likedByUserIds: ['u101', 'u102', 'u103'],
     });
 
-
-
     // ==========================================================================
     // 15 ===========================================================================
-
-
 
     spaces.push({
       _id: 's' + utilService.makeId(),
@@ -1274,11 +1211,8 @@ async function _createSpaces() {
       likedByUserIds: ['u101', 'u102', 'u103'],
     });
 
-
     // ==========================================================================
     // 16 ===========================================================================
-
-
 
     spaces.push({
       _id: 's' + utilService.makeId(),
@@ -1341,11 +1275,8 @@ async function _createSpaces() {
       likedByUserIds: ['u101', 'u102', 'u103'],
     });
 
-
-
     // ==========================================================================
     // ===========================================================================
-
 
     storageService.postMany(SPACE_KEY, spaces);
   }
