@@ -153,6 +153,8 @@ export default {
     },
     reserveToSave(reserve) {
       console.log(reserve);
+      const order = reserve
+      this.$store.dispatch({ type: "saveOrder"  ,order});
     },
   },
 
