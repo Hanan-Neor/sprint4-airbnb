@@ -8,7 +8,14 @@ import { reviewStore } from './modules/review.store.js';
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {},
+  state: {
+    screenWidth: window.innerWidth
+  },
+  getters:{
+    screenWidth({ screenWidth }) { return screenWidth },
+    isMobScreen({ screenWidth }) { return screenWidth <= 460 },
+    isSmallScreen({ screenWidth }) { return screenWidth <= 720 },
+  },
   mutations: {},
   actions: {},
   modules: {

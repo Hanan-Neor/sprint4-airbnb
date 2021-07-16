@@ -87,6 +87,7 @@ function _saveLocalUser(user) {
 }
 
 function getLoggedinUser() {
+  
   if (!sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER)) {
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, "null") ;
 }
