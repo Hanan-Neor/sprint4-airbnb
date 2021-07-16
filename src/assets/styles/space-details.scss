@@ -211,10 +211,97 @@
     }
   }
 
+  .reviews-container {
+    .rating {
+      display: flex;
+      margin-bottom: 1rem;
+      font-size: 1.375rem;
+      font-family: 'cereal-Medium';
+      margin-left: 25px;
+    }
+
+    .rate-categories-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      row-gap: 1rem;
+      column-gap: 5rem;
+      margin-bottom: 2rem;
+
+      .rate-categories-item {
+        text-transform: capitalize;
+        display: flex;
+        justify-content: space-between;
+
+        .box {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+
+          .category-bar-container {
+            display: flex;
+
+            width: 120px;
+            height: 4px;
+            border-radius: 100px;
+            background-color: $clr4;
+
+            .category-bar {
+              background-color: #000;
+              border-radius: 100px;
+            }
+          }
+
+          .category-rate {
+            font-size: 0.75rem;
+            font-family: 'cereal-Medium';
+          }
+        }
+      }
+    }
+  }
+
   .map-container {
     .map-title {
       font-family: 'cereal-Medium';
       font-size: 1.375rem;
     }
   }
+
+  .star {
+    display: flex;
+    align-items: center;
+    position: relative;
+    &::before {
+      font-family: 'awesome-solid';
+      font-size: 0.875rem;
+      content: '\f005';
+      color: $clr1;
+      position: absolute;
+      right: 50px;
+    }
+  }
 }
+
+// <div class="reviews-container">
+//   <div class="rating">
+//     <p class="total-rate">{{ totalRate }}</p>
+//     <span>•</span>
+//     <p class="number-reviews">{{ numOfReviews }} reviews</p>
+//   </div>
+//   <ul class="rate-categories-list clear-list">
+//     <li
+//       class="rate-categories-item"
+//       v-for="(r, c, idx) in categoryRate"
+//       :key="idx"
+//     >
+//       <div class="category-title">{{ c }}:</div>
+//       <div class="box">
+//         <div class="category-bar-container">
+//           <div class="category-bar"></div>
+//         </div>
+//         <div class="category-rate">{{ r }}</div>
+//       </div>
+//     </li>
+//   </ul>
+//   <review-list :reviews="space.reviews"></review-list>
+// </div>

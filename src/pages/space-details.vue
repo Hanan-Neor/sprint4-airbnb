@@ -24,9 +24,11 @@
           </p>
           <img class="avatar" :src="host.imgUrl" alt="" />
         </div>
-        <div class="space-description">
-          {{ space.description }}
-        </div>
+
+        <show-more
+          :text="space.description"
+          class="space-description"
+        ></show-more>
         <div class="space-ameneties">
           <p class="ameneties-title">What this place offers</p>
           <ul class="space-ameneties-list clear-list">
@@ -41,29 +43,37 @@
           </ul>
         </div>
       </div>
-      <!-- <reserve-space/> -->
-      <div class="reserve-space">HIIII</div>
+
+      <space-reserve
+        :space="space"
+        :rate="totalRate"
+        :reviews="numOfReviews"
+        @reserve="reserveToSave"
+      />
     </div>
-    <pre>{{ space.reviews }}</pre>
     <div class="reviews-container">
       <div class="rating">
-        <p class="total-rate">{{ totalRate }}</p>
-        <p class="number-reviews">({{ numOfReviews }} reviews)</p>
+        <p class="total-rate star">{{ totalRate }}</p>
+        <span>•</span>
+        <p class="number-reviews">({{ numOfReviews }})</p>
       </div>
-      <div class="rate-categories">
-        <ul class="rate-categories-list clear-list">
-          <li
-            class="rate-categories-item"
-            v-for="(cr, idx) in categoryRate"
-            :key="idx"
-          >
-            {{ cr }}
-          </li>
-        </ul>
-      </div>
+      <ul class="rate-categories-list clear-list">
+        <li
+          class="rate-categories-item"
+          v-for="(r, c, idx) in categoryRate"
+          :key="idx"
+        >
+          <div class="category-title">{{ c }}:</div>
+          <div class="box">
+            <div class="category-bar-container">
+              <div class="category-bar" :style="{ width: r * 20 + '%' }"></div>
+            </div>
+            <div class="category-rate">{{ r.toFixed(1) }}</div>
+          </div>
+        </li>
+      </ul>
       <review-list :reviews="space.reviews"></review-list>
     </div>
-
     <div class="map-container" v-if="this.space.loc.lat">
       <p class="map-title">Where you'll be</p>
       <google-maps :loc="space.loc" v-if="space.loc.lat"></google-maps>
@@ -79,7 +89,9 @@ import orderForm from './../cmps/space-details/order-form.vue';
 import reviewList from './../cmps/space-details/review-list.vue';
 import spaceImgs from './../cmps/space-details/space-imgs.vue';
 import googleMaps from './../cmps/google-maps.vue';
+import showMore from './../cmps/show-more.vue';
 import { spaceService } from '../services/space.service.js';
+import spaceReserve from './../cmps/space-details/space-reserve.vue';
 
 export default {
   name: 'space-details',
@@ -139,6 +151,11 @@ export default {
     icon(amenity) {
       return amenity.toLowerCase().replace(' ', '-');
     },
+    reserveToSave(reserve) {
+      console.log(reserve);
+      const order = reserve
+      this.$store.dispatch({ type: "saveOrder"  ,order});
+    },
   },
 
   watch: {
@@ -162,6 +179,8 @@ export default {
     reviewList,
     spaceImgs,
     googleMaps,
+    showMore,
+    spaceReserve,
   },
 };
 </script>

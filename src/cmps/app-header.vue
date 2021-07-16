@@ -1,9 +1,10 @@
 <template>
-  <div class="app-header flex">
+  <!-- <div class="app-header flex" :style="diplayState"> -->
+  <div class="app-header flex" :style="headerPos">
     <img v-if="isLarge" class="logo" src="../assets/img/logo.png" alt="" />
 
     <p v-if="isLarge">Become a host</p>
-    <space-filter />
+    <space-filter :style="searchPos" />
 
     <template v-if="isLarge">
       <button class="flex pointer" @click="toggleNav">
@@ -35,12 +36,22 @@
 <script>
 import spaceFilter from "./space-filter.vue";
 import login from "./login.vue";
+import { eventBusService } from "./../services/event-bus.service.js";
 
 export default {
-    created(){
-        console.log('width', this.screenWidth);
-        console.log(this.isSmall);
-    },
+  created() {
+    console.log("width", this.screenWidth);
+    console.log(this.isSmall);
+
+// this.state = true
+    // setTimeout(()=>{
+      
+      eventBusService.$on('headerFixed', (state) =>{
+        this.state = state
+      });
+      
+    // },3000)
+  },
   components: {
     spaceFilter,
     login,
@@ -54,14 +65,37 @@ export default {
       return this.navOpen;
     },
     isLarge() {
-        return !this.$store.getters.isSmallScreen
+      return !this.$store.getters.isSmallScreen;
     },
+    headerPos(){
+          return{
+            position:(this.state)? 'fixed' : 'relative'
+          }
+    },
+    searchPos(){
+      if(this.state){
+        return{
+          position: 'relative',
+          top: '70px'
+
+        }
+      }else{
+        return{
+          position: 'relative'
+        }
+      }
+
+    }
   },
   data() {
     return {
       loginOpen: false,
       navOpen: false,
       screenWidth: window.innerWidth,
+      // diplayState:{
+      //   position:'fixed'
+      // }
+      state: false
     };
   },
   methods: {
@@ -75,6 +109,7 @@ export default {
     toggleNav() {
       this.navOpen = !this.navOpen;
     },
+    
   },
 };
 </script>
