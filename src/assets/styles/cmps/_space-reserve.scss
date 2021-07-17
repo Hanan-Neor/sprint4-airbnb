@@ -20,8 +20,22 @@
     }
   }
   .space-reserve-form {
-    background-color: lightblue;
     display: flex;
     flex-direction: column;
+    border-bottom: hidden;
+
+    .options {
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      border: 1px solid $clr4;
+
+      .date-picker {
+        border-bottom: 1px solid $clr4;
+
+        .el-input__inner {
+          border: 0;
+        }
+      }
+    }
   }
 }

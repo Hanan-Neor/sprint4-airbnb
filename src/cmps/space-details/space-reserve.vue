@@ -14,9 +14,11 @@
     </div>
 
     <form @submit.prevent="submit" value="value" class="space-reserve-form">
-      <reserve-date @dateToReserve="dateToReserve2" />
-      <!-- <reserve-guests @guestsToSave="guestsToSave2" /> -->
-      <reserve-guests2 :limit="space.capacity" @guestsCnt="guestsToSave2" />
+      <div class="options">
+        <reserve-date @dateToReserve="dateToReserve2" />
+        <!-- <reserve-guests @guestsToSave="guestsToSave2" /> -->
+        <reserve-guests2 :limit="space.capacity" @guestsCnt="guestsToSave2" />
+      </div>
       <button>Book</button>
     </form>
   </section>
