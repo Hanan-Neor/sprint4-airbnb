@@ -10,18 +10,17 @@
   .space-title-secondary {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     font-size: 0.875rem;
     color: $clr3;
+    position: relative;
+
     .left-part {
       display: flex;
       justify-content: space-between;
-      align-items: center;
       gap: 10px;
-
+      margin-left: 1.2rem;
       .rating {
         display: flex;
-        align-items: center;
         gap: 10px;
 
         .total-rate {
@@ -29,21 +28,18 @@
           font-weight: 600;
         }
 
-        position: relative;
-
         &::before {
           font-family: 'awesome-solid';
           content: '\f005';
           color: $clr1;
           position: absolute;
-          right: 90px;
+          left: 0;
         }
       }
     }
 
     .save-space {
       display: flex;
-      align-items: center;
       position: relative;
       &::before {
         font-family: 'awesome-light';
@@ -66,7 +62,6 @@
       .space-description-title {
         display: flex;
         justify-content: space-between;
-        align-items: center;
         margin-bottom: 1rem;
         position: relative;
 
@@ -114,7 +109,7 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: auto;
-        row-gap: 0.4rem;
+        row-gap: 1rem;
         margin-bottom: 2rem;
         position: relative;
 
@@ -224,7 +219,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       row-gap: 1rem;
-      column-gap: 5rem;
+      column-gap: 100px;
       margin-bottom: 2rem;
 
       .rate-categories-item {
@@ -281,27 +276,3 @@
     }
   }
 }
-
-// <div class="reviews-container">
-//   <div class="rating">
-//     <p class="total-rate">{{ totalRate }}</p>
-//     <span>•</span>
-//     <p class="number-reviews">{{ numOfReviews }} reviews</p>
-//   </div>
-//   <ul class="rate-categories-list clear-list">
-//     <li
-//       class="rate-categories-item"
-//       v-for="(r, c, idx) in categoryRate"
-//       :key="idx"
-//     >
-//       <div class="category-title">{{ c }}:</div>
-//       <div class="box">
-//         <div class="category-bar-container">
-//           <div class="category-bar"></div>
-//         </div>
-//         <div class="category-rate">{{ r }}</div>
-//       </div>
-//     </li>
-//   </ul>
-//   <review-list :reviews="space.reviews"></review-list>
-// </div>

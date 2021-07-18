@@ -19,7 +19,8 @@
         <!-- <reserve-guests @guestsToSave="guestsToSave2" /> -->
         <reserve-guests2 :limit="space.capacity" @guestsCnt="guestsToSave2" />
       </div>
-      <button>Book</button>
+      <!-- <button class="gradient-btn">Book</button> -->
+      <gradient-btn :text="'Book'"></gradient-btn>
     </form>
   </section>
   <!-- </section> -->
@@ -29,7 +30,7 @@
 import reserveDate from './reserve-date.vue';
 import reserveGuests from './reserve-guests.vue';
 import reserveGuests2 from './reserve-guests2.vue';
-
+import gradientBtn from '../gradient-btn.vue';
 export default {
   // props: { space: Object, rate: Number, reviews: Number },
   props: ['space', 'rate', 'reviews'],
@@ -67,6 +68,7 @@ export default {
     reserveDate,
     reserveGuests,
     reserveGuests2,
+    gradientBtn,
   },
 };
 </script>

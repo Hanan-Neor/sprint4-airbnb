@@ -5,11 +5,13 @@
   border: 1px solid $clr4;
   border-radius: 15px;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
+  position: sticky;
+  height: 75%;
+  top: 0;
 
   .space-reserve-details {
     display: flex;
     justify-content: space-between;
-
     .rating {
       display: flex;
       gap: 0.4rem;
@@ -25,9 +27,9 @@
     border-bottom: hidden;
 
     .options {
-      border-top-left-radius: 8px;
-      border-top-right-radius: 8px;
+      border-radius: 8px;
       border: 1px solid $clr4;
+      margin-bottom: 2rem;
 
       .date-picker {
         border-bottom: 1px solid $clr4;
@@ -36,6 +38,13 @@
           border: 0;
         }
       }
+    }
+  }
+
+  .num-guests {
+    &.el-input-number {
+      width: 100%;
+      border: 0;
     }
   }
 }

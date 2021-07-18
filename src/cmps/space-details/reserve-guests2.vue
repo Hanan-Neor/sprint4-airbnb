@@ -19,7 +19,6 @@ export default {
   },
   methods: {
     handleChange(value) {
-      // console.log(value)
       this.$emit('guestsCnt', value);
     },
   },

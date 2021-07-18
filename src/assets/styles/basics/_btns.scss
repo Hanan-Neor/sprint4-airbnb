@@ -1,0 +1,22 @@
+:root {
+  --x: 0%;
+  --y: 0%;
+}
+
+.gradient-btn {
+  background-image: radial-gradient(
+    circle at var(--x) var(--y),
+    #ff385c 0%,
+    #e61e4d 27.5%,
+    #e31c5f 40%,
+    #d70466 57.5%,
+    #bd1e59 75%,
+    #bd1e59 100%
+  );
+  padding: 1rem;
+  border-radius: 8px;
+  border: 0;
+  cursor: pointer;
+  color: white;
+  font-size: 1.2rem;
+}
