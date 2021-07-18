@@ -54,23 +54,6 @@ $header-side-padding: 42px;
         padding: 21px;
         line-height: 42px;
     }
-    body{
-        @include for-mobile-layout {
-            background-color: orange;
-        }
-        
-        @include for-narrow-layout {
-          background-color: yellow;
-        }
-        
-        @include for-normal-layout {
-      background-color: green;
-        }
-        
-        @include for-wide-layout {
-          background-color: blue;
-        }
-    }
 
     .bottom-nav{
         position: fixed;
@@ -81,16 +64,46 @@ $header-side-padding: 42px;
         right:0;
         left:0;
         justify-content: center;
+        gap:30px;
         border-top: 1px solid rgb(221, 221, 221);
         line-height: 1.43;
-    color: #484848;
-    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
-    justify-content: center;
-    margin: 0px auto;
-    // max-width: 560px
-    .explore{
-            content: "\002B";
-    }
+        color: #484848;
+        font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+        justify-content: center;
+        margin: 0px auto;
+        z-index: 3;
+        .nav-item{
+            cursor: pointer;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            font-size: 10px;
+            .text{
+                font-size:10px;
+            }
+            :hover{
+                color: rgb(255, 56, 92);
+            }
+        }
+        // max-width: 560px
+        .nav-item ::before{
+            margin-bottom: 2px;
+        }
+        .explore::before{
+            font-size:30px;
+            content: '\f002';
+            font-family: 'awesome-solid';
+        }
+        .wishlists::before{
+            font-size:30px;
+            font-family: 'awesome-light';
+            content: '\f004';
+        }
+        .nav-login::before{
+            font-size:30px;
+            font-family: 'awesome-light';
+            content: '\f2bd';
+        }
     }
 }
 
