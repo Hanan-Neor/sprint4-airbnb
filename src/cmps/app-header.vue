@@ -115,6 +115,7 @@ export default {
     showLogin() {
       console.log("logging in...");
       this.loginOpen = true;
+      this.toggleNav();
       console.log(this.isLoginOpen);
     },
     closeLogin() {

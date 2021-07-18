@@ -7,12 +7,15 @@
         // opacity: 50%;
     }
     .breaker-image{
-        width:100vw;
+        // width:100vw -20px;
         img {
-            object-fit: fill;
+            border-radius: 24px;
+            object-fit: cover;
             width:100%;
             // width:100vw;
             height:402px;
+            padding-right: 10px;
+            padding-left: 10px;
             @include for-mobile-layout {
             }
         

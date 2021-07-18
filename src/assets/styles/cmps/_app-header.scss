@@ -1,111 +1,108 @@
 $header-side-padding: 42px;
 
-.app-header{
-    height: 80px;
-    justify-content: space-between;
-    // position: fixed;
-    // margin-bottom: 38px;;
-    // background-color: none;
+.app-header {
+  height: 80px;
+  justify-content: space-between;
+  // position: fixed;
+  margin-bottom: 38px;
+  // background-color: none;
+  right: 0;
+  left: 0;
+  top: 0;
+  align-items: center; //for filter
+  padding: 0 $header-side-padding;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  // margin-bottom: 38px;
+  button {
+    height: 42px;
+    width: 77px;
+    background-color: white;
+    border-radius: 21px;
+    border: 1px solid #dddddd;
+    .avatar {
+      height: 80%;
+      vertical-align: middle;
+      position: relative;
+      height: 32px;
+      width: 32px;
+      // margin-left: 12px;
+      left: 5px;
+      top: 2px;
+    }
+  }
+  .hamburger {
+    height: 16px;
+    width: 16px;
+    position: relative;
+    top: 10px;
+    margin-left: 12px;
+  }
+  .logo {
+    height: 32px;
+  }
+  .nav {
+    position: fixed;
+    height: 260px;
+    width: 240px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    right: $header-side-padding;
+    top: 55px;
+    background-color: white;
+    border-radius: 21px;
+    z-index: 3;
+    padding: 21px;
+    line-height: 42px;
+  }
+
+  .bottom-nav {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    background-color: #ffffff;
+    height: 65px;
     right: 0;
     left: 0;
-    top: 0;
-    align-items: center; //for filter
-    padding: 0 $header-side-padding;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    // margin-bottom: 38px;
-    button{
-        height: 42px;
-        width: 77px;
-        background-color: white;
-        border-radius: 21px;
-        border: 1px solid #dddddd;
-        .avatar{
-            height: 80%;
-            vertical-align: middle;
-            position: relative;
-            height: 32px;
-            width: 32px;
-            // margin-left: 12px;
-            left: 5px;
-            top: 2px;
-        }
+    justify-content: center;
+    gap: 30px;
+    border-top: 1px solid rgb(221, 221, 221);
+    line-height: 1.43;
+    color: #484848;
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
+      Helvetica Neue, sans-serif;
+    justify-content: center;
+    margin: 0px auto;
+    z-index: 3;
+    .nav-item {
+      cursor: pointer;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      font-size: 10px;
+      .text {
+        font-size: 10px;
+      }
+      :hover {
+        color: rgb(255, 56, 92);
+      }
     }
-    .hamburger{
-        height: 16px;
-        width: 16px;
-        position: relative;
-        top: 10px;
-        margin-left: 12px;
+    // max-width: 560px
+    .nav-item ::before {
+      margin-bottom: 2px;
     }
-    .logo{
-        height: 32px;
-        
+    .explore::before {
+      font-size: 30px;
+      content: '\f002';
+      font-family: 'awesome-solid';
     }
-    .nav{
-        position: fixed;
-        height: 260px;
-        width: 240px;
-        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-        right:$header-side-padding;
-        top: 55px;
-        background-color: white;
-        border-radius: 21px;
-        z-index: 3;
-        padding: 21px;
-        line-height: 42px;
+    .wishlists::before {
+      font-size: 30px;
+      font-family: 'awesome-light';
+      content: '\f004';
     }
-
-    .bottom-nav{
-        position: fixed;
-        bottom: 0;
-        display: flex;
-        background-color: #ffffff;
-        height: 65px;
-        right:0;
-        left:0;
-        justify-content: center;
-        gap:30px;
-        border-top: 1px solid rgb(221, 221, 221);
-        line-height: 1.43;
-        color: #484848;
-        font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
-        justify-content: center;
-        margin: 0px auto;
-        z-index: 3;
-        .nav-item{
-            cursor: pointer;
-            align-items: center;
-            display: flex;
-            flex-direction: column;
-            font-size: 10px;
-            .text{
-                font-size:10px;
-            }
-            :hover{
-                color: rgb(255, 56, 92);
-            }
-        }
-        // max-width: 560px
-        .nav-item ::before{
-            margin-bottom: 2px;
-        }
-        .explore::before{
-            font-size:30px;
-            content: '\f002';
-            font-family: 'awesome-solid';
-        }
-        .wishlists::before{
-            font-size:30px;
-            font-family: 'awesome-light';
-            content: '\f004';
-        }
-        .nav-login::before{
-            font-size:30px;
-            font-family: 'awesome-light';
-            content: '\f2bd';
-        }
+    .nav-login::before {
+      font-size: 30px;
+      font-family: 'awesome-light';
+      content: '\f2bd';
     }
+  }
 }
-
-
-
