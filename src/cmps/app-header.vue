@@ -1,14 +1,20 @@
 <template>
   <!-- <div class="app-header flex" :style="diplayState"> -->
   <div class="app-header flex" :style="headerPos">
-    <div>
-      <img v-if="isLarge" class="logo" src="../assets/img/logo.png" alt="" />
-    </div>
+    <router-link to="/" class="logo-container" :style="logoStyle">
+
+      <div class="logo"></div>
+    </router-link>
+    <!-- <div class="logo-container" :style="logoStyle" > -->
+      <!-- <img v-if="isLarge" class="logo" src="../assets/img/icons/logo.svg" alt="" /> -->
+      <!-- <img v-if="isLarge" class="logo" src="../assets/img/logo.png" alt="" /> -->
+    <!-- </div> -->
     <div>
       <space-filter :style="searchPos" />
     </div>
     <div class="flex" style="align-items:center">
-      <span v-if="isLarge">Become a host</span>
+
+      <span v-if="isLarge" class="becomeHost" :style="hostColor">Become a host</span>
       <login v-if="isLoginOpen" @close-login="closeLogin" />
       <template v-if="isLarge">
         <button class="flex pointer" @click="toggleNav">
@@ -90,7 +96,7 @@ export default {
         return {
           position: "relative",
           top: this.isIntersecting ? "150px" : "unset",
-          backgroung: this.isIntersecting ? "none" : "white",
+          background: this.isIntersecting ? "none" : "white",
         };
       } else {
         return {
@@ -98,6 +104,16 @@ export default {
         };
       }
     },
+    hostColor(){
+      return {
+        color: this.isIntersecting ? "white" : "inherit",
+      }
+    },
+    logoStyle(){
+      return {
+        color: this.isIntersecting ? "white" : "#ff385c",
+      }
+    }
   },
   data() {
     return {
