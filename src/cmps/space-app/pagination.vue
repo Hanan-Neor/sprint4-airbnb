@@ -41,9 +41,3 @@ export default {
   },
 };
 </script>
-
-<style>
-.pageNums {
-  display: flex;
-}
-</style>

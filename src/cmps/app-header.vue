@@ -1,7 +1,7 @@
 <template>
   <!-- <div class="app-header flex" :style="diplayState"> -->
   <div class="app-header flex" :style="headerPos">
-    <router-link to="/" class="logo-container" :style="logoStyle">
+    <router-link to="/" class="logo-container clear-link" :style="logoStyle">
 
       <div class="logo"></div>
     </router-link>
@@ -31,8 +31,9 @@
         </button>
 
         <ul class="nav pointer clear-list" v-if="isNavOpen">
-          <li @click="showLogin">login</li>
-          <li @click="showLogin">signup</li>
+          <li v-if="!loggedInUser" @click="showLogin">login</li>
+          <li v-if="!loggedInUser" @click="showLogin">signup</li>
+          <li v-if="loggedInUser" @click="logout">logout</li>
           <li>Host your home</li>
         </ul>
       </template>
@@ -76,7 +77,7 @@ export default {
     isLoginOpen() {
       return this.loginOpen;
     },
-    loggedInUser() {},
+    loggedInUser() {return this.$store.getters.loggedinUser },
     isNavOpen() {
       return this.navOpen;
     },
@@ -130,6 +131,11 @@ export default {
     };
   },
   methods: {
+    logout(){ 
+      this.$store.dispatch({type:'logout'})
+      this.toggleNav();
+      if (this.$route.name === 'space-details') this.$router.push('/');
+      },
     showLogin() {
       console.log("logging in...");
       this.loginOpen = true;
@@ -147,7 +153,7 @@ export default {
     },
     showExplore() {
       this.$store.commit({ type: "clearFilter"});
-      this.$router.push("/space");
+      if (this.$router.path !=='/space') this.$router.push("/space");
     },
   },
 };
