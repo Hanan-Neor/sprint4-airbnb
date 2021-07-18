@@ -4,6 +4,7 @@ import { spaceStore } from './modules/space.store.js';
 import { orderStore } from './modules/order.store.js';
 import { userStore } from './modules/user.store.js';
 import { reviewStore } from './modules/review.store.js';
+import { tripStore } from './modules/trip.store.js'
 
 Vue.use(Vuex);
 
@@ -23,5 +24,6 @@ export default new Vuex.Store({
     orderStore,
     userStore,
     reviewStore,
+    tripStore
   },
 });

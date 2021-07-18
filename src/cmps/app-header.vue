@@ -47,6 +47,9 @@ export default {
       eventBusService.$on('headerFixed', (state) =>{
         this.state = state
       });
+      eventBusService.$on('searchPos', (isIntersecting) =>{
+        this.isIntersecting = isIntersecting
+      });
       
     // },3000)
   },
@@ -67,15 +70,17 @@ export default {
     },
     headerPos(){
           return{
-            position:(this.state)? 'fixed' : 'relative'
+            position:(this.state)? 'fixed' : 'relative',
+            background: (this.isIntersecting)? 'none' : 'white',
+            'z-index': 10
           }
     },
     searchPos(){
       if(this.state){
         return{
           position: 'relative',
-          top: '70px'
-
+          top:(this.isIntersecting)? '30vh' : 'unset',
+          backgroung: (this.isIntersecting)? 'none' : 'white'
         }
       }else{
         return{
@@ -93,7 +98,8 @@ export default {
       // diplayState:{
       //   position:'fixed'
       // }
-      state: false
+      state: false,
+      isIntersecting:true
     };
   },
   methods: {
