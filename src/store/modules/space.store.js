@@ -8,6 +8,7 @@ export const spaceStore = {
       amenities: [],
       type: 'all',
       location: '',
+      country: '',//for explore list
       numGuests: 0,
       dates: { startDate: 0, endDate: 0 },
       count: Infinity, //change this to PAGE_SIZE when add pagination
@@ -47,6 +48,18 @@ export const spaceStore = {
       console.log('setting filter field*****');
       state.filterBy[field] = value;
     },
+    clearFilter(state){
+      state.filterBy = {
+        amenity: 'all',
+        amenities: [],
+        type: 'all',
+        location: '',
+        country: '',//for explore list
+        numGuests: 0,
+        dates: { startDate: 0, endDate: 0 },
+        count: Infinity, //change this to PAGE_SIZE when add pagination
+      }
+    }
     // addReview(state, { space }) {
     //   const idx = state.spaces.findIndex((t) => t._id === space._id);
     //   state.spaces.splice(idx, 1, space);

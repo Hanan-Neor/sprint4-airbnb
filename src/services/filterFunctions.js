@@ -9,6 +9,7 @@ var filterBy = {
   amenity: "",
   amenities: [],
   location: "",
+  country: '',//for explore list
   numGuests: 0,
   dates: { startDate: 0, endDate: 0 },
   count: Infinity //change this to PAGE_SIZE when add pagination
@@ -48,6 +49,7 @@ function getSpacesForDisplay(spaces, filterBy) {
       return (filterBy.type === 'all' || space.type === filterBy.type)
       && ((space.loc.address.toLowerCase().includes(filterBy.location.toLowerCase()) || space.loc.countryCode.toLowerCase().includes(filterBy.location.toLowerCase()) || space.loc.country.toLowerCase().includes(filterBy.location.toLowerCase())) 
       && space.capacity >= Number(filterBy.numGuests))
+      && space.loc.country.toLowerCase().includes(filterBy.country.toLowerCase())
     })
     //sort by reviews
     // spaces = spaces.sort((space1, space2) => {

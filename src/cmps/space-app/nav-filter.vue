@@ -70,9 +70,9 @@ export default {
       this.formOpen = !this.formOpen
     },
     //TODO eventually combine the 3 functions below into  function
-    // showFilterOptions() {},
-    // showGuestOptions() {},
-    // showFilters() {},
+    showFilterOptions() {},
+    showGuestOptions() {},
+    showFilters() {},
   },
   components: {
     filterForm,

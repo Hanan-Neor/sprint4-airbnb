@@ -107,7 +107,9 @@ export default {
       // diplayState:{
       //   position:'fixed'
       // }
+      //state is false when nav is hidden
       state: false,
+      // isIntersecting refers to background round 
       isIntersecting: true,
     };
   },

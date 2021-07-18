@@ -1,7 +1,7 @@
 <template>
   <section class="space-list" v-if="explores">
 
-        <explore-preview v-for="explore in explores" :key="explore.id" :explore="explore" />
+        <explore-preview @gotoSpaces="gotoSpaces" v-for="explore in explores" :key="explore.id" :explore="explore" />
   </section>
 </template>
 
@@ -42,7 +42,7 @@ export default {
                 'https://res.cloudinary.com/dymtestxz/image/upload/v1626394082/sprint4/spaces/2-%20Chalet%20Eigernordwand/space/7e7fca56-6af0-491a-95ba-fa92e96a9a0c_o5ux7j.webp',
             ],
             loc: {
-        country: 'Switzerland',
+        country: 'United Kingdom',
         countryCode: 'IL',
         address: 'Grindelwald, Bern',
         lat: 46.62433,
@@ -59,7 +59,7 @@ export default {
                 'https://res.cloudinary.com/dymtestxz/image/upload/v1626394082/sprint4/spaces/2-%20Chalet%20Eigernordwand/space/7e7fca56-6af0-491a-95ba-fa92e96a9a0c_o5ux7j.webp',
             ],
             loc: { 
-        country: 'Switzerland',
+        country: 'Israel',
         countryCode: 'IL',
         address: 'Grindelwald, Bern',
         lat: 46.62433,
@@ -76,7 +76,7 @@ export default {
                 'https://res.cloudinary.com/dymtestxz/image/upload/v1626394082/sprint4/spaces/2-%20Chalet%20Eigernordwand/space/7e7fca56-6af0-491a-95ba-fa92e96a9a0c_o5ux7j.webp',
             ],
             loc: {
-        country: 'Switzerland',
+        country: 'France',
         countryCode: 'IL',
         address: 'Grindelwald, Bern',
         lat: 46.62433,
@@ -89,6 +89,9 @@ export default {
   },
   name: "exploreList",
   methods: {
+    gotoSpaces(country){
+      this.$emit('gotoSpaces', country)
+    },
   },
   components: {
     explorePreview,
