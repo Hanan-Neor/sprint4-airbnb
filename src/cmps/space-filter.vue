@@ -1,5 +1,7 @@
 <template>
-  <div class="space-filter">
+  <div class="space-filter"  style="background: white;
+    border-radius: 32px;
+    padding: 10px 30px;">
     <form class="flex">
       <!-- <form @submit.prevent="setFilter" class="flex"> -->
       <input v-if="!showingFilters"
