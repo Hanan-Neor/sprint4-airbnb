@@ -146,7 +146,8 @@ export default {
       alert("please add wishlists");
     },
     showExplore() {
-      alert("what would you like to explore... coming soon...");
+      this.$store.commit({ type: "clearFilter"});
+      this.$router.push("/space");
     },
   },
 };

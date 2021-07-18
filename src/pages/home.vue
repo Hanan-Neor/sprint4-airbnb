@@ -5,10 +5,11 @@
       src="https://res.cloudinary.com/dymtestxz/image/upload/v1626437274/sprint4/homePage/57b9f708-bb12-498c-bc33-769f8fc43e63_gnsppx.webp"
       alt=""
     />
-    <button @click="gotoSpaces">I'm flexible</button>
+    <button class="header-image-button" @click="gotoSpaces">I'm flexible</button>
     <space-list :spaces="spaces" />
     <div class="breaker-image">
 
+      <button class="breaker-image-btn" @click="showPage">Get Inspired/host</button>
       <img
         src="https://a0.muscache.com/im/pictures/f0343d6a-328c-4213-90a2-13ba3572a01f.jpg?im_w=320"
         alt=""
@@ -85,6 +86,9 @@ export default {
         console.log("error in store moving to space-app from homepage", err);
         throw err;
       }
+    },
+    showPage(){
+      prompt('show host or explore page...')
     },
   },
 };

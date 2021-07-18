@@ -11,17 +11,26 @@ export const spaceStore = {
       country: '',//for explore list
       numGuests: 0,
       dates: { startDate: 0, endDate: 0 },
-      count: Infinity, //change this to PAGE_SIZE when add pagination
+      count: 20, //change this to PAGE_SIZE when add pagination
+      currPage: 1,
     },
   },
   getters: {
     spaces(state) {
+      const filterBy = state.filterBy
+      //pagination here
+      if (filterBy.count !== Infinity) {
+        const firstSpace = filterBy.count * (filterBy.currPage - 1);
+        const lastSpace = firstSpace + filterBy.count;
+        console.log('first', firstSpace, ": last", lastSpace);
+        return state.spaces.slice(firstSpace, lastSpace)
+      }
+      //if no max-page-size
       return state.spaces;
     },
-    // allSpaces(state) {
-    //   return state.spaces;
-    // },
-
+    totalSpaces(state){
+      return state.spaces.length;
+    },
     filterBy(state) {
       return state.filterBy;
     },
@@ -48,7 +57,7 @@ export const spaceStore = {
       console.log('setting filter field*****');
       state.filterBy[field] = value;
     },
-    clearFilter(state){
+    clearFilter(state) {
       state.filterBy = {
         amenity: 'all',
         amenities: [],

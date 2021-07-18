@@ -4,6 +4,7 @@
     <space-list @liked="liked" :spaces="spaces" />
 
 <!-- TODO add numbers for pagination here -->
+    <pagination v-if="numSpaces" :pageSize="pageSize" :numSpaces="numSpaces" @setPage="setPage" />
     <p>Enter dates to see full pricing. Additional fees apply. Taxes may be added.</p>
   </div>
 </template>
@@ -11,34 +12,50 @@
 <script>
 import spaceList from '../cmps/space-app/space-list.vue';
 import navFilter from '../cmps/space-app/nav-filter.vue';
+import pagination from '../cmps/space-app/pagination.vue';
+import { spaceService } from '../services/space.service.js' //TODO this will be removed when have server side filtering and sockets
 
 export default {
   components: { 
       spaceList,
       navFilter, 
+      pagination,
     },
   name: 'home',
   data() {
     return {
       spaceToEdit: {
         txt: '',
-        aboutUserId: null
-      }
+        aboutUserId: null,
+      },
+      pageSize: 5,
     }
   },
   computed: {
     spaces() {
       return this.$store.getters.spaces;
     },
+    numSpaces(){ return this.$store.getters.totalSpaces }
   },
-  created() {
-    this.$store.commit({type: 'setFilterField', field:'count', value:Infinity})
-    this.$store.dispatch({type: 'loadSpaces'})
+  async created() {
+    try {
+      await this.$store.commit({type: 'setFilterField', field:'count', value:this.pageSize})
+      this.$store.commit({type: 'setFilterField', field:'currPage', value:1})
+      const spaces = await this.$store.dispatch({type: 'loadSpaces'})
+    } catch(err) {
+      console.log('error creating spaces in store');
+      throw err;
+    }
   },
   methods: {
     liked(spaceId){
       // alert('hi!')
         //TODO send liked to space-store
+    },
+    setPage(currPage){
+      console.log('setting page...');
+      this.$store.commit({type: 'setFilterField', field:'currPage', value:currPage})
+      this.$store.dispatch({type: 'loadSpaces'})
     }
   }
 

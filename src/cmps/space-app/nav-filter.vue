@@ -39,7 +39,7 @@ export default {
         location: "",
         numGuests: 0,
         dates: { startDate: 0, endDate: 0 },
-        count: Infinity, //change this to PAGE_SIZE when add pagination
+        count: 20, //change this to PAGE_SIZE when add pagination
         showFilterForm: false,
       },
       formOpen: false,

@@ -1,4 +1,4 @@
-// import { httpService } from './http.service.js';
+import { httpService } from './http.service.js';
 import { storageService } from './async-storage.service.js';
 import { utilService } from './util.service.js';
 import { filterService } from './filterFunctions.js';
@@ -15,10 +15,10 @@ export const spaceService = {
 _createSpaces();
 
 async function query(filterBy) {
-  // return storageService.query(SPACE_KEY);
   console.log('filter in service', filterBy);
   try {
-    let spaces = await storageService.query(SPACE_KEY);
+    // let spaces = await httpService.get(`space`, filterBy) //SERVER STORAGE
+    let spaces = await storageService.query(SPACE_KEY); //CLIENT STORAGE
     const spacesForDisplay = await filterService.getSpacesForDisplay(
       spaces,
       filterBy
@@ -33,21 +33,27 @@ async function query(filterBy) {
 }
 
 function remove(spaceId) {
-  return storageService.remove(SPACE_KEY, spaceId);
+  // return httpService.delete(`space/${spaceId}`) //SERVER STORAGE
+  return storageService.remove(SPACE_KEY, spaceId); //CLIENT STORAGE
 }
 
-function save(space) {
+async function save(space) {
   if (space._id) {
+    // space = await httpService.put(`space/${space._id}`, space) //SERVER STORAGE
+    // return space; //SERVER STORAGE
     console.log('savingn space', space);
-    return storageService.put(SPACE_KEY, space);
+    return storageService.put(SPACE_KEY, space); //CLIENT STORAGE
   } else {
-    return storageService.post(SPACE_KEY, space);
+    // space = await httpService.post(`space`, space) //SERVER STORAGE
+    // return space //SERVER STORAGE
+    return storageService.post(SPACE_KEY, space); //CLIENT STORAGE
   }
 }
 
 async function getById(spaceId) {
-  const space = await storageService.get(SPACE_KEY, spaceId);
-  return space;
+  // return httpService.get(`space/${spaceId}`) //SERVER STORAGE
+  const space = await storageService.get(SPACE_KEY, spaceId); //CLIENT STORAGE
+  return space; //CLIENT STORAGE
 }
 
 function getEmptySpace() {
@@ -104,7 +110,11 @@ function getEmptySpace() {
 }
 
 async function _createSpaces() {
-  let spaces = await storageService.query(SPACE_KEY);
+  if (spaces && spaces.length) return spaces; //CLIENT STORAGE
+  
+  let spaces = await storageService.query(SPACE_KEY); //CLIENT STORAGE
+  // let spaces = utilService.loadFromStorage(SPACE_KEY); //SERVER STORAGE
+
   if (!spaces || !spaces.length) {
     spaces = [];
 
@@ -1474,7 +1484,8 @@ async function _createSpaces() {
     // ==========================================================================
     // ===========================================================================
 
-    storageService.postMany(SPACE_KEY, spaces);
+    // storageService.postMany(SPACE_KEY, spaces); //FOR CLIENT SIDE STORAGE NO SERVER
+    utilService.saveToStorage(SPACE_KEY, spaces) //FOR SERVER
   }
   return spaces;
 }

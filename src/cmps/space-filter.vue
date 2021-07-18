@@ -49,7 +49,7 @@ export default {
         location: "",
         numGuests: 0,
         dates: { startDate: 0, endDate: 0 },
-        count: Infinity, //change this to PAGE_SIZE when add pagination
+        count: 0, //change this to PAGE_SIZE when add pagination
       },
       showFilters: this.screenWidth > 720,
     };

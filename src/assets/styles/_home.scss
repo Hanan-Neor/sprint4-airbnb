@@ -8,12 +8,13 @@
     }
     .breaker-image{
         // width:100vw -20px;
+        text-align: center;
         img {
             border-radius: 24px;
             object-fit: cover;
             width:100%;
             // width:100vw;
-            height:402px;
+            height:529px;
             padding-right: 10px;
             padding-left: 10px;
             @include for-mobile-layout {
@@ -29,7 +30,37 @@
             @include for-wide-layout {
             }
         }
+       .breaker-image-btn{
+            position: relative;
+            cursor: pointer;
+            display: inline-block;
+            font-weight: 600;
+            color: rgb(72, 72, 72);
+            padding: 9px 16px;
+            background: black;
+            border-radius: 8px;
+            color: white;
+            // height:35px;
+            top:150px;
+            font-size: 14px;
+            font-family: inherit;
+            // line-height: 18px;
+            vertical-align: middle;
+            @include for-mobile-layout {
+            }
         
+            @include for-narrow-layout {
+            }
+        
+            @include for-normal-layout {
+        top:260px;
+        right:267px;
+            }
+        
+            @include for-wide-layout {
+            }
+          }
+          
 
     }
 }
