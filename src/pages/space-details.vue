@@ -72,7 +72,7 @@
           </div>
         </li>
       </ul>
-      <review-list :reviews="space.reviews"></review-list>
+      <review-list :reviews="space.reviews.slice(0, 6)"></review-list>
     </div>
     <div class="map-container" v-if="this.space.loc.lat">
       <p class="map-title">Where you'll be</p>
@@ -153,10 +153,10 @@ export default {
     },
     reserveToSave(reserve) {
       console.log(reserve);
-      const order = reserve
+      const order = reserve;
       // this.$store.dispatch({ type: "saveOrder"  ,order});
       // tripToOrder
-      this.$store.dispatch({ type: "tripToOrder"});
+      this.$store.dispatch({ type: 'tripToOrder' });
       // this.store.$commit('tripToOrder')
     },
   },

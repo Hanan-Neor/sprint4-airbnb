@@ -137,17 +137,17 @@
 </template>
 
 <script>
-import carousel from "./carousel";
-import carouselSlide from "./carouselSlide";
+import carousel from './carousel';
+import carouselSlide from './carouselSlide';
 export default {
-  name: "",
-  props: ["space"], //TODO convert to object
+  name: '',
+  props: ['space'], //TODO convert to object
   data() {
     return {
       picIdx: 0,
       isLiked: false,
       distance: 0,
-      likeColor: "rgba(0, 0, 0, 0.5)",
+      likeColor: 'rgba(0, 0, 0, 0.5)',
       // likeColor: 'rgb(255, 56, 92)'
 
       slides: this.space.imgUrls,
@@ -156,9 +156,9 @@ export default {
   methods: {
     like() {
       this.isLiked = !this.isLiked;
-      if (this.isLiked) this.likeColor = "rgb(255, 56, 92)";
-      else this.likeColor = "rgba(0, 0, 0, 0.5)";
-      this.$emit("liked", this.space._id);
+      if (this.isLiked) this.likeColor = 'rgb(255, 56, 92)';
+      else this.likeColor = 'rgba(0, 0, 0, 0.5)';
+      this.$emit('liked', this.space._id);
       // this.svgcolor();
     },
     prevPic() {
@@ -212,7 +212,7 @@ export default {
 
           // this.distance = (Math.sqrt((position.coords.latitude - this.space.loc.lat)**2+(position.coords.longitude-this.space.loc.lng)**2))
           // d = d * 6371;
-          this.distance = d.toLocaleString("en-US", {
+          this.distance = d.toLocaleString('en-US', {
             minimumFractionDigits: 0,
             maximumFractionDigits: 0,
           });
@@ -225,9 +225,9 @@ export default {
       // navigator.geolocation.getCurrentPosition(sucssessCb,errorCb)
     },
     priceToShow() {
-      return this.space.price.toLocaleString("en-US", {
-        style: "currency",
-        currency: "USD",
+      return this.space.price.toLocaleString('en-US', {
+        style: 'currency',
+        currency: 'USD',
         // useGrouping:true,
         minimumFractionDigits: 0,
         maximumFractionDigits: 0,
@@ -245,9 +245,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
-</style>
-
+<style scoped lang="scss"></style>
 
 <!--
 <style>
@@ -285,14 +283,14 @@ export default {
   /* z-index: 10; */
   /* margin-bottom: 10px; */
 }
-.carousel-slider {
-  /* border-radius: 12px; */
-  /* position: absolute;
+/* .carousel-slider { */
+/* border-radius: 12px; */
+/* position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0; */
-}
+/* } */
 .carousel-slider img {
   /* border-radius: 12px; */
 
