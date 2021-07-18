@@ -154,7 +154,10 @@ export default {
     reserveToSave(reserve) {
       console.log(reserve);
       const order = reserve
-      this.$store.dispatch({ type: "saveOrder"  ,order});
+      // this.$store.dispatch({ type: "saveOrder"  ,order});
+      // tripToOrder
+      this.$store.dispatch({ type: "tripToOrder"});
+      // this.store.$commit('tripToOrder')
     },
   },
 

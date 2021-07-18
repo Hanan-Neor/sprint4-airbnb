@@ -38,14 +38,17 @@ setTimeout(()=>{
   const sectionOne = document.querySelector(".top-bg")
 const options={
   // root:null,
-  // threshold:0,
-  rootMargin : "1px"
+  threshold:1,
+  rootMargin : "0px"
 }
 
 const observer = new IntersectionObserver(function 
 (entries, observer){
   entries.forEach(entry => {
-    console.log(entry);
+    // console.log(entry);
+    // console.log(entry.isIntersecting);
+  eventBusService.$emit('searchPos',entry.isIntersecting)
+
   });
 }, options);
 
