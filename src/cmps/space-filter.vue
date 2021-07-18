@@ -10,7 +10,6 @@
       />
       <template v-if="showingFilters">
       <input
-        class="big-screen"
         @input="setFilter"
         type="text"
         placeholder="location"

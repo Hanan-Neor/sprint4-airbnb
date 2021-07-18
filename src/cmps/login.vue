@@ -3,6 +3,7 @@
     <!-- <p>{{ msg }}</p> -->
 
       
+      <p @click="closeLogin" class="close pointer">x</p>
     <div v-if="loggedinUser">
       <h3>
         Loggedin User:
@@ -13,7 +14,6 @@
     <div v-else>
       <h4>Login or signup</h4>
       <hr>
-      <p @click="closeLogin" class="close pointer">x</p>
       <h2>Welcome to Airbnb</h2>
       <form @submit.prevent="doLogin">
 
