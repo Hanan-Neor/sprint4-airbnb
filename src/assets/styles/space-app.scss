@@ -20,7 +20,7 @@
   .nav-filter {
     // box-shadow: black 0px 6px 16px ;
     box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, 0.1);
-    -webkit-box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, 0.1);
     -moz-box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, 0.1);
 
     background-color: rgb(255, 255, 255);
@@ -62,3 +62,14 @@
 //       object-fit: cover;
 //     }
 //   }
+
+.visible-cover{
+  background-color: yellow;
+  z-index: 1;
+  background-color:black;
+    width:100vw;
+    height:100vh;
+    position:fixed;
+    opacity: 0.6;
+     
+}
