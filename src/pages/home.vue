@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <img
-      class="top-bg"
+      class="top-bg full"
       src="https://res.cloudinary.com/dymtestxz/image/upload/v1626437274/sprint4/homePage/57b9f708-bb12-498c-bc33-769f8fc43e63_gnsppx.webp"
       alt=""
     />
@@ -20,9 +20,9 @@
 </template>
 
 <script>
-import spaceList from "./../cmps/space-app/space-list.vue";
-import exploreList from "./../cmps/explore-list.vue";
-import { eventBusService } from "./../services/event-bus.service.js";
+import spaceList from './../cmps/space-app/space-list.vue';
+import exploreList from './../cmps/explore-list.vue';
+import { eventBusService } from './../services/event-bus.service.js';
 // @ is an alias to /src
 
 export default {
@@ -41,18 +41,18 @@ export default {
 
     setTimeout(() => {
       // const sectionOne = document.querySelector(".app-header")
-      const sectionOne = document.querySelector(".top-bg");
+      const sectionOne = document.querySelector('.top-bg');
       const options = {
         // root:null,
         threshold: 1,
-        rootMargin: "0px",
+        rootMargin: '0px',
       };
 
-      const observer = new IntersectionObserver(function (entries, observer) {
+      const observer = new IntersectionObserver(function(entries, observer) {
         entries.forEach((entry) => {
           // console.log(entry);
           // console.log(entry.isIntersecting);
-          eventBusService.$emit("searchPos", entry.isIntersecting);
+          eventBusService.$emit('searchPos', entry.isIntersecting);
         });
       }, options);
 
@@ -60,7 +60,7 @@ export default {
     }, 1000);
   },
   destroyed() {
-    eventBusService.$emit("headerFixed", false);
+    eventBusService.$emit('headerFixed', false);
     // eventbus.$emit('headerFixed' , false)
 
     // eventBusService.$off('headerFixed');
@@ -94,4 +94,5 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+</style>

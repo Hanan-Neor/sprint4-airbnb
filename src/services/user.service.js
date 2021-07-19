@@ -4,8 +4,6 @@ import { socketService, SOCKET_EVENT_USER_UPDATED } from './socket.service';
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser';
 var gWatchedUser = null;
 
-
-
 export const userService = {
   login,
   logout,
@@ -62,7 +60,7 @@ async function signup(userCred) {
   // const user = await httpService.post('auth/signup', userCred)  //SERVER STORAGE
   // socketService.emit('set-user-socket', user._id); //SERVER STORAGE
   console.log('just signed up', user);
-  const users = await getUsers()
+  const users = await getUsers();
   console.log('users', users);
   return _saveLocalUser(user);
 }
@@ -85,11 +83,10 @@ function _saveLocalUser(user) {
 }
 
 function getLoggedinUser() {
-  
   if (!sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER)) {
-    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, "null") ;
-}
-  return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER));
+    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, 'null');
+  }
+  // return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER));
 }
 
 // // This IIFE functions for Dev purposes

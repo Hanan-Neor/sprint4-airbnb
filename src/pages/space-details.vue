@@ -110,6 +110,37 @@ export default {
         reviews: [],
       },
       host: {},
+
+      // order: {
+      //   hostId: '',
+      //   createdAt: 0,
+      //   buyer: {
+      //     _id: '',
+      //     fullname: '',
+      //   },
+      //   totalPrice: 0,
+
+      //   startDate: '',
+      //   endDate: '',
+      //   guests: 0,
+      //   //     "guests": {
+      //   //       "adults":,
+      //   //       "kids": 1
+      //   //     },
+      //   // dest: {
+      //   //   country: "",
+      //   //   countryCode: "",
+      //   //   address: "",
+      //   //   lat: null,
+      //   //   lng: null,
+      //   // },
+      //   stay: {
+      //     _id: '',
+      //     name: '',
+      //     price: 0,
+      //   },
+      //   status: 'pending',
+      // },
     };
   },
 
@@ -159,12 +190,17 @@ export default {
       return amenity.toLowerCase().replace(' ', '-');
     },
     reserveToSave(reserve) {
-      console.log(reserve);
-      const order = reserve;
-      // this.$store.dispatch({ type: "saveOrder"  ,order});
-      // tripToOrder
-      this.$store.dispatch({ type: 'tripToOrder' });
-      // this.store.$commit('tripToOrder')
+      //   // console.log(reserve);
+      //   let order = reserve;
+      //   this.order.guests = order.guests;
+      //   this.order.startDate = order.date.start;
+      //   this.order.endDate = order.date.end;
+      //   order = this.order;
+      //   this.$store.dispatch({ type: 'saveOrder', order });
+      //   // tripToOrder
+      //   // this.$store.dispatch({ type: 'tripToOrder' });
+      //   // this.$store.commit('tripToOrder')
+      //   // console.log(this.order);
     },
     showViewMsg(){
       console.log('viewing!');
@@ -183,8 +219,22 @@ export default {
           const space = await spaceService.getById(spaceId);
           this.space = space;
           this.host = space.host;
+
+          // this.order.hostId = space.host._id;
+          // this.order.createdAt = Date.now();
+          // this.order.buyer._id = this.$store.getters.loggedinUser._id;
+          // this.order.buyer.fullname = this.$store.getters.loggedinUser.fullname;
+          // this.order.stay._id = space._id;
+          // this.order.stay.name = space.name;
+          // this.order.stay.price = space.price;
+
+          // this.order.dest.country = this.space.loc.country;
+          // this.order.dest.countryCode = this.space.loc.countryCode;
+          // this.order.dest.address = this.space.loc.address;
+          // this.order.dest.lat = this.space.loc.lat;
+          // this.order.dest.lng = this.space.loc.lng;
         } catch (error) {
-          console.log('cannot get space', space);
+          console.log('cannot get space', error);
         }
       },
     },

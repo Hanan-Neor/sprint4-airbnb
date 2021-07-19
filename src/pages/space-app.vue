@@ -26,7 +26,7 @@ export default {
     return {
       spaceToEdit: {
         txt: '',
-        aboutUserId: null,
+        aboutUserId: '',
       },
       pageSize: 10,
     }
@@ -56,6 +56,9 @@ export default {
       console.log('setting page...');
       this.$store.commit({type: 'setFilterField', field:'currPage', value:currPage})
       this.$store.dispatch({type: 'loadSpaces'})
+        console.log(spaceId);
+    this.$store.dispatch({type: 'liked',spaceId})
+
     }
   }
 

@@ -11,10 +11,10 @@
       </h3>
     </div>
     <div v-else>
-      <div class="title"></div>
-      <h4>{{ title }}</h4>
+      <h4>Login or signup</h4>
+      <hr />
       <h2>Welcome to Airbnb</h2>
-      <form @submit.prevent="doLogin" v-if="isLoginForm">
+      <form @submit.prevent="doLogin">
         <input
           class="text-input"
           type="text"
@@ -30,7 +30,9 @@
         />
         <button>Login</button>
       </form>
-      <form @submit.prevent="doSignup" v-else>
+      <hr />
+      <form @submit.prevent="doSignup">
+        <h2>signup</h2>
         <input
           class="text-input"
           type="text"
@@ -77,6 +79,7 @@ export default {
       signupCred: { username: "", password: "", fullname: "" },
       loginForm: "",
       title: "",
+       // signupCred: { username: "", password: "", fullname: "" , likedSpacesIds:[]},
     };
   },
   computed: {
@@ -101,7 +104,7 @@ export default {
   methods: {
     async doLogin() {
       if (!this.loginCred.username) {
-        this.msg = "Please enter username/password";
+        this.msg = 'Please enter username/password';
         return;
       }
       try {
@@ -110,7 +113,7 @@ export default {
         if (this.$router.path !== "/space") this.$router.push("/space");
       } catch (err) {
         console.log(err);
-        this.msg = "Failed to login";
+        this.msg = 'Failed to login';
       }
     },
     toggleFormType() {
@@ -118,7 +121,7 @@ export default {
       this.title = this.formType === "login" ? "Signup" : "Login";
     },
     doLogout() {
-      this.$store.dispatch({ type: "logout" });
+      this.$store.dispatch({ type: 'logout' });
     },
     async doSignup() {
       if (
@@ -126,7 +129,7 @@ export default {
         !this.signupCred.password ||
         !this.signupCred.username
       ) {
-        this.msg = "Please fill up the form";
+        this.msg = 'Please fill up the form';
         return;
       }
       await this.$store.dispatch({ type: "signup", userCred: this.signupCred });

@@ -4,10 +4,7 @@
     <router-link to="/" class="logo-container clear-link" :style="logoStyle">
       <div class="logo"></div>
     </router-link>
-    <!-- <div class="logo-container" :style="logoStyle" > -->
-    <!-- <img v-if="isLarge" class="logo" src="../assets/img/icons/logo.svg" alt="" /> -->
-    <!-- <img v-if="isLarge" class="logo" src="../assets/img/logo.png" alt="" /> -->
-    <!-- </div> -->
+
     <div>
       <space-filter :style="searchPos" />
     </div>
@@ -15,32 +12,32 @@
       <span v-if="isLarge" class="becomeHost" :style="hostColor"
         >Become a host</span
       >
+
       <login
         v-if="isLoginOpen"
         @close-login="closeLogin"
         :formType="getLoginFormType"
       />
-      <template v-if="isLarge">
-        <button class="flex pointer" @click="toggleNav">
-          <img
-            class="hamburger"
-            src="../assets/img/icons/hamburger.png"
-            alt=""
-          />
-          <img
-            class="avatar"
-            src="https://www.cnet.com/a/img/liJ9UZA87zs1viJiuEfVnL7YYfw=/940x0/2020/05/18/5bac8cc1-4bd5-4496-a8c3-66a6cd12d0cb/fb-avatar-2.jpg"
-            alt="avatar"
-          />
-        </button>
+    </div>
+    <template v-if="isLarge">
+      <button class="flex pointer" @click="toggleNav">
+        <img class="hamburger" src="../assets/img/icons/hamburger.png" alt="" />
+        <img
+          class="avatar"
+          src="https://www.cnet.com/a/img/liJ9UZA87zs1viJiuEfVnL7YYfw=/940x0/2020/05/18/5bac8cc1-4bd5-4496-a8c3-66a6cd12d0cb/fb-avatar-2.jpg"
+          alt="avatar"
+        />
+      </button>
 
-        <ul class="nav pointer clear-list" v-if="isNavOpen">
-          <li v-if="!loggedInUser" @click="showLogin('login')">login</li>
-          <li v-if="!loggedInUser" @click="showLogin('signup')">signup</li>
-          <li v-if="loggedInUser" @click="logout">logout</li>
-          <li>Host your home</li>
-        </ul>
-      </template>
+      <ul class="nav pointer clear-list" v-if="isNavOpen">
+        <li v-if="!loggedInUser" @click="showLogin('login')">login</li>
+        <li v-if="!loggedInUser" @click="showLogin('signup')">signup</li>
+        <li v-if="loggedInUser" @click="logout">logout</li>
+        <li>Host your home</li>
+      </ul>
+    </template>
+    <section>
+      <!-- <div class=" full"> -->
 
       <div v-if="!isLarge" class="bottom-nav">
         <div @click="showExplore" class="explore nav-item">
@@ -53,7 +50,10 @@
           <p class="text">wishlists</p>
         </div>
       </div>
-    </div>
+      <!-- </div> -->
+      <!-- </nav> -->
+      <!-- </div> -->
+    </section>
   </div>
 </template>
 
@@ -106,7 +106,7 @@ export default {
         return {
           position: "relative",
           top: this.isIntersecting ? "150px" : "unset",
-          background: this.isIntersecting ? "none" : "white",
+          backgroung: this.isIntersecting ? "none" : "white",
         };
       } else {
         return {
@@ -150,7 +150,7 @@ export default {
       this.loginFormType = formType;
       this.loginOpen = true;
       this.toggleNav();
-      console.log(this.isLoginOpen);
+      // console.log(this.isLoginOpen);
     },
     closeLogin() {
       this.loginOpen = false;
@@ -170,4 +170,8 @@ export default {
 </script>
 
 <style>
+.header {
+  position: fixed;
+  display: flex;
+}
 </style>
