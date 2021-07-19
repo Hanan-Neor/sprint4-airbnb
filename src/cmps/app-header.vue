@@ -18,6 +18,7 @@
           v-if="isLoginOpen"
           @close-login="closeLogin"
           :formType="getLoginFormType"
+         
         />
      
       <template v-if="isLarge">
