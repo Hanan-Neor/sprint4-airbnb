@@ -199,7 +199,9 @@ export default {
   },
   computed: {
     islikedByUser(){
+
       const user = this.$store.getters.loggedinUser
+      if(!user || user.length===0)return
       return user.likedSpacesIds.includes(this.space._id)
       // return user.likedSpacesIds.find((spaceId)=>{
       //     return spaceId === this.space._id
