@@ -16,6 +16,8 @@ $form-border-radius: 10px;
     border-radius: $form-border-radius;
     z-index: 3;
     background-color: white;
+
+    
     .label-container{
         display: flex;
         flex-direction: column;
@@ -62,7 +64,7 @@ $form-border-radius: 10px;
         max-width: 503px;
         // margin: auto;
     }
-
+ 
  
   
 }
@@ -72,6 +74,18 @@ $form-border-radius: 10px;
     // height: 700px;
     // padding: 25px; 
     // color: $clr-form-text;
+    .close{
+        position: absolute;
+    }
+    .form-toggle{
+        color:rgb(215, 4, 102);
+        text-align: center; 
+        p {
+
+            margin: auto;
+        }
+    }
+    text-align: center; 
     border: 1px solid $clr-form-input-border;
     position: fixed;
     top: 50%;

@@ -1,0 +1,23 @@
+.pagination{
+    color: #222222;
+    justify-content: center;
+    p {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 32px;
+        width:32px;
+        margin-right: 8px;
+        margin-left: 8px;
+        font-size: 14px;
+        transition: -ms-transform 0.25s ease,-webkit-transform 0.25s ease,transform 0.25s ease;
+        cursor: pointer;
+        border-radius: 50%;
+        flex-shrink: 0;
+        font-weight: 600;
+        line-height: 18px;
+    }
+    p:hover{
+        background-color: #F7F7F7;
+    }
+}

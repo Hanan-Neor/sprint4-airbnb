@@ -2,7 +2,6 @@ import { storageService } from './async-storage.service';
 import { httpService } from './http.service';
 import { socketService, SOCKET_EVENT_USER_UPDATED } from './socket.service';
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser';
-// const SCORE_FOR_REVIEW = 10;
 var gWatchedUser = null;
 
 export const userService = {
@@ -48,28 +47,27 @@ async function update(user) {
 }
 
 async function login(userCred) {
-  const users = await storageService.query('user');
-  const user = users.find((user) => user.username === userCred.username);
-  return _saveLocalUser(user);
-
-  // const user = await httpService.post('auth/login', userCred)
-  // socketService.emit('login', user._id);
-  // if (user) return _saveLocalUser(user)
+  const users = await storageService.query('user'); //CLIENT STORAGE
+  const user = users.find((user) => user.username === userCred.username); //CLIENT STORAGE
+  return _saveLocalUser(user); //CLIENT STORAGE
+  
+  // const user = await httpService.post('auth/login', userCred) //SERVER STORAGE
+  // socketService.emit('login', user._id); //SERVER STORAGE
+  // if (user) return _saveLocalUser(user); //SERVER STORAGE
 }
 async function signup(userCred) {
-  userCred.score = 100;
-  const user = await storageService.post('user', userCred);
-  // const user = await httpService.post('auth/signup', userCred)
-  // socketService.emit('set-user-socket', user._id);
+  const user = await storageService.post('user', userCred); //CLIENT STORAGE
+  // const user = await httpService.post('auth/signup', userCred)  //SERVER STORAGE
+  // socketService.emit('set-user-socket', user._id); //SERVER STORAGE
   console.log('just signed up', user);
   const users = await getUsers();
   console.log('users', users);
   return _saveLocalUser(user);
 }
 async function logout() {
-  sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER);
-  // socketService.emit('unset-user-socket');
-  // return await httpService.post('auth/logout')
+  sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER); 
+  // socketService.emit('unset-user-socket'); //SERVER STORAGE
+  // return await httpService.post('auth/logout') //SERVER STORAGE
 }
 
 async function increaseScore(by = SCORE_FOR_REVIEW) {
@@ -88,7 +86,7 @@ function getLoggedinUser() {
   if (!sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER)) {
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, 'null');
   }
-  // return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER));
+  return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER));
 }
 
 // // This IIFE functions for Dev purposes

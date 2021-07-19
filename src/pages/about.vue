@@ -1,5 +1,19 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <p>about us...</p>
+    <!-- <chat-app /> -->
   </div>
 </template>
+
+<script>
+import chatApp from './../cmps//space-details/chat-app.vue'
+export default {
+  components:{
+    chatApp
+  }
+}
+</script>
+
+<style>
+
+</style>

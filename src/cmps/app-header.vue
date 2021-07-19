@@ -1,65 +1,81 @@
 <template>
-  <!-- <div class="app-header flex" :style="diplayState"> -->
   <section>
-    <!-- <div class=" full"> -->
+    <!-- <div class="app-header flex" :style="diplayState"> -->
     <nav class="app-header flex" :style="headerPos">
-      <img v-if="isLarge" class="logo" src="../assets/img/logo.png" alt="" />
+      <router-link to="/" class="logo-container clear-link" :style="logoStyle">
+        <div class="logo"></div>
+      </router-link>
       <div>
         <space-filter :style="searchPos" />
       </div>
-      <div class="flex" style="align-items:center">
-        <span v-if="isLarge">Become a host</span>
-        <login v-if="isLoginOpen" @close-login="closeLogin" />
-        <template v-if="isLarge">
-          <button class="flex pointer" @click="toggleNav">
-            <img
-              class="hamburger"
-              src="../assets/img/icons/hamburger.png"
-              alt=""
-            />
-            <img
-              class="avatar"
-              src="https://www.cnet.com/a/img/liJ9UZA87zs1viJiuEfVnL7YYfw=/940x0/2020/05/18/5bac8cc1-4bd5-4496-a8c3-66a6cd12d0cb/fb-avatar-2.jpg"
-              alt="avatar"
-            />
-          </button>
 
-          <ul class="nav pointer clear-list" v-if="isNavOpen">
-            <li @click="showLogin">login</li>
-            <li @click="showLogin">signup</li>
-            <li>Host your home</li>
-          </ul>
-        </template>
+      <div class="flex" style="align-items: center">
+        <span v-if="isLarge" class="becomeHost" :style="hostColor"
+          >Become a host</span
+        >
 
-        <div v-if="!isLarge" class="bottom-nav">
-          <div @click="showExplore" class="explore nav-item">
-            <p class="text">explore</p>
-          </div>
-          <div @click="showLogin" class="nav-login nav-item">
-            <p class="text">login</p>
-          </div>
-          <div @click="showWhishlist" class="wishlists nav-item">
-            <p class="text">wishlists</p>
-          </div>
+        <login
+          v-if="isLoginOpen"
+          @close-login="closeLogin"
+          :formType="getLoginFormType"
+         
+        />
+     
+      <template v-if="isLarge">
+        <button class="flex pointer" @click="toggleNav">
+          <img
+            class="hamburger"
+            src="../assets/img/icons/hamburger.png"
+            alt=""
+          />
+          <img
+            class="avatar"
+            src="https://www.cnet.com/a/img/liJ9UZA87zs1viJiuEfVnL7YYfw=/940x0/2020/05/18/5bac8cc1-4bd5-4496-a8c3-66a6cd12d0cb/fb-avatar-2.jpg"
+            alt="avatar"
+          />
+        </button>
+
+        <ul class="nav pointer clear-list" v-if="isNavOpen">
+          <li v-if="!loggedInUser" @click="showLogin('login')">login</li>
+          <li v-if="!loggedInUser" @click="showLogin('signup')">signup</li>
+          <li v-if="loggedInUser" @click="logout">logout</li>
+          <li>Host your home</li>
+        </ul>
+      </template>
+
+      <!-- <div class=" full"> -->
+
+      <div v-if="!isLarge" class="bottom-nav">
+        <div @click="showExplore" class="explore nav-item">
+          <p class="text">explore</p>
+        </div>
+        <div @click="showLogin" class="nav-login nav-item">
+          <p class="text">login</p>
+        </div>
+        <div @click="showWhishlist" class="wishlists nav-item">
+          <p class="text">wishlists</p>
         </div>
       </div>
+       </div>
     </nav>
-    <!-- </div> -->
   </section>
 </template>
 
 <script>
-import spaceFilter from './space-filter.vue';
-import login from './login.vue';
-import { eventBusService } from './../services/event-bus.service.js';
+import spaceFilter from "./space-filter.vue";
+import login from "./login.vue";
+import { eventBusService } from "./../services/event-bus.service.js";
 
 export default {
   created() {
-    eventBusService.$on('headerFixed', (state) => {
+    eventBusService.$on("headerFixed", (state) => {
       this.state = state;
     });
-    eventBusService.$on('searchPos', (isIntersecting) => {
+    eventBusService.$on("searchPos", (isIntersecting) => {
       this.isIntersecting = isIntersecting;
+    });
+    eventBusService.$on("likedWithoutUser", () => {
+      this.showLogin();
     });
 
     // },3000)
@@ -69,10 +85,15 @@ export default {
     login,
   },
   computed: {
+    getLoginFormType() {
+      return this.loginFormType;
+    },
     isLoginOpen() {
       return this.loginOpen;
     },
-    loggedInUser() {},
+    loggedInUser() {
+      return this.$store.getters.loggedinUser;
+    },
     isNavOpen() {
       return this.navOpen;
     },
@@ -81,41 +102,59 @@ export default {
     },
     headerPos() {
       return {
-        position: this.state ? 'fixed' : 'relative',
-        background: this.isIntersecting ? 'none' : 'white',
+        position: this.state ? "fixed" : "relative",
+        background: this.isIntersecting ? "none" : "white",
         // color: this.isIntersecting ? 'white' : 'black',
-        'z-index': 10,
+        "z-index": 10,
       };
     },
     searchPos() {
       if (this.state) {
         return {
-          position: 'relative',
-          top: this.isIntersecting ? '150px' : 'unset',
-          backgroung: this.isIntersecting ? 'none' : 'white',
+          position: "relative",
+          top: this.isIntersecting ? "150px" : "unset",
+          backgroung: this.isIntersecting ? "none" : "white",
         };
       } else {
         return {
-          position: 'relative',
+          position: "relative",
         };
       }
+    },
+    hostColor() {
+      return {
+        color: this.isIntersecting ? "white" : "inherit",
+      };
+    },
+    logoStyle() {
+      return {
+        color: this.isIntersecting ? "white" : "#ff385c",
+      };
     },
   },
   data() {
     return {
+      loginFormType: "",
       loginOpen: false,
       navOpen: false,
       screenWidth: window.innerWidth,
       // diplayState:{
       //   position:'fixed'
       // }
+      //state is false when nav is hidden
       state: false,
+      // isIntersecting refers to background round
       isIntersecting: true,
     };
   },
   methods: {
-    showLogin() {
-      // console.log('logging in...');
+    logout() {
+      this.$store.dispatch({ type: "logout" });
+      this.toggleNav();
+      if (this.$route.name === "space-details") this.$router.push("/");
+    },
+    showLogin(formType) {
+      this.loginFormType = formType;
       this.loginOpen = true;
       this.toggleNav();
       // console.log(this.isLoginOpen);
@@ -127,13 +166,19 @@ export default {
       this.navOpen = !this.navOpen;
     },
     showWhishlist() {
-      alert('please add wishlists');
+      alert("please add wishlists");
     },
     showExplore() {
-      alert('what would you like to explore... coming soon...');
+      this.$store.commit({ type: "clearFilter" });
+      if (this.$router.path !== "/space") this.$router.push("/space");
     },
   },
 };
 </script>
 
-<style></style>
+<style>
+.header {
+  position: fixed;
+  display: flex;
+}
+</style>

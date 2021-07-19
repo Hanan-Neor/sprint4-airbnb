@@ -39,8 +39,9 @@ export default {
         location: "",
         numGuests: 0,
         dates: { startDate: 0, endDate: 0 },
-        count: Infinity, //change this to PAGE_SIZE when add pagination
+        count: 20, //change this to PAGE_SIZE when add pagination
         showFilterForm: false,
+        currPage: 1,
       },
       formOpen: false,
     };
@@ -70,9 +71,11 @@ export default {
       this.formOpen = !this.formOpen
     },
     //TODO eventually combine the 3 functions below into  function
-    // showFilterOptions() {},
-    // showGuestOptions() {},
-    // showFilters() {},
+    showFilterOptions() {alert('filter options coming soon')},
+    showGuestOptions() {},
+    showFilters() {
+      alert('filter form coming soon')
+    },
   },
   components: {
     filterForm,

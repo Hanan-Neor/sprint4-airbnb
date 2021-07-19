@@ -7,23 +7,24 @@ export const SOCKET_EVENT_REVIEW_ADDED = 'review-added';
 export const SOCKET_EVENT_REVIEW_ABOUT_YOU = 'review-about-you';
 
 const baseUrl = process.env.NODE_ENV === 'production' ? '' : '//localhost:3030';
-// export const socketService = createSocketService()
-export const socketService = createDummySocketService();
+export const socketService = createSocketService(); //SERVER STORAGE
+// export const socketService = createDummySocketService();//CLIENT STORAGE
 
 window.socketService = socketService;
 
-// var socketIsReady = false;
+var socketIsReady = false; //SERVER STORAGE
 socketService.setup();
 
 function createSocketService() {
-  var socket = null;
+  // var socket = null;
+  var socket = io(baseUrl)
   const socketService = {
     async setup() {
       // YaronB: Need to send a dummy ajax request as to setup the socket-session correctly
-      // await httpService.get('setup-session')
-      // socket = io(baseUrl, { reconnection: false})
-      socket = io(baseUrl);
-      // socketIsReady = true;
+      await httpService.get('setup-session') //SERVER STORAGE
+      socket = io(baseUrl, { reconnection: false}) //SERVER STORAGE
+      // socket = io(baseUrl);
+      socketIsReady = true; //SERVER STORAGE
     },
     on(eventName, cb) {
       socket.on(eventName, cb);
@@ -79,7 +80,7 @@ function createDummySocketService() {
 }
 
 // Basic Tests
-// function cb(x) {console.log(x)}
-// socketService.on('baba', cb)
-// socketService.emit('baba', 'DATA')
-// socketService.off('baba', cb)
+function cb(x) {console.log(x)}
+socketService.on('baba', cb)
+socketService.emit('baba', 'DATA')
+socketService.off('baba', cb)

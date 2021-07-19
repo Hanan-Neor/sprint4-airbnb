@@ -5,19 +5,17 @@
       src="https://res.cloudinary.com/dymtestxz/image/upload/v1626437274/sprint4/homePage/57b9f708-bb12-498c-bc33-769f8fc43e63_gnsppx.webp"
       alt=""
     />
-    <button @click="gotoSpaces({ field: 'count', value: Infinity })">
-      I'm flexible
-    </button>
+    <button class="header-image-button" @click="gotoSpaces">I'm flexible</button>
     <space-list :spaces="spaces" />
     <div class="breaker-image">
-      <!-- <img src="https://media.istockphoto.com/photos/abstract-art-of-pastel-watercolor-on-sketch-paper-texture-for-design-picture-id1050248898?k=6&m=1050248898&s=612x612&w=0&h=qsLmYVcPrQrgPvdZ4pCHQE2cdkoLkg8wn5WWnig7cns=" alt=""> -->
 
+      <button class="breaker-image-btn" @click="showPage">Get Inspired/host</button>
       <img
         src="https://a0.muscache.com/im/pictures/f0343d6a-328c-4213-90a2-13ba3572a01f.jpg?im_w=320"
         alt=""
       />
     </div>
-    <explore-list :spaces="spaces" />
+    <explore-list @gotoSpaces="gotoCountrySpaces" :spaces="spaces" />
   </div>
 </template>
 
@@ -28,16 +26,17 @@ import { eventBusService } from './../services/event-bus.service.js';
 // @ is an alias to /src
 
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
     spaceList,
     exploreList,
   },
   created() {
-    this.$store.commit({ type: 'setFilterField', field: 'count', value: 4 });
-    this.$store.dispatch({ type: 'loadSpaces' });
-    console.log('spaces in home', this.$store.getters.spaces);
-    eventBusService.$emit('headerFixed', true);
+    this.$store.commit({ type: "clearFilter"});
+    this.$store.commit({ type: "setFilterField", field: "count", value: 4 });
+    this.$store.dispatch({ type: "loadSpaces" });
+    console.log("spaces in home", this.$store.getters.spaces);
+    eventBusService.$emit("headerFixed", true);
     // eventbus.$emit('headerFixed', true)
 
     setTimeout(() => {
@@ -72,22 +71,28 @@ export default {
     },
   },
   methods: {
-    async gotoSpaces({ field, value }) {
+    async gotoCountrySpaces(country) {
+      this.$store.commit({
+        type: "setFilterField",
+        field: "country",
+        value: country,
+      });
+      this.gotoSpaces();
+    },
+    async gotoSpaces() {
       try {
-        this.$store.commit({
-          type: 'setFilterField',
-          field: field,
-          value: value,
-        });
-        await this.$store.dispatch({ type: 'loadSpaces' }); //TODO this does not need to be here - they are also loaded in the app page, lets move all filtering to the load function
-        this.$router.push('/space');
+        this.$router.push("/space");
       } catch (err) {
-        console.log('error in store moving to space-app from homepage', err);
+        console.log("error in store moving to space-app from homepage", err);
         throw err;
       }
+    },
+    showPage(){
+      prompt('show host or explore page...')
     },
   },
 };
 </script>
 
-<style></style>
+<style>
+</style>

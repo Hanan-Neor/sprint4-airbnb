@@ -107,4 +107,25 @@ $header-side-padding: 42px;
       content: '\f2bd';
     }
   }
+  .logo-container{
+    color: 	#ff385c;
+    cursor: pointer;
+  }
+  .logo::before{
+    font-size: 30px;
+    content:'\f7e5';
+    // content: '\f2bd';
+    font-family: 'awesome-solid';
+    // font-family: 'awesome-light';
+
+  }
+  .becomeHost{
+    font-weight: 600;
+    line-height: 18px;
+    cursor: pointer;
+    background: transparent;
+    font-size: 14px;
+    margin-right: 8px;
+  }
+
 }

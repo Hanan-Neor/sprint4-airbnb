@@ -4,6 +4,7 @@ import home from '../pages/home.vue';
 import spaceApp from './../pages/space-app.vue'
 import spaceDetails from '../pages/space-details.vue'
 import spaceEditAdd from '../pages/space-edit-add.vue'
+import about from '../pages/about.vue'
 
 Vue.use(VueRouter);
 
@@ -12,6 +13,11 @@ const routes = [
     path: '/',
     name: 'home',
     component: home,
+  },
+  {
+    path: '/',
+    name: 'about',
+    component: about,
   },
   {
     path: '/space',

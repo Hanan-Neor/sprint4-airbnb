@@ -6,8 +6,14 @@ export const utilService = {
   saveToStorage,
 };
 
-function loadFromStorage() {}
-function saveToStorage() {}
+function loadFromStorage(key) {
+  var val = localStorage.getItem(key)
+  return (val)? JSON.parse(val) : null;
+}
+
+function saveToStorage(key, val) {
+  localStorage[key] = JSON.stringify(val);
+}
 
 function delay(ms = 1500) {
   return new Promise((resolve) => {

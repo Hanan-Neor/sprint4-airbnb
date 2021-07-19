@@ -1,0 +1,145 @@
+.filter-form{
+    top: 54px;
+    position: absolute;
+    display: inline-block;
+    z-index: 3;
+    background: white;
+    border: 0.5px solid rgba(118, 118, 118, 0.28);
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 10px 37px;
+    left: auto;
+    right: 0;
+    
+        //     @include for-mobile-layout {
+        //         background-color: orange;
+        //     }
+        
+        //     @include for-narrow-layout {
+        //       background-color: yellow;
+        //     }
+        
+        //     @include for-normal-layout {
+        //   background-color: green;
+        //     }
+        
+        //     @include for-wide-layout {
+        //       background-color: blue;
+        //     }
+        
+    right: 0px;
+    .form-content{
+        padding: 20px;
+        max-height: calc(100vh - 300px);
+        .form-row{
+            min-width: 320px;
+            color: rgb(34, 34, 34);
+            padding-bottom: 12px ;
+            padding-right: 4px ;
+            padding-top: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: 400;
+            .type{
+                font-size: 16px;
+            }
+            .comment{
+                font-size: 14px; //default!
+            }
+            .count-picker{
+                display: inline-flex;
+                // gap:16px;
+                align-items: center;
+                justify-content: space-between;
+                width: 104px;
+                height: 32px;
+                font-size: 16px;
+                line-height: 20px;
+                input{
+                    width: 36px;
+                    border: 0px;
+                    position: relative;
+                    right: -14px;
+                    background: transparent;
+                }
+                button{
+                    width: 32px ;
+                    height: 32px ;
+                    flex-grow: 0 ;
+                    flex-shrink: 0 ;
+                    cursor: pointer ;
+                    display: inline-flex ;
+                    margin: 0px ;
+                    padding: 0px ;
+                    text-align: center ;
+                    text-decoration: none ;
+                    border-width: 1px ;
+                    border-style: solid ;
+                    border-color: rgb(176, 176, 176) ;
+                    color: rgb(113, 113, 113) ;
+                    font-family: inherit ;
+                    outline: none ;
+                    // touch-action: manipulation ;
+                    align-items: center ;
+                    justify-content: center ;
+                    // background: rgb(255, 255, 255) ;
+                    border-radius: 50% ;
+                }
+            }
+        }
+    }
+    .submit{
+        padding: 12px 14px ;
+        border-top: 1px solid rgb(235, 235, 235) ;
+        .flex{
+            display: flex ;
+            align-items: center ;
+            justify-content: space-between;
+            .clear{
+                cursor: pointer ;
+                display: inline-block ;
+                margin: 0px -10px ;
+                position: relative ;
+                text-align: center ;
+                width: auto ;
+                // touch-action: manipulation ;
+                // font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif ;
+                font-size: 16px ;
+                line-height: 20px ;
+                font-weight: 600 ;
+                border-radius: 8px ;
+                outline: none ;
+                padding: 10px ;
+                transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s ;
+                // -webkit-tap-highlight-color: transparent ;
+                border: none ;
+                background: transparent ;
+                color: rgb(34, 34, 34) ;
+                text-decoration: underline ;
+            }
+            .btn-save{
+                cursor: pointer ;
+                display: inline-block ;
+                margin: 0px ;
+                position: relative ;
+                text-align: center ;
+                text-decoration: none ;
+                width: auto ;
+                touch-action: manipulation ;
+                font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif ;
+                font-size: 14px ;
+                line-height: 18px ;
+                font-weight: 600 ;
+                border-radius: 8px ;
+                outline: none ;
+                padding: 8px 16px ;
+                transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s ;
+                -webkit-tap-highlight-color: transparent ;
+                border: none ;
+                background: rgb(34, 34, 34) ;
+                color: rgb(255, 255, 255) ;
+            }
+        }
+
+    }
+}

@@ -8,11 +8,16 @@ export const filterService = {
 var filterBy = {
   amenity: "",
   amenities: [],
+  type:'all',
   location: "",
+  country: '',//for explore list
   numGuests: 0,
   dates: { startDate: 0, endDate: 0 },
-  count: Infinity //change this to PAGE_SIZE when add pagination
+  count: 20, //change this to PAGE_SIZE when add pagination
+  currPage: 1,
 };
+
+
 
 function _isAvailable(space, dates) {
   let orders = orderService.query()
@@ -48,6 +53,7 @@ function getSpacesForDisplay(spaces, filterBy) {
       return (filterBy.type === 'all' || space.type === filterBy.type)
       && ((space.loc.address.toLowerCase().includes(filterBy.location.toLowerCase()) || space.loc.countryCode.toLowerCase().includes(filterBy.location.toLowerCase()) || space.loc.country.toLowerCase().includes(filterBy.location.toLowerCase())) 
       && space.capacity >= Number(filterBy.numGuests))
+      && space.loc.country.toLowerCase().includes(filterBy.country.toLowerCase())
     })
     //sort by reviews
     // spaces = spaces.sort((space1, space2) => {
@@ -55,8 +61,13 @@ function getSpacesForDisplay(spaces, filterBy) {
     // return _getAverageReview(space1) - _getAverageReview(space2)
   // })
 
-  //slice out the amount you want - THIS WILL HAPPEN IN FRONT END so fewer server calls
-  if (filterBy.count !== Infinity) spaces = spaces.slice(0, filterBy.count)
+  //slice out the amount you want for this page
+  // if (filterBy.count !== Infinity) {
+  //   const firstSpace = filterBy.count * (filterBy.currPage - 1);
+  //   const lastSpace = firstSpace + filterBy.count; 
+  //   console.log('first', firstSpace, ": last", lastSpace );
+  //   spaces = spaces.slice(firstSpace, lastSpace)
+  // }
 
     return spaces
   const spacesForDisplay = spaces

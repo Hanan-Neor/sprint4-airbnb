@@ -1,6 +1,6 @@
 <template>
-  <section class="space-preview">
-    <router-link :to="'/space/'">
+  <section class="space-preview" @click="gotoSpaces">
+    <!-- <router-link :to="'/space/'"> -->
       <carousel>
         <carousel-slide
           v-for="slide in slides"
@@ -19,7 +19,7 @@
       </div>
       <div class="distance">{{ distance }} kilometers away</div>
 
-    </router-link>
+    <!-- </router-link> -->
   </section>
 </template>
 
@@ -46,6 +46,9 @@ export default {
       if (this.picIdx === this.explore.imgUrls.length - 1) this.picIdx = 0;
       else this.picIdx++;
     },
+    gotoSpaces(){
+      this.$emit('gotoSpaces', this.explore.loc.country)
+    }
   },
   computed: {
     imgForDisplay() {

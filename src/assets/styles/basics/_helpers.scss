@@ -73,6 +73,12 @@
   margin: 0;
   padding: 0;
 }
+.clear-link:hover, .clear-link{
+  text-decoration: none;
+  list-style-type: none;
+  color: inherit;
+
+}
 
 .big-screen{
   display: none;
