@@ -8,7 +8,7 @@ import * as VueGoogleMaps from 'vue2-google-maps';
 
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-import locale from 'element-ui/lib/locale/lang/en'
+import locale from 'element-ui/lib/locale/lang/en';
 
 Vue.use(ElementUI, { locale });
 
@@ -18,6 +18,7 @@ Vue.use(VueGoogleMaps, {
   load: {
     key: 'AIzaSyDyKytLc6HSBg15d2n3erx3dlTpxi4Xci8',
     libraries: 'places',
+    language: 'en',
   },
 });
 
