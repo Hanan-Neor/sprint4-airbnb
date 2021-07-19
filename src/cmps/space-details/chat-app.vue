@@ -1,11 +1,11 @@
 
 <template>
-<!-- TODO this is copied from toy up - need to update later -->
+<!-- TODO this is copied from space up - need to update later -->
   <div class="chat-app">
     <p>this is the chat room</p>
     <ul>
       <li v-for="(msg, idx) in msgs" :key="idx">
-        <span>{{ msg.from }}:</span>{{ msg.txt }}
+        <span>{{ msg.from }}: </span>{{ msg.txt }}
       </li>
     </ul>
     <p v-if="getTyper">{{ getTyper }} is typing...</p>
@@ -25,20 +25,20 @@
 import { socketService } from './../../services/socket.service.js';
 export default {
   name: "chat-room",
-  props: ['toy'],
+  props: ['space'],
   created() {
     socketService.emit("chat topic", this.topic);
     socketService.on("chat addMsg", this.addMsg);
     socketService.on("show-typer", this.setTyper);
     this.username = this.$store.getters.loggedinUser.fullname;
     this.msg.from = this.username;
-    this.msgs = this.toy.msgs || []
+    this.msgs = this.space.msgs || []
   },
   data() {
     return {
       msg: {},
       msgs: [],
-      topic: this.toy._id,
+      topic: this.space._id,
       username: "",
       typer: "",
     };
@@ -59,8 +59,8 @@ export default {
     async sendMsg() {
       try {
         // TODO: next 2 lines not needed after connecting to backend
-          this.addMsg(this.msg)
-          setTimeout(()=>this.addMsg({from: 'Dummy', txt: 'Yey'}), 2000)
+          // this.addMsg(this.msg)
+          // setTimeout(()=>this.addMsg({from: 'Dummy', txt: 'Yey'}), 2000)
           socketService.emit("chat newMsg", this.msg);
         this.msg = {
           from: this.$store.getters.loggedinUser.fullname,

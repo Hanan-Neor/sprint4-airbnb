@@ -80,6 +80,8 @@
       <div class="" v-else>loading</div>
       <p class="space-location">{{ space.loc.address }}</p>
     </div>
+
+    <chat-app :space="space" />
   </div>
 </template>
 
@@ -95,6 +97,11 @@ import spaceReserve from './../cmps/space-details/space-reserve.vue';
 
 export default {
   name: 'space-details',
+  created(){
+    socketService.emit("spaceView", this.addSpaceView);
+    socketService.on("viewingSpace", this.showViewMsg);
+    socketService.on("bookedSpace", this.showBookedMsg);
+  },
 
   data() {
     return {
@@ -159,6 +166,12 @@ export default {
       this.$store.dispatch({ type: 'tripToOrder' });
       // this.store.$commit('tripToOrder')
     },
+    showViewMsg(){
+      console.log('viewing!');
+    },
+    showBokedMsg(){
+      console.log('booked!');
+    }
   },
 
   watch: {

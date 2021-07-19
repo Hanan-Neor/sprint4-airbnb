@@ -17,8 +17,8 @@ _createSpaces();
 async function query(filterBy) {
   console.log('filter in service', filterBy);
   try {
-    // let spaces = await httpService.get(`space`, filterBy) //SERVER STORAGE
-    let spaces = await storageService.query(SPACE_KEY); //CLIENT STORAGE
+    let spaces = await httpService.get(`space`, filterBy) //SERVER STORAGE
+    // let spaces = await storageService.query(SPACE_KEY); //CLIENT STORAGE
     const spacesForDisplay = await filterService.getSpacesForDisplay(
       spaces,
       filterBy
@@ -33,25 +33,25 @@ async function query(filterBy) {
 }
 
 function remove(spaceId) {
-  // return httpService.delete(`space/${spaceId}`) //SERVER STORAGE
+  return httpService.delete(`space/${spaceId}`) //SERVER STORAGE
   return storageService.remove(SPACE_KEY, spaceId); //CLIENT STORAGE
 }
 
 async function save(space) {
   if (space._id) {
-    // space = await httpService.put(`space/${space._id}`, space) //SERVER STORAGE
-    // return space; //SERVER STORAGE
+    space = await httpService.put(`space/${space._id}`, space) //SERVER STORAGE
+    return space; //SERVER STORAGE
     console.log('savingn space', space);
     return storageService.put(SPACE_KEY, space); //CLIENT STORAGE
   } else {
-    // space = await httpService.post(`space`, space) //SERVER STORAGE
-    // return space //SERVER STORAGE
+    space = await httpService.post(`space`, space) //SERVER STORAGE
+    return space //SERVER STORAGE
     return storageService.post(SPACE_KEY, space); //CLIENT STORAGE
   }
 }
 
 async function getById(spaceId) {
-  // return httpService.get(`space/${spaceId}`) //SERVER STORAGE
+  return httpService.get(`space/${spaceId}`) //SERVER STORAGE
   const space = await storageService.get(SPACE_KEY, spaceId); //CLIENT STORAGE
   return space; //CLIENT STORAGE
 }
@@ -110,10 +110,9 @@ function getEmptySpace() {
 }
 
 async function _createSpaces() {
-  if (spaces && spaces.length) return spaces; //CLIENT STORAGE
-  
-  let spaces = await storageService.query(SPACE_KEY); //CLIENT STORAGE
-  // let spaces = utilService.loadFromStorage(SPACE_KEY); //SERVER STORAGE
+  // if (spaces && spaces.length) return spaces; //CLIENT STORAGE
+  // let spaces = await storageService.query(SPACE_KEY); //CLIENT STORAGE
+  let spaces = utilService.loadFromStorage(SPACE_KEY); //SERVER STORAGE
 
   if (!spaces || !spaces.length) {
     spaces = [];
