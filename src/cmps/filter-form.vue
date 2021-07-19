@@ -2,38 +2,38 @@
   <form class="filter-form" action="">
     <div class="form-content">
       <div class="flex form-row">
-        <label for="number">
+        <label for="adults">
           <p class="type">Adults</p>
           <p class="comment">Ages 13 or above</p>
         </label>
         <div class="count-picker">
-          <button class="more" @click="editGuests(-1)">-</button>
-          <input type="number" v-model="numGuests" id="number" />
-          <button class="less" @click="editGuests(1)">+</button>
+          <button class="more" @click="editGuests('adults', -1)">-</button>
+          <input type="number" v-model="guests.adults" id="adults" />
+          <button class="less" @click="editGuests('adults',1)">+</button>
         </div>
       </div>
 
             <div class="flex form-row">
-        <label for="number">
+        <label for="children">
           <p class="type">Children</p>
           <p class="comment">Ages 2-12</p>
         </label>
         <div class="count-picker">
-          <button class="more" @click="editGuests(-1)">-</button>
-          <input type="number" v-model="numChildren" id="number" />
-          <button class="less" @click="editGuests(1)">+</button>
+          <button class="more" @click="editGuests('childen',-1)">-</button>
+          <input type="number" v-model="guests.children" id="children" />
+          <button class="less" @click="editGuests('children',1)">+</button>
         </div>
       </div>
 
             <div class="flex form-row">
-        <label for="number">
+        <label for="infants">
           <p class="type">Infante</p>
           <p class="comment">Under 2</p>
         </label>
         <div class="count-picker">
-          <button class="more" @click="editGuests(-1)">-</button>
-          <input type="number" v-model="numGuests" id="number" />
-          <button class="less" @click="editGuests(1)">+</button>
+          <button class="more" @click="editGuests('infants',-1)">-</button>
+          <input type="number" v-model="guests.infants" id="infants"/>
+          <button class="less" @click="editGuests('infants',1)">+</button>
         </div>
       </div>
 
@@ -53,23 +53,30 @@
 export default {
   data() {
     return {
-      numAdults: 0,
-      numChildren: 0,
-      numInfants:0,
-      numGuests: 0,
+      guests:{
+        adults:0,
+        children:0,
+        infants:0
+      }
     };
   },
   methods: {
-    editGuests(direction){
-      if (this.numGuests === 0 && direction === -1) return;
-      this.numGuests += direction
+    editGuests(type, direction){
+        console.log('editing guests', type, direction);
+      if (this.guests[type] === 0 && direction === -1) return;
+      this.guests[type] += direction
     },
     clearInput(){
-      this.numGuests = 0;
+      this.guests = {
+        adults:0,
+        children:0,
+        infants:0
+      }
     },
     setFilter() {
       console.log("setting the filter");
-      this.$emit("set-filter", "numGuests", this.numGuests);
+      this.$emit("set-filter", "numGuests", this.guests.adults + this.guests.children);
+      console.log("numGuests", this.guests.adults + this.guests.children);
       this.$emit("close-form");
     },
   },
