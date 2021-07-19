@@ -1,0 +1,17 @@
+.add-space {
+  .add-space-form {
+    .item {
+      &.welcome {
+        min-height: 100vh;
+      }
+      .left-part {
+        width: 50%;
+      }
+      .right-part {
+        color: white;
+        background-color: black;
+        width: 50%;
+      }
+    }
+  }
+}

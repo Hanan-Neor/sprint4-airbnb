@@ -1,9 +1,119 @@
 <template>
-  <!-- TODO add required to required fields -->
-  <section class="space-edit-add app-main">
-    <div class="popup-form">
+  <section class="add-space">
+    <form class="add-space-form full">
+      <div class="welcome flex item">
+        <div class="left-part">hi</div>
+        <div class="right-part">
+          <h1>Become a Host in 10 easy steps.</h1>
+          <h2>Join us. We'll help you every step of the way</h2>
+          <gradient-btn :text="'Let\'s go!'"></gradient-btn>
+        </div>
+      </div>
+
+      <div class="welcome flex item">
+        <div class="left-part">
+          <h1>What kind of place will you host?</h1>
+        </div>
+        <div class="right-part">
+          <ul class="type-list clear-list">
+            <li>
+              <input
+                type="radio"
+                value="home"
+                v-model="spaceToEdit.type"
+                id="radio1"
+              />
+              <label for="radio1">Home</label>
+            </li>
+            <li>
+              <input
+                type="radio"
+                value="cabin"
+                v-model="spaceToEdit.type"
+                id="radio2"
+              />
+              <label for="radio2">Cabin</label>
+            </li>
+            <li>
+              <input
+                type="radio"
+                value="villa"
+                v-model="spaceToEdit.type"
+                id="radio3"
+              />
+              <label for="radio3">Villa</label>
+            </li>
+            <li>
+              <input
+                type="radio"
+                value="townhouse"
+                v-model="spaceToEdit.type"
+                id="radio4"
+              />
+              <label for="radio4">Townhouse</label>
+            </li>
+            <li>
+              <input
+                type="radio"
+                value="bungalow"
+                v-model="spaceToEdit.type"
+                id="radio5"
+              />
+              <label for="radio5">Bangalow</label>
+            </li>
+            <li>
+              <input
+                type="radio"
+                value="earth_house"
+                v-model="spaceToEdit.type"
+                id="radio6"
+              />
+              <label for="radio6">Earth House</label>
+            </li>
+            <li>
+              <input
+                type="radio"
+                value="hut"
+                v-model="spaceToEdit.type"
+                id="radio7"
+              />
+              <label for="radio7">Hut</label>
+            </li>
+            <li>
+              <input
+                type="radio"
+                value="farm"
+                v-model="spaceToEdit.type"
+                id="radio1"
+              />
+              <label for="radio1">Farm</label>
+            </li>
+            <li>
+              <input
+                type="radio"
+                value="home"
+                v-model="spaceToEdit.type"
+                id="radio1"
+              />
+              <label for="radio1">Home</label>
+            </li>
+            <li>
+              <input
+                type="radio"
+                value="home"
+                v-model="spaceToEdit.type"
+                id="radio1"
+              />
+              <label for="radio1">Home</label>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </form>
+  </section>
+  <!--<section class="space-edit-add app-main">
+     <div class="popup-form">
       <h3>Edit/ add a space</h3>
-      <!-- edit/add computed TODO -->
       <form @submit.prevent="save">
         <label for="name">Space name</label>
         <input
@@ -11,7 +121,7 @@
           type="text"
           class="text-input"
           placeholder="name"
-          v-model="spaceToEdit.name"
+          v-model="spaceToEdit.type"
         />
         <input
           type="file"
@@ -21,17 +131,17 @@
           multiple
         />
         <div class="label-container">
-        <input
-          class="num-input"
-          id="price"
-          type="number"
-          step="0.01"
-          min="0.00"
-          placeholder="0.00"
-          v-model="spaceToEdit.price"
-          required
-        />
-        <label for="price">Price (in $)</label>
+          <input
+            class="num-input"
+            id="price"
+            type="number"
+            step="0.01"
+            min="0.00"
+            placeholder="0.00"
+            v-model="spaceToEdit.price"
+            required
+          />
+          <label for="price">Price (in $)</label>
         </div>
         <input
           type="text"
@@ -48,67 +158,62 @@
             v-model="spaceToEdit.bedrooms"
           />
           <label for="bedrooms">no. of bedrooms</label>
-          </div>
-          <div class="label-container">
-        <input
-          class="num-input"
-          id="rooms"
-          type="number"
-          placeholder="0"
-          min="0"
-          v-model="spaceToEdit.rooms"
-        />
+        </div>
+        <div class="label-container">
+          <input
+            class="num-input"
+            id="rooms"
+            type="number"
+            placeholder="0"
+            min="0"
+            v-model="spaceToEdit.rooms"
+          />
 
           <label for="rooms">no. rooms</label>
-          </div>
-          <div class="label-container">
-        <input
-          class="num-input"
-          id="beds"
-          type="number"
-          placeholder="0"
-          min="0"
-          v-model="spaceToEdit.beds"
-        />
-        <label for="beds">no. beds</label>
-
-          </div>
-          <div class="label-container">
-        <input
-          class="num-input"
-          id="bathrooms"
-          type="number"
-          placeholder="0"
-          min="0"
-          v-model="spaceToEdit.bathrooms"
-        />
-        <label for="bathrooms">no. bathrooms</label>
-            
-          </div>
-          <div class="label-container">
-            
-        <input
-          class="num-input"
-          id="sofas"
-          type="number"
-          placeholder="0"
-          min="0"
-          v-model="spaceToEdit.sofas"
-        />
-        <label for="sofas">no. sofas</label>
-          </div>
-          <div class="label-container">
-            
-        <input
-          class="num-input"
-          id="capacity"
-          type="number"
-          min="0"
-          v-model="spaceToEdit.capacity"
-        />
-        <label for="capacity">capacity</label>
-          </div>
-        
+        </div>
+        <div class="label-container">
+          <input
+            class="num-input"
+            id="beds"
+            type="number"
+            placeholder="0"
+            min="0"
+            v-model="spaceToEdit.beds"
+          />
+          <label for="beds">no. beds</label>
+        </div>
+        <div class="label-container">
+          <input
+            class="num-input"
+            id="bathrooms"
+            type="number"
+            placeholder="0"
+            min="0"
+            v-model="spaceToEdit.bathrooms"
+          />
+          <label for="bathrooms">no. bathrooms</label>
+        </div>
+        <div class="label-container">
+          <input
+            class="num-input"
+            id="sofas"
+            type="number"
+            placeholder="0"
+            min="0"
+            v-model="spaceToEdit.sofas"
+          />
+          <label for="sofas">no. sofas</label>
+        </div>
+        <div class="label-container">
+          <input
+            class="num-input"
+            id="capacity"
+            type="number"
+            min="0"
+            v-model="spaceToEdit.capacity"
+          />
+          <label for="capacity">capacity</label>
+        </div>
 
         <div class="flex two-col">
           <div class="amenities">
@@ -318,24 +423,20 @@
 
         <button>Save</button>
       </form>
-      <!-- <router-link :to="'/space'"> <button>back</button></router-link> -->
       <button @click="goBack">back</button>
-    </div>
-  </section>
+     </div>
+  </section>  -->
 </template>
 
-
 <script>
-// @ is an alias to /src
-// import { spaceService } from "./../services/async-space-service";
-import { spaceService } from "./../services/space.service";
+import { spaceService } from './../services/space.service';
+import gradientBtn from '../cmps/gradient-btn.vue';
 
 export default {
-  name: "spaceEditAdd",
+  name: 'spaceEditAdd',
   data() {
     return {
       spaceToEdit: spaceService.getEmptySpace(),
-      // images: document.getElementById('imgFiles').files,//this is the array of uploaded images as File objects
       amenities: {
         TV: false,
         wifi: false,
@@ -353,15 +454,15 @@ export default {
 
   methods: {
     save() {
-      console.log("saving the form...", this.spaceToEdit);
+      console.log('saving the form...', this.spaceToEdit);
       this.$store
-        .dispatch({ type: "saveSpace", space: this.spaceToEdit })
+        .dispatch({ type: 'saveSpace', space: this.spaceToEdit })
         .then((savedSpace) => {
-          this.$router.push("/space");
+          this.$router.push('/space');
           //   showMsg("space added/ removed");
         })
         .catch((err) => {
-          console.log("cannot save space", err);
+          console.log('cannot save space', err);
           // showMsg('cannot save space')
         });
     },
@@ -377,11 +478,15 @@ export default {
   created() {
     if (this.spaceId) {
       this.$store
-        .dispatch({ type: "getSpaceById", spaceId: this.spaceId })
+        .dispatch({ type: 'getSpaceById', spaceId: this.spaceId })
         .then((space) => {
           this.spaceToEdit = JSON.parse(JSON.stringify(space));
         });
     }
+  },
+
+  components: {
+    gradientBtn,
   },
 };
 </script>
