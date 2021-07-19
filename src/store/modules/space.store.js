@@ -53,6 +53,13 @@ export const spaceStore = {
     // },
   },
   actions: {
+
+    // async liked(context,payload){
+    //     console.log(payload.spaceId);
+    // },
+
+
+    
     // async setFilterField(state, { field, value }) {
     //   state.filterBy[field] = value;
     // },
