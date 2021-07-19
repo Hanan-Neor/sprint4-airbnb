@@ -1,4 +1,4 @@
-import { httpService } from './http.service.js';
+// import { httpService } from './http.service.js';
 import { storageService } from './async-storage.service.js';
 import { utilService } from './util.service.js';
 import { filterService } from './filterFunctions.js';
@@ -15,10 +15,10 @@ export const spaceService = {
 _createSpaces();
 
 async function query(filterBy) {
+  // return storageService.query(SPACE_KEY);
   console.log('filter in service', filterBy);
   try {
-    // let spaces = await httpService.get(`space`, filterBy) //SERVER STORAGE
-    let spaces = await storageService.query(SPACE_KEY); //CLIENT STORAGE
+    let spaces = await storageService.query(SPACE_KEY);
     const spacesForDisplay = await filterService.getSpacesForDisplay(
       spaces,
       filterBy
@@ -33,27 +33,21 @@ async function query(filterBy) {
 }
 
 function remove(spaceId) {
-  // return httpService.delete(`space/${spaceId}`) //SERVER STORAGE
-  // return storageService.remove(SPACE_KEY, spaceId); //CLIENT STORAGE
+  return storageService.remove(SPACE_KEY, spaceId);
 }
 
-async function save(space) {
+function save(space) {
   if (space._id) {
-    // space = await httpService.put(`space/${space._id}`, space) //SERVER STORAGE
-    return space; //SERVER STORAGE
     console.log('savingn space', space);
-    // return storageService.put(SPACE_KEY, space); //CLIENT STORAGE
+    return storageService.put(SPACE_KEY, space);
   } else {
-    // space = await httpService.post(`space`, space) //SERVER STORAGE
-    return space //SERVER STORAGE
-    // return storageService.post(SPACE_KEY, space); //CLIENT STORAGE
+    return storageService.post(SPACE_KEY, space);
   }
 }
 
 async function getById(spaceId) {
-  // return httpService.get(`space/${spaceId}`) //SERVER STORAGE
-  const space = await storageService.get(SPACE_KEY, spaceId); //CLIENT STORAGE
-  return space; //CLIENT STORAGE
+  const space = await storageService.get(SPACE_KEY, spaceId);
+  return space;
 }
 
 function getEmptySpace() {
@@ -110,10 +104,7 @@ function getEmptySpace() {
 }
 
 async function _createSpaces() {
-  if (spaces && spaces.length) return spaces; //CLIENT STORAGE
-  let spaces = await storageService.query(SPACE_KEY); //CLIENT STORAGE
-  // let spaces = utilService.loadFromStorage(SPACE_KEY); //SERVER STORAGE
-
+  let spaces = await storageService.query(SPACE_KEY);
   if (!spaces || !spaces.length) {
     spaces = [];
 
@@ -159,7 +150,7 @@ async function _createSpaces() {
       },
       loc: {
         country: 'Slovakia',
-        countryCode: 'svk',
+        countryCode: 'IL',
         address: 'Modra, Slovakia',
         lat: 48.334632,
         lng: 17.307569,
@@ -169,15 +160,8 @@ async function _createSpaces() {
           _id: 'r101',
           txt:
             'Perfection to a very tiny detail, one of a kind experience! We really enjoyed the stay and especially the great sleep in the middle of forrest :) Would definitely love to come back.',
-            rate: {
-              cleanliness: 5,
-              checkin: 5,
-              communication: 5,
-              accuracy: 5,
-              value: 5,
-              location: 4,
-            },
-  
+          rate: 4,
+
           by: {
             _id: 'u894',
             fullname: 'Zuzana',
@@ -189,14 +173,7 @@ async function _createSpaces() {
           _id: 'r102',
           txt: `Ania and Peter are sympathetic couple with inspirational life style what changed our staying to the more amazing experience. Thanks for nature which gave us beautiful sounds and my opinion is that we were at the right time in the right place. In May, nature wakes up, so it is even more of an experience to sleep in the treehouse. You must see! We liked it everything and the most outside shower with refreshing water. We are giving them 10 from 10.
           If you are nature lovers go and experience staying in OAKTREEHOUSE by your self. You can ask Ania and Peter what to do around, they will recommend it you hiking, biking, wine testing etc.`,
-          rate: {
-            cleanliness: 5,
-            checkin: 4,
-            communication: 5,
-            accuracy: 5,
-            value: 5,
-            location: 4,
-          },
+          rate: 4,
           by: {
             _id: 'u895',
             fullname: 'Anita',
@@ -208,14 +185,7 @@ async function _createSpaces() {
           _id: 'r103',
           txt: `A extraordinary experience! In my opinion A BIT PRICY! Probably better in summertime... It was my first stay in a house built on trees. My small daughter and I choose it to celebrate our personal father/daughter’s day. She loved it! The house is very well built, nice and clean. It is equipped with a sink, separated with a small door (not sure why!) but for the toilet you have to walk outside in a separate shack with compost type of “collection”! Not the most convenient in cold weather conditions or if you need to go in the night especially when you try in the dark to go down the ladder form the sleeping mezzanine... :/
           Peter was very helpful selecting the most dry wood from his stack which became humid with the rain and that helped a lot to start the fire for a nice evening barbecue. There’s not much to see or do in the area, but the house doesn’t really make you wanna go anywhere else. 1 night was ok... not sure October weather can allow more with an open air shower! All in all it was a memorable experience, but, as I said already, a bit pricy considering the services.`,
-          rate: {
-            cleanliness: 5,
-            checkin: 5,
-            communication: 5,
-            accuracy: 5,
-            value: 5,
-            location: 4,
-          },
+          rate: 4,
           by: {
             _id: 'u896',
             fullname: 'Onofrio',
@@ -226,14 +196,7 @@ async function _createSpaces() {
         {
           _id: 'r104',
           txt: `Great location, nice people, good communication - definitly to recommend! We booked as a birthday surprise for friends and they have been super happy!`,
-          rate: {
-            cleanliness: 5,
-            checkin: 4,
-            communication: 5,
-            accuracy: 5,
-            value: 5,
-            location: 5,
-          },
+          rate: 4,
           by: {
             _id: 'u897',
             fullname: 'Florian',
@@ -245,12 +208,12 @@ async function _createSpaces() {
           _id: 'r105',
           txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
           rate: {
-            cleanliness: 4,
-            checkin: 4,
-            communication: 5,
-            accuracy: 5,
+            cleanliness: 2,
+            checkin: 3,
+            communication: 3,
+            accuracy: 1,
             value: 5,
-            location: 4,
+            location: 3,
           },
           by: {
             _id: 'u898',
@@ -263,14 +226,7 @@ async function _createSpaces() {
           _id: 'r106',
           txt: `Cosy place in the trees - very unique experience. Fire place to have a BBQ - cold shower outside, birds singing in the morning... Definitely recommended if you are up to experience something and don't want to have it "normal". Looking forward to coming back.
           Lubos`,
-          rate: {
-            cleanliness: 5,
-            checkin: 4,
-            communication: 5,
-            accuracy: 5,
-            value: 5,
-            location: 4,
-          },
+          rate: 4,
           by: {
             _id: 'u899',
             fullname: 'Lars',
@@ -293,7 +249,7 @@ async function _createSpaces() {
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626394082/sprint4/spaces/2-%20Chalet%20Eigernordwand/space/a91d2c6f-e5b2-4e96-90f2-e0579d69038a_bviirx.webp',
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626394082/sprint4/spaces/2-%20Chalet%20Eigernordwand/space/77cdae47-7827-4fa6-9b8d-5b9dfcbe15ef_i3ycet.webp',
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626394082/sprint4/spaces/2-%20Chalet%20Eigernordwand/space/7f273de4-b8eb-4242-8df4-3355c6df7223_crtfad.webp',
-        // 'https://res.cloudinary.com/dymtestxz/image/upload/v1626394082/sprint4/spaces/2-%20Chalet%20Eigernordwand/space/7e7fca56-6af0-491a-95ba-fa92e96a9a0c_o5ux7j.webp',
+        'https://res.cloudinary.com/dymtestxz/image/upload/v1626394082/sprint4/spaces/2-%20Chalet%20Eigernordwand/space/7e7fca56-6af0-491a-95ba-fa92e96a9a0c_o5ux7j.webp',
       ],
       price: 153,
       description: `3.5-room apartment in a beautiful, quiet location in Grindelwald with 2 double bedrooms and spacious bathroom with bath and shower. The heart of the apartment is the open kitchen as well as the cozy, bright living and dining area. The kitchen is fully equipped with a kettle, coffee maker, toaster, microwave and dishwasher. There is a hairdryer in the bathroom. Balcony with a beautiful view of the Eiger north wall.
@@ -439,8 +395,8 @@ async function _createSpaces() {
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626394616/sprint4/spaces/3%20-%20Still%20Life%20St%20Paul%27s%20Executive/space/0a6eeebb-4c3e-4e6c-9bff-414012c215f4_hhgtvb.webp',
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626394612/sprint4/spaces/3%20-%20Still%20Life%20St%20Paul%27s%20Executive/space/46ef9170-4b3d-42d4-b4e0-d7e7087c445e_jlonoa.webp',
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626394617/sprint4/spaces/3%20-%20Still%20Life%20St%20Paul%27s%20Executive/space/91a8e796-2828-4412-847d-38ea1cdc2890_lo1c1l.webp',
-        // 'https://res.cloudinary.com/dymtestxz/image/upload/v1626394613/sprint4/spaces/3%20-%20Still%20Life%20St%20Paul%27s%20Executive/space/2e707f27-6214-4c56-b9de-751a25c2cfa8_v23goc.webp',
-        // 'https://res.cloudinary.com/dymtestxz/image/upload/v1626394612/sprint4/spaces/3%20-%20Still%20Life%20St%20Paul%27s%20Executive/space/7a7142c4-1e7c-4146-8d72-1efd04d872a9_lsxarl.webp',
+        'https://res.cloudinary.com/dymtestxz/image/upload/v1626394613/sprint4/spaces/3%20-%20Still%20Life%20St%20Paul%27s%20Executive/space/2e707f27-6214-4c56-b9de-751a25c2cfa8_v23goc.webp',
+        'https://res.cloudinary.com/dymtestxz/image/upload/v1626394612/sprint4/spaces/3%20-%20Still%20Life%20St%20Paul%27s%20Executive/space/7a7142c4-1e7c-4146-8d72-1efd04d872a9_lsxarl.webp',
       ],
       price: 118,
       description:
@@ -503,9 +459,9 @@ async function _createSpaces() {
       imgUrls: [
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626394826/sprint4/spaces/4%20-%20Superbe%20chalet%20Hautes%20Vosges%20en%20pleine%20nature/space/3a8f8bf5-a0c4-4b9d-bb27-fff31d00e9b4_norbuq.webp',
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626394822/sprint4/spaces/4%20-%20Superbe%20chalet%20Hautes%20Vosges%20en%20pleine%20nature/space/45b9ddd1-b259-40b9-a81d-dfef8258f9b9_bklwas.webp',
-        // 'https://res.cloudinary.com/dymtestxz/image/upload/v1626394822/sprint4/spaces/4%20-%20Superbe%20chalet%20Hautes%20Vosges%20en%20pleine%20nature/space/fb848313-297b-4b64-8685-0bcd11e3e5ab_feuxmm.webp',
-        // 'https://res.cloudinary.com/dymtestxz/image/upload/v1626394822/sprint4/spaces/4%20-%20Superbe%20chalet%20Hautes%20Vosges%20en%20pleine%20nature/space/23464bb6-5525-4a91-901f-a50b758bd6c2_u8jomu.webp',
-        // 'https://res.cloudinary.com/dymtestxz/image/upload/v1626394822/sprint4/spaces/4%20-%20Superbe%20chalet%20Hautes%20Vosges%20en%20pleine%20nature/space/b1b9395b-d418-407a-bf24-541fd2e4af77_rmxowk.webp',
+        'https://res.cloudinary.com/dymtestxz/image/upload/v1626394822/sprint4/spaces/4%20-%20Superbe%20chalet%20Hautes%20Vosges%20en%20pleine%20nature/space/fb848313-297b-4b64-8685-0bcd11e3e5ab_feuxmm.webp',
+        'https://res.cloudinary.com/dymtestxz/image/upload/v1626394822/sprint4/spaces/4%20-%20Superbe%20chalet%20Hautes%20Vosges%20en%20pleine%20nature/space/23464bb6-5525-4a91-901f-a50b758bd6c2_u8jomu.webp',
+        'https://res.cloudinary.com/dymtestxz/image/upload/v1626394822/sprint4/spaces/4%20-%20Superbe%20chalet%20Hautes%20Vosges%20en%20pleine%20nature/space/b1b9395b-d418-407a-bf24-541fd2e4af77_rmxowk.webp',
       ],
       price: 65,
       description:
@@ -560,11 +516,11 @@ async function _createSpaces() {
       name: 'Dizengof area - Superb 1BR Balcony on the square',
       imgUrls: [
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626395126/sprint4/spaces/5%20-%20Dizengof%20area%20-%20Superb%201BR%20Balcony%20on%20the%20square/space/905bcbe9-a7d9-446f-8f25-e29c0d454d86_nop6j9.webp',
-        // 'https://res.cloudinary.com/dymtestxz/image/upload/v1626395126/sprint4/spaces/5%20-%20Dizengof%20area%20-%20Superb%201BR%20Balcony%20on%20the%20square/space/030089eb-0419-417e-8784-eb9c912e7f51_b9e9ji.webp',
-        // 'https://res.cloudinary.com/dymtestxz/image/upload/v1626395126/sprint4/spaces/5%20-%20Dizengof%20area%20-%20Superb%201BR%20Balcony%20on%20the%20square/space/c1b98710-577a-4f7a-a2a0-ab4ea4a3b72a_xgtxwl.webp',
-        // 'https://res.cloudinary.com/dymtestxz/image/upload/v1626395126/sprint4/spaces/5%20-%20Dizengof%20area%20-%20Superb%201BR%20Balcony%20on%20the%20square/space/33657269-f87b-4e61-be86-db3dd3fe11e7_d98pgw.webp',
-        // 'https://res.cloudinary.com/dymtestxz/image/upload/v1626395126/sprint4/spaces/5%20-%20Dizengof%20area%20-%20Superb%201BR%20Balcony%20on%20the%20square/space/adf2e011-1ca4-4eff-abda-fefddbbbb39f_ydt84q.webp',
-        // 'https://res.cloudinary.com/dymtestxz/image/upload/v1626395126/sprint4/spaces/5%20-%20Dizengof%20area%20-%20Superb%201BR%20Balcony%20on%20the%20square/space/5f54bfab-4ce9-4c98-bedd-f25710755c25_fweptc.webp',
+        'https://res.cloudinary.com/dymtestxz/image/upload/v1626395126/sprint4/spaces/5%20-%20Dizengof%20area%20-%20Superb%201BR%20Balcony%20on%20the%20square/space/030089eb-0419-417e-8784-eb9c912e7f51_b9e9ji.webp',
+        'https://res.cloudinary.com/dymtestxz/image/upload/v1626395126/sprint4/spaces/5%20-%20Dizengof%20area%20-%20Superb%201BR%20Balcony%20on%20the%20square/space/c1b98710-577a-4f7a-a2a0-ab4ea4a3b72a_xgtxwl.webp',
+        'https://res.cloudinary.com/dymtestxz/image/upload/v1626395126/sprint4/spaces/5%20-%20Dizengof%20area%20-%20Superb%201BR%20Balcony%20on%20the%20square/space/33657269-f87b-4e61-be86-db3dd3fe11e7_d98pgw.webp',
+        'https://res.cloudinary.com/dymtestxz/image/upload/v1626395126/sprint4/spaces/5%20-%20Dizengof%20area%20-%20Superb%201BR%20Balcony%20on%20the%20square/space/adf2e011-1ca4-4eff-abda-fefddbbbb39f_ydt84q.webp',
+        'https://res.cloudinary.com/dymtestxz/image/upload/v1626395126/sprint4/spaces/5%20-%20Dizengof%20area%20-%20Superb%201BR%20Balcony%20on%20the%20square/space/5f54bfab-4ce9-4c98-bedd-f25710755c25_fweptc.webp',
       ],
       price: 128,
       description: `The space
@@ -794,7 +750,8 @@ async function _createSpaces() {
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626396261/sprint4/spaces/8%20-%20Star%20Infinity%20Suite%20with%20Private%20heated%20Jacuzzi/space/893fe5b5-71ad-4e60-b3da-7ff7ccde2d02_dzkksa.webp',
       ],
       price: 354,
-      description: `The Star Infinity Suites is brand new complex of 3 suites each one with private heated jacuzzi and one shared swimming pool. An exclusive location provides a marvelous seashore&mountain landscape.
+      description:
+        `The Star Infinity Suites is brand new complex of 3 suites each one with private heated jacuzzi and one shared swimming pool. An exclusive location provides a marvelous seashore&mountain landscape.
         The complex is constructed in an excuisite Cycladic style and covered with a minimalistic luxury. Natural stone and organic elements create a nobel cosiness. All the furniture and decor is made in authentic Greek style with exclusive and unique elements.
         The space
         The complex of 3 suites is located in Pyrgos, the highest Santorini village. An exclusive location provides a marvelous seashore&mountain landscape.
@@ -826,8 +783,8 @@ async function _createSpaces() {
         country: 'Greece',
         countryCode: 'IL',
         address: 'Pyrgos Kallistis, Greece',
-        lat: 36.38324,
-        lng: 25.44861,
+        lat: 36.383240,
+        lng: 25.448610,
       },
       reviews: [
         {
@@ -863,7 +820,8 @@ async function _createSpaces() {
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626396880/sprint4/spaces/9%20-%20Manor%20cottage/space/9ae04513-0db9-4c94-a554-cc159fcb1394_hnt0xj.webp',
       ],
       price: 311,
-      description: `A beautiful cottage set in the grounds of a 17th Century Manor house with beautiful views over the surrounding countryside. The extensive grounds back onto the River Avon and include a Tennis/Basketball court and children's play area. The cottage has two bedrooms, one with a super king size bed and the other a double bed- and there is space for mattresses on the floor if required. There is a separate living area with pool table; a full kitchen and laundry; a bathroom and a separate toilet.
+      description:
+        `A beautiful cottage set in the grounds of a 17th Century Manor house with beautiful views over the surrounding countryside. The extensive grounds back onto the River Avon and include a Tennis/Basketball court and children's play area. The cottage has two bedrooms, one with a super king size bed and the other a double bed- and there is space for mattresses on the floor if required. There is a separate living area with pool table; a full kitchen and laundry; a bathroom and a separate toilet.
         The space
         The Cottage is the converted stables in the grounds of a country Manor House. The property sits on top of a hill with beautiful views across the countryside. Guests can enjoy outdoor activities such as tennis on the court; croquet on the expansive lawns; paddleboarding via direct river access; or venture out for cycling. The village is beautiful and there are many more to explore in walking distance with lots of pubs. Broadway in the Cotswolds is 15m by car
         Guest access
@@ -893,8 +851,8 @@ async function _createSpaces() {
         country: 'United Kingdom',
         countryCode: 'UK',
         address: 'Cropthorne, England',
-        lat: 52.10174,
-        lng: -2.00493,
+        lat: 52.101740,
+        lng: -2.004930,
       },
       reviews: [
         {
@@ -929,7 +887,8 @@ async function _createSpaces() {
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626397282/sprint4/spaces/10%20-%20Brand%20new%20gorgeous%202%20bedroom%20guest%20house/space/f18cd422-11ed-485f-b44e-256a2ca521a9_gexinp.webp',
       ],
       price: 350,
-      description: `This is a gorgeous brand new 2 bedroom guest house on the bike path that leads to downtown Edgartown and both State Beach and South Beach, as well as 1/4 of a mile from the famous Morning Glory Farm Stand. There are cathedral ceilings in the living room, which provide a open, spacious feel. There is a large deck on the front of the house with a grill, table and chairs. Part of it is covered in shade. Separate parking for guests with privacy, as it sits 200+ feet from the main house.
+      description:
+        `This is a gorgeous brand new 2 bedroom guest house on the bike path that leads to downtown Edgartown and both State Beach and South Beach, as well as 1/4 of a mile from the famous Morning Glory Farm Stand. There are cathedral ceilings in the living room, which provide a open, spacious feel. There is a large deck on the front of the house with a grill, table and chairs. Part of it is covered in shade. Separate parking for guests with privacy, as it sits 200+ feet from the main house.
         The space
         The open floor plan in the living room and kitchen, along with the cathedral ceiling make it feel very spacious. The deck includes a grill, as well as ample outside seating. We abut 18 acres of conservation land in the back of the house.
         Extra amenities: hair dryer; dishwasher; washer; dryer; iron; ironing board; vacuum
@@ -958,8 +917,8 @@ async function _createSpaces() {
         country: 'United States',
         countryCode: 'US',
         address: 'Edgartown, Massachusetts',
-        lat: 41.39138,
-        lng: -70.5196,
+        lat: 41.391380,
+        lng: -70.519600,
       },
       reviews: [
         {
@@ -997,7 +956,8 @@ async function _createSpaces() {
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626397647/sprint4/spaces/11%20-%20Le%20Moulin%20-%20Piscine%20chauff%C3%A9e%2C%20Spa%20%20%20Barbecue/space/e313afc5-eeb5-4617-8a05-8d4795774dda_wxbxqd.webp',
       ],
       price: 886,
-      description: `Located in a small village in the countryside, right in front of the Ravel, a long walk that leads to Maredsous, the house Le Moulin will be the ideal place for your stay with family or friends !
+      description:
+        `Located in a small village in the countryside, right in front of the Ravel, a long walk that leads to Maredsous, the house Le Moulin will be the ideal place for your stay with family or friends !
 
         You can enjoy long bike rides, a dip in the heated pool, a barbecue on the terrace and discover our beautiful region (Abbey of Maredsous, Valley of the Molignée, Lake Bambois,...).
         The space
@@ -1047,8 +1007,8 @@ async function _createSpaces() {
         country: 'Belgium',
         countryCode: '',
         address: 'Mettet, Wallonie',
-        lat: 50.32015,
-        lng: 4.65795,
+        lat: 50.320150,
+        lng: 4.657950,
       },
       reviews: [
         {
@@ -1083,7 +1043,8 @@ async function _createSpaces() {
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626397960/sprint4/spaces/12%20-%20Hausboot%20auf%20der%20Mosel%20in%20P%C3%B6lich/space/b31b30ec-d32a-4abb-bdd5-408a7e5f4796_vdd9nu.webp',
       ],
       price: 207,
-      description: `Living on the water. The houseboat is moored on the outer quay, with a direct view of the water. It has a bedroom with double bed, bathroom with shower, kitchen-living room with sofa bed, two terraces with outdoor kitchen. On the roof there is another large sun terrace with seating and loungers.
+      description:
+        `Living on the water. The houseboat is moored on the outer quay, with a direct view of the water. It has a bedroom with double bed, bathroom with shower, kitchen-living room with sofa bed, two terraces with outdoor kitchen. On the roof there is another large sun terrace with seating and loungers.
 
         The houseboat has WiFi 5G and TV. The kitchen has a toaster, Nespresso coffee machine. and kettle.
         
@@ -1115,8 +1076,8 @@ async function _createSpaces() {
         country: 'Germany',
         countryCode: 'GR',
         address: 'Pölich, Rheinland-Pfalz',
-        lat: 49.79802,
-        lng: 6.85031,
+        lat: 49.798020,
+        lng: 6.850310,
       },
       reviews: [
         {
@@ -1164,7 +1125,8 @@ async function _createSpaces() {
         '',
       ],
       price: 1151,
-      description: `This Masseria to rent is located on the doorstep of Ostuni, an iconic medieval village. Is located in centuries-old olive groves combines traditional Apulian architecture with modern and refined interiors. The ideal choice for those looking for:
+      description:
+        `This Masseria to rent is located on the doorstep of Ostuni, an iconic medieval village. Is located in centuries-old olive groves combines traditional Apulian architecture with modern and refined interiors. The ideal choice for those looking for:
         A Masseria for rent in Valle d'Itria with modern interiors
         A villa for rent for ten people just a few minutes from the sea
         A holiday in Ostuni in a villa with a heated swimming pool for private/exclusive use
@@ -1236,7 +1198,7 @@ async function _createSpaces() {
         countryCode: 'IT',
         address: 'Ostuni, Italy',
         lat: 40.728779,
-        lng: 17.57737,
+        lng: 17.577370,
       },
       reviews: [
         {
@@ -1283,7 +1245,8 @@ async function _createSpaces() {
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626398412/sprint4/spaces/14%20-%20Charming%20villa%20with%20private%20pool%20located%20in%20Scopello/space/ab30190c-0771-44ed-acea-55cfa28ff6ae_qbjryg.webp',
       ],
       price: 499,
-      description: `Enchanting villa with private pool located in Scopello, not far from the Tonnara and its bay, renowned for its crystal clear sea from which rise the imposing stacks.
+      description:
+        `Enchanting villa with private pool located in Scopello, not far from the Tonnara and its bay, renowned for its crystal clear sea from which rise the imposing stacks.
         The property, located in a quiet and sunny position, overlooks a well-kept garden and a beautiful pool with its large sunny terraces, an awesome place for anyone to relax and unwind. The villa offers a range of outdoor areas equipped with garden furnitures and barbecue, as well as bright and well-divided interiors. Inside a particular attention was paid to details, materials and finishings. The rooms are furnished and equipped with all modern comforts.
         
         The property is spread over two floors: the ground floor consists of a bright open plan living which includes a well equipped kitchen. The shared bathroom is with shower. On the same floor there are three double bedrooms, two of which with en-suite bathroom. Another living room with kitchen is on the first floor. Here there are also two double bedrooms both with en-suite bathroom with shower.
@@ -1318,8 +1281,8 @@ async function _createSpaces() {
         country: 'Italy',
         countryCode: 'IT',
         address: 'Castellammare del Golfo, Sicilia',
-        lat: 38.01998,
-        lng: 12.88687,
+        lat: 38.019980,
+        lng: 12.886870,
       },
       reviews: [
         {
@@ -1349,8 +1312,7 @@ async function _createSpaces() {
 
     spaces.push({
       _id: 's' + utilService.makeId(),
-      name:
-        'SA CASETA (CASETA PIPERA) - Beautiful country-house with private pool and garden Free WiFi',
+      name: 'SA CASETA (CASETA PIPERA) - Beautiful country-house with private pool and garden Free WiFi',
       type: 'villa',
       imgUrls: [
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626398679/sprint4/spaces/15%20-%20SA%20CASETA%20%28CASETA%20PIPERA%29/space/7e62ef3d-ef53-43d1-9946-e4cb40e8568a_bd82el.webp',
@@ -1363,7 +1325,8 @@ async function _createSpaces() {
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626398679/sprint4/spaces/15%20-%20SA%20CASETA%20%28CASETA%20PIPERA%29/space/5130987d-ba8a-413c-b046-acae4525ed8e_wgnoea.webp',
       ],
       price: 310,
-      description: `Welcome to this wonderful house on the outskirts of Manacor, with a marvellous garden, fully built with a Mallorca style but modern at the same time, to transform the vacation of 5 guests into an unforgettable memory.
+      description:
+        `Welcome to this wonderful house on the outskirts of Manacor, with a marvellous garden, fully built with a Mallorca style but modern at the same time, to transform the vacation of 5 guests into an unforgettable memory.
         The space
         The great simplicity and liveliness of the exteriors of this finca precisely are what makes it specially fascinating. There's a great swimming-pool of 8.50 x 3.90 metres with a water depth of 1.50 metres. The garden, surrounded by the greenery with colourful touches and clar views over the fields, will be your best company during the delicious breakfast or the dinner in the terrace, covered by an elegant thatched roof. Just imagine, after tasting a delicious barbecue, lying at the sun on the cosy and little sofa made of pallet or on the three sun loungers. Although there are neighbours around, privacy is total.
         
@@ -1422,8 +1385,8 @@ async function _createSpaces() {
         country: 'Spain',
         countryCode: '',
         address: 'MANACOR, Spain',
-        lat: 39.57434,
-        lng: 3.20142,
+        lat: 39.574340,
+        lng: 3.201420,
       },
       reviews: [
         {
@@ -1465,7 +1428,8 @@ async function _createSpaces() {
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626398893/sprint4/spaces/16%20-%20Palm%20Pavilion%20architectural%20rainforest%20retreat/space/99eba3f3-5a5d-4458-9306-ac2f3e0faf10_czkfii.webp',
       ],
       price: 667,
-      description: `45 minutes from the CBD, Palm Pavilion offers a boutique escape for connecting with loved ones or working in peace. This award-winning, multi-purpose container house is built on the edge of Ku-ring-gai Chase National Park, with a luxury feel and mindful architecture that centres on sustainability, seclusion and tranquility. Offering floor-to-ceiling rainforest views and a full suite of amenities, Palm Pavilion is an oasis for cutting out noise and sharing what matters.`,
+      description:
+        `45 minutes from the CBD, Palm Pavilion offers a boutique escape for connecting with loved ones or working in peace. This award-winning, multi-purpose container house is built on the edge of Ku-ring-gai Chase National Park, with a luxury feel and mindful architecture that centres on sustainability, seclusion and tranquility. Offering floor-to-ceiling rainforest views and a full suite of amenities, Palm Pavilion is an oasis for cutting out noise and sharing what matters.`,
       capacity: 8,
       amenities: [
         'TV',
@@ -1489,8 +1453,8 @@ async function _createSpaces() {
         country: 'Australia',
         countryCode: 'AU',
         address: 'Church Point, New South Wales',
-        lat: -33.64519,
-        lng: 151.28498,
+        lat: -33.645190,
+        lng: 151.284980,
       },
       reviews: [
         {
@@ -1518,8 +1482,7 @@ async function _createSpaces() {
     // ==========================================================================
     // ===========================================================================
 
-    // storageService.postMany(SPACE_KEY, spaces); //FOR CLIENT SIDE STORAGE NO SERVER
-    utilService.saveToStorage(SPACE_KEY, spaces) //FOR SERVER
+    storageService.postMany(SPACE_KEY, spaces);
   }
   return spaces;
 }
