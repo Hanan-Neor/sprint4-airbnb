@@ -154,14 +154,14 @@ export default {
       slides: this.space.imgUrls,
     };
   },
-  watch:{
-      baba(){
+  // watch:{
+  //     baba(){
         
-        this.isLiked = this.islikedByUser()
-        console.log('baba');
-      }
+  //       this.isLiked = this.islikedByUser()
+  //       console.log('baba');
+  //     }
 
-  },
+  // },
   methods: {
   //   isliked2(){
   //     this.isLiked = this.islikedByUser
@@ -201,7 +201,7 @@ export default {
     islikedByUser(){
 
       const user = this.$store.getters.loggedinUser
-      if(!user || user.length===0)return
+      // if(!user || user.length===0)return
       return user.likedSpacesIds.includes(this.space._id)
       // return user.likedSpacesIds.find((spaceId)=>{
       //     return spaceId === this.space._id
