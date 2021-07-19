@@ -20,7 +20,6 @@ export const spaceStore = {
       const filterBy = state.filterBy
       //pagination here
       if (filterBy.count !== Infinity) {
-        debugger;
         const firstSpace = filterBy.count * (filterBy.currPage - 1);
         const lastSpace = firstSpace + filterBy.count;
         console.log('first', firstSpace, ": last", lastSpace);
