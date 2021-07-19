@@ -86,7 +86,7 @@ function getLoggedinUser() {
   if (!sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER)) {
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, 'null');
   }
-  // return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER));
+  return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER));
 }
 
 // // This IIFE functions for Dev purposes

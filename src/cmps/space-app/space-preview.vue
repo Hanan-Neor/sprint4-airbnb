@@ -116,7 +116,7 @@
           <img :src="slide" :alt="slide" />
         </carousel-slide>
       </carousel>
-      <!-- {{ islikedByUser }} -->
+      {{ islikedByUser }}
       <div class="name-price flex">
         <!-- <div>{{ space.name }}</div> -->
         <div>
@@ -139,6 +139,8 @@
 <script>
 import carousel from './carousel';
 import carouselSlide from './carouselSlide';
+import { eventBusService } from './../../services/event-bus.service.js';
+
 export default {
   name: '',
   props: ['space'], //TODO convert to object
@@ -171,23 +173,28 @@ export default {
     //     this.isLiked = this.islikedByUser
     //   },
     like() {
+      const user = this.$store.getters.loggedinUser;
+      if(!user) {
+        eventBusService.$emit('likedWithoutUser');
+        return
+      }
       this.isLiked = !this.isLiked;
-      // const user = this.$store.getters.loggedinUser;
+      // if(!user) return alert('no user!')
 
       if (this.isLiked) {
         this.likeColor = 'rgb(255, 56, 92)';
-        // user.likedSpacesIds.push(this.space._id);
+        user.likedSpacesIds.push(this.space._id);
       } else {
         this.likeColor = 'rgba(0, 0, 0, 0.5)';
-        // const idx = user.likedSpacesIds.findIndex((spaceId) => {
-        //   return spaceId === this.space._id;
-        // });
-        // user.likedSpacesIds.splice(idx, 1);
+        const idx = user.likedSpacesIds.findIndex((spaceId) => {
+          return spaceId === this.space._id;
+        });
+        user.likedSpacesIds.splice(idx, 1);
       }
-      // console.log(this.space._id);
-      // console.log(user);
+      console.log(this.space._id);
+      console.log(user);
       // this.$emit('liked', this.space._id);
-      // this.$store.dispatch({ type: 'updateUser', user });
+      this.$store.dispatch({ type: 'updateUser', user });
 
       // this.svgcolor();
     },
@@ -203,8 +210,15 @@ export default {
   computed: {
     islikedByUser() {
       const user = this.$store.getters.loggedinUser;
+      if(!user) return
+
+      console.log(user);
       // if(!user || user.length===0)return
+
+
       return user.likedSpacesIds.includes(this.space._id);
+
+
       // return user.likedSpacesIds.find((spaceId)=>{
       //     return spaceId === this.space._id
       //   })
@@ -277,7 +291,10 @@ export default {
     carousel,
   },
   created() {
-    // this.isLiked = this.islikedByUser ? true : false;
+    this.isLiked = this.islikedByUser ? true : false;
+    // this.likeColor = ''
+    if(this.isLiked) this.likeColor = 'rgb(255, 56, 92)'
+    // this.like()
     this.distanceToShow;
   },
 };

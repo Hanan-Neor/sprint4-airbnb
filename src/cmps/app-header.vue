@@ -70,6 +70,9 @@ export default {
     eventBusService.$on("searchPos", (isIntersecting) => {
       this.isIntersecting = isIntersecting;
     });
+    eventBusService.$on("likedWithoutUser", () => {
+      this.showLogin();
+    });
 
     // },3000)
   },
