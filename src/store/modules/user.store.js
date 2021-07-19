@@ -26,11 +26,18 @@ export const userStore = {
         setUsers(state, { users }) {
             state.users = users;
         },
+        setUser(state, { user }) {
+            state.loggedinUser = user;
+        },
         // removeUser(state, { userId }) {
         //     state.users = state.users.filter(user => user._id !== userId)
         // },
     },
     actions: {
+        async liked(context,payload){
+            console.log(payload.spaceId);
+        },
+    
         async login({ commit }, { userCred }) {
             try {
                 const user = await userService.login(userCred);

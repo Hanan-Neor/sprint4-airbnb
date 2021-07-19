@@ -2,19 +2,19 @@
 export const tripStore = {
   state: {
     trip: {
-        "startDate": "g",
-        "endDate": "g",
-        "guests":null,
+        startDate: "g",
+        endDate: "g",
+        guests:null,
     //     "guests": {
     //       "adults":,
     //       "kids": 1
     //     },
         dest: {
-          "country": "g",
-          "countryCode": "g",
-          "address": "g",
-          "lat": null,
-          "lng":null
+          country: "g",
+          countryCode: "g",
+          address: "g",
+          lat: null,
+          lng:null
         }
     }
     
@@ -43,20 +43,23 @@ export const tripStore = {
       state.trips = trip;
     },
 
-    // tripToOrder(context){
-        
-    //         this.saveOrder(this.trip)
+    tripToOrder(state,payload){
 
-    //     }
+      console.log(state.trip);
+      const order = state.trip
+        console.log(order);
+       console.log(this.getters.trip);
+            // this.saveOrder(state.trip)
+            this.$store.dispatch({ type: "saveOrder"  ,order});
+        }
   },
   actions: {
 
    async tripToOrder(context){
-        
-
-    commit
-        const order = this.trip
-        console.log(order);
+        console.log(context);
+        console.log(context.state.trip);
+        const order = context.state.trip
+        // console.log(order);
         this.$store.dispatch({ type: "saveOrder"  ,order});
 
     },

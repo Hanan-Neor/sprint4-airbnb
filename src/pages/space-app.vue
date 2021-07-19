@@ -39,6 +39,9 @@ export default {
     liked(spaceId){
       // alert('hi!')
         //TODO send liked to space-store
+        console.log(spaceId);
+    this.$store.dispatch({type: 'liked',spaceId})
+
     }
   }
 
