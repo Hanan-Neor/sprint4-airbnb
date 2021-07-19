@@ -28,7 +28,7 @@ export default {
         txt: '',
         aboutUserId: null,
       },
-      pageSize: 5,
+      pageSize: 10,
     }
   },
   computed: {

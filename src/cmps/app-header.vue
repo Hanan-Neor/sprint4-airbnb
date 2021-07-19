@@ -2,20 +2,24 @@
   <!-- <div class="app-header flex" :style="diplayState"> -->
   <div class="app-header flex" :style="headerPos">
     <router-link to="/" class="logo-container clear-link" :style="logoStyle">
-
       <div class="logo"></div>
     </router-link>
     <!-- <div class="logo-container" :style="logoStyle" > -->
-      <!-- <img v-if="isLarge" class="logo" src="../assets/img/icons/logo.svg" alt="" /> -->
-      <!-- <img v-if="isLarge" class="logo" src="../assets/img/logo.png" alt="" /> -->
+    <!-- <img v-if="isLarge" class="logo" src="../assets/img/icons/logo.svg" alt="" /> -->
+    <!-- <img v-if="isLarge" class="logo" src="../assets/img/logo.png" alt="" /> -->
     <!-- </div> -->
     <div>
       <space-filter :style="searchPos" />
     </div>
-    <div class="flex" style="align-items:center">
-
-      <span v-if="isLarge" class="becomeHost" :style="hostColor">Become a host</span>
-      <login v-if="isLoginOpen" @close-login="closeLogin" :formType="getLoginFormType"/>
+    <div class="flex" style="align-items: center">
+      <span v-if="isLarge" class="becomeHost" :style="hostColor"
+        >Become a host</span
+      >
+      <login
+        v-if="isLoginOpen"
+        @close-login="closeLogin"
+        :formType="getLoginFormType"
+      />
       <template v-if="isLarge">
         <button class="flex pointer" @click="toggleNav">
           <img
@@ -74,11 +78,15 @@ export default {
     login,
   },
   computed: {
-    getLoginFormType(){return this.loginFormType},
+    getLoginFormType() {
+      return this.loginFormType;
+    },
     isLoginOpen() {
       return this.loginOpen;
     },
-    loggedInUser() {return this.$store.getters.loggedinUser },
+    loggedInUser() {
+      return this.$store.getters.loggedinUser;
+    },
     isNavOpen() {
       return this.navOpen;
     },
@@ -106,20 +114,20 @@ export default {
         };
       }
     },
-    hostColor(){
+    hostColor() {
       return {
         color: this.isIntersecting ? "white" : "inherit",
-      }
+      };
     },
-    logoStyle(){
+    logoStyle() {
       return {
         color: this.isIntersecting ? "white" : "#ff385c",
-      }
-    }
+      };
+    },
   },
   data() {
     return {
-      loginFormType: '',
+      loginFormType: "",
       loginOpen: false,
       navOpen: false,
       screenWidth: window.innerWidth,
@@ -128,16 +136,16 @@ export default {
       // }
       //state is false when nav is hidden
       state: false,
-      // isIntersecting refers to background round 
+      // isIntersecting refers to background round
       isIntersecting: true,
     };
   },
   methods: {
-    logout(){ 
-      this.$store.dispatch({type:'logout'})
+    logout() {
+      this.$store.dispatch({ type: "logout" });
       this.toggleNav();
-      if (this.$route.name === 'space-details') this.$router.push('/');
-      },
+      if (this.$route.name === "space-details") this.$router.push("/");
+    },
     showLogin(formType) {
       this.loginFormType = formType;
       this.loginOpen = true;
@@ -154,8 +162,8 @@ export default {
       alert("please add wishlists");
     },
     showExplore() {
-      this.$store.commit({ type: "clearFilter"});
-      if (this.$router.path !=='/space') this.$router.push("/space");
+      this.$store.commit({ type: "clearFilter" });
+      if (this.$router.path !== "/space") this.$router.push("/space");
     },
   },
 };
