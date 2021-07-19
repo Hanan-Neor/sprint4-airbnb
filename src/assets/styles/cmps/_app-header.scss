@@ -10,8 +10,10 @@ $header-side-padding: 42px;
   left: 0;
   top: 0;
   align-items: center; //for filter
-  padding: 0 $header-side-padding;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  // padding: 0 $header-side-padding;
+  box-shadow: 0 10px 10px -10px rgba(33, 35, 38, 0.1);
+  padding: 0 5rem;
+  // box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   // margin-bottom: 38px;
   button {
     height: 42px;
