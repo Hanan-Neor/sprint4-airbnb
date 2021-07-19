@@ -10,16 +10,32 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    screenWidth: window.innerWidth
+    screenWidth: window.innerWidth,
+    coverVisible: false,
   },
-  getters:{
+  getters: {
     screenWidth({ screenWidth }) { return screenWidth },
     isMobScreen({ screenWidth }) { return screenWidth <= 460 },
     isSmallScreen({ screenWidth }) { return screenWidth <= 720 },
     isLargeScreen({ screenWidth }) { return screenWidth > 720 },
+    coverVisible(state) { return state.coverVisible },
   },
-  mutations: {},
-  actions: {},
+  mutations: {
+    showCover(state) { state.coverVisible = true; },
+    hideCover(state) { state.coverVisible = false; },
+  },
+  actions: {
+    showCover(a) {
+      a.commit({ type: 'showCover' });
+      console.log('showing cover', a.state.coverVisible);
+    },
+
+    hideCover(a) {
+      console.log(a);
+      a.commit({ type: 'hideCover' });
+      console.log('hiding cover', a.state.coverVisible);
+    },
+  },
   modules: {
     spaceStore,
     orderStore,

@@ -10,7 +10,7 @@ export default {
 
   computed: {
     pics() {
-      return `pics-${this.imgUrls.length}`;
+      return `pics-${this.imgUrls.lenth <= 5 ? this.imgUrls.length : 5}`;
     },
   },
 };

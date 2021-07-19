@@ -10,7 +10,7 @@
         </div>
       </div>
 
-      <div class="welcome flex item">
+      <div class="type flex item">
         <div class="left-part">
           <h1>What kind of place will you host?</h1>
         </div>
@@ -84,31 +84,233 @@
                 type="radio"
                 value="farm"
                 v-model="spaceToEdit.type"
-                id="radio1"
+                id="radio8"
               />
-              <label for="radio1">Farm</label>
+              <label for="radio8">Farm</label>
             </li>
             <li>
               <input
                 type="radio"
-                value="home"
+                value="chalet"
                 v-model="spaceToEdit.type"
-                id="radio1"
+                id="radio9"
               />
-              <label for="radio1">Home</label>
+              <label for="radio9">Chalet</label>
             </li>
             <li>
               <input
                 type="radio"
-                value="home"
+                value="lighthouse"
                 v-model="spaceToEdit.type"
-                id="radio1"
+                id="radio10"
               />
-              <label for="radio1">Home</label>
+              <label for="radio10">Lighthouse</label>
             </li>
           </ul>
         </div>
       </div>
+
+      <div class="location flex item">
+        <div class="left-part">
+          <h1>Where's your place located?</h1>
+        </div>
+        <div class="right-part">
+          <h2>Enter your address</h2>
+          <div class="address-container">
+            <input
+              type="text"
+              placeholder="Address"
+              v-model="spaceToEdit.loc.address"
+            />
+            <input
+              type="text"
+              placeholder="Country"
+              v-model="spaceToEdit.loc.country"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="capacity flex item">
+        <div class="left-part">
+          <h1>How many guests would you like to welcome?</h1>
+        </div>
+        <div class="right-part">
+          <label for="capacity">Guests:</label>
+          <div class="capacity-input">
+            <input
+              class="capacity-btn miuns"
+              type="button"
+              value="-"
+              @click="
+                spaceToEdit.capacity
+                  ? spaceToEdit.capacity--
+                  : spaceToEdit.capacity
+              "
+            />
+            <input
+              type="text"
+              class="capacity-num"
+              v-model="spaceToEdit.capacity"
+            />
+            <input
+              type="button"
+              class="capacity-btn plus"
+              value="+"
+              @click="spaceToEdit.capacity++"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="amenities flex item">
+        <div class="left-part">
+          <h1>Let guests know what your place has to offer</h1>
+        </div>
+        <div class="right-part">
+          <div class="amenity">
+            <input type="checkbox" id="tv" v-model="amenities.TV" />
+            <label for="tv">TV</label>
+          </div>
+          <div class="amenity">
+            <input type="checkbox" id="wifi" v-model="amenities.wifi" />
+            <label for="wifi">wifi</label>
+          </div>
+          <div class="amenity">
+            <input type="checkbox" id="bath" v-model="amenities.bath" />
+            <label for="bath">Bath</label>
+          </div>
+          <div class="amenity">
+            <input type="checkbox" id="kitchen" v-model="amenities.kitchen" />
+            <label for="kitchen">Kitchen</label>
+          </div>
+          <div class="amenity">
+            <input
+              type="checkbox"
+              id="free-parking"
+              v-model="amenities.freeParking"
+            />
+            <label for="free-parking">Free parking</label>
+          </div>
+          <div class="amenity">
+            <input
+              type="checkbox"
+              id="washing-machine"
+              v-model="amenities.washingMachine"
+            />
+            <label for="washing-machine">Washing machine</label>
+          </div>
+          <div class="amenity">
+            <input
+              type="checkbox"
+              id="smoke-alarm"
+              v-model="amenities.smokeAlarm"
+            />
+            <label for="smoke-alarm">Smoke alarm</label>
+          </div>
+          <div class="amenity">
+            <input type="checkbox" id="lockbox" v-model="amenities.lockbox" />
+            <label for="lockbox">Lockbox</label>
+          </div>
+          <div class="amenity">
+            <input
+              type="checkbox"
+              id="airConditioning"
+              v-model="amenities.airConditioning"
+            />
+            <label for="airConditioning">Air conditioning</label>
+          </div>
+          <div class="amenity">
+            <input
+              type="checkbox"
+              id="security-cameras"
+              v-model="amenities.securityCameras"
+            />
+            <label for="security-cameras">Security cameras</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="imgs flex item">
+        <div class="left-part">
+          <h1>Let guests know what your place has to offer</h1>
+        </div>
+        <div class="right-part">
+          <h2>Add at least 5 photos</h2>
+          <div class="imgs-upload">
+            <input class="cover-photo" type="file" name="" id="imgUpload" />
+            <input type="file" name="" id="imgUpload" />
+            <input type="file" name="" id="imgUpload" />
+            <input type="file" name="" id="imgUpload" />
+            <input type="file" name="" id="imgUpload" />
+          </div>
+        </div>
+      </div>
+
+      <div class="name flex item">
+        <div class="left-part">
+          <h1>Let's give your place a name</h1>
+        </div>
+        <div class="right-part">
+          <h2>Create your title</h2>
+          <input
+            type="text"
+            v-model="spaceToEdit.name"
+            maxlength="50"
+            size="50"
+          />
+        </div>
+      </div>
+
+      <div class="description flex item">
+        <div class="left-part">
+          <h1>Now, let's describe your place</h1>
+        </div>
+        <div class="right-part">
+          <h2>Create your description</h2>
+          <textarea
+            name=""
+            id=""
+            cols="50"
+            rows="4"
+            v-model="spaceToEdit.description"
+          >
+Get comfortable and enjoy plenty of extra room at this spacious place.</textarea
+          >
+        </div>
+      </div>
+
+      <div class="price flex item">
+        <div class="left-part">
+          <h1>Now for the fun part—set your price</h1>
+        </div>
+        <div class="right-part">
+          <div class="set-price">
+            <input
+              type="button"
+              value="-"
+              @click="
+                spaceToEdit.price ? spaceToEdit.price-- : spaceToEdit.price
+              "
+            />
+            <input
+              type="text"
+              pattern="[0-9]*"
+              v-model.number="spaceToEdit.price"
+            />
+            <input type="button" value="+" @click="spaceToEdit.price++" />
+          </div>
+
+          <p>per night</p>
+        </div>
+      </div>
+
+      <!-- <div class="price flex item">
+        <div class="left-part">
+          <h1>Now for the fun part—set your price</h1>
+        </div>
+        <div class="right-part"></div>
+      </div> -->
     </form>
   </section>
   <!--<section class="space-edit-add app-main">
@@ -442,12 +644,12 @@ export default {
         wifi: false,
         bath: false,
         kitchen: false,
-        washing_machine: false,
-        free_parking: false,
-        smoke_alarm: false,
+        washingMachine: false,
+        freeParking: false,
+        smokeAlarm: false,
         lockbox: false,
-        ac: false,
-        cameras: false,
+        airConditioning: false,
+        securityCameras: false,
       },
     };
   },

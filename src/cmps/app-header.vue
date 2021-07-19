@@ -76,6 +76,9 @@ export default {
     });
     eventBusService.$on("likedWithoutUser", () => {
       this.showLogin();
+      this.loginFormType = 'login'
+      this.navOpen = false //TODO this should not be needed here - change 'showLogin()'
+      // this.toggleNav(); 
     });
 
     // },3000)
@@ -134,7 +137,7 @@ export default {
   },
   data() {
     return {
-      loginFormType: "",
+      loginFormType: "", //'login' or 'signup'
       loginOpen: false,
       navOpen: false,
       screenWidth: window.innerWidth,
@@ -154,12 +157,14 @@ export default {
       if (this.$route.name === "space-details") this.$router.push("/");
     },
     showLogin(formType) {
+      this.$store.dispatch({type:'showCover'})
       this.loginFormType = formType;
       this.loginOpen = true;
       this.toggleNav();
       // console.log(this.isLoginOpen);
     },
     closeLogin() {
+      this.$store.dispatch({type:'hideCover'})
       this.loginOpen = false;
     },
     toggleNav() {
