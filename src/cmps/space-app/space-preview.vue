@@ -154,10 +154,16 @@ export default {
       slides: this.space.imgUrls,
     };
   },
-  // watch: {
-  //   baba() {
-  //     this.isLiked = this.islikedByUser();
-  //     console.log('baba');
+  // watch:{
+  //     baba(){
+
+  //       this.isLiked = this.islikedByUser()
+  //       console.log('baba');
+  //     }
+
+  // },
+  //   isliked2(){
+  //     this.isLiked = this.islikedByUser
   //   },
   // },
   methods: {
@@ -196,9 +202,9 @@ export default {
   },
   computed: {
     islikedByUser() {
-      // const user = this.$store.getters.loggedinUser;
-      // if (!user || user.length === 0) return;
-      // return user.likedSpacesIds.includes(this.space._id);
+      const user = this.$store.getters.loggedinUser;
+      // if(!user || user.length===0)return
+      return user.likedSpacesIds.includes(this.space._id);
       // return user.likedSpacesIds.find((spaceId)=>{
       //     return spaceId === this.space._id
       //   })
@@ -278,27 +284,6 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss"></style>
-
-<!--
-<style>
-  .el-carousel__item h3 {
-    color: #475669;
-    font-size: 14px;
-    opacity: 0.75;
-    line-height: 150px;
-    margin: 0;
-  }
-
-  .el-carousel__item:nth-child(2n) {
-    background-color: #99a9bf;
-  }
-
-  .el-carousel__item:nth-child(2n+1) {
-    background-color: #d3dce6;
-  }
-</style>
--->
 
 <style>
 .app {
@@ -316,14 +301,6 @@ export default {
   /* z-index: 10; */
   /* margin-bottom: 10px; */
 }
-/* .carousel-slider { */
-/* border-radius: 12px; */
-/* position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0; */
-/* } */
 .carousel-slider img {
   /* border-radius: 12px; */
 
