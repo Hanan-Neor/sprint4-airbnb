@@ -5,8 +5,6 @@ const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser';
 // const SCORE_FOR_REVIEW = 10;
 var gWatchedUser = null;
 
-
-
 export const userService = {
   login,
   logout,
@@ -64,7 +62,7 @@ async function signup(userCred) {
   // const user = await httpService.post('auth/signup', userCred)
   // socketService.emit('set-user-socket', user._id);
   console.log('just signed up', user);
-  const users = await getUsers()
+  const users = await getUsers();
   console.log('users', users);
   return _saveLocalUser(user);
 }
@@ -87,11 +85,10 @@ function _saveLocalUser(user) {
 }
 
 function getLoggedinUser() {
-  
   if (!sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER)) {
-    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, "null") ;
-}
-  return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER));
+    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, 'null');
+  }
+  // return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER));
 }
 
 // // This IIFE functions for Dev purposes

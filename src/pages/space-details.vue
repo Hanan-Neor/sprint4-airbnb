@@ -84,17 +84,17 @@
 </template>
 
 <script>
-import chatApp from "./../cmps/space-details/chat-app.vue";
-import orderForm from "./../cmps/space-details/order-form.vue";
-import reviewList from "./../cmps/space-details/review-list.vue";
-import spaceImgs from "./../cmps/space-details/space-imgs.vue";
-import googleMaps from "./../cmps/google-maps.vue";
-import showMore from "./../cmps/show-more.vue";
-import { spaceService } from "../services/space.service.js";
-import spaceReserve from "./../cmps/space-details/space-reserve.vue";
+import chatApp from './../cmps/space-details/chat-app.vue';
+import orderForm from './../cmps/space-details/order-form.vue';
+import reviewList from './../cmps/space-details/review-list.vue';
+import spaceImgs from './../cmps/space-details/space-imgs.vue';
+import googleMaps from './../cmps/google-maps.vue';
+import showMore from './../cmps/show-more.vue';
+import { spaceService } from '../services/space.service.js';
+import spaceReserve from './../cmps/space-details/space-reserve.vue';
 
 export default {
-  name: "space-details",
+  name: 'space-details',
 
   data() {
     return {
@@ -104,36 +104,36 @@ export default {
       },
       host: {},
 
-      order: {
-        hostId: null,
-        createdAt: null,
-        buyer: {
-          _id: null,
-          fullname: null,
-        },
-        totalPrice: null,
+      // order: {
+      //   hostId: '',
+      //   createdAt: 0,
+      //   buyer: {
+      //     _id: '',
+      //     fullname: '',
+      //   },
+      //   totalPrice: 0,
 
-        startDate: "g",
-        endDate: "g",
-        guests: null,
-        //     "guests": {
-        //       "adults":,
-        //       "kids": 1
-        //     },
-        // dest: {
-        //   country: "",
-        //   countryCode: "",
-        //   address: "",
-        //   lat: null,
-        //   lng: null,
-        // },
-        stay: {
-          _id: null,
-          name: "",
-          price: null,
-        },
-        status: "pending",
-      },
+      //   startDate: '',
+      //   endDate: '',
+      //   guests: 0,
+      //   //     "guests": {
+      //   //       "adults":,
+      //   //       "kids": 1
+      //   //     },
+      //   // dest: {
+      //   //   country: "",
+      //   //   countryCode: "",
+      //   //   address: "",
+      //   //   lat: null,
+      //   //   lng: null,
+      //   // },
+      //   stay: {
+      //     _id: '',
+      //     name: '',
+      //     price: 0,
+      //   },
+      //   status: 'pending',
+      // },
     };
   },
 
@@ -180,25 +180,25 @@ export default {
 
   methods: {
     icon(amenity) {
-      return amenity.toLowerCase().replace(" ", "-");
+      return amenity.toLowerCase().replace(' ', '-');
     },
     reserveToSave(reserve) {
-      // console.log(reserve);
-      let order = reserve;
-      this.order.guests = order.guests;
-      this.order.startDate = order.date.start;
-      this.order.endDate = order.date.end;
-      order = this.order;
-      this.$store.dispatch({ type: "saveOrder", order });
-      // tripToOrder
-      // this.$store.dispatch({ type: 'tripToOrder' });
-      // this.$store.commit('tripToOrder')
-      // console.log(this.order);
+      //   // console.log(reserve);
+      //   let order = reserve;
+      //   this.order.guests = order.guests;
+      //   this.order.startDate = order.date.start;
+      //   this.order.endDate = order.date.end;
+      //   order = this.order;
+      //   this.$store.dispatch({ type: 'saveOrder', order });
+      //   // tripToOrder
+      //   // this.$store.dispatch({ type: 'tripToOrder' });
+      //   // this.$store.commit('tripToOrder')
+      //   // console.log(this.order);
     },
   },
 
   watch: {
-    "$route.params.spaceId": {
+    '$route.params.spaceId': {
       immediate: true,
       async handler() {
         const { spaceId } = this.$route.params;
@@ -207,13 +207,13 @@ export default {
           this.space = space;
           this.host = space.host;
 
-          this.order.hostId = space.host._id;
-          this.order.createdAt = Date.now();
-          this.order.buyer._id = this.$store.getters.loggedinUser._id;
-          this.order.buyer.fullname = this.$store.getters.loggedinUser.fullname;
-          this.order.stay._id = space._id;
-          this.order.stay.name = space.name;
-          this.order.stay.price = space.price;
+          // this.order.hostId = space.host._id;
+          // this.order.createdAt = Date.now();
+          // this.order.buyer._id = this.$store.getters.loggedinUser._id;
+          // this.order.buyer.fullname = this.$store.getters.loggedinUser.fullname;
+          // this.order.stay._id = space._id;
+          // this.order.stay.name = space.name;
+          // this.order.stay.price = space.price;
 
           // this.order.dest.country = this.space.loc.country;
           // this.order.dest.countryCode = this.space.loc.countryCode;
@@ -221,7 +221,7 @@ export default {
           // this.order.dest.lat = this.space.loc.lat;
           // this.order.dest.lng = this.space.loc.lng;
         } catch (error) {
-          console.log("cannot get space", space);
+          console.log('cannot get space', error);
         }
       },
     },

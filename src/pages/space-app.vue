@@ -22,7 +22,7 @@ export default {
     return {
       spaceToEdit: {
         txt: '',
-        aboutUserId: null
+        aboutUserId: ''
       }
     }
   },

@@ -2,8 +2,7 @@
   <div class="login popup-form">
     <!-- <p>{{ msg }}</p> -->
 
-      
-      <p @click="closeLogin" class="close pointer">x</p>
+    <p @click="closeLogin" class="close pointer">x</p>
     <div v-if="loggedinUser">
       <h3>
         Loggedin User:
@@ -13,32 +12,41 @@
     </div>
     <div v-else>
       <h4>Login or signup</h4>
-      <hr>
+      <hr />
       <h2>Welcome to Airbnb</h2>
       <form @submit.prevent="doLogin">
+        <input
+          class="text-input"
+          type="text"
+          placeholder="username"
+          v-model="loginCred.username"
+        />
 
-        <input class="text-input" type="text" placeholder="username" v-model="loginCred.username">
-
-        <input class="text-input" type="text" v-model="loginCred.password" placeholder="User name" />
+        <input
+          class="text-input"
+          type="text"
+          v-model="loginCred.password"
+          placeholder="User name"
+        />
         <button>Login</button>
       </form>
-<hr>
+      <hr />
       <form @submit.prevent="doSignup">
         <h2>signup</h2>
         <input
-        class="text-input"
+          class="text-input"
           type="text"
           v-model="signupCred.fullname"
           placeholder="Your full name"
         />
         <input
-        class="text-input"
+          class="text-input"
           type="text"
           v-model="signupCred.password"
           placeholder="Password"
         />
         <input
-        class="text-input"
+          class="text-input"
           type="text"
           v-model="signupCred.username"
           placeholder="Username"
@@ -50,7 +58,6 @@
         /> -->
         <button>Signup</button>
       </form>
-
     </div>
     <hr />
   </div>
@@ -58,12 +65,13 @@
 
 <script>
 export default {
-  name: "test",
+  name: 'test',
   data() {
     return {
-      msg: "",
-      loginCred: { username: "user1", password: "123" },
-      signupCred: { username: "", password: "", fullname: "" , likedSpacesIds:[]},
+      msg: '',
+      loginCred: { username: 'user1', password: '123' },
+      signupCred: { username: '', password: '', fullname: '' },
+      // signupCred: { username: "", password: "", fullname: "" , likedSpacesIds:[]},
     };
   },
   computed: {
@@ -80,20 +88,20 @@ export default {
   methods: {
     async doLogin() {
       if (!this.loginCred.username) {
-        this.msg = "Please enter username/password";
+        this.msg = 'Please enter username/password';
         return;
       }
       try {
-        await this.$store.dispatch({ type: "login", userCred: this.loginCred });
+        await this.$store.dispatch({ type: 'login', userCred: this.loginCred });
         this.$emit('close-login');
-        this.$router.push("/space");
+        this.$router.push('/space');
       } catch (err) {
         console.log(err);
-        this.msg = "Failed to login";
+        this.msg = 'Failed to login';
       }
     },
     doLogout() {
-      this.$store.dispatch({ type: "logout" });
+      this.$store.dispatch({ type: 'logout' });
     },
     async doSignup() {
       if (
@@ -101,16 +109,16 @@ export default {
         !this.signupCred.password ||
         !this.signupCred.username
       ) {
-        this.msg = "Please fill up the form";
+        this.msg = 'Please fill up the form';
         return;
       }
-      await this.$store.dispatch({ type: "signup", userCred: this.signupCred });
-      this.$emit('close-login')
-      this.$router.push("/space");
+      await this.$store.dispatch({ type: 'signup', userCred: this.signupCred });
+      this.$emit('close-login');
+      this.$router.push('/space');
     },
-    closeLogin(){
-      this.$emit('close-login')
-    }
+    closeLogin() {
+      this.$emit('close-login');
+    },
   },
 };
 </script>

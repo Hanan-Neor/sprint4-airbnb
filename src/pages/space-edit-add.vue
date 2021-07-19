@@ -371,7 +371,7 @@ export default {
   },
   computed: {
     spaceId() {
-      return this.$route.params.spaceId || null;
+      return this.$route.params.spaceId || '';
     },
   },
   created() {
