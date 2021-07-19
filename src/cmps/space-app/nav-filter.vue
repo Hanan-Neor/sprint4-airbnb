@@ -41,6 +41,7 @@ export default {
         dates: { startDate: 0, endDate: 0 },
         count: 20, //change this to PAGE_SIZE when add pagination
         showFilterForm: false,
+        currPage: 1,
       },
       formOpen: false,
     };

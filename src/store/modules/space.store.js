@@ -51,10 +51,11 @@ export const spaceStore = {
       state.spaces.push(space);
     },
     setFilter(state, { filterBy }) {
+      console.log('setting filter', filterBy);
       state.filterBy = filterBy;
     },
     setFilterField(state, { field, value }) {
-      console.log('setting filter field*****');
+      console.log('setting filter field*****', field, value);
       state.filterBy[field] = value;
     },
     clearFilter(state) {
@@ -67,6 +68,7 @@ export const spaceStore = {
         numGuests: 0,
         dates: { startDate: 0, endDate: 0 },
         count: Infinity, //change this to PAGE_SIZE when add pagination
+        currPage: 1,
       }
     }
     // addReview(state, { space }) {
