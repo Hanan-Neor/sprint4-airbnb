@@ -15,7 +15,7 @@
     <div class="flex" style="align-items:center">
 
       <span v-if="isLarge" class="becomeHost" :style="hostColor">Become a host</span>
-      <login v-if="isLoginOpen" @close-login="closeLogin" />
+      <login v-if="isLoginOpen" @close-login="closeLogin" :formType="getLoginFormType"/>
       <template v-if="isLarge">
         <button class="flex pointer" @click="toggleNav">
           <img
@@ -31,8 +31,8 @@
         </button>
 
         <ul class="nav pointer clear-list" v-if="isNavOpen">
-          <li v-if="!loggedInUser" @click="showLogin">login</li>
-          <li v-if="!loggedInUser" @click="showLogin">signup</li>
+          <li v-if="!loggedInUser" @click="showLogin('login')">login</li>
+          <li v-if="!loggedInUser" @click="showLogin('signup')">signup</li>
           <li v-if="loggedInUser" @click="logout">logout</li>
           <li>Host your home</li>
         </ul>
@@ -74,6 +74,7 @@ export default {
     login,
   },
   computed: {
+    getLoginFormType(){return this.loginFormType},
     isLoginOpen() {
       return this.loginOpen;
     },
@@ -118,6 +119,7 @@ export default {
   },
   data() {
     return {
+      loginFormType: '',
       loginOpen: false,
       navOpen: false,
       screenWidth: window.innerWidth,
@@ -136,8 +138,8 @@ export default {
       this.toggleNav();
       if (this.$route.name === 'space-details') this.$router.push('/');
       },
-    showLogin() {
-      console.log("logging in...");
+    showLogin(formType) {
+      this.loginFormType = formType;
       this.loginOpen = true;
       this.toggleNav();
       console.log(this.isLoginOpen);

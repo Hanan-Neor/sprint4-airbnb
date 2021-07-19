@@ -12,19 +12,19 @@
       </h3>
     </div>
     <div v-else>
-      <h4>Login or signup</h4>
-      <hr>
+      <div class="title">
+
+      </div>
+      <h4>{{title}}</h4>
       <h2>Welcome to Airbnb</h2>
-      <form @submit.prevent="doLogin">
+      <form @submit.prevent="doLogin" v-if="isLoginForm">
 
         <input class="text-input" type="text" placeholder="username" v-model="loginCred.username">
 
         <input class="text-input" type="text" v-model="loginCred.password" placeholder="User name" />
         <button>Login</button>
       </form>
-<hr>
-      <form @submit.prevent="doSignup">
-        <h2>signup</h2>
+      <form @submit.prevent="doSignup" v-else>
         <input
         class="text-input"
           type="text"
@@ -51,6 +51,12 @@
         <button>Signup</button>
       </form>
 
+<div @click="toggleFormType" class="form-toggle pointer">
+      <p v-if="isLoginForm" >show Signup</p>
+      <p v-else >show Login</p>
+
+</div>
+
     </div>
     <hr />
   </div>
@@ -59,23 +65,30 @@
 <script>
 export default {
   name: "test",
+  props: ['formType'],
   data() {
     return {
       msg: "",
       loginCred: { username: "user1", password: "123" },
       signupCred: { username: "", password: "", fullname: "" },
+      loginForm: '',
+      title: ''
     };
   },
   computed: {
+    getTitle(){return this.title},
     users() {
       return this.$store.getters.users;
     },
     loggedinUser() {
       return this.$store.getters.loggedinUser;
     },
+    isLoginForm(){ return this.loginForm}
   },
   created() {
     // this.loadUsers();
+    console.log('here',this.formType);
+    this.loginForm = this.formType === 'login'
   },
   methods: {
     async doLogin() {
@@ -92,6 +105,10 @@ export default {
         this.msg = "Failed to login";
       }
     },
+      toggleFormType(){
+        this.loginForm = !this.loginForm
+        this.title= this.formType === 'login' ? 'Signup' : 'Login'
+        },
     doLogout() {
       this.$store.dispatch({ type: "logout" });
     },
