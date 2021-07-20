@@ -1,6 +1,8 @@
 <template>
   <div class="space-details main-layout">
     <h2 class="space-title-primary">{{ space.name }}</h2>
+     <chat-app :space="space" />
+<msg :spaceId="this.$route.params.spaceId" />
     <div class="space-title-secondary">
       <div class="left-part">
         <div class="rating">
@@ -95,17 +97,31 @@ import googleMaps from './../cmps/google-maps.vue';
 import showMore from './../cmps/show-more.vue';
 import { spaceService } from '../services/space.service.js';
 import spaceReserve from './../cmps/space-details/space-reserve.vue';
+import msg from './../cmps/msg.vue';
 
 export default {
   name: 'space-details',
-  created(){
-    socketService.emit("spaceView", this.addSpaceView);
-    socketService.on("viewingSpace", this.showViewMsg);
-    socketService.on("bookedSpace", this.showBookedMsg);
+  async created(){
+    try{
+      socketService.emit("chat topic", this.$route.params.spaceId);
+      socketService.emit("spaceView", this.$route.params.spaceId);
+      window.addEventListener('beforeunload', () => {
+         socketService.emit("removeSpaceView", this.$route.params.spaceId);
+       })
+
+    } catch(err) {
+      console.log('error in created in space-details', err);
+      throw err
+    }
+    // socketService.emit("spaceView", this.addSpaceView);
+    // socketService.on("viewingSpace", this.showViewMsg);
+    // socketService.on("bookedSpace", this.showBookedMsg);
   },
 
   data() {
     return {
+      // viewerCount: 0,
+      msg:'msg...',
       space: {
         loc: {},
         reviews: [],
@@ -146,6 +162,7 @@ export default {
   },
 
   computed: {
+    getMsg(){return this.msg},
     totalRate() {
       const { reviews } = this.space;
       const sums = reviews.map((r) => {
@@ -203,8 +220,10 @@ export default {
         // this.$store.commit('tripToOrder')
         // console.log(this.order);
     },
-    showViewMsg(){
-      console.log('viewing!');
+    showViewMsg(count){
+      console.log('viewing******!');
+      this.msg = count;
+      console.log(this.msg);
     },
     showBokedMsg(){
       console.log('booked!');
@@ -248,6 +267,10 @@ export default {
     googleMaps,
     showMore,
     spaceReserve,
+    msg,
   },
+  beforeDestroy(){
+        socketService.emit("removeSpaceView", this.$route.params.spaceId);
+    }
 };
 </script>
