@@ -5,16 +5,19 @@
 </template>
 
 <script>
+import { socketService } from '../services/socket.service';
 export default {
-    props:['spaceId', 'viewerCount'],
+    props:['spaceId'],
     created(){
         // socketService.emit("spaceView", this.spaceId);
         socketService.on("viewingSpace", this.showViewMsg);
+        //TODO add listener for removing a booked space
         socketService.on("bookedSpace", this.showBookedMsg);
+        socketService.on("spaceReviewRemoved", this.removeSpaceView)
     },
     data(){
         return {
-        msg:'unset',
+        msg:0,
         viewerCount: 0
 
         }
@@ -25,6 +28,10 @@ export default {
         },
         showBookedMsg(){
             console.log('showBookedMsg...');
+        },
+        removeSpaceView(){
+            this.msg -= 1
+            console.log('a space view removed', this.msg);
         }
     },
     computed:{
@@ -32,6 +39,7 @@ export default {
             return this.msg
             }
     },
+    
     // beforeDestroy(){
     //     socketService.emit("removeSpaceView", this.spaceId);
     // }

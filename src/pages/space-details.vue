@@ -2,7 +2,7 @@
   <div class="space-details main-layout">
     <h2 class="space-title-primary">{{ space.name }}</h2>
      <chat-app :space="space" />
-<msg :spaceId="this.$route.params.spaceId" :viewerCount="viewerCount"/>
+<msg :spaceId="this.$route.params.spaceId" />
     <div class="space-title-secondary">
       <div class="left-part">
         <div class="rating">
@@ -105,6 +105,9 @@ export default {
     try{
       socketService.emit("chat topic", this.$route.params.spaceId);
       socketService.emit("spaceView", this.$route.params.spaceId);
+      window.addEventListener('beforeunload', () => {
+         socketService.emit("removeSpaceView", this.$route.params.spaceId);
+       })
 
     } catch(err) {
       console.log('error in created in space-details', err);
@@ -267,7 +270,7 @@ export default {
     msg,
   },
   beforeDestroy(){
-        socketService.emit("removeSpaceView", this.spaceId);
+        socketService.emit("removeSpaceView", this.$route.params.spaceId);
     }
 };
 </script>
