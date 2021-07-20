@@ -1,8 +1,10 @@
 import { utilService } from './util.service.js';
 import { storageService } from './async-storage.service.js';
+import { httpService } from './http.service.js';
 
 const ORDERS_KEY = 'orders';
-_createOrders();
+// _createOrders();
+window.orderService = orderService;
 
 export const orderService = {
   query,
@@ -12,23 +14,45 @@ export const orderService = {
   getById,
 };
 
-function query() {
-  return storageService.query(ORDERS_KEY);
+async function query(filterBy) {
+  try {//SERVER STORAGE
+    let orders = await httpService.get(`order`, filterBy); 
+    return orders;
+  } catch (err) {
+    console.log('error getting orders in service', this.filterBy);
+    throw err;
+  }
+  
+  return storageService.query(ORDERS_KEY);//CLIENT STORGE
+
 }
 
 function remove(orderId) {
+  return httpService.delete(`order/${orderId}`); //SERVER STORAGE
   return storageService.remove(ORDERS_KEY, orderId);
 }
 
-function save(order) {
-  if (order._id) {
-    return storageService.put(ORDERS_KEY, order);
-  } else {
-    return storageService.post(ORDERS_KEY, order);
+async function save(order) {
+  try{
+    if (order._id) {
+      order = await httpService.put(`order/${order._id}`, order); //SERVER STORAGE
+      return order; //SERVER STORAGE
+      return storageService.put(ORDERS_KEY, order);
+    } else {
+      order = await httpService.post(`order`, order); //SERVER STORAGE
+      return order; //SERVER STORAGE
+      return storageService.post(ORDERS_KEY, order);
+    }
+
+  } catch(err){
+    console.log('error saving order in service', err);
+    throw err
   }
+
 }
 
 function getById(orderId) {
+  return httpService.get(`order/${orderId}`); //SERVER STORAGE
   return storageService.get(ORDERS_KEY, orderId);
 }
 
