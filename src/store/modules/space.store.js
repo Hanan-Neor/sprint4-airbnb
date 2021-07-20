@@ -16,10 +16,11 @@ export const spaceStore = {
     },
   },
   getters: {
-    spaces(state) { return state.spaces
+    spaces(state) { 
       const filterBy = state.filterBy
       //pagination here
       if (filterBy.count !== Infinity) {
+        console.log('count of pages', filterBy.count);
         const firstSpace = filterBy.count * (filterBy.currPage - 1);
         const lastSpace = firstSpace + filterBy.count;
         console.log('first', firstSpace, ": last", lastSpace);
@@ -88,20 +89,10 @@ export const spaceStore = {
     //   state.filterBy[field] = value;
     // },
     async loadSpaces(context) {
-      // spaceService.query(context.getters.filterBy)
-      //   .then((spaces) => {
-      //     context.commit({ type: 'setSpaces', spaces });
-      //     return spaces;
-      //   })
-      //   .catch((err) => {
-      //     console.log('Cannot load spaces', err);
-      //     throw err;
-      //   });
+
       try {
         const spaces = await spaceService.query(context.getters.filterBy);
-        // const spaces = await spaceService.query();
         context.commit({ type: 'setSpaces', spaces });
-        console.log('spaces**********', spaces);
         return spaces;
       } catch (err) {
         console.log('Cannot load spaces in store');
