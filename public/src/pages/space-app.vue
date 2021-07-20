@@ -4,7 +4,6 @@
     <space-list @liked="liked" :spaces="spaces" />
 
 <!-- TODO add numbers for pagination here -->
-      <msg :spaceId="a" />
     <p>Enter dates to see full pricing. Additional fees apply. Taxes may be added.</p>
   </div>
 </template>
@@ -12,7 +11,7 @@
 <script>
 import spaceList from '../cmps/space-app/space-list.vue';
 import navFilter from '../cmps/space-app/nav-filter.vue';
-import msg from '../cmps/space-details/msg.vue'
+import msg from './../cmps/space-details/msg.vue'
 
 export default {
   components: { 

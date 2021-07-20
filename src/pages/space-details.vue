@@ -1,9 +1,8 @@
 <template>
   <div class="space-details main-layout">
     <h2 class="space-title-primary">{{ space.name }}</h2>
-    <!-- <span v-if="this.msg">currently {{getMsg}} viewers</span> -->
-    <msg />
      <chat-app :space="space" />
+<msg :spaceId="this.$route.params.spaceId" :viewerCount="viewerCount"/>
     <div class="space-title-secondary">
       <div class="left-part">
         <div class="rating">
@@ -98,19 +97,27 @@ import googleMaps from './../cmps/google-maps.vue';
 import showMore from './../cmps/show-more.vue';
 import { spaceService } from '../services/space.service.js';
 import spaceReserve from './../cmps/space-details/space-reserve.vue';
-import msg from './../cmps/space-details/msg.vue'
+import msg from './../cmps/msg.vue';
 
 export default {
   name: 'space-details',
-  created(){
+  async created(){
+    try{
+      socketService.emit("chat topic", this.$route.params.spaceId);
+      socketService.emit("spaceView", this.$route.params.spaceId);
+
+    } catch(err) {
+      console.log('error in created in space-details', err);
+      throw err
+    }
     // socketService.emit("spaceView", this.addSpaceView);
-    socketService.emit("spaceView", this.space._id);
-    socketService.on("viewingSpace", this.showViewMsg);
-    socketService.on("bookedSpace", this.showBookedMsg);
+    // socketService.on("viewingSpace", this.showViewMsg);
+    // socketService.on("bookedSpace", this.showBookedMsg);
   },
 
   data() {
     return {
+      // viewerCount: 0,
       msg:'msg...',
       space: {
         loc: {},
@@ -259,5 +266,8 @@ export default {
     spaceReserve,
     msg,
   },
+  beforeDestroy(){
+        socketService.emit("removeSpaceView", this.spaceId);
+    }
 };
 </script>

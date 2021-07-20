@@ -27,7 +27,7 @@ export default {
   name: "chat-room",
   props: ['space'],
   created() {
-    socketService.emit("chat topic", this.topic);
+    // socketService.emit("chat topic", this.topic); //TODO possibly remove because this is also in the parent
     socketService.on("chat addMsg", this.addMsg);
     socketService.on("show-typer", this.setTyper);
     this.username = this.$store.getters.loggedinUser.fullname;
