@@ -71,7 +71,7 @@ export default {
       msg: "",
       loginCred: { username: "user1", password: "123" },
       // signupCred: { username: "", password: "", fullname: "" },
-       signupCred: { username: "", password: "", fullname: "" , likedSpacesIds:[]},
+       signupCred: { username: "", password: "", fullname: ""},
       loginForm: '',
       title: '',
     };

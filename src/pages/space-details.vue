@@ -1,5 +1,5 @@
 <template>
-  <div class="space-details main-layout">
+  <div class="space-details main-layout" v-if="space.imgUrls">
     <h2 class="space-title-primary">{{ space.name }}</h2>
     <div class="space-title-secondary">
       <div class="left-part">
@@ -84,6 +84,10 @@
 
     <chat-app :space="space" />
   </div>
+    <!-- <div v-else> -->
+    <img  v-else class="svg-img-loader" src="@/assets/img/loading.svg" />
+  <!-- </div> -->
+
 </template>
 
 <script>

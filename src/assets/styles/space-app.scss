@@ -9,6 +9,15 @@
 // }
 
 .space-app {
+ & .svg-img-loader{
+      position: relative;
+      top:50%;
+      left:50%;
+      transform: translate(-50% ,-50%);
+
+  }
+
+
     & .space-list{
       & .carousel{
           @include aspect-ratio(3, 2);

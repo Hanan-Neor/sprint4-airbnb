@@ -67,3 +67,7 @@ a:hover {
   /* Support for IE. */
   font-feature-settings: 'liga';
 }
+
+*:focus {
+  outline:none;
+}

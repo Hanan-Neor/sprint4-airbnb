@@ -42,7 +42,7 @@ margin-bottom: 10px;
 
         }
         // .el-icon-collection-tag{
-        svg{
+        svg.like{
             position: absolute;
             top: 20px;
             right: 20px;
@@ -134,6 +134,52 @@ margin-bottom: 10px;
             
             
           }
+
+          .preview-details{
+            font-family: 'cereal-Book';
+            color: $clr2;
+            .stars{
+                margin-bottom: 6px;
+                font-size: 0.875rem;
+                .rating {
+                    display: flex;
+                    gap: 4px;
+            
+                    .total-rate {
+                      color: $clr2;
+                    //   font-weight: 600;
+                    }
+                    .number-reviews{
+                        color:$clr3
+                    }
+                  }
+                .no-reviews{
+                    color:$clr3
+                }
+            }
+            .type-adress{
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+                margin-bottom: 2px;
+            }
+            .name{
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+                .price{
+                    margin-top: 4px;
+                    // line-height: 20px;
+                    .price-num{
+                        // font-family: 'cereal-Medium';
+                        font-family: 'cereal-Bold';
+                    }
+                }
+          }
+
+
+
         .name-price{
             justify-content: space-between;
             color: #222222;

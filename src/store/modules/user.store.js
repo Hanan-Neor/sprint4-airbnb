@@ -38,6 +38,29 @@ export const userStore = {
     // },
   },
   actions: {
+    async getById(context,payload) {
+    //   const loggedinUserId = this.getters.loggedinUser._id
+    //   console.log(loggedinUserId);
+    //   const user = await userService.getById(loggedinUserId);
+    //   // alert('hi')
+    //   return(user)
+
+
+      try {
+        const loggedinUserId = this.getters.loggedinUser._id
+      console.log(loggedinUserId);
+      const user = await userService.getById(loggedinUserId);
+      // alert('hi')
+      console.log(user);
+      return user
+      } catch (err) {
+        console.log('Cannot load user in store');
+        throw err;
+      }
+
+
+    },
+
     async liked(context, payload) {
       console.log(payload.spaceId);
     },
