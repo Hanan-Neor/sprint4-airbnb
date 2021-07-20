@@ -7,6 +7,13 @@
     // opacity: 50%;
   }
 
+  & .space-list{
+    & .carousel{
+        @include aspect-ratio(1, 1);
+    }
+  }
+
+
     .breaker-image{
         // width:100vw -20px;
         img {

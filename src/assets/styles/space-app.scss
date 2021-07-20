@@ -16,6 +16,14 @@
   // align-items: center;
   // justify-content: center;
   // align-items: center;
+    & .space-list{
+      & .carousel{
+
+            
+          @include aspect-ratio(3, 2);
+
+      }
+    }
 
   .nav-filter {
     // box-shadow: black 0px 6px 16px ;

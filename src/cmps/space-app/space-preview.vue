@@ -35,21 +35,26 @@
         </carousel-slide>
       </carousel>
       <!-- {{ islikedByUser }} -->
+
+
+
       <div class="name-price flex">
-        <!-- <div>{{ space.name }}</div> -->
         <div>
           {{ space.loc.address }}
-          <!-- ,{{ space.loc.country }} -->
         </div>
         <div>{{ priceToShow }} / night</div>
       </div>
       <div class="distance">{{ distance }} kilometers away</div>
-      <!-- <div class="distance">{{ distance }} miles away</div> -->
-      <!-- <div class="distance">{{distanceToShow}} Kilometers away</div> -->
-      <!-- <div class="like" @click="like"></div> -->
 
-      <!-- <hr/>
-        {{space}} -->
+      <!-- <div class="stars"></div>
+      <div class="type-adress">{{space.type}} ∙ {{space.loc.address}}</div>
+      <div class="name">{{space.name}}</div>
+      <div class="price">{{ priceToShow }} / night</div> -->
+
+
+
+
+
     </router-link>
   </section>
 </template>
