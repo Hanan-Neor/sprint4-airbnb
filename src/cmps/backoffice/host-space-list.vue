@@ -2,13 +2,19 @@
   <div class="host-space-list">
       <h2>space list </h2>
       <ul>
-          <li v-for="space in spaces" :key="space._id">{{space.name}} </li>
+          <li v-for="space in spaces" :key="space._id" class="flex">
+              {{space.name}} 
+              <button @click="deleteSpace(space)">delete</button>
+              <button @click="editSpace(space)">edit coming soon</button>
+              
+              </li>
+         
       </ul>
   </div>
 </template>
 
 <script>
-
+// import {filterService } from './../../services/filterFunctions.js'
 
 export default {
     props:['host'],
@@ -30,20 +36,34 @@ export default {
         }
     },
     computed:{
-         spaces(){return this.$store.getters.spaces;}
+         spaces(){return this.$store.getters.spaces;},
     },
     methods:{
         //TODO move this function to a store
          async getSpacesForHost(){
-            try{
-                // 
+            try{ 
                 const hostId = this.host._id
                 await this.$store.commit({ type: "clearFilter" });
                 await this.$store.commit({type: 'setFilterField', field:'hostId', value:hostId})
                 await this.$store.dispatch({type: 'loadSpaces'})
                 return this.$store.getters.spaces
-                // this.spaces = this.$store.getters.spaces;
-                // console.log('spaces', this.spaces);
+            } catch (err) {
+                console.log('getSpacesForHost', err);
+                throw err;
+            }
+        },
+        async deleteSpace(space){
+             try{ 
+                await this.$store.dispatch({type: 'removeSpace', spaceId:space._id})
+                await this.$store.dispatch({type: 'loadSpaces'})
+            } catch (err) {
+                console.log('getSpacesForHost', err);
+                throw err;
+            }
+        },
+        async editSpace(space){
+            alert('edit this space', space.name)
+             try{ 
 
             } catch (err) {
                 console.log('getSpacesForHost', err);

@@ -1,6 +1,12 @@
 <template>
   <div class="backoffice">
       <h1 v-if="host">Host dashboard: {{host.fullname}} </h1>
+      <div class="stats flex">
+          <p>average rating: {{averageRating}}</p> 
+           <p>total guests: {{totalGuests}}</p>
+            <p>% occupancy {{occupancy}} </p>
+            <p>total likes: {{totalLikes}}</p>
+          </div>
       <host-stats  />
       <order-chart />
       <review-chart />
@@ -34,6 +40,13 @@ export default {
         host(){
             return this.$store.getters.loggedinUser
             },
+        averageRating(){return this.$store.getters.getAverageRating},
+        totalGuests(){return this.$store.getters.totalGuests},
+        totalSpaceCapacity(){return this.$store.getters.totalSpaceCapacity},
+        occupancy(){return this.totalGuests / this.totalSpaceCapacity || 0},
+        totalLikes(){return this.$store.getters.totalLikes},
+        
+        
        
     },
     async created(){
@@ -47,12 +60,19 @@ export default {
             throw err
         }
     },
-    methods:{
-       
-    }
 }
 </script>
 
 <style>
+    .backoffice .stats p{
+        border: 1px solid black;
+        margin-right: 5px;
+        padding: 5px;
 
+    }
+    .host-space-list, .host-order-list{
+        border: 1px solid black;
+        padding: 5px;
+        margin-bottom: 5px;
+    }
 </style>

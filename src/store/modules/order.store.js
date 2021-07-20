@@ -5,6 +5,24 @@ export const orderStore = {
     orders: [],
   },
   getters: {
+    totalGuests(state){
+      // if (!state.orders.length) return
+      // var totalGuests = 0
+      // for (var order in state.orders){
+      //   console.log(order);
+      //   // totalGuests += order.guests.adults
+      // }
+      // return totalGuests
+
+      const orders = Object.entries(state.orders)
+      if (!orders.length) return
+      var totalGuests = 0
+      orders.forEach(order => {
+        // debugger
+        totalGuests += ( order[1].guests.adults + order[1].guests.kids) //TODO why do I need [1] here???
+      })
+      return totalGuests
+    },
     orders(state) {
       return state.orders;
     },
@@ -78,7 +96,7 @@ export const orderStore = {
         await orderService.remove(payload.orderId);
         commit(payload);
       } catch (err) {
-        console.log('Cannot remove', orderId);
+        console.log('Cannot remove', payload.orderId);
         throw err;
       }
     },

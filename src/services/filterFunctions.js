@@ -2,6 +2,7 @@
 
 export const filterService = {
   getSpacesForDisplay,
+  getAverageReview
 
 }
 
@@ -15,6 +16,7 @@ var filterBy = {
   dates: { startDate: 0, endDate: 0 },
   count: 20, //change this to PAGE_SIZE when add pagination
   currPage: 1,
+  getAverageReview,
 };
 
 
@@ -27,12 +29,13 @@ function _isAvailable(space, dates) {
   })
 }
 
-function _getAverageReview(space) {
+function getAverageReview(space) {
+  if (!space.reviews || !space.reviews.length) return 0
   const reviewSum = space.reviews.reduce((sum, review) => {
     return sum + _getReviewRate(review)
   },0)
   return reviewSum / space.reviews.length
-
+  
 }
 
 function _getReviewRate(review) {
@@ -58,7 +61,7 @@ function getSpacesForDisplay(spaces, filterBy) {
     //sort by reviews
     // spaces = spaces.sort((space1, space2) => {
     // debugger;
-    // return _getAverageReview(space1) - _getAverageReview(space2)
+    // return getAverageReview(space1) - getAverageReview(space2)
   // })
 
   //slice out the amount you want for this page
