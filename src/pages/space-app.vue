@@ -55,13 +55,13 @@ export default {
     liked(spaceId){
       // alert('hi!')
         //TODO send liked to space-store
+      console.log(spaceId);
+      this.$store.dispatch({type: 'liked',spaceId})
     },
     setPage(currPage){
       console.log('setting page...');
       this.$store.commit({type: 'setFilterField', field:'currPage', value:currPage})
       this.$store.dispatch({type: 'loadSpaces'})
-        console.log(spaceId);
-    this.$store.dispatch({type: 'liked',spaceId})
 
     }
   }
