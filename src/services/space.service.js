@@ -122,7 +122,7 @@ async function _createSpaces() {
 
     spaces.push({
       _id: 's' + utilService.makeId(),
-      type: 'home',
+      type: 'Treehouse',
       name: 'OAKTREEHOUSE - SLEEP IN THE TREEHOUSE',
       imgUrls: [
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626393518/sprint4/spaces/1%20-%20OAKTREEHOUSE%20-%20SLEEP%20IN%20THE%20TREEHOUSE/space/412e2eca-eddf-40fb-81b3-883335a894e0_l5hvxe.webp',
@@ -140,16 +140,11 @@ async function _createSpaces() {
         Garden shower`,
       capacity: 5,
       amenities: [
-        'TV',
-        'wifi',
         'bath',
         'kitchen',
         'free parking',
         'washing machine',
-        'smoke alarm',
         'lockbox',
-        'air conditioning',
-        'security cameras',
       ],
       host: {
         _id: 'u101',
@@ -191,7 +186,7 @@ async function _createSpaces() {
           If you are nature lovers go and experience staying in OAKTREEHOUSE by your self. You can ask Ania and Peter what to do around, they will recommend it you hiking, biking, wine testing etc.`,
           rate: {
             cleanliness: 5,
-            checkin: 4,
+            checkin: 5,
             communication: 5,
             accuracy: 5,
             value: 5,
@@ -243,10 +238,10 @@ async function _createSpaces() {
         },
         {
           _id: 'r105',
-          txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
+          txt: 'Everything was brilliant, super cozy, clean and peaceful. Ania and Peter very sweet and helpful. Book it and go enjoy it!',
           rate: {
             cleanliness: 4,
-            checkin: 4,
+            checkin: 5,
             communication: 5,
             accuracy: 5,
             value: 5,
@@ -254,9 +249,9 @@ async function _createSpaces() {
           },
           by: {
             _id: 'u898',
-            fullname: 'kslmv sojks',
+            fullname: 'Oscar',
             imgUrl:
-              'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626718813/sprint4/spaces/1%20-%20OAKTREEHOUSE%20-%20SLEEP%20IN%20THE%20TREEHOUSE/reviewers/1bce1292-0621-429c-afcc-51b2835a539b_e4st1o.jpg',
           },
         },
         {
@@ -279,7 +274,7 @@ async function _createSpaces() {
           },
         },
       ],
-      likedByUserIds: ['u101', 'u102', 'u103'],
+      likedByUserIds: [],
     });
 
     // ==========================================================================
@@ -287,20 +282,22 @@ async function _createSpaces() {
 
     spaces.push({
       _id: 's' + utilService.makeId(),
+      type: 'Entire apartment',
+
       name: 'Chalet Eigernordwand',
       imgUrls: [
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626394084/sprint4/spaces/2-%20Chalet%20Eigernordwand/space/b5a5444a-91ab-43cf-abf1-79832793a56d_dcvqpm.webp',
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626394082/sprint4/spaces/2-%20Chalet%20Eigernordwand/space/a91d2c6f-e5b2-4e96-90f2-e0579d69038a_bviirx.webp',
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626394082/sprint4/spaces/2-%20Chalet%20Eigernordwand/space/77cdae47-7827-4fa6-9b8d-5b9dfcbe15ef_i3ycet.webp',
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626394082/sprint4/spaces/2-%20Chalet%20Eigernordwand/space/7f273de4-b8eb-4242-8df4-3355c6df7223_crtfad.webp',
-        // 'https://res.cloudinary.com/dymtestxz/image/upload/v1626394082/sprint4/spaces/2-%20Chalet%20Eigernordwand/space/7e7fca56-6af0-491a-95ba-fa92e96a9a0c_o5ux7j.webp',
+        'https://res.cloudinary.com/dymtestxz/image/upload/v1626394082/sprint4/spaces/2-%20Chalet%20Eigernordwand/space/7e7fca56-6af0-491a-95ba-fa92e96a9a0c_o5ux7j.webp',
       ],
       price: 153,
       description: `3.5-room apartment in a beautiful, quiet location in Grindelwald with 2 double bedrooms and spacious bathroom with bath and shower. The heart of the apartment is the open kitchen as well as the cozy, bright living and dining area. The kitchen is fully equipped with a kettle, coffee maker, toaster, microwave and dishwasher. There is a hairdryer in the bathroom. Balcony with a beautiful view of the Eiger north wall.
 
         Guest access
         Parking and ski storage are available.`,
-      capacity: 5,
+      capacity: 4,
       amenities: [
         'TV',
         'wifi',
@@ -310,8 +307,6 @@ async function _createSpaces() {
         'washing machine',
         'smoke alarm',
         'lockbox',
-        'air conditioning',
-        'security cameras',
       ],
       host: {
         _id: 'u101',
@@ -321,7 +316,7 @@ async function _createSpaces() {
       },
       loc: {
         country: 'Switzerland',
-        countryCode: 'IL',
+        countryCode: 'SZ',
         address: 'Grindelwald, Bern',
         lat: 46.62433,
         lng: 8.03403,
@@ -332,12 +327,12 @@ async function _createSpaces() {
           txt:
             'Brilliant place. Modern, new, easy to park, 5 minute drive to center, fully equipped.',
           rate: {
-            cleanliness: 2,
-            checkin: 3,
-            communication: 3,
-            accuracy: 1,
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
             value: 5,
-            location: 3,
+            location: 5,
           },
           by: {
             _id: 'u891',
@@ -349,7 +344,14 @@ async function _createSpaces() {
         {
           _id: 'r102',
           txt: `Matches the name perfectly - located right in front of the Eiger-Nordwand, the apartment offers an astonishing view of the mountains. While Grindelwald center is just a short walk away, the location is perfect for hiking in the region. The interior is extremely comfy and provides everything one would need during a weeks worth of vacation. All-in-all a really pleasant experience, a huge thanks for that!`,
-          rate: 4,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 4,
+          },
           by: {
             _id: 'u892',
             fullname: 'Fabio',
@@ -360,7 +362,14 @@ async function _createSpaces() {
         {
           _id: 'r103',
           txt: `Great location with the Eiger mountain as your backyard view and front view of Grindelwald. Easy walk to Männlichenbahn. Place was clean, modern, and plenty of space for our two young kids. Hermann was generous to provide an adapter after I found out I brought the wrong one.`,
-          rate: 4,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
           by: {
             _id: 'u893',
             fullname: 'Dennis',
@@ -371,7 +380,14 @@ async function _createSpaces() {
         {
           _id: 'r104',
           txt: `This was a terrific stay. It's a lovely place with beautiful views. It's also well located, outside of the village but walking distance. I started many hikes during my stay right from the chalet. When I arrived I walked with my luggage from the Terminal train station though it is an uphill climb. I mostly walked into the village and to the grocery store as the bus only comes once an hour and, well, the walk is simply stunning even in the rain. Bring your own umbrella if you feel you need one as there isn't one at the chalet. The place is well equipped otherwise. Hermann was also very responsive to messages I sent him through the website.`,
-          rate: 4,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 4,
+          },
           by: {
             _id: 'u894',
             fullname: 'Sandeep',
@@ -382,7 +398,14 @@ async function _createSpaces() {
         {
           _id: 'r105',
           txt: `Amazing views, ultra comfortable chalet and sparkling clean! Will stay again. Great spot to access all of Grindelwald.`,
-          rate: 4,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
           by: {
             _id: 'u895',
             fullname: 'Christina And Tim',
@@ -394,7 +417,14 @@ async function _createSpaces() {
           _id: 'r106',
           txt: `Hermann’s place was better than what we expected. He provided us with everything we needed, including a high chair and a baby bed for our daughter. He was very helpful and super responsive during our stay. The view from the chalet is stunning, on both sides. We came by car but there was a bus stop just next to the chalet, so it’s easy accessible for people coming by train/bus.
           Thanks again Hermann, we’ll be back!`,
-          rate: 4,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 4,
+          },
           by: {
             _id: 'u896',
             fullname: 'Julian',
@@ -406,7 +436,14 @@ async function _createSpaces() {
           _id: 'r107',
           txt: `The vast space and the cleanliness of this home are second to none. The views were splendid. We appreciate the modern amenities. Indeed it is easier if you have a car as it is located about 10 mins or so from the centre however bus no. 123 runs hourly. Easy self check in & out, keep in view if you have many luggages, staircases on the side. Its winter, the large suitcases we had gave us quite a workout! Our experience: so much better than staying in a hotel!
           `,
-          rate: 4,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 4,
+          },
           by: {
             _id: 'u897',
             fullname: 'Angelina',
@@ -417,7 +454,14 @@ async function _createSpaces() {
         {
           _id: 'r108',
           txt: `We had a wonderful stay in Hermann’s place. It is very modern and new. The living area is very spacious and open with Eiger views. The 2 bedrooms and bathrooms are very comfortable and nice windows looking out. Hiking trails start right from your door and the views are incredible!!`,
-          rate: 4,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
           by: {
             _id: 'u898',
             fullname: 'Emma',
@@ -426,7 +470,7 @@ async function _createSpaces() {
           },
         },
       ],
-      likedByUserIds: ['u101', 'u102', 'u103'],
+      likedByUserIds: [],
 
       // ==========================================================================
       // 3 ===========================================================================
@@ -434,18 +478,19 @@ async function _createSpaces() {
     spaces.push({
       _id: 's' + utilService.makeId(),
       name: "Still Life St Paul's Executive",
-      type: 'home',
+      type: 'Entire apartment',
       imgUrls: [
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626394616/sprint4/spaces/3%20-%20Still%20Life%20St%20Paul%27s%20Executive/space/0a6eeebb-4c3e-4e6c-9bff-414012c215f4_hhgtvb.webp',
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626394612/sprint4/spaces/3%20-%20Still%20Life%20St%20Paul%27s%20Executive/space/46ef9170-4b3d-42d4-b4e0-d7e7087c445e_jlonoa.webp',
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626394617/sprint4/spaces/3%20-%20Still%20Life%20St%20Paul%27s%20Executive/space/91a8e796-2828-4412-847d-38ea1cdc2890_lo1c1l.webp',
-        // 'https://res.cloudinary.com/dymtestxz/image/upload/v1626394613/sprint4/spaces/3%20-%20Still%20Life%20St%20Paul%27s%20Executive/space/2e707f27-6214-4c56-b9de-751a25c2cfa8_v23goc.webp',
-        // 'https://res.cloudinary.com/dymtestxz/image/upload/v1626394612/sprint4/spaces/3%20-%20Still%20Life%20St%20Paul%27s%20Executive/space/7a7142c4-1e7c-4146-8d72-1efd04d872a9_lsxarl.webp',
+        'https://res.cloudinary.com/dymtestxz/image/upload/v1626394613/sprint4/spaces/3%20-%20Still%20Life%20St%20Paul%27s%20Executive/space/2e707f27-6214-4c56-b9de-751a25c2cfa8_v23goc.webp',
+        'https://res.cloudinary.com/dymtestxz/image/upload/v1626394612/sprint4/spaces/3%20-%20Still%20Life%20St%20Paul%27s%20Executive/space/7a7142c4-1e7c-4146-8d72-1efd04d872a9_lsxarl.webp',
       ],
       price: 118,
       description:
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries',
-      capacity: 4,
+        `We have several units in the same building. Please contact us if you cannot find availability for your requested dates. Whether you are in search of excitement or relaxation this quiet development offers you the best of both worlds. Situated within walking distance of a range of bars and restaurants you will find yourself with an abundance of choice. St Paul's Cathedral is a 7 min walk away and provides excellent transport links.
+        We require a refundable damage deposit of £250 prior to arrival.`,
+      capacity: 2,
       amenities: [
         'TV',
         'wifi',
@@ -454,9 +499,6 @@ async function _createSpaces() {
         'free parking',
         'washing machine',
         'smoke alarm',
-        'lockbox',
-        'air conditioning',
-        'security cameras',
       ],
       host: {
         _id: 'u101',
@@ -473,25 +515,117 @@ async function _createSpaces() {
       },
       reviews: [
         {
-          _id: 'r102',
-          txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
+          _id: 'r101',
+          txt: `Great modern apartment just a moment from St Paul’s. Fantastic location with supermarkets, shops and restaurants on the doorstep. Well equipped kitchen if you want to cook. My favourite part of the stay was the view - you can see the Old Bailey, St Paul’s and the Shard from this place!
+          Super communicative host, with fast response time.
+          Highly recommend.`,
           rate: {
-            cleanliness: 2,
-            checkin: 3,
-            communication: 3,
-            accuracy: 1,
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
             value: 5,
-            location: 3,
+            location: 5,
+          },
+          by: {
+            _id: 'u891',
+            fullname: 'Katy',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626722243/sprint4/spaces/3%20-%20Still%20Life%20St%20Paul%27s%20Executive/reviewers/original_ermvyj.jpg',
+          },
+        },
+        {
+          _id: 'r102',
+          txt: `All good! Location and amenities. Good for short stays.`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
+          by: {
+            _id: 'u892',
+            fullname: 'Alexander',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626722333/sprint4/spaces/3%20-%20Still%20Life%20St%20Paul%27s%20Executive/reviewers/4682b1a1-1d06-45c4-a799-4838e429ad10_onfsif.jpg',
+          },
+        },
+        {
+          _id: 'r103',
+          txt: `Mar was incredible and very accommodating. Communication skills 10/10. The apartment is well furnished with modern facilities, equipped with everything you'll need, and is situated in a very nice and quiet area. would absolutely recommend.`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
+          by: {
+            _id: 'u893',
+            fullname: 'Bamidele',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626722412/sprint4/spaces/3%20-%20Still%20Life%20St%20Paul%27s%20Executive/reviewers/e0ab6368-bde4-43db-be64-9ba94882ebe6_hkh9ib.jpg',
+          },
+        },
+        {
+          _id: 'r104',
+          txt: `Great 1br flat centrally located near St. Paul's. The kitchen is well stocked to cook & it was easy to prepare a meal. The team was responsive and accommodated the reservation I made within 24 hours before arriving. Would definitely recommend if looking for a convenient and well kept apartment in Central London.`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
           },
           by: {
             _id: 'u894',
-            fullname: 'kslmv sojks',
+            fullname: 'Merit',
             imgUrl:
-              'https://res.cloudinary.com/dymtestxz/image/upload/v1626394613/sprint4/spaces/3%20-%20Still%20Life%20St%20Paul%27s%20Executive/reviewers/photo-1531427186611-ecfd6d936c79_lexlem.webp',
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626722481/sprint4/spaces/3%20-%20Still%20Life%20St%20Paul%27s%20Executive/reviewers/126442b3-b15f-4e16-92b0-00925df9c554_hurzjs.jpg',
+          },
+        },
+        {
+          _id: 'r105',
+          txt: `This is a great place if you are going to be visiting London. Nice area in the financial district. Great central location for hopping on the tube and exploring the city! The flat had great amenities, good for short or long term stay.`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
+          by: {
+            _id: 'u895',
+            fullname: 'Whitney',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626722566/sprint4/spaces/3%20-%20Still%20Life%20St%20Paul%27s%20Executive/reviewers/original_1_dqjwqz.jpg',
+          },
+        },
+        {
+          _id: 'r106',
+          txt: `Beautiful new apartment exactly as advertised. Very good communication, check in and location. All appliances worked and everything appeared to be brand new. Great location and easy access to transportation. Lots of places to eat nearby as well as a local grocery store very close by.`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
+          by: {
+            _id: 'u896',
+            fullname: 'Reece',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626722710/sprint4/spaces/3%20-%20Still%20Life%20St%20Paul%27s%20Executive/reviewers/699c2835-bc4e-4aee-84a0-7fe10b7e9b6e_csrchp.webp',
           },
         },
       ],
-      likedByUserIds: ['u101', 'u102', 'u103'],
+      likedByUserIds: [],
     });
 
     // ==========================================================================
@@ -499,18 +633,31 @@ async function _createSpaces() {
 
     spaces.push({
       _id: 's' + utilService.makeId(),
+      type: 'Entire chalet',
       name: 'Superbe chalet Hautes Vosges en pleine nature',
       imgUrls: [
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626394826/sprint4/spaces/4%20-%20Superbe%20chalet%20Hautes%20Vosges%20en%20pleine%20nature/space/3a8f8bf5-a0c4-4b9d-bb27-fff31d00e9b4_norbuq.webp',
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626394822/sprint4/spaces/4%20-%20Superbe%20chalet%20Hautes%20Vosges%20en%20pleine%20nature/space/45b9ddd1-b259-40b9-a81d-dfef8258f9b9_bklwas.webp',
-        // 'https://res.cloudinary.com/dymtestxz/image/upload/v1626394822/sprint4/spaces/4%20-%20Superbe%20chalet%20Hautes%20Vosges%20en%20pleine%20nature/space/fb848313-297b-4b64-8685-0bcd11e3e5ab_feuxmm.webp',
-        // 'https://res.cloudinary.com/dymtestxz/image/upload/v1626394822/sprint4/spaces/4%20-%20Superbe%20chalet%20Hautes%20Vosges%20en%20pleine%20nature/space/23464bb6-5525-4a91-901f-a50b758bd6c2_u8jomu.webp',
-        // 'https://res.cloudinary.com/dymtestxz/image/upload/v1626394822/sprint4/spaces/4%20-%20Superbe%20chalet%20Hautes%20Vosges%20en%20pleine%20nature/space/b1b9395b-d418-407a-bf24-541fd2e4af77_rmxowk.webp',
+        'https://res.cloudinary.com/dymtestxz/image/upload/v1626394822/sprint4/spaces/4%20-%20Superbe%20chalet%20Hautes%20Vosges%20en%20pleine%20nature/space/fb848313-297b-4b64-8685-0bcd11e3e5ab_feuxmm.webp',
+        'https://res.cloudinary.com/dymtestxz/image/upload/v1626394822/sprint4/spaces/4%20-%20Superbe%20chalet%20Hautes%20Vosges%20en%20pleine%20nature/space/23464bb6-5525-4a91-901f-a50b758bd6c2_u8jomu.webp',
+        'https://res.cloudinary.com/dymtestxz/image/upload/v1626394822/sprint4/spaces/4%20-%20Superbe%20chalet%20Hautes%20Vosges%20en%20pleine%20nature/space/b1b9395b-d418-407a-bf24-541fd2e4af77_rmxowk.webp',
       ],
       price: 65,
       description:
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries',
-      capacity: 5,
+        `Discover the charm of this mountain chalet at the bottom of a happy valley in the Ballons des Vosges natural park 😊
+        The space
+        Solid wood chalet high quality construction with wooden terrace 70 m2
+        In studio format on the ground floor + bedroom on the mezzanine.
+        Guest access
+        Easy parking nearby to unload your luggage.
+        Other things to note
+        All shops nearby (4 to 6 km)
+        Children under 2 years of age who walk should be subject to special supervision:
+        Risk of falling from the terrace, it is on a rocky headland.
+        Mezzanine with access ladder.
+        If three or 4 people travelers must sleep on the ground floor on the sofa bed.
+        In this case promiscuity must be accepted by the group 😊`,
+      capacity: 4,
       amenities: [
         'TV',
         'wifi',
@@ -520,8 +667,6 @@ async function _createSpaces() {
         'washing machine',
         'smoke alarm',
         'lockbox',
-        'air conditioning',
-        'security cameras',
       ],
       host: {
         _id: 'u101',
@@ -531,25 +676,129 @@ async function _createSpaces() {
       },
       loc: {
         country: 'France',
-        countryCode: 'IL',
+        countryCode: 'FR',
         address: 'Fresse sur Moselle, Grand Est',
         lat: 47.87556,
         lng: 6.78865,
       },
       reviews: [
         {
+          _id: 'r101',
+          txt: `Modern, clean and peacefull. We have enjoyed our vacation at this calm and beautiful place.
+          Philippe is a caring host. There was nothing we missed. Thank You.`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
+          by: {
+            _id: 'u891',
+            fullname: 'Andreas',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626731802/sprint4/spaces/4%20-%20Superbe%20chalet%20Hautes%20Vosges%20en%20pleine%20nature/reviewers/ad095b6a-46bc-43cd-af9c-76aeb8997fa1_uwdl6g.jpg',
+          },
+        },
+        {
           _id: 'r102',
-          txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
-          rate: 4,
+          txt: `Phillippe's place was perfect! It is located in the middle of amazing Vosges close to all hiking trials. At night you fall asleep while hearing a distant creek and during the day you can observe changing scenery full of birds of pray, deer and cows. At the same time, its easy to drive up from a nearby village that offers a decent supermarket and a nice bakery. Phillippe and his wife are amazing hosts who kindly prepared a nice drink for us on one evening! I stayed in many airbnbs before and this one is definitely one of the best I stayed in. Highly recommended!`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 4,
+            value: 5,
+            location: 5,
+          },
+          by: {
+            _id: 'u892',
+            fullname: 'Vojta',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626731900/sprint4/spaces/4%20-%20Superbe%20chalet%20Hautes%20Vosges%20en%20pleine%20nature/reviewers/c69dc931-b7b4-44d9-9a2c-1227b4d713cf_bgsy9t.jpg',
+          },
+        },
+        {
+          _id: 'r103',
+          txt: `Perfect place for a couple that loves nature and hiking. The most amazing location right in the mountains. The chalet has everything you need. The host provides some local routes for hiking. Stores are at a 10min drive. We had an amazing experience here, really recommended!`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
+          by: {
+            _id: 'u893',
+            fullname: 'Matthias',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626731966/sprint4/spaces/4%20-%20Superbe%20chalet%20Hautes%20Vosges%20en%20pleine%20nature/reviewers/2627c314-c765-46ec-a8a0-6b2b3bd50042_rrkzx9.jpg',
+          },
+        },
+        {
+          _id: 'r104',
+          txt: `the chalet is beautiful and the terrace is huge with a wonderful view of the Vosges. it is very quiet and the birds can be heard whistling, even the cuckoo is calling. the hosts are very accommodating and friendly. We felt completely at ease. despite the quiet, the nearest shop is only six kilometers away.`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
           by: {
             _id: 'u894',
-            fullname: 'kslmv sojks',
+            fullname: 'Bärbel',
             imgUrl:
-              'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626732150/sprint4/spaces/4%20-%20Superbe%20chalet%20Hautes%20Vosges%20en%20pleine%20nature/reviewers/86acb947-0536-4beb-b203-acedaeca12a0_uaeipd.jpg',
+          },
+        },
+        {
+          _id: 'r105',
+          txt: `Great stay! The hosts made us feel very welcome and the location of the chalet in the middle of the mountain gives a wonderful view over the whole valley. We enjoyed taking evening walks around the chalet to see the cows, geese, sheep and sometimes even a deer or two!
+          We recommend without hesitation!`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
+          by: {
+            _id: 'u895',
+            fullname: 'Léa',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626732237/sprint4/spaces/4%20-%20Superbe%20chalet%20Hautes%20Vosges%20en%20pleine%20nature/reviewers/9828e968-1eec-4036-bc35-08655a60948d_vcaqfx.jpg',
+          },
+        },
+        {
+          _id: 'r106',
+          txt: `We highly recommend this accommodation to all travelers looking for serenity, disconnection and nature!
+
+          The chalet is beautiful and has all the necessary facilities, the kitchen contains everything you need: classic coffee machine and Senseo pod machine, fridge, toaster, kettle, Combined microwave oven, dishwasher, sufficient utensils , ... We also had towels available which is not always the case and was very welcome. It is very well isolated, total silence at night. We were treated to 2 very windy nights but it was not at all a problem with the noise level.
+          
+          The view is sublime, as soon as you wake up you roll up the electric shutters and take in your eyes through the large bay window in the living room while sipping your coffee. The mist interferes between the conifers to make the panorama even more enchanting. We had no luck with the weather, it rained almost every day, but the grayness suits this landscape wonderfully and gives it this mysterious and captivating tone. You have to see it to understand, go take a look, you won't regret it!`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 4,
+            accuracy: 5,
+            value: 4,
+            location: 5,
+          },
+          by: {
+            _id: 'u896',
+            fullname: 'Martin',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626732348/sprint4/spaces/4%20-%20Superbe%20chalet%20Hautes%20Vosges%20en%20pleine%20nature/reviewers/dffd943e-3ac7-429c-bb7c-39226f969a5e_s8alpi.jpg',
           },
         },
       ],
-      likedByUserIds: ['u101', 'u102', 'u103'],
+
+      likedByUserIds: [],
     });
 
     // ==========================================================================
@@ -557,16 +806,17 @@ async function _createSpaces() {
 
     spaces.push({
       _id: 's' + utilService.makeId(),
+      type: 'Entire apartment',
       name: 'Dizengof area - Superb 1BR Balcony on the square',
       imgUrls: [
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626395126/sprint4/spaces/5%20-%20Dizengof%20area%20-%20Superb%201BR%20Balcony%20on%20the%20square/space/905bcbe9-a7d9-446f-8f25-e29c0d454d86_nop6j9.webp',
-        // 'https://res.cloudinary.com/dymtestxz/image/upload/v1626395126/sprint4/spaces/5%20-%20Dizengof%20area%20-%20Superb%201BR%20Balcony%20on%20the%20square/space/030089eb-0419-417e-8784-eb9c912e7f51_b9e9ji.webp',
-        // 'https://res.cloudinary.com/dymtestxz/image/upload/v1626395126/sprint4/spaces/5%20-%20Dizengof%20area%20-%20Superb%201BR%20Balcony%20on%20the%20square/space/c1b98710-577a-4f7a-a2a0-ab4ea4a3b72a_xgtxwl.webp',
-        // 'https://res.cloudinary.com/dymtestxz/image/upload/v1626395126/sprint4/spaces/5%20-%20Dizengof%20area%20-%20Superb%201BR%20Balcony%20on%20the%20square/space/33657269-f87b-4e61-be86-db3dd3fe11e7_d98pgw.webp',
-        // 'https://res.cloudinary.com/dymtestxz/image/upload/v1626395126/sprint4/spaces/5%20-%20Dizengof%20area%20-%20Superb%201BR%20Balcony%20on%20the%20square/space/adf2e011-1ca4-4eff-abda-fefddbbbb39f_ydt84q.webp',
-        // 'https://res.cloudinary.com/dymtestxz/image/upload/v1626395126/sprint4/spaces/5%20-%20Dizengof%20area%20-%20Superb%201BR%20Balcony%20on%20the%20square/space/5f54bfab-4ce9-4c98-bedd-f25710755c25_fweptc.webp',
+        'https://res.cloudinary.com/dymtestxz/image/upload/v1626395126/sprint4/spaces/5%20-%20Dizengof%20area%20-%20Superb%201BR%20Balcony%20on%20the%20square/space/030089eb-0419-417e-8784-eb9c912e7f51_b9e9ji.webp',
+        'https://res.cloudinary.com/dymtestxz/image/upload/v1626395126/sprint4/spaces/5%20-%20Dizengof%20area%20-%20Superb%201BR%20Balcony%20on%20the%20square/space/c1b98710-577a-4f7a-a2a0-ab4ea4a3b72a_xgtxwl.webp',
+        'https://res.cloudinary.com/dymtestxz/image/upload/v1626395126/sprint4/spaces/5%20-%20Dizengof%20area%20-%20Superb%201BR%20Balcony%20on%20the%20square/space/33657269-f87b-4e61-be86-db3dd3fe11e7_d98pgw.webp',
+        'https://res.cloudinary.com/dymtestxz/image/upload/v1626395126/sprint4/spaces/5%20-%20Dizengof%20area%20-%20Superb%201BR%20Balcony%20on%20the%20square/space/adf2e011-1ca4-4eff-abda-fefddbbbb39f_ydt84q.webp',
+        'https://res.cloudinary.com/dymtestxz/image/upload/v1626395126/sprint4/spaces/5%20-%20Dizengof%20area%20-%20Superb%201BR%20Balcony%20on%20the%20square/space/5f54bfab-4ce9-4c98-bedd-f25710755c25_fweptc.webp',
       ],
-      price: 128,
+      price: 288,
       description: `The space
         Located in a prime location at the intersection of Ben Yehouda and Bograshov.
         You will find everything you need right by the apartment. A few minutes walk to the beach, restaurants, bakeries, bars etc..
@@ -595,7 +845,7 @@ async function _createSpaces() {
         - None of our apartments can be rented by groups of minors, in order to confirm the identity of our guest, we ask before each check in the picture of passports.
         
         - !!!!!It is strictly forbidden to organize parties and make noise after 10 p.m.`,
-      capacity: 5,
+      capacity: 4,
       amenities: [
         'TV',
         'wifi',
@@ -606,7 +856,6 @@ async function _createSpaces() {
         'smoke alarm',
         'lockbox',
         'air conditioning',
-        'security cameras',
       ],
       host: {
         _id: 'u101',
@@ -623,18 +872,124 @@ async function _createSpaces() {
       },
       reviews: [
         {
+          _id: 'r101',
+          txt: `Lovely apartment. Super clean and at an amazing location. The host is very attentive and nice .`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
+          by: {
+            _id: 'u891',
+            fullname: 'Michael',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626732760/sprint4/spaces/5%20-%20Dizengof%20area%20-%20Superb%201BR%20Balcony%20on%20the%20square/reviewers/original_e3vo9h.jpg',
+          },
+        },
+        {
           _id: 'r102',
-          txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
-          rate: 4,
+          txt: 'Great place with amazing hosts',
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
+          by: {
+            _id: 'u892',
+            fullname: 'Aviv',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626732809/sprint4/spaces/5%20-%20Dizengof%20area%20-%20Superb%201BR%20Balcony%20on%20the%20square/reviewers/11a33075-ba24-4552-bf69-7e8266173cf7_e1e0e5.jpg',
+          },
+        },
+        {
+          _id: 'r103',
+          txt: `This place is just great!`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
+          by: {
+            _id: 'u893',
+            fullname: 'Nir',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626732868/sprint4/spaces/5%20-%20Dizengof%20area%20-%20Superb%201BR%20Balcony%20on%20the%20square/reviewers/002474ba-01f7-4751-b1c9-eee78f315ba5_sqdrzd.jpg',
+          },
+        },
+        {
+          _id: 'r104',
+          txt: `This is an example of a well laid-out small space that feels bigger and gives you all you need, as pictured, in a great and fun location. It's nice that the merpeset/balcony can be accessed from the bedroom as well as the salon/livingroom, making the whole place feel open. We enjoyed being there and would return.`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 4,
+            location: 5,
+          },
           by: {
             _id: 'u894',
-            fullname: 'kslmv sojks',
+            fullname: 'Ayla',
             imgUrl:
-              'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626732927/sprint4/spaces/5%20-%20Dizengof%20area%20-%20Superb%201BR%20Balcony%20on%20the%20square/reviewers/0131ad7a-6fc4-4dd2-bc68-2dca1bf9b1c5_f1byxe.jpg',
+          },
+        },
+        {
+          _id: 'r105',
+          txt: `good overall`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 4,
+            location: 5,
+          },
+          by: {
+            _id: 'u895',
+            fullname: 'Or',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626732991/sprint4/spaces/5%20-%20Dizengof%20area%20-%20Superb%201BR%20Balcony%20on%20the%20square/reviewers/1e7866a7-15b7-4f52-85bc-28f94d5e35c8_daxqdo.jpg',
+          },
+        },
+        {
+          _id: 'r106',
+          txt: `very disappointed!
+          The location was amazing.
+          beside that, nothing else that give you the reason to pay 280$ per night.
+          the host is not a nice person and not giving too much solutions for problems. Tip: don't try to ask for extra things beside what you have in the apartment.
+          everything in the apartment is basic minus.
+          the refrigerator stopped working after 1 day. when I called to fix it, the technician said he came after few hours and couldn't fix it but I was in the apartment all day and no one came. He came to fix it only 1 hour before my check out and the host didn't offer any compensation for the dairy things I had to through to garbage because the refrigator.
+          I asked for 45 min extra in the check out cause I had my ride for 11:45 but the host said its impossible like anything I asked in this 5 days.
+          the pillows are so low quality. the towels the same.
+          not something u expecting for this price for 50 sqft apartment.
+          again, amazing location. realy bad hospitality`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 4,
+            value: 1,
+            location: 5,
+          },
+          by: {
+            _id: 'u896',
+            fullname: 'Guy',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626733051/sprint4/spaces/5%20-%20Dizengof%20area%20-%20Superb%201BR%20Balcony%20on%20the%20square/reviewers/e10c3c2d-689f-4af1-a79f-5e0115d871fa_dsphp3.jpg',
           },
         },
       ],
-      likedByUserIds: ['u101', 'u102', 'u103'],
+      likedByUserIds: [],
     });
 
     // ==========================================================================
@@ -642,6 +997,7 @@ async function _createSpaces() {
 
     spaces.push({
       _id: 's' + utilService.makeId(),
+      type: 'Entire house',
       name: 'Snug Holiday Home in Thale with Netflix, Garden, Terrace',
       imgUrls: [
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626395458/sprint4/spaces/6%20-%20Snug%20Holiday%20Home%20in%20Thale%20with%20Netflix%2C%20Garden%2C%20Terrace/space/3017154f-d54b-4bfd-bc01-eb8184bc9732_nlqrar.webp',
@@ -651,7 +1007,7 @@ async function _createSpaces() {
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626395457/sprint4/spaces/6%20-%20Snug%20Holiday%20Home%20in%20Thale%20with%20Netflix%2C%20Garden%2C%20Terrace/space/97a83afb-720b-4d46-9d68-777753731e0e_njpuun.webp',
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626395458/sprint4/spaces/6%20-%20Snug%20Holiday%20Home%20in%20Thale%20with%20Netflix%2C%20Garden%2C%20Terrace/space/5f7ae8bf-109e-43c7-b421-ec019523dc01_ueacov.webp',
       ],
-      price: 219,
+      price: 230,
       description: `This exclusive holiday home is situated within a nature reserve on a 500-metre high plateau in Altenbrak, a district of Thale. You will be staying at a tastefully and individually furnished house in a quiet, rural location. The interior, open floor plan and use of light woods meets the highest demands when it comes to quality, shape and colour. The upscale furnishings as well as the design provide maximum comfort and cosiness. This panoramic chalet offers everything you could wish for: fast WiFi, a state of the art smart TV and much more. Large windows and a balcony that runs around the facade offer panoramic vistas of the adjacent meadows and hilly forests. Enjoy the romantic ambiance by the crackling fireplace - especially after dark. The terrace and garden are ideal for sunbathing and barbecuing. Here in these exclusive surroundings, your daily stress will melt way on the first day of your stay. Another highlight of this holiday home: there are no street lights nearby. This guarantees a fantastic view of the surroundings from the plateau, even at night. And you shouldn't miss out on the extraordinary experience of watching the animals that tend to roam the beautiful landscape below the plateau. All this creates a very special, unforgettable flair you most likely won't find anywhere else. The hilly landscape of the north-eastern Harz region makes one want to go hiking or take walks. A well-marked network of hiking trails leads through the idyllic Bodetal and to the plateaus Hexentanzplatz and Rosstrappe. Cyclists will also get their money's worth enjoying tours on various routes or downhill slopes. Recommended excursions into the region: Seilbahnen Thale Erlebniswelt (amusement park), Rappbode Dam, Rübeländer Caves, Pullman City Harz, Brocken mountain, Quedlinburg.
 
 
@@ -660,7 +1016,7 @@ async function _createSpaces() {
         On the 1st floor: (Living room(TV(satellite, smart TV), stove(wood)), bedroom(double bed(180 x 200 cm), TV(satellite, smart TV)), Gallery bedroom(double bed(140 x 200 cm)), bathroom(bath tub, shower, washbasin, toilet), Landing)
         
         storage, Netflix, radio, stereo unit, balcony, heating(central, floor heating), terrace(private, roofed, 30 m2), garden(private, 500 m2), garden furniture, BBQ(charcoal), parking, deckchairs, hairdryer`,
-      capacity: 5,
+      capacity: 6,
       amenities: [
         'TV',
         'wifi',
@@ -668,10 +1024,7 @@ async function _createSpaces() {
         'kitchen',
         'free parking',
         'washing machine',
-        'smoke alarm',
         'lockbox',
-        'air conditioning',
-        'security cameras',
       ],
       host: {
         _id: 'u101',
@@ -681,25 +1034,124 @@ async function _createSpaces() {
       },
       loc: {
         country: 'Germany',
-        countryCode: 'IL',
+        countryCode: 'DE',
         address: 'Thale, Sachsen-Anhalt',
         lat: 51.75565,
         lng: 11.04563,
       },
       reviews: [
         {
+          _id: 'r101',
+          txt: `The place was as advertised. The pictures speak for themselves. The area invites you to get away from all the stress. You can really enjoy the nature and peace up on that hill. We can't wait to return, after hearing that the house will soon get its own pool and sauna.
+          We were really surprised and pleased with how clean the house was. I don't think we have ever encounter a cleaner place then this one. The owners were also easily reached and made sure we had everything we needed and that all questions were answered. The place has an awesome fire place indoors, but we loved the outdoor fire place just as much, that we spent every night sitting outside listening to the surrounding peacefulness. We will definitely return.`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
+          by: {
+            _id: 'u891',
+            fullname: 'Benjamin',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626733711/sprint4/spaces/6%20-%20Snug%20Holiday%20Home%20in%20Thale%20with%20Netflix%2C%20Garden%2C%20Terrace/reviewers/9be081c9-8456-43f2-bb8e-0a75af9498f2_hfmegr.jpg',
+          },
+        },
+        {
           _id: 'r102',
-          txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
-          rate: 4,
+          txt: `It's nice, the kitchen could be a little better equipped`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 4,
+            value: 3,
+            location: 5,
+          },
+          by: {
+            _id: 'u892',
+            fullname: 'Niklas',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626733834/sprint4/spaces/6%20-%20Snug%20Holiday%20Home%20in%20Thale%20with%20Netflix%2C%20Garden%2C%20Terrace/reviewers/0ad37c1e-248e-4de3-aee0-1e8e7db266ab_gxprlr.jpg',
+          },
+        },
+        {
+          _id: 'r103',
+          txt: `Beautiful country style house. Modern interior design. Breathtaking view from the terrace. Great to switch off. Leisure activities in the vicinity.
+          We will definitely be back.`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
+          by: {
+            _id: 'u893',
+            fullname: 'Reik',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626733884/sprint4/spaces/6%20-%20Snug%20Holiday%20Home%20in%20Thale%20with%20Netflix%2C%20Garden%2C%20Terrace/reviewers/59619584-5d7d-4202-a97e-e6ee724b327a_yhr0tk.jpg',
+          },
+        },
+        {
+          _id: 'r104',
+          txt: `For our little business trip it was a wonderful house for brainstorming with a great view of nature. Very pleasant, quiet location. A great detailed home furnishings. Comfortable house.`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
           by: {
             _id: 'u894',
-            fullname: 'kslmv sojks',
+            fullname: 'Tina',
             imgUrl:
-              'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626733943/sprint4/spaces/6%20-%20Snug%20Holiday%20Home%20in%20Thale%20with%20Netflix%2C%20Garden%2C%20Terrace/reviewers/original_x6jim3.jpg',
+          },
+        },
+        {
+          _id: 'r105',
+          txt: `A wonderful place - very idyllic, modern and at the same time incredibly cozy. I can recommend it 100%!`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
+          by: {
+            _id: 'u895',
+            fullname: `Dr. Mareike`,
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626734004/sprint4/spaces/6%20-%20Snug%20Holiday%20Home%20in%20Thale%20with%20Netflix%2C%20Garden%2C%20Terrace/reviewers/1d81b15e-ff8c-4821-b237-e56ccedc4888_kqqh5k.jpg',
+          },
+        },
+        {
+          _id: 'r106',
+          txt: `A very good place to stay with everything you can imagine.`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
+          by: {
+            _id: 'u896',
+            fullname: 'Rudi',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626734102/sprint4/spaces/6%20-%20Snug%20Holiday%20Home%20in%20Thale%20with%20Netflix%2C%20Garden%2C%20Terrace/reviewers/62ae220b-ddd1-478a-a999-0185a24a7664_hidmnr.jpg',
           },
         },
       ],
-      likedByUserIds: ['u101', 'u102', 'u103'],
+      likedByUserIds: [],
     });
 
     // ==========================================================================
@@ -707,6 +1159,7 @@ async function _createSpaces() {
 
     spaces.push({
       _id: 's' + utilService.makeId(),
+      type: 'Entire cottage',
       name: `Charming water-front cottage on Martha's Vineyard!`,
       imgUrls: [
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626395783/sprint4/spaces/7%20-%20Charming%20water-front%20cottage%20on%20Martha%27s%20Vineyard%21/space/56e5d85c-1752-48f1-83a8-1ca347e93474_lwhmmx.webp',
@@ -717,7 +1170,7 @@ async function _createSpaces() {
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626395783/sprint4/spaces/7%20-%20Charming%20water-front%20cottage%20on%20Martha%27s%20Vineyard%21/space/c34086ff-712c-430c-9e1a-3ae915d8f406_jsmta6.webp',
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626395782/sprint4/spaces/7%20-%20Charming%20water-front%20cottage%20on%20Martha%27s%20Vineyard%21/space/4c4ba749-fa63-45e6-9759-8c3847e1218b_y4ykhc.webp',
       ],
-      price: 410,
+      price: 305,
       description: `Quiet, charming cottage right on the beach with gorgeous sunsets! Perfect for a relaxing stay on Martha's Vineyard during any time of the year. Tell us about your vacation plans so we can help you enjoy our little piece of paradise.
         The space
         - 1 bedroom, 1 bath; and outdoor shower
@@ -732,7 +1185,7 @@ async function _createSpaces() {
         - No smoking inside the cottage
         Guest access
         Fire pit area is accessible to cottage guests. Outdoor games are available in the garage.`,
-      capacity: 5,
+      capacity: 2,
       amenities: [
         'TV',
         'wifi',
@@ -760,18 +1213,117 @@ async function _createSpaces() {
       },
       reviews: [
         {
+          _id: 'r101',
+          txt: `Great spot! Exactly as advertised, and Anne has anticipated all your needs. Wonderful place for our little family of 3.`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
+          by: {
+            _id: 'u891',
+            fullname: 'Scott',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626734426/sprint4/spaces/7%20-%20Charming%20water-front%20cottage%20on%20Martha%27s%20Vineyard%21/reviewers/8d6eb5a3-71fc-4ef6-980c-4ad4a92157af_mfjbm5.jpg',
+          },
+        },
+        {
           _id: 'r102',
-          txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
-          rate: 4,
+          txt: `Great location for exploring the island. The cottage is clean, bright, and Anne is a great host!
+
+          The cottage is right on the water and perfectly situated to watch the sunset.`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
+          by: {
+            _id: 'u892',
+            fullname: 'Jill',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626734481/sprint4/spaces/7%20-%20Charming%20water-front%20cottage%20on%20Martha%27s%20Vineyard%21/reviewers/21109c78-1e88-42b8-9bac-4886d6df009f_f8czq6.jpg',
+          },
+        },
+        {
+          _id: 'r103',
+          txt: `The cottage has a wonderful location close to Oak Bluffs and had a very cute beach just steps away. The hosts were so kind and accommodating - Our flight into the Vineyard was delayed a couple of days due to hurricane Elsa but they gave us back the money we paid for those missed nights. They did not have to do this but we are so grateful they did! We would stay here again.`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
+          by: {
+            _id: 'u893',
+            fullname: 'Joseph',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626734530/sprint4/spaces/7%20-%20Charming%20water-front%20cottage%20on%20Martha%27s%20Vineyard%21/reviewers/eeda422b-7321-4f25-9330-8bd09c624b80_wrfv5i.jpg',
+          },
+        },
+        {
+          _id: 'r104',
+          txt: `This is the best location on the island. The view and private beach are the best amenity you could hope to find. Anne is a fantastic host and quick to reply to questions or issues. The house is spacious, clean, and comes with anything you may need for a stay. Book this place before someone else does and you will not regret it!`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
           by: {
             _id: 'u894',
-            fullname: 'kslmv sojks',
+            fullname: 'Justin',
             imgUrl:
-              'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626734577/sprint4/spaces/7%20-%20Charming%20water-front%20cottage%20on%20Martha%27s%20Vineyard%21/reviewers/0fe75365-ad9d-455e-99e8-12d59d63f5a8_lzsvde.jpg',
+          },
+        },
+        {
+          _id: 'r105',
+          txt: `This might be the best Airbnb I’ve ever stayed at. Anne’s place is nicely located, and the private beach can’t be beat. Anne thought of every last detail and truly goes above and beyond for her guests - she’s thought of everything. Next time I head to the vineyard this will be the first place I look for to see if it’s available.`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
+          by: {
+            _id: 'u895',
+            fullname: 'Ricky',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626734632/sprint4/spaces/7%20-%20Charming%20water-front%20cottage%20on%20Martha%27s%20Vineyard%21/reviewers/32b7bcd4-ad79-4119-92fa-b9c7a78dc0f7_m2ywqb.jpg',
+          },
+        },
+        {
+          _id: 'r106',
+          txt: `The cottage is absolutely wonderful!! Nestled next to the waterfront, it had everything we needed for a week away. The wifi was great for working, the bed was comfy for sleeping in and the cottage is well situated on the island to get to everything quickly. The outdoor shower was great for rinsing off after a dip in the water. A true get away from it all!!`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
+          by: {
+            _id: 'u896',
+            fullname: 'Emily',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626734688/sprint4/spaces/7%20-%20Charming%20water-front%20cottage%20on%20Martha%27s%20Vineyard%21/reviewers/8b6acc1c-3440-4a02-93b3-f4256aaf8663_tp0buu.jpg',
           },
         },
       ],
-      likedByUserIds: ['u101', 'u102', 'u103'],
+      likedByUserIds: [],
     });
 
     // ==========================================================================
@@ -779,6 +1331,7 @@ async function _createSpaces() {
 
     spaces.push({
       _id: 's' + utilService.makeId(),
+      type: 'Room in serviced apartment',
       name: `Star Infinity Suite with Private heated Jacuzzi`,
       imgUrls: [
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626396262/sprint4/spaces/8%20-%20Star%20Infinity%20Suite%20with%20Private%20heated%20Jacuzzi/space/ab3db832-d6a8-4d12-a77d-a52e2c73131e_svs15r.webp',
@@ -803,7 +1356,7 @@ async function _createSpaces() {
         Each suite has its own kitchen and a lounge zone. The second floor includes bedroom with a with queen double bed and bathroom with shower. All the furniture and decor is made in authentic Greek style with exclusive and unique elements.
         License number
         00001113638`,
-      capacity: 5,
+      capacity: 3,
       amenities: [
         'TV',
         'wifi',
@@ -814,7 +1367,6 @@ async function _createSpaces() {
         'smoke alarm',
         'lockbox',
         'air conditioning',
-        'security cameras',
       ],
       host: {
         _id: 'u101',
@@ -824,25 +1376,122 @@ async function _createSpaces() {
       },
       loc: {
         country: 'Greece',
-        countryCode: 'IL',
+        countryCode: 'GR',
         address: 'Pyrgos Kallistis, Greece',
         lat: 36.38324,
         lng: 25.44861,
       },
       reviews: [
         {
+          _id: 'r101',
+          txt: `We stayed here for 2 nights. The apartment was beautifully decorated, spacious and clean. The balcony had an amazing view and the hot tub was perfect. Theodoris was so accommodating and gave us lots of suggestions for what to do on the island and booked a boat trip for us. The communication was great and we got fast responses on (Hidden by Airbnb) . The breakfast served on the balcony was so nice and there was great choices. We had a great stay and would definitely recommend this accommodation to anyone thinking of coming to santorini!`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
+          by: {
+            _id: 'u891',
+            fullname: 'Nicole',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626735098/sprint4/spaces/8%20-%20Star%20Infinity%20Suite%20with%20Private%20heated%20Jacuzzi/reviewers/1adc6ce5-a044-4638-a980-e7324121901d_xzbe7w.jpg',
+          },
+        },
+        {
           _id: 'r102',
-          txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
-          rate: 4,
+          txt: `If you are looking for a quiet, but close destination for your stay in Santorini, look no further. This spot is truly amazing. The most knowledgeable and responsive service I have ever had. From the owner to the room service staff, everyone was so eager and willing to help make our stay unforgettable - which it absolutely was. The jacuzzi and swimming pool were amazing and took the trip to the next level after a long day of activities. You’re close to the small but vibrant Pyrgos town center and only a short, but incredibly beautiful, scenic drive away from the other cities. I truly can’t say enough great things about this place. If you’re even thinking about this spot, just pull the trigger and book now!`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
+          by: {
+            _id: 'u892',
+            fullname: 'Joseph',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626735154/sprint4/spaces/8%20-%20Star%20Infinity%20Suite%20with%20Private%20heated%20Jacuzzi/reviewers/b39321c1-cbb8-4f1e-bc4a-a07c93fd8e74_gjoum2.jpg',
+          },
+        },
+        {
+          _id: 'r103',
+          txt: `Theodoris gave us amazing tips for restaurants and activities and helped us booking them. Amazing stay in a beautiful place with great host.`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
+          by: {
+            _id: 'u893',
+            fullname: 'Marie',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626735201/sprint4/spaces/8%20-%20Star%20Infinity%20Suite%20with%20Private%20heated%20Jacuzzi/reviewers/f52f2696-e9a0-4df1-8764-e344e654ffb2_j9lxms.jpg',
+          },
+        },
+        {
+          _id: 'r104',
+          txt: `Wonderful place. Very private and relaxing. Breakfast was very good!`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
           by: {
             _id: 'u894',
-            fullname: 'kslmv sojks',
+            fullname: 'Heather',
             imgUrl:
-              'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626735243/sprint4/spaces/8%20-%20Star%20Infinity%20Suite%20with%20Private%20heated%20Jacuzzi/reviewers/626afdfb-6498-418a-810c-28d1e09c38c7_gqqhry.jpg',
+          },
+        },
+        {
+          _id: 'r105',
+          txt: `Great suite with lovely views`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 4,
+          },
+          by: {
+            _id: 'u895',
+            fullname: 'Ben',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626735287/sprint4/spaces/8%20-%20Star%20Infinity%20Suite%20with%20Private%20heated%20Jacuzzi/reviewers/3e75818d-fcc2-4553-8006-2ca81b1fc0f4_j5lwmn.jpg',
+          },
+        },
+        {
+          _id: 'r106',
+          txt: `Stop looking! You've found one of, if not the, most amazing place in Santorini. All pictures are as seen - the apartment is beautiful, great layout and some amazing views! Theodoris is the best host - responsive, knowledgeable and knows the small details to make the most of any trip. Read other reviews if in doubt...the advice around travelling around the island is accurate and an ATV or car will ensure you don't miss a corner of this beautiful island. This is perfect for guests not desperate for the tourist hot spots (although 15min drive away), some privacy but not too far from a local square with all the amenities you need - supermarket, restaurants and booking a vehicle. Great place, great host and a great trip guaranteed. Thank you Theodoris for making the trip extra special!`,
+          rate: {
+            cleanliness: 5,
+            checkin: 4,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
+          by: {
+            _id: 'u896',
+            fullname: 'Anthony',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626735345/sprint4/spaces/8%20-%20Star%20Infinity%20Suite%20with%20Private%20heated%20Jacuzzi/reviewers/original_od63ph.jpg',
           },
         },
       ],
-      likedByUserIds: ['u101', 'u102', 'u103'],
+      likedByUserIds: [],
     });
 
     // ==========================================================================
@@ -850,6 +1499,7 @@ async function _createSpaces() {
 
     spaces.push({
       _id: 's' + utilService.makeId(),
+      type:'Entire house',
       name: 'Manor cottage',
       imgUrls: [
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626396867/sprint4/spaces/9%20-%20Manor%20cottage/space/3da2f22e-21bd-4592-b366-1f6020662174_gpkhqc.webp',
@@ -870,7 +1520,7 @@ async function _createSpaces() {
         Guests are free to use all the grounds, tennis courts and play areas. We will be in the Manor House so our children may still be jumping on the trampoline from time to time! The outside sofa area next to the cottage with barbecue and gazebo is yours exclusively for the duration of your stay. The river is easy to access by slipway. Paddleboards are available to hire (at extra charge).
         Other things to note
         The master bedroom is very large with a super Kingsize bed- there is more than enough space for a few mattresses on the floor for children if required- just ask if required. We have a travel cot and high chair for littler ones too. The kitchen has fridge/freezer; oven; dishwasher and washing machine for all your needs.`,
-      capacity: 5,
+      capacity: 6,
       amenities: [
         'TV',
         'wifi',
@@ -880,8 +1530,6 @@ async function _createSpaces() {
         'washing machine',
         'smoke alarm',
         'lockbox',
-        'air conditioning',
-        'security cameras',
       ],
       host: {
         _id: 'u101',
@@ -898,18 +1546,148 @@ async function _createSpaces() {
       },
       reviews: [
         {
+          _id: 'r101',
+          txt: `We had a great stay - the cottage is spacious and really nicely finished with everything you need as well as a games room.
+
+          Outside the cottage has a private area of the garden with comfy seating and a bbq, facing out to a beautiful view and the sunset.
+          
+          There’s also a tennis court and at the bottom of the garden direct access to the River Avon for paddle boarding etc.
+          
+          The cottage is a short walk from local pubs / cafes etc and a short drive to larger nearby towns.
+          
+          Sarah and Rob were friendly and helpful without being at all intrusive - we’d highly recommend their place!`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
+          by: {
+            _id: 'u891',
+            fullname: 'Nathanael',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626735749/sprint4/spaces/9%20-%20Manor%20cottage/reviewers/a89a7679-f8de-4d16-938c-1a4fa1b8005e_wmwu3m.jpg',
+          },
+        },
+        {
           _id: 'r102',
-          txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
-          rate: 4,
+          txt: `Incredible place! The gardens and surroundings are just WOW. Photos just do not do the place justice, we were so blown away by the views and how well maintained the grounds are.
+
+          The place is perfect to bring kids, we had two 3 years olds and they loved the trampoline and slide…
+          
+          The hosts Rob and Sarah are so friendly, and were very accommodating to whatever we needed.
+          
+          The house is so clean and spacious; equipped with all the essentials. I couldn’t recommend this place enough. It’s a fairly new listing and so don’t let the fact there aren’t many reviews yet put you off!
+          
+          Location wise it is great.. only 15 mins drive to Broadway.. and lots of shops/ restaurants and cafes in close distance.
+          
+          Highly highly recommend!! :)`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
+          by: {
+            _id: 'u892',
+            fullname: 'Aireen',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626735828/sprint4/spaces/9%20-%20Manor%20cottage/reviewers/user_pic-225x225_gjchjm.png',
+          },
+        },
+        {
+          _id: 'r103',
+          txt: `Sarah and Robert were great hosts who went above and beyond on our stay. We had some issues with the shower and they brought round drain unblocker within 10 minutes and were always on call if we had any issues.
+
+          The location is beautiful and really close to some good pubs and a great pie shop (we took some home with us too).
+          
+          The living space is a little weird as there’s a massive snooker table in the middle, but we made do by moving the available seating to create a make-shift lounge.
+          
+          The property was very clean and honestly so comfortable to be in. Highly recommend staying here if you’re looking for a little trip within England.`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
+          by: {
+            _id: 'u893',
+            fullname: `Deanna`,
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626737359/sprint4/spaces/9%20-%20Manor%20cottage/reviewers/30edb866-eb58-4a79-b4fb-4221458f4452_ndoec1.jpg',
+          },
+        },
+        {
+          _id: 'r104',
+          txt: `My husband and I really enjoyed our stay at the manor cottage. The location is great and the garden and cottage are beautiful and welcoming! Robert and Sarah are great hosts, communication was really easy and they went above and beyond with helping us with anything we needed. I would definitely recommend their place to anyone coming to the area!`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
           by: {
             _id: 'u894',
-            fullname: 'kslmv sojks',
+            fullname: 'Lauren',
             imgUrl:
-              'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626737406/sprint4/spaces/9%20-%20Manor%20cottage/reviewers/97f0c75b-d1e1-4edb-9789-140d80864b84_jjothe.jpg',
+          },
+        },
+        {
+          _id: 'r105',
+          txt: `Photos cannot do this place justice. The cottage is lovely, surrounded by beautiful gardens and the views (especially as sunset) are just perfect!
+          Really tasteful decor throughout the cottage itself and it was absolutely spotless!
+          We really enjoyed the games room in the evenings too.
+          
+          Great place to take kids as there is a play area, trampoline and tennis/basketball court!
+          
+          The hosts are so friendly and helpful too.
+          You literally have access to the river Avon at the bottom of the extensive garden, and the Gardeners Arms pup just down the road in Charlton, is a great spot — and dog friendly.
+          
+          We’d recommend this place to anybody looking for a relaxing break away.`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
+          by: {
+            _id: 'u895',
+            fullname: 'Lauren',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626737459/sprint4/spaces/9%20-%20Manor%20cottage/reviewers/32ac3cfb-6279-48a6-a0be-1168a86a9fad_ztoixt.jpg',
+          },
+        },
+        {
+          _id: 'r106',
+          txt: `The house and garden is absolutely amazing. For anyone staying in the summer, the garden is just packed with a wonderful array of flowers as Robert and Sarah take really good care of the property. They are great hosts who are super responsive with communication. Would absolutely recommend staying for a lovely weekend on the countryside.`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
+          by: {
+            _id: 'u896',
+            fullname: 'Patrick',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626737899/sprint4/spaces/9%20-%20Manor%20cottage/reviewers/20c52338-3f9f-480b-836c-e75251f89590_wtrcgi.jpg',
           },
         },
       ],
-      likedByUserIds: ['u101', 'u102', 'u103'],
+      likedByUserIds: [],
     });
 
     // ==========================================================================
@@ -917,6 +1695,7 @@ async function _createSpaces() {
 
     spaces.push({
       _id: 's' + utilService.makeId(),
+      type:'Entire house',
       name: 'Brand new gorgeous 2 bedroom guest house',
       imgUrls: [
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626397282/sprint4/spaces/10%20-%20Brand%20new%20gorgeous%202%20bedroom%20guest%20house/space/af6cff2e-072b-44db-baef-913ae5beb5f2_bgh1py.webp',
@@ -935,7 +1714,7 @@ async function _createSpaces() {
         Extra amenities: hair dryer; dishwasher; washer; dryer; iron; ironing board; vacuum
         Guest access
         The whole house is yours and separate from the primary residence, as well as the deck and surrounding yard.`,
-      capacity: 5,
+      capacity: 4,
       amenities: [
         'TV',
         'wifi',
@@ -946,7 +1725,6 @@ async function _createSpaces() {
         'smoke alarm',
         'lockbox',
         'air conditioning',
-        'security cameras',
       ],
       host: {
         _id: 'u101',
@@ -963,18 +1741,115 @@ async function _createSpaces() {
       },
       reviews: [
         {
+          _id: 'r101',
+          txt: `The house and location were great. The Morning Glory Farm was within walking distance and perfect for morning coffee. Debra was a wonderful host!`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
+          by: {
+            _id: 'u891',
+            fullname: 'Juliet',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626737968/sprint4/spaces/10%20-%20Brand%20new%20gorgeous%202%20bedroom%20guest%20house/reviewers/17a5e0b2-bac6-488b-b598-9ed3179c9f6a_kv7qbv.jpg',
+          },
+        },
+        {
           _id: 'r102',
-          txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
-          rate: 4,
+          txt: `Very nice two bedroom cottage near downtown Edgartown. Spacious front porch with new grill. Walking distance to Morning Glory Farm, which has great bakery items, produce and dairy.`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
+          by: {
+            _id: 'u892',
+            fullname: 'Peter',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626738143/sprint4/spaces/10%20-%20Brand%20new%20gorgeous%202%20bedroom%20guest%20house/reviewers/original_axjjgz.jpg',
+          },
+        },
+        {
+          _id: 'r103',
+          txt: `We had a lovely stay! I liked the individual towels in the rooms! The house was clean and bright and close to everything!`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
+          by: {
+            _id: 'u893',
+            fullname: 'Joan',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626738435/sprint4/spaces/10%20-%20Brand%20new%20gorgeous%202%20bedroom%20guest%20house/reviewers/00f7d053-1a6b-4943-bd85-56f951e01356_uv9xl8.jpg',
+          },
+        },
+        {
+          _id: 'r104',
+          txt: `The house was great and just as described! It was very clean, comfortable and in a great location. We would definitely stay here again!`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
           by: {
             _id: 'u894',
-            fullname: 'kslmv sojks',
+            fullname: 'Alison',
             imgUrl:
-              'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626738482/sprint4/spaces/10%20-%20Brand%20new%20gorgeous%202%20bedroom%20guest%20house/reviewers/4659a0b9-d87e-4bc3-a48d-935752ddc816_we0efk.jpg',
+          },
+        },
+        {
+          _id: 'r105',
+          txt: `We had a great stay in MV! The house is just as described, was very spacious inside, and was perfect for our family of four. The kids loved the toys and we enjoyed eating out on the deck. The house is in such a convenient location to downtown Edgartown and close to a farm, beaches, and playground. Would definitely visit again!`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
+          by: {
+            _id: 'u895',
+            fullname: 'Kristen',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626738534/sprint4/spaces/10%20-%20Brand%20new%20gorgeous%202%20bedroom%20guest%20house/reviewers/46969df2-c259-4b1d-9ebd-96e3c7e79494_ck3ymm.jpg',
+          },
+        },
+        {
+          _id: 'r106',
+          txt: `My husband and I enjoyed our stay at Debra and Mike's guest house. The house was clean, in a quiet location and the hosts were quick to respond to any questions.`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
+          by: {
+            _id: 'u896',
+            fullname: 'Laura',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626738577/sprint4/spaces/10%20-%20Brand%20new%20gorgeous%202%20bedroom%20guest%20house/reviewers/6649a55b-0d5d-46a3-854f-5003fb9e17eb_uqif7l.jpg',
           },
         },
       ],
-      likedByUserIds: ['u101', 'u102', 'u103'],
+      likedByUserIds: [],
     });
 
     // ==========================================================================
@@ -982,6 +1857,7 @@ async function _createSpaces() {
 
     spaces.push({
       _id: 's' + utilService.makeId(),
+      type:'Entire house',
       name: 'Le Moulin - Piscine chauffée, Spa & Barbecue',
       imgUrls: [
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626397647/sprint4/spaces/11%20-%20Le%20Moulin%20-%20Piscine%20chauff%C3%A9e%2C%20Spa%20%20%20Barbecue/space/f5675226-8b64-4094-958c-beacccebe784_zwmtxs.webp',
@@ -996,7 +1872,7 @@ async function _createSpaces() {
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626397651/sprint4/spaces/11%20-%20Le%20Moulin%20-%20Piscine%20chauff%C3%A9e%2C%20Spa%20%20%20Barbecue/space/9d8e6bcc-0612-4731-b6af-3569552cc6fe_czujko.webp',
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626397647/sprint4/spaces/11%20-%20Le%20Moulin%20-%20Piscine%20chauff%C3%A9e%2C%20Spa%20%20%20Barbecue/space/e313afc5-eeb5-4617-8a05-8d4795774dda_wxbxqd.webp',
       ],
-      price: 886,
+      price: 708,
       description: `Located in a small village in the countryside, right in front of the Ravel, a long walk that leads to Maredsous, the house Le Moulin will be the ideal place for your stay with family or friends !
 
         You can enjoy long bike rides, a dip in the heated pool, a barbecue on the terrace and discover our beautiful region (Abbey of Maredsous, Valley of the Molignée, Lake Bambois,...).
@@ -1024,7 +1900,7 @@ async function _createSpaces() {
         equipped Other remarks:
         
         Check-out until 20h, to be defined with us. This will depend on the day of departure and possible arrival of other visitors.`,
-      capacity: 5,
+      capacity: 11,
       amenities: [
         'TV',
         'wifi',
@@ -1034,8 +1910,6 @@ async function _createSpaces() {
         'washing machine',
         'smoke alarm',
         'lockbox',
-        'air conditioning',
-        'security cameras',
       ],
       host: {
         _id: 'u101',
@@ -1045,25 +1919,122 @@ async function _createSpaces() {
       },
       loc: {
         country: 'Belgium',
-        countryCode: '',
+        countryCode: 'BE',
         address: 'Mettet, Wallonie',
         lat: 50.32015,
         lng: 4.65795,
       },
       reviews: [
         {
+          _id: 'r101',
+          txt: `Very beautyfull vila with a great garden. Everything is clean. Good host! Thanks again!`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
+          by: {
+            _id: 'u891',
+            fullname: 'Rolf',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626738893/sprint4/spaces/11%20-%20Le%20Moulin%20-%20Piscine%20chauff%C3%A9e%2C%20Spa%20%20%20Barbecue/reviewers/786c0b39-153e-4559-9730-1079a0122f32_z3s6ze.jpg',
+          },
+        },
+        {
           _id: 'r102',
-          txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
-          rate: 4,
+          txt: `Stayed in Le Moulin for the weekend with some friends and family. The house is very beautiful, spacious and has everything to relax and enjoy your stay. The hosts are very friendly and are easy to contact in case something is wrong. I would recommend this house to everyone!`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
+          by: {
+            _id: 'u892',
+            fullname: 'Stefan',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626738942/sprint4/spaces/11%20-%20Le%20Moulin%20-%20Piscine%20chauff%C3%A9e%2C%20Spa%20%20%20Barbecue/reviewers/bbf9ab5c-3c52-4363-87de-9c10b5b8f505_orjgqq.jpg',
+          },
+        },
+        {
+          _id: 'r103',
+          txt: `Super situation: amazing house with very big bedrooms, the garden is beautiful, very carefully entertained! The amenities (pool, sauna, jacuzzi) are the cherry on the top of the cake that makes the stay just perfect!`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
+          by: {
+            _id: 'u893',
+            fullname: 'Cecilia',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626738987/sprint4/spaces/11%20-%20Le%20Moulin%20-%20Piscine%20chauff%C3%A9e%2C%20Spa%20%20%20Barbecue/reviewers/original_fje610.jpg',
+          },
+        },
+        {
+          _id: 'r104',
+          txt: `This house is amazing with great facilities. The living areas are very relaxing and the bedrooms are a very generous size. The finishing touches are amazing with everything you could possibly wish for a more. We made use of the beautiful spa with the jacuzzi and sauna. The outdoor BBQ area was perfect and like previous guest we dined in the outdoor heated terrace 2 of our 3 nights stay. The house is beside a beautiful cycle path and we made use of the bikes provided. The location is beautiful and we visited many of the pretty towns nearby. Our hosts Gudrun, Pierre, Velena and Poopoo were fantastic. I highly recommend this home.`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
           by: {
             _id: 'u894',
-            fullname: 'kslmv sojks',
+            fullname: 'Aideen',
             imgUrl:
-              'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626739033/sprint4/spaces/11%20-%20Le%20Moulin%20-%20Piscine%20chauff%C3%A9e%2C%20Spa%20%20%20Barbecue/reviewers/f42b690e-e84b-42ab-b653-47095d05ac49_rfigoc.jpg',
+          },
+        },
+        {
+          _id: 'r105',
+          txt: `Super nice place!`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
+          by: {
+            _id: 'u895',
+            fullname: 'Sandra',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626739076/sprint4/spaces/11%20-%20Le%20Moulin%20-%20Piscine%20chauff%C3%A9e%2C%20Spa%20%20%20Barbecue/reviewers/50ae74a6-0510-4206-a3c6-8cee73380ba2_ja7fbb.jpg',
+          },
+        },
+        {
+          _id: 'r106',
+          txt: `Outstanding hospitality, we arrived to a cosy, warm place with an open fire burning outside at a heated terras (where we ended up having a dinner despite it being winter!). The house is spacious and has beautiful, authentic interior, it almost feels like you’re in a movie. Bubble bath and pool (biljart) were our favourite activities inside and cooking was a pleasure in a very well equipped kitchen. There is a hiking trail starting right in front of the house which was a big plus for our hike-loving family. Kathrin and her parents were wonderful hosts, open, helpful, easy to communicate :) We truly enjoyed our stay and we can’t wait to come back!`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
+          by: {
+            _id: 'u896',
+            fullname: 'Marta',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626739124/sprint4/spaces/11%20-%20Le%20Moulin%20-%20Piscine%20chauff%C3%A9e%2C%20Spa%20%20%20Barbecue/reviewers/ef4b3dcb-4aa5-4003-889d-a564d4365b62_arljbg.jpg',
           },
         },
       ],
-      likedByUserIds: ['u101', 'u102', 'u103'],
+      likedByUserIds: [],
     });
 
     // ==========================================================================
@@ -1071,8 +2042,8 @@ async function _createSpaces() {
 
     spaces.push({
       _id: 's' + utilService.makeId(),
+      type:'Houseboat',
       name: 'Hausboot auf der Mosel in Pölich',
-      type: 'home',
       imgUrls: [
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626397960/sprint4/spaces/12%20-%20Hausboot%20auf%20der%20Mosel%20in%20P%C3%B6lich/space/d3b35b20-6aad-45ab-bb05-7dbba9906cac_ucuxbi.webp',
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626397960/sprint4/spaces/12%20-%20Hausboot%20auf%20der%20Mosel%20in%20P%C3%B6lich/space/c9ca74cb-5429-4ec5-b5a8-6e8eea5c1958_k04brc.webp',
@@ -1092,7 +2063,7 @@ async function _createSpaces() {
         Living with a direct view of the water!
         Other things to note
         Many things are explained and discussed on site at check-in. In case there are still any questions, there is something on board ;-).`,
-      capacity: 5,
+      capacity: 4,
       amenities: [
         'TV',
         'wifi',
@@ -1102,8 +2073,6 @@ async function _createSpaces() {
         'washing machine',
         'smoke alarm',
         'lockbox',
-        'air conditioning',
-        'security cameras',
       ],
       host: {
         _id: 'u101',
@@ -1113,32 +2082,127 @@ async function _createSpaces() {
       },
       loc: {
         country: 'Germany',
-        countryCode: 'GR',
+        countryCode: 'DE',
         address: 'Pölich, Rheinland-Pfalz',
         lat: 49.79802,
         lng: 6.85031,
       },
       reviews: [
         {
-          _id: 'r102',
-          txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
+          _id: 'r101',
+          txt: 'Top location to slow down. Relaxed communication. Particularly recommended: Cooking on the outdoor gas stove directly above the Moselle with a view of the vineyards ...',
           rate: {
-            cleanliness: 2,
-            checkin: 3,
-            communication: 3,
-            accuracy: 1,
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 4,
+            location: 4,
+          },
+          by: {
+            _id: 'u891',
+            fullname: 'Patrick',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626739438/sprint4/spaces/12%20-%20Hausboot%20auf%20der%20Mosel%20in%20P%C3%B6lich/reviewers/2875e960-1947-411b-b771-3aa34214947a_io7snz.jpg',
+          },
+        },
+        {
+          _id: 'r102',
+          txt: `A wonderful place to relax.
+          Rich in detail and lovingly furnished, everything is there! Wonderful, the hospitable refrigerator snack that we found on arrival. The area is great to explore by bike, a supermarket and restaurants can be found in the neighboring village.`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 4,
+            location: 5,
+          },
+          by: {
+            _id: 'u892',
+            fullname: 'Susanne',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626739512/sprint4/spaces/12%20-%20Hausboot%20auf%20der%20Mosel%20in%20P%C3%B6lich/reviewers/4d3e93a2-5e00-4fba-95db-cd749be54ba9_xxv2zi.jpg',
+          },
+        },
+        {
+          _id: 'r103',
+          txt: `the houseboat is just lovely. The location is incredibly beautiful, with a view of the vineyards and right on the water. The houseboat leaves nothing to be desired. we were here with two kids and had the best time. Breakfast on the terrace, splashing around in the water, SUP tour, cycling, wine tasting and in the evening on the roof terrace a cozy glass of wine at sunset. Monika and Claes are very nice landlords and took care of us. We will definitely come back to this little paradise
+          thanks`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
             value: 5,
-            location: 3,
+            location: 5,
+          },
+          by: {
+            _id: 'u893',
+            fullname: 'Julia',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626739560/sprint4/spaces/12%20-%20Hausboot%20auf%20der%20Mosel%20in%20P%C3%B6lich/reviewers/526a8bac-43c7-4634-ad2a-5a717bc03e78_hv1zvm.jpg',
+          },
+        },
+        {
+          _id: 'r104',
+          txt: `An oasis on the water, so completely surrounded by lush greenery, decelerating and calm, and yet 'animal' and lively, ... and not to be forgotten: right on the Moselle cycle path! Many thanks, on the one hand, Theodor & family for your trust in placing this stylish jewel in 'strange hands', but also THANK YOU to the key holders Monika & Claes for the excellent provision, the warm welcome, including 'anchor drink & delicious seafaring food' and all the good tips all around!
+
+          We have to admit, we didn't even know this region, and apart from the Moselle wines ... we didn't really know what to expect. But lo and behold, we are pleasantly surprised, because despite the many months of lockdown and the associated existential worries, especially in the hotel and catering sector, the mood is extremely good and confident, the range in glass & plates is varied and extremely generous and the people overall relaxed and warm-hearted. Really chapeau!`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
           },
           by: {
             _id: 'u894',
-            fullname: 'kslmv sojks',
+            fullname: 'Philipp',
             imgUrl:
-              'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626739612/sprint4/spaces/12%20-%20Hausboot%20auf%20der%20Mosel%20in%20P%C3%B6lich/reviewers/original_wxm9e5.jpg',
+          },
+        },
+        {
+          _id: 'r105',
+          txt: `Super nice houseboat with high comfort and very good equipment. Everything went smoothly and very nicely :) Highly recommended!
+          The location is beautiful in the vineyards, but there are hardly any opportunities (nice) to eat or shop nearby. But self-sufficiency on the houseboat worked great thanks to two kitchens.`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
+          by: {
+            _id: 'u895',
+            fullname: 'Elena',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626739670/sprint4/spaces/12%20-%20Hausboot%20auf%20der%20Mosel%20in%20P%C3%B6lich/reviewers/448ed98f-ce9f-4873-88f1-dabdafb76313_aifmjo.jpg',
+          },
+        },
+        {
+          _id: 'r106',
+          txt: `Beautiful houseboat. Great facility and great location. The sun terrace was a highlight and even in bad weather you could enjoy yourself. Can only recommend this houseboat.`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
+          by: {
+            _id: 'u896',
+            fullname: 'Annalena',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626739731/sprint4/spaces/12%20-%20Hausboot%20auf%20der%20Mosel%20in%20P%C3%B6lich/reviewers/d1561262-9552-46f3-8260-7f90c9b1e192_l0yqgt.jpg',
           },
         },
       ],
-      likedByUserIds: ['u101', 'u102', 'u103'],
+      likedByUserIds: [],
     });
 
     // ==========================================================================
@@ -1146,8 +2210,8 @@ async function _createSpaces() {
 
     spaces.push({
       _id: 's' + utilService.makeId(),
+      type: 'Entire home',
       name: 'Masseria Il Frantoio with heated pool',
-      type: 'home',
       imgUrls: [
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626398175/sprint4/spaces/13%20-%20Masseria%20Il%20Frantoio%20with%20heated%20pool/space/72ed6fdd-7574-458b-a566-3dd11121a611_lsgr6i.webp',
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626398179/sprint4/spaces/13%20-%20Masseria%20Il%20Frantoio%20with%20heated%20pool/space/e10686c3-351f-4608-842c-451db32d7ff9_qhasbo.webp',
@@ -1163,7 +2227,7 @@ async function _createSpaces() {
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626398174/sprint4/spaces/13%20-%20Masseria%20Il%20Frantoio%20with%20heated%20pool/space/036aeb45-33ed-4536-8c30-0bc9269057ad_rmx4u2.webp',
         '',
       ],
-      price: 1151,
+      price: 887,
       description: `This Masseria to rent is located on the doorstep of Ostuni, an iconic medieval village. Is located in centuries-old olive groves combines traditional Apulian architecture with modern and refined interiors. The ideal choice for those looking for:
         A Masseria for rent in Valle d'Itria with modern interiors
         A villa for rent for ten people just a few minutes from the sea
@@ -1212,7 +2276,7 @@ async function _createSpaces() {
         Kitchen: Crockery & Cutlery, Washing Machine, Dishwasher, oven, microwave, fridge / freezer, coffee maker, dish rack, gas/electric hob, washbasin , dining table, Espresso-Machine, Smoke Detectors, Carbon Monoxide Detector, Fire Extinguisher;
         Living room: night tables, table and chairs, 2 x double sofa, Fireplace, mirror, Smart TV, Window ;
         Livingroom / Bedroom: TV, double sofa, Massage, Window ;`,
-      capacity: 5,
+      capacity: 8,
       amenities: [
         'TV',
         'wifi',
@@ -1223,7 +2287,6 @@ async function _createSpaces() {
         'smoke alarm',
         'lockbox',
         'air conditioning',
-        'security cameras',
       ],
       host: {
         _id: 'u101',
@@ -1240,25 +2303,115 @@ async function _createSpaces() {
       },
       reviews: [
         {
-          _id: 'r102',
-          txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
+          _id: 'r101',
+          txt: `Such a gorgeous place to stay! I highly recommend this beautiful spot. Extremely comfortable, amazing pool, and Paola was so wonderful to deal with. 5 stars all round!`,
           rate: {
-            cleanliness: 2,
-            checkin: 3,
-            communication: 3,
-            accuracy: 1,
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
             value: 5,
-            location: 3,
+            location: 5,
           },
           by: {
-            _id: 'u894',
-            fullname: 'kslmv sojks',
+            _id: 'u891',
+            fullname: 'Kirstin',
             imgUrl:
-              'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626739987/sprint4/spaces/13%20-%20Masseria%20Il%20Frantoio%20with%20heated%20pool/reviewers/d2e2cf73-b433-4606-a269-f0061c6df671_aytnfs.jpg',
           },
         },
+        // {
+        //   _id: 'r102',
+        //   txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
+        //   rate: {
+        //     cleanliness: 5,
+        //     checkin: 5,
+        //     communication: 5,
+        //     accuracy: 5,
+        //     value: 5,
+        //     location: 5,
+        //   },
+        //   by: {
+        //     _id: 'u892',
+        //     fullname: 'kslmv sojks',
+        //     imgUrl:
+        //       'https://res.cloudinary.com/dymtestxz/image/upload/v1626394613/sprint4/spaces/3%20-%20Still%20Life%20St%20Paul%27s%20Executive/reviewers/photo-1531427186611-ecfd6d936c79_lexlem.webp',
+        //   },
+        // },
+        // {
+        //   _id: 'r103',
+        //   txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
+        //   rate: {
+        //     cleanliness: 5,
+        //     checkin: 5,
+        //     communication: 5,
+        //     accuracy: 5,
+        //     value: 5,
+        //     location: 5,
+        //   },
+        //   by: {
+        //     _id: 'u893',
+        //     fullname: 'kslmv sojks',
+        //     imgUrl:
+        //       'https://res.cloudinary.com/dymtestxz/image/upload/v1626394613/sprint4/spaces/3%20-%20Still%20Life%20St%20Paul%27s%20Executive/reviewers/photo-1531427186611-ecfd6d936c79_lexlem.webp',
+        //   },
+        // },
+        // {
+        //   _id: 'r104',
+        //   txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
+        //   rate: {
+        //     cleanliness: 5,
+        //     checkin: 5,
+        //     communication: 5,
+        //     accuracy: 5,
+        //     value: 5,
+        //     location: 5,
+        //   },
+        //   by: {
+        //     _id: 'u894',
+        //     fullname: 'kslmv sojks',
+        //     imgUrl:
+        //       'https://res.cloudinary.com/dymtestxz/image/upload/v1626394613/sprint4/spaces/3%20-%20Still%20Life%20St%20Paul%27s%20Executive/reviewers/photo-1531427186611-ecfd6d936c79_lexlem.webp',
+        //   },
+        // },
+        // {
+        //   _id: 'r105',
+        //   txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
+        //   rate: {
+        //     cleanliness: 5,
+        //     checkin: 5,
+        //     communication: 5,
+        //     accuracy: 5,
+        //     value: 5,
+        //     location: 5,
+        //   },
+        //   by: {
+        //     _id: 'u895',
+        //     fullname: 'kslmv sojks',
+        //     imgUrl:
+        //       'https://res.cloudinary.com/dymtestxz/image/upload/v1626394613/sprint4/spaces/3%20-%20Still%20Life%20St%20Paul%27s%20Executive/reviewers/photo-1531427186611-ecfd6d936c79_lexlem.webp',
+        //   },
+        // },
+        // {
+        //   _id: 'r106',
+        //   txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
+        //   rate: {
+        //     cleanliness: 5,
+        //     checkin: 5,
+        //     communication: 5,
+        //     accuracy: 5,
+        //     value: 5,
+        //     location: 5,
+        //   },
+        //   by: {
+        //     _id: 'u896',
+        //     fullname: 'kslmv sojks',
+        //     imgUrl:
+        //       'https://res.cloudinary.com/dymtestxz/image/upload/v1626394613/sprint4/spaces/3%20-%20Still%20Life%20St%20Paul%27s%20Executive/reviewers/photo-1531427186611-ecfd6d936c79_lexlem.webp',
+        //   },
+        // },
       ],
-      likedByUserIds: ['u101', 'u102', 'u103'],
+      likedByUserIds: [],
     });
 
     // ==========================================================================
@@ -1266,8 +2419,8 @@ async function _createSpaces() {
 
     spaces.push({
       _id: 's' + utilService.makeId(),
+      type: 'Entire villa',
       name: 'Charming villa with private pool located in Scopello',
-      type: 'villa',
 
       imgUrls: [
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626398412/sprint4/spaces/14%20-%20Charming%20villa%20with%20private%20pool%20located%20in%20Scopello/space/f90e60c2-c974-453a-a748-d2bf3b0f635a_zx7dwl.webp',
@@ -1295,7 +2448,7 @@ async function _createSpaces() {
         On the 1st floor: (open kitchen, Living/diningroom, bedroom(double bed), bedroom(double bed), bathroom(shower), bathroom(shower))
         
         TV, electric kettle, toaster, oven, microwave, dishwasher, fridge-freezer, shower(outside), washing machine, terrace(private), garden(private), garden furniture, BBQ, BBQ, parking, swimming pool(private, 10 x 5 m., opened from 1/2 May upto and including Oct), iron, hairdryer, Blender`,
-      capacity: 3,
+      capacity: 10,
       amenities: [
         'TV',
         'wifi',
@@ -1303,10 +2456,7 @@ async function _createSpaces() {
         'kitchen',
         'free parking',
         'washing machine',
-        'smoke alarm',
         'lockbox',
-        'air conditioning',
-        'security cameras',
       ],
       host: {
         _id: 'u101',
@@ -1322,26 +2472,116 @@ async function _createSpaces() {
         lng: 12.88687,
       },
       reviews: [
-        {
-          _id: 'r102',
-          txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
-          rate: {
-            cleanliness: 2,
-            checkin: 3,
-            communication: 3,
-            accuracy: 1,
-            value: 5,
-            location: 3,
-          },
-          by: {
-            _id: 'u894',
-            fullname: 'kslmv sojks',
-            imgUrl:
-              'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
-          },
-        },
+        // {
+        //   _id: 'r101',
+        //   txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
+        //   rate: {
+        //     cleanliness: 5,
+        //     checkin: 5,
+        //     communication: 5,
+        //     accuracy: 5,
+        //     value: 5,
+        //     location: 5,
+        //   },
+        //   by: {
+        //     _id: 'u891',
+        //     fullname: 'kslmv sojks',
+        //     imgUrl:
+        //       'https://res.cloudinary.com/dymtestxz/image/upload/v1626394613/sprint4/spaces/3%20-%20Still%20Life%20St%20Paul%27s%20Executive/reviewers/photo-1531427186611-ecfd6d936c79_lexlem.webp',
+        //   },
+        // },
+        // {
+        //   _id: 'r102',
+        //   txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
+        //   rate: {
+        //     cleanliness: 5,
+        //     checkin: 5,
+        //     communication: 5,
+        //     accuracy: 5,
+        //     value: 5,
+        //     location: 5,
+        //   },
+        //   by: {
+        //     _id: 'u892',
+        //     fullname: 'kslmv sojks',
+        //     imgUrl:
+        //       'https://res.cloudinary.com/dymtestxz/image/upload/v1626394613/sprint4/spaces/3%20-%20Still%20Life%20St%20Paul%27s%20Executive/reviewers/photo-1531427186611-ecfd6d936c79_lexlem.webp',
+        //   },
+        // },
+        // {
+        //   _id: 'r103',
+        //   txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
+        //   rate: {
+        //     cleanliness: 5,
+        //     checkin: 5,
+        //     communication: 5,
+        //     accuracy: 5,
+        //     value: 5,
+        //     location: 5,
+        //   },
+        //   by: {
+        //     _id: 'u893',
+        //     fullname: 'kslmv sojks',
+        //     imgUrl:
+        //       'https://res.cloudinary.com/dymtestxz/image/upload/v1626394613/sprint4/spaces/3%20-%20Still%20Life%20St%20Paul%27s%20Executive/reviewers/photo-1531427186611-ecfd6d936c79_lexlem.webp',
+        //   },
+        // },
+        // {
+        //   _id: 'r104',
+        //   txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
+        //   rate: {
+        //     cleanliness: 5,
+        //     checkin: 5,
+        //     communication: 5,
+        //     accuracy: 5,
+        //     value: 5,
+        //     location: 5,
+        //   },
+        //   by: {
+        //     _id: 'u894',
+        //     fullname: 'kslmv sojks',
+        //     imgUrl:
+        //       'https://res.cloudinary.com/dymtestxz/image/upload/v1626394613/sprint4/spaces/3%20-%20Still%20Life%20St%20Paul%27s%20Executive/reviewers/photo-1531427186611-ecfd6d936c79_lexlem.webp',
+        //   },
+        // },
+        // {
+        //   _id: 'r105',
+        //   txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
+        //   rate: {
+        //     cleanliness: 5,
+        //     checkin: 5,
+        //     communication: 5,
+        //     accuracy: 5,
+        //     value: 5,
+        //     location: 5,
+        //   },
+        //   by: {
+        //     _id: 'u895',
+        //     fullname: 'kslmv sojks',
+        //     imgUrl:
+        //       'https://res.cloudinary.com/dymtestxz/image/upload/v1626394613/sprint4/spaces/3%20-%20Still%20Life%20St%20Paul%27s%20Executive/reviewers/photo-1531427186611-ecfd6d936c79_lexlem.webp',
+        //   },
+        // },
+        // {
+        //   _id: 'r106',
+        //   txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
+        //   rate: {
+        //     cleanliness: 5,
+        //     checkin: 5,
+        //     communication: 5,
+        //     accuracy: 5,
+        //     value: 5,
+        //     location: 5,
+        //   },
+        //   by: {
+        //     _id: 'u896',
+        //     fullname: 'kslmv sojks',
+        //     imgUrl:
+        //       'https://res.cloudinary.com/dymtestxz/image/upload/v1626394613/sprint4/spaces/3%20-%20Still%20Life%20St%20Paul%27s%20Executive/reviewers/photo-1531427186611-ecfd6d936c79_lexlem.webp',
+        //   },
+        // },
       ],
-      likedByUserIds: ['u101', 'u102', 'u103'],
+      likedByUserIds: [],
     });
 
     // ==========================================================================
@@ -1349,9 +2589,9 @@ async function _createSpaces() {
 
     spaces.push({
       _id: 's' + utilService.makeId(),
+      type: 'Entire villa',
       name:
         'SA CASETA (CASETA PIPERA) - Beautiful country-house with private pool and garden Free WiFi',
-      type: 'villa',
       imgUrls: [
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626398679/sprint4/spaces/15%20-%20SA%20CASETA%20%28CASETA%20PIPERA%29/space/7e62ef3d-ef53-43d1-9946-e4cb40e8568a_bd82el.webp',
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626398679/sprint4/spaces/15%20-%20SA%20CASETA%20%28CASETA%20PIPERA%29/space/b26e4e8f-4ed2-4c25-8d8d-b189de3d77a5_yzhtqz.webp',
@@ -1399,7 +2639,7 @@ async function _createSpaces() {
         For arrivals after midnight (12.00 a.m.) a fee of 50€ may be charged, which the client has to pay in cash at the moment of check-in.
         License number
         ETV/7447`,
-      capacity: 2,
+      capacity: 5,
       amenities: [
         'TV',
         'wifi',
@@ -1407,10 +2647,7 @@ async function _createSpaces() {
         'kitchen',
         'free parking',
         'washing machine',
-        'smoke alarm',
         'lockbox',
-        'air conditioning',
-        'security cameras',
       ],
       host: {
         _id: 'u101',
@@ -1420,32 +2657,129 @@ async function _createSpaces() {
       },
       loc: {
         country: 'Spain',
-        countryCode: '',
+        countryCode: 'ES',
         address: 'MANACOR, Spain',
         lat: 39.57434,
         lng: 3.20142,
       },
       reviews: [
         {
-          _id: 'r102',
-          txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
+          _id: 'r101',
+          txt: `The house is as described. It was easy to find with navigation and is located a couple of minutes drive from the Manacor city. I believe the location of the house was also a god hub for us to explore the island with the car.
+          One thing we really enjoyed was the terrace in the morning which took the morning Mallorquin sun. Beautiful and enjoyable.
+          We spent a couple of days at the house in the last week of October. The house does not have heating. In the morning we opened the window shutters to let the sun in and that kind of warmed the house for us.
+          We did have some questions during our stay. The host was quick to answer them to make our stay in Mallorca enjoyable.`,
           rate: {
-            cleanliness: 2,
-            checkin: 3,
-            communication: 3,
-            accuracy: 1,
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
             value: 5,
-            location: 3,
+            location: 4,
+          },
+          by: {
+            _id: 'u891',
+            fullname: 'Blaz',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626740562/sprint4/spaces/15%20-%20SA%20CASETA%20%28CASETA%20PIPERA%29/reviewers/99137a64-b86e-4683-be52-11bc2a5e6361_dfubh4.jpg',
+          },
+        },
+        {
+          _id: 'r102',
+          txt: `Super nice house. Very quiet neighborhood. Nothing tourists around. The garden with fresh figs and pomegrande is everything! The outdoor grill and pizza oven is awesome! Nothing left to wish for`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
+          by: {
+            _id: 'u892',
+            fullname: 'Jackie',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626740640/sprint4/spaces/15%20-%20SA%20CASETA%20%28CASETA%20PIPERA%29/reviewers/955a84b9-c298-48ac-b4ba-f28bd1b9caf8_hd0i2p.jpg',
+          },
+        },
+        {
+          _id: 'r103',
+          txt: `Great house in a perfect location to explore the island. Especially the patio was great and features sun throughout the day. Thanks a lot!`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
+          by: {
+            _id: 'u893',
+            fullname: 'Sander',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626740691/sprint4/spaces/15%20-%20SA%20CASETA%20%28CASETA%20PIPERA%29/reviewers/original_gawjyg.jpg',
+          },
+        },
+        {
+          _id: 'r104',
+          txt: `Beautiful villa near Manacor (5mins by car). The house has all items you need to make yourselves at home, the garden/patio is large enough and has a nice barbecue area
+          Inside the house there is a nice kitchen, good size living room, 2 full bathrooms and 3 large bedrooms
+          Very quiet area but close to the village, supermarkets, bar, restaurants, beach..
+          Very quick response from the owner when you need something`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 4,
+            location: 4,
           },
           by: {
             _id: 'u894',
-            fullname: 'kslmv sojks',
+            fullname: 'Alvaro',
             imgUrl:
-              'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626740743/sprint4/spaces/15%20-%20SA%20CASETA%20%28CASETA%20PIPERA%29/reviewers/8290a5eb-c301-49f5-be4c-4a7155a2596a_gmwevt.jpg',
+          },
+        },
+        {
+          _id: 'r105',
+          txt: `big house with nice ambient, clean and quiet location without any light pollution.
+          communication was also easy and without any problem. recommendation!`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 4,
+            location: 5,
+          },
+          by: {
+            _id: 'u895',
+            fullname: 'Chibeibei',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626740808/sprint4/spaces/15%20-%20SA%20CASETA%20%28CASETA%20PIPERA%29/reviewers/original_1_swnnwp.jpg',
+          },
+        },
+        {
+          _id: 'r106',
+          txt: `Caseta Pipera is exactly as you see it in the photos: small but comfortable, traditional but modernized, perfectly clean and with a perfect yard and terrace to relax after a day at the beach. And - as bonus - to get to taste the most tasty figs on earth each morning. Outside city of Manacor, the house is maximum half hour away from some amazing beaches and about 45 minutes away from Palma if you fancy a stroll in the city.`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
+          by: {
+            _id: 'u896',
+            fullname: 'Adina',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626740873/sprint4/spaces/15%20-%20SA%20CASETA%20%28CASETA%20PIPERA%29/reviewers/1967554a-f550-417d-be5d-bb031be3a998_rzdrum.jpg',
           },
         },
       ],
-      likedByUserIds: ['u101', 'u102', 'u103'],
+      likedByUserIds: [],
     });
 
     // ==========================================================================
@@ -1453,8 +2787,8 @@ async function _createSpaces() {
 
     spaces.push({
       _id: 's' + utilService.makeId(),
+      type: 'Entire house',
       name: 'Palm Pavilion: architectural rainforest retreat',
-      type: 'house',
       imgUrls: [
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626398893/sprint4/spaces/16%20-%20Palm%20Pavilion%20architectural%20rainforest%20retreat/space/a9b33df6-7948-4161-8511-b5e796c9b009_qyxdw0.webp',
         'https://res.cloudinary.com/dymtestxz/image/upload/v1626398893/sprint4/spaces/16%20-%20Palm%20Pavilion%20architectural%20rainforest%20retreat/space/e6b40af9-453a-42c4-9221-34443c62afab_rr4grr.webp',
@@ -1477,7 +2811,6 @@ async function _createSpaces() {
         'smoke alarm',
         'lockbox',
         'air conditioning',
-        'security cameras',
       ],
       host: {
         _id: 'u101',
@@ -1494,25 +2827,115 @@ async function _createSpaces() {
       },
       reviews: [
         {
-          _id: 'r102',
-          txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
+          _id: 'r101',
+          txt: `A great property in a good location. Near to Church Point and the national park. Peaceful setting with a tropical vibe. Communication from Annie was fantastic and everything was as advertised. Would be great to visit again in better weather!`,
           rate: {
-            cleanliness: 2,
-            checkin: 3,
-            communication: 3,
-            accuracy: 1,
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 4,
+            location: 5,
+          },
+          by: {
+            _id: 'u891',
+            fullname: 'James',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626741133/sprint4/spaces/16%20-%20Palm%20Pavilion%20architectural%20rainforest%20retreat/reviewers/7a8fa916-b997-4cc7-9fb5-986593d11179_cq6fm2.jpg',
+          },
+        },
+        {
+          _id: 'r102',
+          txt: `The place was amazing, great location and host was very easy to communicate with. We had an excellent stay.`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
             value: 5,
-            location: 3,
+            location: 5,
+          },
+          by: {
+            _id: 'u892',
+            fullname: 'Georgina',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626741179/sprint4/spaces/16%20-%20Palm%20Pavilion%20architectural%20rainforest%20retreat/reviewers/622ed902-7f46-4f9f-890f-cfa2b7054359_v4djcn.jpg',
+          },
+        },
+        {
+          _id: 'r103',
+          txt: `Great space, well equipped. Would recommend.`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
+          },
+          by: {
+            _id: 'u893',
+            fullname: 'Karl',
+            imgUrl:
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626741239/sprint4/spaces/16%20-%20Palm%20Pavilion%20architectural%20rainforest%20retreat/reviewers/cb54a340-5c0a-4b37-b613-f95e5c7fe703_gz9img.png',
+          },
+        },
+        {
+          _id: 'r104',
+          txt: `Gorgeous house, very cosy and comfortable. Heating works very well so it is the perfect winter getaway. Large kitchen space and living area. The driveway is hidden however, just be on the lookout for the house number!`,
+          rate: {
+            cleanliness: 5,
+            checkin: 5,
+            communication: 5,
+            accuracy: 5,
+            value: 5,
+            location: 5,
           },
           by: {
             _id: 'u894',
-            fullname: 'kslmv sojks',
+            fullname: 'Rachael',
             imgUrl:
-              'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
+              'https://res.cloudinary.com/dymtestxz/image/upload/v1626741291/sprint4/spaces/16%20-%20Palm%20Pavilion%20architectural%20rainforest%20retreat/reviewers/b98be162-e136-442a-a0b3-a65c6d10cab7_kzm4hk.jpg',
           },
         },
+        // {
+        //   _id: 'r105',
+        //   txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
+        //   rate: {
+        //     cleanliness: 5,
+        //     checkin: 5,
+        //     communication: 5,
+        //     accuracy: 5,
+        //     value: 5,
+        //     location: 5,
+        //   },
+        //   by: {
+        //     _id: 'u895',
+        //     fullname: 'kslmv sojks',
+        //     imgUrl:
+        //       'https://res.cloudinary.com/dymtestxz/image/upload/v1626394613/sprint4/spaces/3%20-%20Still%20Life%20St%20Paul%27s%20Executive/reviewers/photo-1531427186611-ecfd6d936c79_lexlem.webp',
+        //   },
+        // },
+        // {
+        //   _id: 'r106',
+        //   txt: 'sdvmlvs adklmalkm wfbhlwekjfn aejfnhkjs.',
+        //   rate: {
+        //     cleanliness: 5,
+        //     checkin: 5,
+        //     communication: 5,
+        //     accuracy: 5,
+        //     value: 5,
+        //     location: 5,
+        //   },
+        //   by: {
+        //     _id: 'u896',
+        //     fullname: 'kslmv sojks',
+        //     imgUrl:
+        //       'https://res.cloudinary.com/dymtestxz/image/upload/v1626394613/sprint4/spaces/3%20-%20Still%20Life%20St%20Paul%27s%20Executive/reviewers/photo-1531427186611-ecfd6d936c79_lexlem.webp',
+        //   },
+        // },
       ],
-      likedByUserIds: ['u101', 'u102', 'u103'],
+      likedByUserIds: [],
     });
 
     // ==========================================================================
