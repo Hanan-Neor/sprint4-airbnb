@@ -8,7 +8,7 @@ export const spaceStore = {
       amenities: [],
       type: 'all',
       location: '',
-      country: '',//for explore list
+      country: '', //for explore list
       numGuests: 0,
       dates: { startDate: 0, endDate: 0 },
       count: 20, //change this to PAGE_SIZE when add pagination
@@ -16,20 +16,22 @@ export const spaceStore = {
     },
   },
   getters: {
-    spaces(state) { return state.spaces
-      const filterBy = state.filterBy
+    totalSpacesAllPages(state) {
+      return state.spaces.length;
+    },
+    spaces(state) {
+      //this is the spaces after filter and after pagination
+      const filterBy = state.filterBy;
       //pagination here
       if (filterBy.count !== Infinity) {
+        console.log('count of pages', filterBy.count);
         const firstSpace = filterBy.count * (filterBy.currPage - 1);
         const lastSpace = firstSpace + filterBy.count;
-        console.log('first', firstSpace, ": last", lastSpace);
-        return state.spaces.slice(firstSpace, lastSpace)
+        console.log('first', firstSpace, ': last', lastSpace);
+        return state.spaces.slice(firstSpace, lastSpace);
       }
       //if no max-page-size
       return state.spaces;
-    },
-    totalSpaces(state){
-      return state.spaces.length;
     },
     filterBy(state) {
       return state.filterBy;
@@ -64,44 +66,31 @@ export const spaceStore = {
         amenities: [],
         type: 'all',
         location: '',
-        country: '',//for explore list
+        country: '', //for explore list
         numGuests: 0,
         dates: { startDate: 0, endDate: 0 },
         count: Infinity, //change this to PAGE_SIZE when add pagination
         currPage: 1,
-      }
-    }
+      };
+    },
     // addReview(state, { space }) {
     //   const idx = state.spaces.findIndex((t) => t._id === space._id);
     //   state.spaces.splice(idx, 1, space);
     // },
   },
   actions: {
-
     // async liked(context,payload){
     //     console.log(payload.spaceId);
     // },
 
-
-    
     // async setFilterField(state, { field, value }) {
     //   state.filterBy[field] = value;
     // },
     async loadSpaces(context) {
-      // spaceService.query(context.getters.filterBy)
-      //   .then((spaces) => {
-      //     context.commit({ type: 'setSpaces', spaces });
-      //     return spaces;
-      //   })
-      //   .catch((err) => {
-      //     console.log('Cannot load spaces', err);
-      //     throw err;
-      //   });
       try {
         const spaces = await spaceService.query(context.getters.filterBy);
-        // const spaces = await spaceService.query();
         context.commit({ type: 'setSpaces', spaces });
-        console.log('spaces**********', spaces);
+        console.log('testing*****total:', context.getters.totalSpacesAllPages);
         return spaces;
       } catch (err) {
         console.log('Cannot load spaces in store');

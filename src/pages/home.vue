@@ -6,6 +6,7 @@
       alt=""
     />
     <button class="header-image-button" @click="gotoSpaces">I'm flexible</button>
+     
     <space-list :spaces="spaces" />
     <div class="breaker-image">
 
@@ -23,6 +24,7 @@
 import spaceList from './../cmps/space-app/space-list.vue';
 import exploreList from './../cmps/explore-list.vue';
 import { eventBusService } from './../services/event-bus.service.js';
+import msg from './../cmps/msg.vue';
 // @ is an alias to /src
 
 export default {
@@ -30,6 +32,7 @@ export default {
   components: {
     spaceList,
     exploreList,
+    msg,
   },
   created() {
     this.$store.commit({ type: "clearFilter"});

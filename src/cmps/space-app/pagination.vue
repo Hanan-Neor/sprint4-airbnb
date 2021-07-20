@@ -21,8 +21,10 @@ export default {
   data() {
     return {
       currPage: 1,
-      numPages: Math.ceil(this.numSpaces / this.pageSize),
     };
+  },
+  computed:{
+    numPages(){return Math.ceil(this.numSpaces / this.pageSize)}
   },
   methods: {
     gotoPage(num) {

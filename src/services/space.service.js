@@ -15,11 +15,10 @@ export const spaceService = {
 window.spaceService = spaceService;
 // _createSpaces();
 
-
 async function query(filterBy) {
   console.log('filter in service', filterBy);
   try {
-    let spaces = await httpService.get(`space`, filterBy) //SERVER STORAGE
+    let spaces = await httpService.get(`space`, filterBy); //SERVER STORAGE
     // let spaces = await storageService.query(SPACE_KEY); //CLIENT STORAGE
     // const spacesForDisplay = await filterService.getSpacesForDisplay(
     //   spaces,
@@ -35,24 +34,24 @@ async function query(filterBy) {
 }
 
 function remove(spaceId) {
-  return httpService.delete(`space/${spaceId}`) //SERVER STORAGE
+  return httpService.delete(`space/${spaceId}`); //SERVER STORAGE
   // return storageService.remove(SPACE_KEY, spaceId); //CLIENT STORAGE
 }
 
 async function save(space) {
   if (space._id) {
-    space = await httpService.put(`space/${space._id}`, space) //SERVER STORAGE
+    space = await httpService.put(`space/${space._id}`, space); //SERVER STORAGE
     return space; //SERVER STORAGE
     // return storageService.put(SPACE_KEY, space); //CLIENT STORAGE
   } else {
-    space = await httpService.post(`space`, space) //SERVER STORAGE
-    return space //SERVER STORAGE
+    space = await httpService.post(`space`, space); //SERVER STORAGE
+    return space; //SERVER STORAGE
     // return storageService.post(SPACE_KEY, space); //CLIENT STORAGE
   }
 }
 
 async function getById(spaceId) {
-  return httpService.get(`space/${spaceId}`) //SERVER STORAGE
+  return httpService.get(`space/${spaceId}`); //SERVER STORAGE
   // const space = await storageService.get(SPACE_KEY, spaceId); //CLIENT STORAGE
   // return space; //CLIENT STORAGE
 }
@@ -71,7 +70,7 @@ function getEmptySpace() {
     ],
     price: 0,
     description: '',
-    capacity: 6,
+    capacity: 1,
     amenities: [],
     type: 'home',
     host: {
@@ -120,7 +119,7 @@ async function _createSpaces() {
     spaces = [];
 
     // storageService.postMany(SPACE_KEY, spaces); //CLIENT STORAGE
-    utilService.saveToStorage(SPACE_KEY, spaces) //SERVER STORAGE
+    utilService.saveToStorage(SPACE_KEY, spaces); //SERVER STORAGE
   }
   return spaces;
 }

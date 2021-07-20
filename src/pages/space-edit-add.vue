@@ -2,11 +2,14 @@
   <section class="add-space">
     <form class="add-space-form full">
       <div class="welcome flex item">
-        <div class="left-part">hi</div>
+        <div class="left-part"></div>
         <div class="right-part">
           <h1>Become a Host in 10 easy steps.</h1>
           <h2>Join us. We'll help you every step of the way</h2>
-          <gradient-btn :text="'Let\'s go!'"></gradient-btn>
+          <gradient-btn
+            :text="'Let\'s go!'"
+            @click.native="nextSection('type')"
+          ></gradient-btn>
         </div>
       </div>
 
@@ -107,6 +110,7 @@
               <label for="radio10">Lighthouse</label>
             </li>
           </ul>
+          <button class="next-btn" @click="nextSection('location')"></button>
         </div>
       </div>
 
@@ -115,19 +119,22 @@
           <h1>Where's your place located?</h1>
         </div>
         <div class="right-part">
-          <h2>Enter your address</h2>
-          <div class="address-container">
-            <input
-              type="text"
-              placeholder="Address"
-              v-model="spaceToEdit.loc.address"
-            />
-            <input
-              type="text"
-              placeholder="Country"
-              v-model="spaceToEdit.loc.country"
-            />
+          <div class="right-part-box">
+            <h2>Enter your address</h2>
+            <div class="address-container">
+              <input
+                type="text"
+                placeholder="Address"
+                v-model="spaceToEdit.loc.address"
+              />
+              <input
+                type="text"
+                placeholder="Country"
+                v-model="spaceToEdit.loc.country"
+              />
+            </div>
           </div>
+          <button class="next-btn" @click="nextSection('capacity')"></button>
         </div>
       </div>
 
@@ -138,16 +145,6 @@
         <div class="right-part">
           <label for="capacity">Guests:</label>
           <div class="capacity-input">
-            <!-- <input
-              class="capacity-btn miuns"
-              type="button"
-              value="-"
-              @click="
-                spaceToEdit.capacity
-                  ? spaceToEdit.capacity--
-                  : spaceToEdit.capacity
-              "
-            /> -->
             <div
               class="capacity-btn minus"
               @click="
@@ -167,6 +164,7 @@
               +
             </div>
           </div>
+          <button class="next-btn" @click="nextSection('amenities')"></button>
         </div>
       </div>
 
@@ -175,66 +173,69 @@
           <h1>Let guests know what your place has to offer</h1>
         </div>
         <div class="right-part">
-          <div class="amenity">
-            <input type="checkbox" id="tv" v-model="amenities.TV" />
-            <label for="tv">TV</label>
+          <div class="amenities-list">
+            <div class="amenity">
+              <input type="checkbox" id="tv" v-model="amenities.TV" />
+              <label for="tv">TV</label>
+            </div>
+            <div class="amenity">
+              <input type="checkbox" id="wifi" v-model="amenities.wifi" />
+              <label for="wifi">wifi</label>
+            </div>
+            <div class="amenity">
+              <input type="checkbox" id="bath" v-model="amenities.bath" />
+              <label for="bath">Bath</label>
+            </div>
+            <div class="amenity">
+              <input type="checkbox" id="kitchen" v-model="amenities.kitchen" />
+              <label for="kitchen">Kitchen</label>
+            </div>
+            <div class="amenity">
+              <input
+                type="checkbox"
+                id="free-parking"
+                v-model="amenities.freeParking"
+              />
+              <label for="free-parking">Free parking</label>
+            </div>
+            <div class="amenity">
+              <input
+                type="checkbox"
+                id="washing-machine"
+                v-model="amenities.washingMachine"
+              />
+              <label for="washing-machine">Washing machine</label>
+            </div>
+            <div class="amenity">
+              <input
+                type="checkbox"
+                id="smoke-alarm"
+                v-model="amenities.smokeAlarm"
+              />
+              <label for="smoke-alarm">Smoke alarm</label>
+            </div>
+            <div class="amenity">
+              <input type="checkbox" id="lockbox" v-model="amenities.lockbox" />
+              <label for="lockbox">Lockbox</label>
+            </div>
+            <div class="amenity">
+              <input
+                type="checkbox"
+                id="airConditioning"
+                v-model="amenities.airConditioning"
+              />
+              <label for="airConditioning">Air conditioning</label>
+            </div>
+            <div class="amenity">
+              <input
+                type="checkbox"
+                id="security-cameras"
+                v-model="amenities.securityCameras"
+              />
+              <label for="security-cameras">Security cameras</label>
+            </div>
           </div>
-          <div class="amenity">
-            <input type="checkbox" id="wifi" v-model="amenities.wifi" />
-            <label for="wifi">wifi</label>
-          </div>
-          <div class="amenity">
-            <input type="checkbox" id="bath" v-model="amenities.bath" />
-            <label for="bath">Bath</label>
-          </div>
-          <div class="amenity">
-            <input type="checkbox" id="kitchen" v-model="amenities.kitchen" />
-            <label for="kitchen">Kitchen</label>
-          </div>
-          <div class="amenity">
-            <input
-              type="checkbox"
-              id="free-parking"
-              v-model="amenities.freeParking"
-            />
-            <label for="free-parking">Free parking</label>
-          </div>
-          <div class="amenity">
-            <input
-              type="checkbox"
-              id="washing-machine"
-              v-model="amenities.washingMachine"
-            />
-            <label for="washing-machine">Washing machine</label>
-          </div>
-          <div class="amenity">
-            <input
-              type="checkbox"
-              id="smoke-alarm"
-              v-model="amenities.smokeAlarm"
-            />
-            <label for="smoke-alarm">Smoke alarm</label>
-          </div>
-          <div class="amenity">
-            <input type="checkbox" id="lockbox" v-model="amenities.lockbox" />
-            <label for="lockbox">Lockbox</label>
-          </div>
-          <div class="amenity">
-            <input
-              type="checkbox"
-              id="airConditioning"
-              v-model="amenities.airConditioning"
-            />
-            <label for="airConditioning">Air conditioning</label>
-          </div>
-          <div class="amenity">
-            <input
-              type="checkbox"
-              id="security-cameras"
-              v-model="amenities.securityCameras"
-            />
-            <label for="security-cameras">Security cameras</label>
-          </div>
+          <button class="next-btn" @click="nextSection('imgs')"></button>
         </div>
       </div>
 
@@ -244,35 +245,40 @@
         </div>
         <div class="right-part">
           <h2>Add at least 5 photos</h2>
-          <div class="imgs-upload">
+          <div v-if="isLoading" class="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+          <div v-else class="imgs-upload">
             <label class="cover-photo">
-              {{ imgs }}
-              <!-- <img v-if="imgs[0]" :src="imgs[0]" alt="" /> -->
-              <img src="../assets/img/cloud-upload.svg" />
-              <input
-                type="file"
-                name="img-upload"
-                id="imgUpload"
-                @change="onUploadImg"
-              />
+              <img v-if="imgs[0]" :src="imgs[0]" alt="" />
+              <img v-else src="../assets/img/cloud-upload.svg" />
+              <input type="file" id="imgUpload" @change="onUploadImg" />
             </label>
             <label>
-              <img src="../assets/img/cloud-upload.svg" alt="" />
-              <input type="file" name="" id="imgUpload" />
+              <img v-if="imgs[1]" :src="imgs[1]" alt="" />
+              <img v-else src="../assets/img/cloud-upload.svg" alt="" />
+              <input type="file" name="" id="imgUpload" @change="onUploadImg" />
             </label>
             <label>
-              <img src="../assets/img/cloud-upload.svg" alt="" />
-              <input type="file" name="" id="imgUpload" />
+              <img v-if="imgs[2]" :src="imgs[2]" alt="" />
+              <img v-else src="../assets/img/cloud-upload.svg" alt="" />
+              <input type="file" name="" id="imgUpload" @change="onUploadImg" />
             </label>
             <label>
-              <img src="../assets/img/cloud-upload.svg" alt="" />
-              <input type="file" name="" id="imgUpload" />
+              <img v-if="imgs[3]" :src="imgs[3]" alt="" />
+              <img v-else src="../assets/img/cloud-upload.svg" alt="" />
+              <input type="file" name="" id="imgUpload" @change="onUploadImg" />
             </label>
             <label>
-              <img src="../assets/img/cloud-upload.svg" alt="" />
-              <input type="file" name="" id="imgUpload" />
+              <img v-if="imgs[4]" :src="imgs[4]" alt="" />
+              <img v-else src="../assets/img/cloud-upload.svg" alt="" />
+              <input type="file" name="" id="imgUpload" @change="onUploadImg" />
             </label>
           </div>
+          <button class="next-btn" @click="nextSection('name')"></button>
         </div>
       </div>
 
@@ -283,6 +289,7 @@
         <div class="right-part">
           <h2>Create your title</h2>
           <textarea v-model="spaceToEdit.name" maxlength="50" rows="4" />
+          <button class="next-btn" @click="nextSection('description')"></button>
         </div>
       </div>
 
@@ -295,6 +302,7 @@
           <textarea name="" id="" rows="4" v-model="spaceToEdit.description">
 Get comfortable and enjoy plenty of extra room at this spacious place.</textarea
           >
+          <button class="next-btn" @click="nextSection('price')"></button>
         </div>
       </div>
 
@@ -322,6 +330,7 @@ Get comfortable and enjoy plenty of extra room at this spacious place.</textarea
               pattern="[0-9]*"
               v-model.number="spaceToEdit.price"
             />
+            <!-- <button class="price-btn plus"></button> -->
             <button
               class="price-btn plus"
               @click="spaceToEdit.price++"
@@ -330,6 +339,7 @@ Get comfortable and enjoy plenty of extra room at this spacious place.</textarea
           </div>
 
           <p>per night</p>
+          <gradient-btn @click.native="save" :text="'Save'"></gradient-btn>
         </div>
       </div>
 
@@ -660,12 +670,14 @@ Get comfortable and enjoy plenty of extra room at this spacious place.</textarea
 
 <script>
 import { spaceService } from './../services/space.service';
+import { uploadImg } from './../services/img.service';
 import gradientBtn from '../cmps/gradient-btn.vue';
 
 export default {
   name: 'spaceEditAdd',
   data() {
     return {
+      isLoading: false,
       spaceToEdit: spaceService.getEmptySpace(),
       amenities: {
         TV: false,
@@ -685,7 +697,18 @@ export default {
 
   methods: {
     save() {
-      console.log('saving the form...', this.spaceToEdit);
+      // console.log('saving the form...', this.spaceToEdit);
+      // this.spaceToEdit.imgUrls = [...this.imgs];
+      this.spaceToEdit.imgUrls = [
+        'https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
+        'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
+        'https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
+        'https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
+        'https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
+      ];
+      for (const [key, value] of Object.entries(this.amenities)) {
+        if (value) this.spaceToEdit.amenities.push(key);
+      }
       this.$store
         .dispatch({ type: 'saveSpace', space: this.spaceToEdit })
         .then((savedSpace) => {
@@ -697,13 +720,27 @@ export default {
           // showMsg('cannot save space')
         });
     },
+
     goBack() {
       this.$router.go(-1);
     },
 
-    onUploadImg(ev) {
-      // console.log(ev.target.files[0]);
-      // this.imgs.push(ev.target.files[0]);
+    async onUploadImg(ev) {
+      this.isLoading = true;
+      try {
+        const res = await uploadImg(ev);
+        console.log(res);
+        this.imgs.push(res.url);
+      } catch (err) {
+        console.log('cannot upload img', err);
+      } finally {
+        this.isLoading = false;
+      }
+    },
+
+    nextSection(nextSection) {
+      const nextSectionEl = document.querySelector(`.${nextSection}`);
+      nextSectionEl.scrollIntoView({ behavior: 'smooth' });
     },
   },
   computed: {
