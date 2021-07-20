@@ -8,7 +8,7 @@ export const spaceStore = {
       amenities: [],
       type: 'all',
       location: '',
-      country: '',//for explore list
+      country: '', //for explore list
       numGuests: 0,
       dates: { startDate: 0, endDate: 0 },
       count: 20, //change this to PAGE_SIZE when add pagination
@@ -16,19 +16,20 @@ export const spaceStore = {
     },
   },
   getters: {
-    spaces(state) { return state.spaces
-      const filterBy = state.filterBy
+    spaces(state) {
+      return state.spaces;
+      const filterBy = state.filterBy;
       //pagination here
       if (filterBy.count !== Infinity) {
         const firstSpace = filterBy.count * (filterBy.currPage - 1);
         const lastSpace = firstSpace + filterBy.count;
-        console.log('first', firstSpace, ": last", lastSpace);
-        return state.spaces.slice(firstSpace, lastSpace)
+        console.log('first', firstSpace, ': last', lastSpace);
+        return state.spaces.slice(firstSpace, lastSpace);
       }
       //if no max-page-size
       return state.spaces;
     },
-    totalSpaces(state){
+    totalSpaces(state) {
       return state.spaces.length;
     },
     filterBy(state) {
@@ -64,26 +65,23 @@ export const spaceStore = {
         amenities: [],
         type: 'all',
         location: '',
-        country: '',//for explore list
+        country: '', //for explore list
         numGuests: 0,
         dates: { startDate: 0, endDate: 0 },
         count: Infinity, //change this to PAGE_SIZE when add pagination
         currPage: 1,
-      }
-    }
+      };
+    },
     // addReview(state, { space }) {
     //   const idx = state.spaces.findIndex((t) => t._id === space._id);
     //   state.spaces.splice(idx, 1, space);
     // },
   },
   actions: {
-
     // async liked(context,payload){
     //     console.log(payload.spaceId);
     // },
 
-
-    
     // async setFilterField(state, { field, value }) {
     //   state.filterBy[field] = value;
     // },
