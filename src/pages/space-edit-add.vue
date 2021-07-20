@@ -304,20 +304,29 @@ Get comfortable and enjoy plenty of extra room at this spacious place.</textarea
         </div>
         <div class="right-part">
           <div class="set-price">
-            <input type="button" value="+" @click="spaceToEdit.price++" />
-            <input
+            <button
+              class="price-btn minus"
+              @click="
+                spaceToEdit.price ? spaceToEdit.price-- : spaceToEdit.price
+              "
+            ></button>
+            <!-- <input
               type="button"
               value="-"
               @click="
                 spaceToEdit.price ? spaceToEdit.price-- : spaceToEdit.price
               "
-            />
+            /> -->
             <input
               type="text"
               pattern="[0-9]*"
               v-model.number="spaceToEdit.price"
             />
-            <input type="button" value="+" @click="spaceToEdit.price++" />
+            <button
+              class="price-btn plus"
+              @click="spaceToEdit.price++"
+            ></button>
+            <!-- <input type="button" value="+" @click="spaceToEdit.price++" /> -->
           </div>
 
           <p>per night</p>
