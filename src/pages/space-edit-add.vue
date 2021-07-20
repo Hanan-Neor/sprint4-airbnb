@@ -138,7 +138,7 @@
         <div class="right-part">
           <label for="capacity">Guests:</label>
           <div class="capacity-input">
-            <input
+            <!-- <input
               class="capacity-btn miuns"
               type="button"
               value="-"
@@ -147,18 +147,25 @@
                   ? spaceToEdit.capacity--
                   : spaceToEdit.capacity
               "
-            />
+            /> -->
+            <div
+              class="capacity-btn minus"
+              @click="
+                spaceToEdit.capacity
+                  ? spaceToEdit.capacity--
+                  : spaceToEdit.capacity
+              "
+            >
+              -
+            </div>
             <input
               type="text"
               class="capacity-num"
               v-model="spaceToEdit.capacity"
             />
-            <input
-              type="button"
-              class="capacity-btn plus"
-              value="+"
-              @click="spaceToEdit.capacity++"
-            />
+            <div class="capacity-btn plus" @click="spaceToEdit.capacity++">
+              +
+            </div>
           </div>
         </div>
       </div>
@@ -233,16 +240,38 @@
 
       <div class="imgs flex item">
         <div class="left-part">
-          <h1>Let guests know what your place has to offer</h1>
+          <h1>Next, let's add some photos of your place</h1>
         </div>
         <div class="right-part">
           <h2>Add at least 5 photos</h2>
           <div class="imgs-upload">
-            <input class="cover-photo" type="file" name="" id="imgUpload" />
-            <input type="file" name="" id="imgUpload" />
-            <input type="file" name="" id="imgUpload" />
-            <input type="file" name="" id="imgUpload" />
-            <input type="file" name="" id="imgUpload" />
+            <label class="cover-photo">
+              {{ imgs }}
+              <!-- <img v-if="imgs[0]" :src="imgs[0]" alt="" /> -->
+              <img src="../assets/img/cloud-upload.svg" />
+              <input
+                type="file"
+                name="img-upload"
+                id="imgUpload"
+                @change="onUploadImg"
+              />
+            </label>
+            <label>
+              <img src="../assets/img/cloud-upload.svg" alt="" />
+              <input type="file" name="" id="imgUpload" />
+            </label>
+            <label>
+              <img src="../assets/img/cloud-upload.svg" alt="" />
+              <input type="file" name="" id="imgUpload" />
+            </label>
+            <label>
+              <img src="../assets/img/cloud-upload.svg" alt="" />
+              <input type="file" name="" id="imgUpload" />
+            </label>
+            <label>
+              <img src="../assets/img/cloud-upload.svg" alt="" />
+              <input type="file" name="" id="imgUpload" />
+            </label>
           </div>
         </div>
       </div>
@@ -253,12 +282,7 @@
         </div>
         <div class="right-part">
           <h2>Create your title</h2>
-          <input
-            type="text"
-            v-model="spaceToEdit.name"
-            maxlength="50"
-            size="50"
-          />
+          <textarea v-model="spaceToEdit.name" maxlength="50" rows="4" />
         </div>
       </div>
 
@@ -268,13 +292,7 @@
         </div>
         <div class="right-part">
           <h2>Create your description</h2>
-          <textarea
-            name=""
-            id=""
-            cols="50"
-            rows="4"
-            v-model="spaceToEdit.description"
-          >
+          <textarea name="" id="" rows="4" v-model="spaceToEdit.description">
 Get comfortable and enjoy plenty of extra room at this spacious place.</textarea
           >
         </div>
@@ -286,6 +304,7 @@ Get comfortable and enjoy plenty of extra room at this spacious place.</textarea
         </div>
         <div class="right-part">
           <div class="set-price">
+            <input type="button" value="+" @click="spaceToEdit.price++" />
             <input
               type="button"
               value="-"
@@ -651,6 +670,7 @@ export default {
         airConditioning: false,
         securityCameras: false,
       },
+      imgs: [],
     };
   },
 
@@ -670,6 +690,11 @@ export default {
     },
     goBack() {
       this.$router.go(-1);
+    },
+
+    onUploadImg(ev) {
+      // console.log(ev.target.files[0]);
+      // this.imgs.push(ev.target.files[0]);
     },
   },
   computed: {

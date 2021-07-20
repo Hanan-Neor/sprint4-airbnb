@@ -20,7 +20,8 @@
       <div class="space-description-wrap">
         <div class="space-description-title">
           <p class="title-sentence">
-            Entire {{ space.type }}, hosted by {{ host.fullname }}
+            <!-- Entire {{ space.type }}, hosted by {{ host.fullname }} -->
+            {{ space.type }}, hosted by {{ host.fullname }}
           </p>
           <img class="avatar" :src="host.imgUrl" alt="" />
         </div>

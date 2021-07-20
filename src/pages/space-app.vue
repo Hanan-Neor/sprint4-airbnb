@@ -42,6 +42,10 @@ export default {
       await this.$store.commit({type: 'setFilterField', field:'count', value:this.pageSize})
       this.$store.commit({type: 'setFilterField', field:'currPage', value:1})
       const spaces = await this.$store.dispatch({type: 'loadSpaces'})
+
+      // const spacejson = JSON.stringify(spaces)
+      // console.log(spacejson);
+
     } catch(err) {
       console.log('error creating spaces in store');
       throw err;
