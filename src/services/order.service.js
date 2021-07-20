@@ -63,7 +63,7 @@ async function _createOrders() {
     orders = [];
     orders.push({
       _id: 'o1225',
-      hostId: 'u102',
+      hostId: '60f67ffe914fd26c90b86843', //TODO can change this back to the original id
       createdAt: 9898989,
       buyer: {
         _id: 'u101',

@@ -6,7 +6,8 @@ import { userService } from '../../services/user.service';
 
 export const userStore = {
   state: {
-    loggedinUser: userService.getLoggedinUser() || '',
+    loggedinUser: userService.getLoggedinUser() || '',//TODO remove one of these
+    loggedInUser: userService.getLoggedinUser() || '',
     users: [],
     watchedUser: null,
   },
@@ -20,16 +21,17 @@ export const userStore = {
     // watchedUser({ watchedUser }) { return watchedUser }
   },
   mutations: {
-    setLoggedinUser(state, { user }) {
-      // Yaron: needed this workaround as for score not reactive from birth
-      state.loggedinUser = user ? { ...user } : null;
-    },
+    // setLoggedinUser(state, { user }) {
+    //   // Yaron: needed this workaround as for score not reactive from birth
+    //   state.loggedinUser = user ? { ...user } : null;
+    // },
     // setWatchedUser(state, { user }) {
     //     state.watchedUser = user;
     // },
     setUsers(state, { users }) {
       state.users = users;
     },
+    setLoggedinUser(state, {loggedinUser}){state.loggedinUser = loggedinUser || null},
     setUser(state, { user }) {
       state.loggedinUser = user;
     },
@@ -59,6 +61,16 @@ export const userStore = {
       }
 
 
+    },
+    async loadLoggedInUser( context ){
+      try{
+        const loggedinUser = await userService.getLoggedinUser()
+        context.commit({ type: 'setLoggedinUser', loggedinUser });
+        return loggedinUser;
+      } catch (err) {
+        console.log('userStore: Error in loadLoggedInUser', err);
+        throw err;
+      }
     },
 
     async liked(context, payload) {
