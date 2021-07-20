@@ -9,19 +9,9 @@
 // }
 
 .space-app {
-  // box-sizing: border-box;
-  // background-color: lightsteelblue;
-  // display: flex;
-  // flex-direction: column;
-  // align-items: center;
-  // justify-content: center;
-  // align-items: center;
     & .space-list{
       & .carousel{
-
-            
           @include aspect-ratio(3, 2);
-
       }
     }
 
