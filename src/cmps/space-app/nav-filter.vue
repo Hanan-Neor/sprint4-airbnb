@@ -2,12 +2,14 @@
   <div class="nav-filter">
     <div class="space-types flex pointer">
       <p @click="updateFilter('type', 'all')">All</p>
-      
-      <p @click="updateFilter('type', 'home')">Homes</p>
-      
-      <p @click="updateFilter('type', 'villa')">Villas</p>
-      
-      <p @click="updateFilter('type', 'cabin')">Cabins</p>
+      <p @click="updateFilter('type', 'Entire house')">House</p>
+      <p @click="updateFilter('type', 'Entire villa')">Villas</p>
+      <p @click="updateFilter('type', 'Treehouse')">Treehouse</p>
+      <p @click="updateFilter('type', 'Entire chalet')">Chalet</p>
+      <p @click="updateFilter('type', 'Entire cottage')">Cottage</p>
+      <p @click="updateFilter('type', 'room')">Room</p>
+      <p @click="updateFilter('type', 'Entire home')">Home</p>
+      <p @click="updateFilter('type', 'Entire apartment')">Apartment</p>
       
     </div>
     <el-row v-if="isLargeScreen" class="hover">

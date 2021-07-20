@@ -1,6 +1,9 @@
 <template>
   <div class="space-details main-layout">
     <h2 class="space-title-primary">{{ space.name }}</h2>
+    <!-- <span v-if="this.msg">currently {{getMsg}} viewers</span> -->
+    <msg />
+     <chat-app :space="space" />
     <div class="space-title-secondary">
       <div class="left-part">
         <div class="rating">
@@ -95,17 +98,20 @@ import googleMaps from './../cmps/google-maps.vue';
 import showMore from './../cmps/show-more.vue';
 import { spaceService } from '../services/space.service.js';
 import spaceReserve from './../cmps/space-details/space-reserve.vue';
+import msg from './../cmps/space-details/msg.vue'
 
 export default {
   name: 'space-details',
   created(){
-    socketService.emit("spaceView", this.addSpaceView);
+    // socketService.emit("spaceView", this.addSpaceView);
+    socketService.emit("spaceView", this.space._id);
     socketService.on("viewingSpace", this.showViewMsg);
     socketService.on("bookedSpace", this.showBookedMsg);
   },
 
   data() {
     return {
+      msg:'msg...',
       space: {
         loc: {},
         reviews: [],
@@ -146,6 +152,7 @@ export default {
   },
 
   computed: {
+    getMsg(){return this.msg},
     totalRate() {
       const { reviews } = this.space;
       const sums = reviews.map((r) => {
@@ -203,8 +210,10 @@ export default {
         // this.$store.commit('tripToOrder')
         // console.log(this.order);
     },
-    showViewMsg(){
-      console.log('viewing!');
+    showViewMsg(count){
+      console.log('viewing******!');
+      this.msg = count;
+      console.log(this.msg);
     },
     showBokedMsg(){
       console.log('booked!');
@@ -248,6 +257,7 @@ export default {
     googleMaps,
     showMore,
     spaceReserve,
+    msg,
   },
 };
 </script>
