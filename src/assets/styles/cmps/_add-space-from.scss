@@ -351,12 +351,69 @@
           }
         }
       }
-      //   &.location {
-      //     .left-part {
-      //     }
-      //     .right-part {
-      //     }
-      //   }
+
+      &.price {
+        .left-part {
+          background-image: linear-gradient(
+            to bottom,
+            #d22577,
+            #bd0b82,
+            #a3008d,
+            #800b98,
+            #511ba0
+          );
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: white;
+          font-size: 2rem;
+          line-height: 3.5rem;
+          padding: 0 20px;
+        }
+        .right-part {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+
+          .set-price {
+            display: flex;
+            gap: 1rem;
+
+            .price-btn {
+              border: 1px solid $clr3;
+              background-color: white;
+              width: 3rem;
+              height: 3rem;
+              cursor: pointer;
+              font-size: 1rem;
+              border-radius: 50%;
+              color: $clr3;
+
+              &:hover {
+                color: $clr2;
+                border-color: $clr2;
+              }
+
+              &.plus::before {
+                font-family: 'awesome-light';
+                content: '\f067';
+              }
+              &.minus::before {
+                font-family: 'awesome-light';
+                content: '\f068';
+              }
+            }
+
+            input {
+              display: flex;
+              justify-content: center;
+              border-radius: 15px;
+              font-size: 2rem;
+            }
+          }
+        }
+      }
       //   &.location {
       //     .left-part {
       //     }
