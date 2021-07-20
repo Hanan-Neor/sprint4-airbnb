@@ -13,7 +13,6 @@
 import spaceList from '../cmps/space-app/space-list.vue';
 import navFilter from '../cmps/space-app/nav-filter.vue';
 import pagination from '../cmps/space-app/pagination.vue';
-import { spaceService } from '../services/space.service.js' //TODO this will be removed when have server side filtering and sockets
 
 export default {
   components: { 
@@ -35,7 +34,7 @@ export default {
     spaces() {
       return this.$store.getters.spaces;
     },
-    numSpaces(){ return this.$store.getters.totalSpaces }
+    numSpaces(){ return this.$store.getters.totalSpacesAllPages } //num spaces after filter before pagination
   },
   async created() {
     try {
