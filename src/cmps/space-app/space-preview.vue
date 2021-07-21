@@ -119,9 +119,6 @@ export default {
         });
         user.likedSpacesIds.splice(idx, 1);
       }
-<<<<<<< HEAD
-      this.$store.dispatch({ type: 'updateUser', user });
-=======
       this.$store.dispatch({ type: "updateUser", user });
 
 
@@ -136,7 +133,6 @@ export default {
       //   user.likedSpacesIds.splice(idx, 1);
       // }
       // this.$store.dispatch({ type: "updateUser", user });
->>>>>>> 26204ba03ca1b5dab7fd0b3939539c5f015debc3
     },
     prevPic() {
       if (this.picIdx === 0) this.picIdx = this.space.imgUrls.length - 1;
@@ -149,20 +145,8 @@ export default {
   },
   computed: {
     likeColor() {
-<<<<<<< HEAD
-      // const user = this.$store.getters.loggedinUser;
-      if (!this.$store.getters.loggedinUser) return 'rgba(0, 0, 0, 0.5)';
-
-      // return this.$store.dispatch({ type: "getById"}).likedSpacesIds.includes(
-      return this.$store.getters.loggedinUser.likedSpacesIds.includes(
-        this.space._id
-      )
-        ? 'rgb(255, 56, 92)'
-        : 'rgba(0, 0, 0, 0.5)';
-=======
       if (!this.$store.getters.loggedinUser) return "rgba(0, 0, 0, 0.5)";
       return this.$store.getters.loggedinUser.likedSpacesIds.includes(this.space._id)? "rgb(255, 56, 92)": "rgba(0, 0, 0, 0.5)";
->>>>>>> 26204ba03ca1b5dab7fd0b3939539c5f015debc3
     },
     islikedByUser() {
       const user = this.$store.getters.loggedinUser;
