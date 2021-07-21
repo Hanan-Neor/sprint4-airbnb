@@ -20,7 +20,6 @@ export const spaceStore = {
   getters: {
     spaceRatings(state){
       if (!state.spaces || !state.spaces.length) return 
-      console.log('length!!!', state.spaces.length);
       return state.spaces.map(space => {
           return filterService.getAverageReview(space)
       })
@@ -48,7 +47,6 @@ export const spaceStore = {
       var totalRates = 0
       state.spaces.forEach(space => {
         const rate = filterService.getAverageReview(space)
-        console.log(space.reviews, '*****', rate);
           totalRates += rate
       });
       return totalRates / state.spaces.length
@@ -107,7 +105,7 @@ export const spaceStore = {
         count: Infinity, //change this to PAGE_SIZE when add pagination
         currPage: 1,
         hostId: '',
-      };
+      };console.log('filter clear');
     },
     // addReview(state, { space }) {
     //   const idx = state.spaces.findIndex((t) => t._id === space._id);
@@ -123,8 +121,7 @@ export const spaceStore = {
       try {
         const spaces = await spaceService.query(context.getters.filterBy);
         context.commit({ type: 'setSpaces', spaces });
-        console.log('testing*****total:', context.getters.totalSpacesAllPages);
-        return spaces;
+          return spaces;
       } catch (err) {
         console.log('Cannot load spaces in store');
         throw err;

@@ -38,6 +38,7 @@ export default {
   },
   async created() {
     try {
+      await this.$store.commit({ type: "clearFilter" });
       await this.$store.commit({type: 'setFilterField', field:'count', value:this.pageSize})
       await this.$store.commit({type: 'setFilterField', field:'currPage', value:1})
       const spaces = await this.$store.dispatch({type: 'loadSpaces'})

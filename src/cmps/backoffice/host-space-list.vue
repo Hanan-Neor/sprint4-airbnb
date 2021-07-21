@@ -1,6 +1,6 @@
 <template>
   <div class="host-space-list">
-      <order-chart v-if="spaceRatings && spaceRatings.length" :spaceNames="spaceNames" :spaceRatings="spaceRatings" />
+      <!-- <order-chart v-if="spaceRatings && spaceRatings.length" :spaceNames="spaceNames" :spaceRatings="spaceRatings" /> -->
       <h2>space list </h2>
       <ul>
           <li v-for="space in spaces" :key="space._id" class="flex">
@@ -22,7 +22,7 @@ export default {
     components:{
         orderChart
     },
-    props:['host'],
+    props:['host', 'mySpaces'],
     data(){
         return{
             // spaces: {}
@@ -41,9 +41,7 @@ export default {
         }
     },
     computed:{
-         spaces(){return this.$store.getters.spaces;},
-         spaceRatings(){return this.$store.getters.spaceRatings;},
-         spaceNames(){return this.$store.getters.spaceNames;},
+         spaces(){return this.mySpaces; return this.$store.getters.spaces;},
     },
     methods:{
         //TODO move this function to a store

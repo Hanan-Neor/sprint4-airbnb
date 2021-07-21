@@ -1,6 +1,6 @@
 <template>
   <div class="backoffice">
-      <h1 v-if="host">Host dashboard: {{host.fullname}} </h1>
+      <h1 v-if="spaces">Host dashboard: {{host.fullname}} </h1>
       <div class="stats flex">
           <p>average rating: {{averageRating}}</p> 
            <p>total guests: {{totalGuests}}</p>
@@ -9,8 +9,9 @@
           </div>
       <host-stats  />
       <!-- <order-chart /> -->
+       <order-chart v-if="ready" :spaceNames="spaceNames" :spaceRatings="spaceRatings" />
       <review-chart />
-      <host-space-list :host="host"/>
+      <host-space-list :host="host" :mySpaces="spaces"/>
     <host-order-list :host="host" />
 
   </div>
@@ -34,27 +35,31 @@ export default {
     },
     data(){
         return {
+            ready: false
         }
     },
     computed:{
-        host(){
-            return this.$store.getters.loggedinUser
-            },
+        host(){return this.$store.getters.loggedinUser},
         averageRating(){return this.$store.getters.getAverageRating},
         totalGuests(){return this.$store.getters.totalGuests},
         totalSpaceCapacity(){return this.$store.getters.totalSpaceCapacity},
         occupancy(){return this.totalGuests / this.totalSpaceCapacity || 0},
         totalLikes(){return this.$store.getters.totalLikes},
-        
+        spaces(){return this.$store.getters.spaces},
+
+        spaceRatings(){return this.$store.getters.spaceRatings;},
+         spaceNames(){return this.$store.getters.spaceNames;},
         
        
     },
     async created(){
         try {
             const loggedinUser = await this.$store.dispatch({type:'loadLoggedInUser' })
-            // const host = await this.$store.state.loggedinUser;
-            // console.log('host', host);
-            //TODO clear space filters
+            const hostId = loggedinUser._id
+            await this.$store.commit({ type: "clearFilter" });
+                await this.$store.commit({type: 'setFilterField', field:'hostId', value:hostId})
+                await this.$store.dispatch({type: 'loadSpaces'})
+                this.ready = true
         } catch(err){
             console.log('error getting host in dashboard');
             throw err
