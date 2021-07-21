@@ -22,10 +22,6 @@ export const userStore = {
     // watchedUser({ watchedUser }) { return watchedUser }
   },
   mutations: {
-    // setLoggedinUser(state, { user }) {
-    //   // Yaron: needed this workaround as for score not reactive from birth
-    //   state.loggedinUser = user ? { ...user } : null;
-    // },
     // setWatchedUser(state, { user }) {
     //     state.watchedUser = user;
     // },
@@ -42,19 +38,9 @@ export const userStore = {
   },
   actions: {
     async getById(context,payload) {
-    //   const loggedinUserId = this.getters.loggedinUser._id
-    //   console.log(loggedinUserId);
-    //   const user = await userService.getById(loggedinUserId);
-    //   // alert('hi')
-    //   return(user)
-
-
       try {
-        const loggedinUserId = this.getters.loggedinUser._id
-      // console.log(loggedinUserId);
+      const loggedinUserId = this.getters.loggedinUser._id
       const user = await userService.getById(loggedinUserId);
-      // alert('hi')
-      // console.log(user);
       return user
       } catch (err) {
         console.log('Cannot load user in store');

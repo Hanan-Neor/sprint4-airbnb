@@ -2,7 +2,7 @@
   <section>
     <!-- <div class="app-header flex" :style="diplayState"> -->
     <nav class="app-header  main-layout" :style="headerPos">
-      <div class="flex" style="justify-content:space-between; align-items:center">
+      <div class="container" style="justify-content:space-between; align-items:center">
       <router-link to="/" class="logo-container clear-link" :style="logoStyle">
         <div class="logo"></div>
       </router-link>
@@ -119,8 +119,10 @@ export default {
           // boxShadow: this.isIntersecting ?"none" :"inherit",
           'font-size': this.isIntersecting ? "1rem" : "0.875rem",
           // width: this.isIntersecting ? "fit-content" : "300px",
-          position: "relative",
+          position: this.isIntersecting ? "absolute":"relative",
           top: this.isIntersecting ? "150px" : "unset",
+          left:this.isIntersecting ? "50%": "unset",
+          transform:this.isIntersecting ? "translateX(-50%)": "unset",
           backgroung: this.isIntersecting ? "none" : "white",
         };
       } else {

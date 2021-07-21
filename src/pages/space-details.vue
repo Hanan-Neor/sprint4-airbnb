@@ -1,8 +1,7 @@
 <template>
   <div class="space-details main-layout" v-if="space.imgUrls">
     <h2 class="space-title-primary">{{ space.name }}</h2>
-    <chat-app :space="space" />
-    <msg :spaceId="this.$route.params.spaceId" />
+    
     <div class="space-title-secondary">
       <div class="left-part">
         <div class="rating">
@@ -77,14 +76,17 @@
       </ul>
       <review-list :reviews="reviewsToShow"></review-list>
     </div>
+
+    
+
     <div class="map-container" v-if="this.space.loc.lat">
       <p class="map-title">Where you'll be</p>
       <google-maps :loc="space.loc" v-if="space.loc.lat"></google-maps>
       <div class="" v-else>loading</div>
       <p class="space-location">{{ space.loc.address }}</p>
     </div>
-
-    <chat-app :space="space" />
+<chat-app :space="space" />
+    <msg :spaceId="this.$route.params.spaceId" />
   </div>
     <div v-else>
     <img class="svg-img-loader" src="@/assets/img/loading.svg" />

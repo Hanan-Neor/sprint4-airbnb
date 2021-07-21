@@ -1,9 +1,8 @@
 <template>
   <div id="app">
     <div class="cover" v-bind:class="coverVisibility"></div>
-    <!-- <app-header class="main-layout" /> -->
-    <app-header />
-    <router-view class="main-layout height-layout" />
+    <app-header class="main-layout" />
+    <router-view class="main-layout" />
     <app-footer />
   </div>
 </template>
