@@ -1,13 +1,16 @@
 <template>
   <div class="home">
+    <div class="full" style="position:relative">
     <img
       class="top-bg full"
       src="https://res.cloudinary.com/dymtestxz/image/upload/v1626437274/sprint4/homePage/57b9f708-bb12-498c-bc33-769f8fc43e63_gnsppx.webp"
       alt=""
     />
-    <button class="header-image-button" @click="gotoSpaces">
+
+    <button class="header-image-button" @click="gotoSpaces"  style="position:absolute;bottom:150px;left:50%;transform:translateX(-50%)">
       I'm flexible
     </button>
+      </div>
 
     <space-list :spaces="spaces" />
     <div class="breaker-image">
