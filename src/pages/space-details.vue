@@ -86,9 +86,9 @@
 
     <chat-app :space="space" />
   </div>
-    <!-- <div v-else> -->
-    <img  v-else class="svg-img-loader" src="@/assets/img/loading.svg" />
-  <!-- </div> -->
+    <div v-else>
+    <img class="svg-img-loader" src="@/assets/img/loading.svg" />
+  </div>
 
 </template>
 

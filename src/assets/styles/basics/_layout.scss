@@ -4,6 +4,9 @@
     minmax(auto, $Width)
     minmax(2rem, 1fr);
 }
+.height-layout{
+  min-height: 80vh;
+}
 
 .main-layout {
   display: grid;

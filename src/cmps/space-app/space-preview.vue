@@ -8,7 +8,7 @@
         aria-hidden="true"
         role="presentation"
         focusable="false"
-        class="like"
+        class="like-button"
         :style="{
           fill: likeColor,
           height: '25px',
@@ -36,6 +36,7 @@
       </carousel>
       <!-- {{ islikedByUser }} -->
 
+
       <!-- <div class="name-price flex">
         <div>
           {{ space.loc.address }}
@@ -44,20 +45,12 @@
       </div>
       <div class="distance">{{ distance }} kilometers away</div> -->
 
+
+
       <div class="preview-details">
         <div class="stars">
           <div class="rating" v-if="this.space.reviews.length">
-            <svg
-              viewBox="0 0 1000 1000"
-              role="presentation"
-              aria-hidden="true"
-              focusable="false"
-              style="height: 14px; width: 14px; fill: rgb(255, 56, 92)"
-            >
-              <path
-                d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"
-              ></path>
-            </svg>
+            <svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height: 14px; width: 14px; fill: rgb(255, 56, 92);"><path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z"></path></svg>
             <span class="total-rate">{{ totalRate }}</span>
             <span class="number-reviews">({{ numOfReviews }})</span>
           </div>
@@ -72,7 +65,8 @@
         </div>
       </div>
 
-      <!-- {{loggedIn}} -->
+
+
     </router-link>
   </section>
 </template>
@@ -104,34 +98,41 @@ export default {
 
   // },
   methods: {
-    // loggedIn(){
-    //   console.log(this.$store.getters.loggedinUser);
-    // },
     isliked2() {
       // this.isLiked = this.islikedByUser
       this.isLiked = this.islikedByUser ? true : false;
     },
     like() {
-      // const user = this.$store.dispatch({ type: "getById"});
       const user = this.$store.getters.loggedinUser;
       if (!user) {
         eventBusService.$emit("likedWithoutUser");
         return;
       }
-      this.isLiked = !this.isLiked;
-      // if(!user) return alert('no user!')
 
-      if (this.isLiked) {
-        // this.likeColor = 'rgb(255, 56, 92)';
+
+
+      if (!user.likedSpacesIds.includes(this.space._id)) {
         user.likedSpacesIds.push(this.space._id);
       } else {
-        // this.likeColor = 'rgba(0, 0, 0, 0.5)';
         const idx = user.likedSpacesIds.findIndex((spaceId) => {
           return spaceId === this.space._id;
         });
         user.likedSpacesIds.splice(idx, 1);
       }
       this.$store.dispatch({ type: "updateUser", user });
+
+
+
+      // this.isLiked = !this.isLiked;
+      // if (this.isLiked) {
+      //   user.likedSpacesIds.push(this.space._id);
+      // } else {
+      //   const idx = user.likedSpacesIds.findIndex((spaceId) => {
+      //     return spaceId === this.space._id;
+      //   });
+      //   user.likedSpacesIds.splice(idx, 1);
+      // }
+      // this.$store.dispatch({ type: "updateUser", user });
     },
     prevPic() {
       if (this.picIdx === 0) this.picIdx = this.space.imgUrls.length - 1;
@@ -144,34 +145,13 @@ export default {
   },
   computed: {
     likeColor() {
-      // const user = this.$store.getters.loggedinUser;
       if (!this.$store.getters.loggedinUser) return "rgba(0, 0, 0, 0.5)";
-
-      // return this.$store.dispatch({ type: "getById"}).likedSpacesIds.includes(
-      return this.$store.getters.loggedinUser.likedSpacesIds.includes(
-        this.space._id
-      )
-        ? "rgb(255, 56, 92)"
-        : "rgba(0, 0, 0, 0.5)";
+      return this.$store.getters.loggedinUser.likedSpacesIds.includes(this.space._id)? "rgb(255, 56, 92)": "rgba(0, 0, 0, 0.5)";
     },
     islikedByUser() {
-      // try {
       const user = this.$store.getters.loggedinUser;
-      //  const user =  this.$store.dispatch({ type: "getById"});
-      //  this.$store.dispatch({ type: "getById"})
-      //                 .then((loggedInuser)=>{
-      //                   const user = loggedInuser
-      //                 })
-
-      console.log(user);
-      // console.log(await this.$store.dispatch({ type: "getById", user }));
-
       if (!user) return;
       return user.likedSpacesIds.includes(this.space._id);
-      //   } catch(err) {
-      //   console.log('error creating spaces in store');
-      //   throw err;
-      // }
     },
     imgForDisplay() {
       return this.space.imgUrls[this.picIdx];
@@ -230,7 +210,9 @@ export default {
       });
     },
 
-    totalRate() {
+
+
+        totalRate() {
       const { reviews } = this.space;
       const sums = reviews.map((r) => {
         const rateCategory = Object.values(r.rate);
@@ -268,6 +250,16 @@ export default {
         return acc;
       }, acc);
     },
+
+
+
+
+
+
+
+
+
+
   },
   components: {
     carouselSlide,
