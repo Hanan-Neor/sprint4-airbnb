@@ -24,7 +24,8 @@ export default {
     };
   },
   computed:{
-    numPages(){return Math.ceil(this.numSpaces / this.pageSize)}
+    numPages(){
+      return Math.ceil(this.numSpaces / this.pageSize)}
   },
   methods: {
     gotoPage(num) {

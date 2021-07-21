@@ -58,7 +58,7 @@
         </div>
         <div class="type-adress">
           {{ space.type }} ∙ {{ space.loc.address }}
-        </div>
+        </div> {{space.capacity}}
         <div class="name">{{ space.name }}</div>
         <div class="price">
           <span class="price-num">{{ priceToShow }}</span> / night

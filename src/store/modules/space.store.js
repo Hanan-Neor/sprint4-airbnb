@@ -21,7 +21,7 @@ export const spaceStore = {
       if (!state.spaces || !state.spaces.length) return 
       console.log('length!!!', state.spaces.length);
       return state.spaces.map(space => {
-          return filterService.getAverageReview(space) //TODO remove the +1
+          return filterService.getAverageReview(space)
       })
     },
     spaceNames(state){
@@ -135,16 +135,6 @@ export const spaceStore = {
       }
     },
     async removeSpace({ commit }, payload) {
-      // console.log(payload.spaceId);
-      // return spaceService
-      //   .remove(payload.spaceId)
-      //   .then(() => {
-      //     commit(payload);
-      //   })
-      //   .catch((err) => {
-      //     console.log('Cannot remove space:', payload.spaceId, err);
-      //     throw err;
-      //   });
       try {
         await spaceService.remove(payload.spaceId);
         commit(payload);
