@@ -100,7 +100,7 @@ export default {
       try {
         await this.$store.dispatch({ type: "login", userCred: this.loginCred });
         this.$emit('close-login');
-        if (this.$router.path !=='/space') this.$router.push("/space");
+        // if (this.$router.path !=='/space') this.$router.push("/space");
       } catch (err) {
         console.log(err);
         this.msg = "Failed to login";
@@ -124,7 +124,7 @@ export default {
       }
       await this.$store.dispatch({ type: "signup", userCred: this.signupCred });
       this.$emit('close-login')
-      if (this.$router.path !=='/space') this.$router.push("/space");
+      // if (this.$router.path !=='/space') this.$router.push("/space");
     },
     closeLogin(){
       this.$emit('close-login')

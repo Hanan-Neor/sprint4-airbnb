@@ -16,6 +16,7 @@ export const spaceStore = {
       currPage: 1,
       hostId: '',
     },
+    appPageSize: 10//TODO take out of cmps and pages and use only here - or use only in page w props //QUQU which is better
   },
   getters: {
     spaceRatings(state){
@@ -88,6 +89,7 @@ export const spaceStore = {
       state.spaces.push(space);
     },
     setFilter(state, { filterBy }) {
+      debugger
       state.filterBy = filterBy;
     },
     setFilterField(state, { field, value }) {

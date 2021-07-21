@@ -4,7 +4,7 @@
     style="background: white; border-radius: 32px; padding: 10px 30px" 
   >
     <form class="flex">
-      <!-- <form @submit.prevent="setFilter" class="flex"> -->
+      <!-- <form @submit.prevent="filterSpaces" class="flex"> -->
       <!-- <input v-if="!showingFilters"
       class="start"
         @click="setShowFilters"
@@ -41,7 +41,7 @@
       </div>
       <template v-if="showingFilters" style="width:fit-content">
         <input
-          @input="setFilter"
+          @input="filterSpaces"
           type="text"
           placeholder="location"
           v-model="filterBy.location"
@@ -62,7 +62,7 @@
           placeholder="checkout"
           v-model="filterBy.dates.endDate"
         />
-        <button @click="setFilter">search</button>
+        <button @click="filterSpaces">search</button>
       </template>
     </form>
   </div>
@@ -82,14 +82,15 @@ export default {
         location: "",
         numGuests: 0,
         dates: { startDate: 0, endDate: 0 },
-        count: 0, //change this to PAGE_SIZE when add pagination
+        count: 10, //take this value from parent
         currPage: 1,
       },
       showFilters: this.screenWidth > 720,
     };
   },
   methods: {
-    async setFilter() {
+    async filterSpaces() {
+      console.log('setting filter', this.filterBy.location);
       try {
         await this.$store.commit({
           type: "setFilter",
