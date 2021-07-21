@@ -4,6 +4,7 @@
       <ul>
           <li v-for="order in orders" :key="order._id">
                {{order.stay.name}} {{order.guests}} 
+               <!-- id:{{order._id}} -->
                 <button @click="deleteOrder(order)">delete coming soon</button>
               <button @click="editOrder(order)">edit coming soon</button>
                </li>

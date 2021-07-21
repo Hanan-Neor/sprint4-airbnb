@@ -8,7 +8,7 @@
             <p>total likes: {{totalLikes}}</p>
           </div>
       <host-stats  />
-      <order-chart />
+      <!-- <order-chart /> -->
       <review-chart />
       <host-space-list :host="host"/>
     <host-order-list :host="host" />

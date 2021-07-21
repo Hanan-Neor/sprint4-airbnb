@@ -39,6 +39,7 @@ function getAverageReview(space) {
 }
 
 function _getReviewRate(review) {
+  if (!review.rate || !review.rate.length) return 0
   const rates = review.rate;
   const totalRates = Object.values(rates).reduce((sum, rate) => sum + rate)
   return totalRates / Object.values(rates).length // or '/ 6'

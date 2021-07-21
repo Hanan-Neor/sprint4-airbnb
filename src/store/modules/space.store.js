@@ -17,6 +17,19 @@ export const spaceStore = {
     },
   },
   getters: {
+    spaceRatings(state){
+      if (!state.spaces || !state.spaces.length) return 
+      console.log('length!!!', state.spaces.length);
+      return state.spaces.map(space => {
+          return filterService.getAverageReview(space) //TODO remove the +1
+      })
+    },
+    spaceNames(state){
+      if (!state.spaces || !state.spaces.length) return 
+      return state.spaces.map(space => {
+          return space.name
+      })
+    },
     totalLikes(state){
       if (!state.spaces || !state.spaces.length) return 
       return state.spaces.reduce((total, space) => {
@@ -30,7 +43,7 @@ export const spaceStore = {
       }, 0)
     },
     getAverageRating(state){
-      // if (!state.spaces.length) return
+      if (!state.spaces.length) return
       var totalRates = 0
       state.spaces.forEach(space => {
         const rate = filterService.getAverageReview(space)
