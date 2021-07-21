@@ -12,7 +12,8 @@
         placeholder="start your search"
       /> -->
       <div v-show="!showingFilters" class="start" @click="setShowFilters" style="width:300px">
-        <div>start your search</div>
+        <!-- <div>start your search</div> -->
+        <div>{{buttonText}}</div>
         <div class="search-icon-container">
           <svg
             viewBox="0 0 32 32"
@@ -118,6 +119,9 @@ export default {
         document.removeEventListener('click', this.close)
     },
   computed: {
+    buttonText(){
+      return (this.filterBy.location)? this.filterBy.location : 'Start your search'
+    },
     showingFilters() {
       return this.showFilters;
     },

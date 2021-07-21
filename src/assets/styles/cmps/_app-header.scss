@@ -1,6 +1,18 @@
 $header-side-padding: 42px;
 
 .app-header {
+  .container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    & :nth-child(2){
+      justify-self: center;
+    }
+
+    & :last-child{
+      justify-self: flex-end;
+    }
+  }
   height: 80px;
   justify-content: space-between;
   // position: fixed;
@@ -43,8 +55,8 @@ $header-side-padding: 42px;
   }
   .nav {
     position: fixed;
-    height: 260px;
-    width: 240px;
+    // height: 260px;
+    min-width: 240px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     right: $header-side-padding;
     top: 55px;
