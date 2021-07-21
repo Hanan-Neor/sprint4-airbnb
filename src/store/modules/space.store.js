@@ -14,6 +14,7 @@ export const spaceStore = {
       dates: { startDate: 0, endDate: 0 },
       count: 20, //change this to PAGE_SIZE when add pagination
       currPage: 1,
+      hostId: '',
     },
   },
   getters: {
@@ -58,7 +59,7 @@ export const spaceStore = {
     spaces(state) {
       //this is the spaces after filter and after pagination
       const filterBy = state.filterBy;
-      //pagination here
+      //pagination here below
       if (filterBy.count !== Infinity) {
         console.log('count of pages', filterBy.count);
         const firstSpace = filterBy.count * (filterBy.currPage - 1);
@@ -89,11 +90,9 @@ export const spaceStore = {
       state.spaces.push(space);
     },
     setFilter(state, { filterBy }) {
-      console.log('setting filter', filterBy);
       state.filterBy = filterBy;
     },
     setFilterField(state, { field, value }) {
-      console.log('setting filter field*****', field, value);
       state.filterBy[field] = value;
     },
     clearFilter(state) {
@@ -107,6 +106,7 @@ export const spaceStore = {
         dates: { startDate: 0, endDate: 0 },
         count: Infinity, //change this to PAGE_SIZE when add pagination
         currPage: 1,
+        hostId: '',
       };
     },
     // addReview(state, { space }) {
@@ -118,10 +118,6 @@ export const spaceStore = {
     
     // async liked(context,payload){
     //     console.log(payload.spaceId);
-    // },
-
-    // async setFilterField(state, { field, value }) {
-    //   state.filterBy[field] = value;
     // },
     async loadSpaces(context) {
       try {
@@ -153,16 +149,6 @@ export const spaceStore = {
         console.log('Cannot save space', review, spaceId);
         throw err;
       }
-      // return spaceService
-      //   .save(payload.space)
-      //   .then((savedSpace) => {
-      //     commit({ type, space: savedSpace });
-      //     return savedSpace;
-      //   })
-      //   .catch((err) => {
-      //     console.log('Cannot save space:', payload.space, err);
-      //     throw err;
-      //   });
     },
   },
 };
