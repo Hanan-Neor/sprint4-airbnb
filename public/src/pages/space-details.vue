@@ -109,6 +109,7 @@ export default {
   computed: {
     totalRate() {
       const { reviews } = this.space;
+      if (!reviews) return;
       const sums = reviews.map((r) => {
         const rateCategory = Object.values(r.rate);
         return rateCategory.reduce((acc, rc) => {
@@ -153,10 +154,10 @@ export default {
     },
     reserveToSave(reserve) {
       console.log(reserve);
-      const order = reserve
+      const order = reserve;
       // this.$store.dispatch({ type: "saveOrder"  ,order});
       // tripToOrder
-      this.$store.dispatch({ type: "tripToOrder"});
+      this.$store.dispatch({ type: 'tripToOrder' });
       // this.store.$commit('tripToOrder')
     },
   },

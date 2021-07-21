@@ -5,12 +5,15 @@
       src="https://res.cloudinary.com/dymtestxz/image/upload/v1626437274/sprint4/homePage/57b9f708-bb12-498c-bc33-769f8fc43e63_gnsppx.webp"
       alt=""
     />
-    <button class="header-image-button" @click="gotoSpaces">I'm flexible</button>
-     
+    <button class="header-image-button" @click="gotoSpaces">
+      I'm flexible
+    </button>
+
     <space-list :spaces="spaces" />
     <div class="breaker-image">
-
-      <button class="breaker-image-btn" @click="showPage">Get Inspired/host</button>
+      <button class="breaker-image-btn" @click="showPage">
+        Get Inspired/host
+      </button>
       <img
         src="https://a0.muscache.com/im/pictures/f0343d6a-328c-4213-90a2-13ba3572a01f.jpg?im_w=320"
         alt=""
@@ -28,18 +31,18 @@ import msg from './../cmps/msg.vue';
 // @ is an alias to /src
 
 export default {
-  name: "Home",
+  name: 'Home',
   components: {
     spaceList,
     exploreList,
     msg,
   },
   created() {
-    this.$store.commit({ type: "clearFilter"});
-    this.$store.commit({ type: "setFilterField", field: "count", value: 4 });
-    this.$store.dispatch({ type: "loadSpaces" });
-    console.log("spaces in home", this.$store.getters.spaces);
-    eventBusService.$emit("headerFixed", true);
+    this.$store.commit({ type: 'clearFilter' });
+    this.$store.commit({ type: 'setFilterField', field: 'count', value: 4 });
+    this.$store.dispatch({ type: 'loadSpaces' });
+    console.log('spaces in home', this.$store.getters.spaces);
+    eventBusService.$emit('headerFixed', true);
     // eventbus.$emit('headerFixed', true)
 
     setTimeout(() => {
@@ -76,26 +79,25 @@ export default {
   methods: {
     async gotoCountrySpaces(country) {
       this.$store.commit({
-        type: "setFilterField",
-        field: "country",
+        type: 'setFilterField',
+        field: 'country',
         value: country,
       });
       this.gotoSpaces();
     },
     async gotoSpaces() {
       try {
-        this.$router.push("/space");
+        this.$router.push('/space');
       } catch (err) {
-        console.log("error in store moving to space-app from homepage", err);
+        console.log('error in store moving to space-app from homepage', err);
         throw err;
       }
     },
-    showPage(){
-      prompt('show host or explore page...')
+    showPage() {
+      prompt('show host or explore page...');
     },
   },
 };
 </script>
 
-<style>
-</style>
+<style></style>

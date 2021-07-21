@@ -21,6 +21,10 @@
       </div>
       <!-- <button class="gradient-btn">Book</button> -->
       <gradient-btn :text="'Book'"></gradient-btn>
+      <div v-if="total" class="total">
+        <p class="title">Total</p>
+        <p class="price">{{ total }}</p>
+      </div>
     </form>
   </section>
   <!-- </section> -->
@@ -45,6 +49,8 @@ export default {
         // guests:{
         //     adults:null
         // }
+
+        total: 0,
       },
     };
   },
