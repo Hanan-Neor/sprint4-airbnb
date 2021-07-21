@@ -48,10 +48,10 @@ export const userStore = {
 
       try {
         const loggedinUserId = this.getters.loggedinUser._id
-      console.log(loggedinUserId);
+      // console.log(loggedinUserId);
       const user = await userService.getById(loggedinUserId);
       // alert('hi')
-      console.log(user);
+      // console.log(user);
       return user
       } catch (err) {
         console.log('Cannot load user in store');
@@ -129,6 +129,7 @@ export const userStore = {
     // },
     async updateUser({ commit }, { user }) {
       try {
+        // if(this.getters.loggedinUser.likedSpacesIds === user.likedSpacesIds) return
         user = await userService.update(user);
         commit({ type: 'setUser', user });
       } catch (err) {

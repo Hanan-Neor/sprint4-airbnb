@@ -1,23 +1,27 @@
 <template>
-  <div class="nav-filter">
+  <div class="nav-filter full">
+<div class="main-layout" style="width:100%">
+  <div class="flex align-center" style="justify-content:space-between">
     <div class="space-types flex pointer">
-      <p @click="updateFilter('type', 'all')">All</p>
-      <p @click="updateFilter('type', 'Entire house')">House</p>
-      <p @click="updateFilter('type', 'Entire villa')">Villas</p>
-      <p @click="updateFilter('type', 'Treehouse')">Treehouse</p>
-      <p @click="updateFilter('type', 'Entire chalet')">Chalet</p>
-      <p @click="updateFilter('type', 'Entire cottage')">Cottage</p>
-      <p @click="updateFilter('type', 'room')">Room</p>
-      <p @click="updateFilter('type', 'Entire home')">Home</p>
-      <p @click="updateFilter('type', 'Entire apartment')">Apartment</p>
+      <span @click="updateFilter('type', 'all')">All</span>
+      <span @click="updateFilter('type', 'Entire house')">House</span>
+      <span @click="updateFilter('type', 'Entire villa')">Villas</span>
+      <span @click="updateFilter('type', 'Treehouse')">Treehouse</span>
+      <span @click="updateFilter('type', 'Entire chalet')">Chalet</span>
+      <span @click="updateFilter('type', 'Entire cottage')">Cottage</span>
+      <span @click="updateFilter('type', 'room')">Room</span>
+      <span @click="updateFilter('type', 'Entire home')">Home</span>
+      <span @click="updateFilter('type', 'Entire apartment')">Apartment</span>
       
     </div>
-    <el-row v-if="isLargeScreen" class="hover">
+    <el-row v-if="isLargeScreen" class="buttons hover">
       <el-button @click="showFilterOptions()" round>Anytime</el-button>
       <el-button @click="toggleForm()" round>Guests</el-button>
       <el-button @click="showFilters()" round>Filters</el-button>
     </el-row>
     <filter-form v-if="isFormOpen" @set-filter="updateFilter" @close-form="toggleForm" />
+    </div>
+  </div>
   </div>
 </template>
 

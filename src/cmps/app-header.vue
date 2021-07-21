@@ -1,7 +1,8 @@
 <template>
   <section>
     <!-- <div class="app-header flex" :style="diplayState"> -->
-    <nav class="app-header flex" :style="headerPos">
+    <nav class="app-header  main-layout" :style="headerPos">
+      <div class="flex" style="justify-content:space-between; align-items:center">
       <router-link to="/" class="logo-container clear-link" :style="logoStyle">
         <div class="logo"></div>
       </router-link>
@@ -56,6 +57,7 @@
           <p class="text">wishlists</p>
         </div>
       </div>
+       </div>
        </div>
     </nav>
   </section>
@@ -114,13 +116,18 @@ export default {
     searchPos() {
       if (this.state) {
         return {
+          // boxShadow: this.isIntersecting ?"none" :"inherit",
+          'font-size': this.isIntersecting ? "1rem" : "0.875rem",
+          // width: this.isIntersecting ? "fit-content" : "300px",
           position: "relative",
           top: this.isIntersecting ? "150px" : "unset",
           backgroung: this.isIntersecting ? "none" : "white",
         };
       } else {
         return {
+          'font-size': "0.875rem",
           position: "relative",
+          // width: "300px"
         };
       }
     },
@@ -130,9 +137,16 @@ export default {
       };
     },
     logoStyle() {
+
+      if (this.state) {
+
       return {
         color: this.isIntersecting ? "white" : "#ff385c",
       };
+      }else{
+        color: "#ff385c"
+      }
+
     },
   },
   data() {
