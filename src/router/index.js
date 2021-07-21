@@ -5,6 +5,7 @@ import spaceApp from './../pages/space-app.vue'
 import spaceDetails from '../pages/space-details.vue'
 import spaceEditAdd from '../pages/space-edit-add.vue'
 import about from '../pages/about.vue'
+import dashboard from '../pages/dashboard.vue'
 
 Vue.use(VueRouter);
 
@@ -33,6 +34,11 @@ const routes = [
     path: '/space/host/edit/:spaceId?',
     name: 'space-edit-add',
     component: spaceEditAdd,
+  },
+  {
+    path: '/dashboard',
+    name: 'dashboard',
+    component: dashboard,
   },
 
 ];

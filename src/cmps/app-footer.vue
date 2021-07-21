@@ -5,6 +5,7 @@
         <router-link to="/space">Explore</router-link> |
         <router-link to="/space/host/edit">add space</router-link> |
         <router-link to="/about">about chatapp</router-link> |
+        <router-link to="/dashboard">dashboard</router-link> |
       </nav>
       
   </div>

@@ -1,4 +1,5 @@
 import { spaceService } from '../../services/space.service.js';
+import { filterService } from '../../services/filterFunctions';
 
 export const spaceStore = {
   state: {
@@ -16,6 +17,41 @@ export const spaceStore = {
     },
   },
   getters: {
+    spaceRatings(state){
+      if (!state.spaces || !state.spaces.length) return 
+      console.log('length!!!', state.spaces.length);
+      return state.spaces.map(space => {
+          return filterService.getAverageReview(space) //TODO remove the +1
+      })
+    },
+    spaceNames(state){
+      if (!state.spaces || !state.spaces.length) return 
+      return state.spaces.map(space => {
+          return space.name
+      })
+    },
+    totalLikes(state){
+      if (!state.spaces || !state.spaces.length) return 
+      return state.spaces.reduce((total, space) => {
+        return total + space.likedByUserIds.length
+      }, 0)
+    },
+    totalSpaceCapacity(state){
+      if (!state.spaces || !state.spaces.length) return 
+      return state.spaces.reduce((total, space) => {
+        return total + space.capacity
+      }, 0)
+    },
+    getAverageRating(state){
+      if (!state.spaces.length) return
+      var totalRates = 0
+      state.spaces.forEach(space => {
+        const rate = filterService.getAverageReview(space)
+        console.log(space.reviews, '*****', rate);
+          totalRates += rate
+      });
+      return totalRates / state.spaces.length
+  },
     totalSpacesAllPages(state) {
       return state.spaces.length;
     },
@@ -79,6 +115,7 @@ export const spaceStore = {
     // },
   },
   actions: {
+    
     // async liked(context,payload){
     //     console.log(payload.spaceId);
     // },
