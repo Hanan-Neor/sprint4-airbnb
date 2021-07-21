@@ -8,7 +8,7 @@ import { userService } from '../../services/user.service';
 export const userStore = {
   state: {
     loggedinUser: userService.getLoggedinUser() || '',//TODO remove one of these
-    loggedInUser: userService.getLoggedinUser() || '',
+    // loggedInUser: userService.getLoggedinUser() || '',
     users: [],
     watchedUser: null,
   },
@@ -28,7 +28,8 @@ export const userStore = {
     setUsers(state, { users }) {
       state.users = users;
     },
-    setLoggedinUser(state, {loggedinUser}){state.loggedinUser = loggedinUser || null},
+    setLoggedinUser(state, {loggedinUser}){state.loggedinUser = loggedinUser},
+    // setLoggedinUser(state, {loggedinUser}){state.loggedinUser = loggedinUser || null},
     setUser(state, { user }) {
       state.loggedinUser = user;
     },
@@ -66,8 +67,10 @@ export const userStore = {
 
     async login({ commit }, { userCred }) {
       try {
-        const user = await userService.login(userCred);
+        // const user = await userService.login(userCred);
         commit({ type: 'setLoggedinUser', user });
+        commit({ type: 'setUser', user });
+
         return user;
       } catch (err) {
         console.log('userStore: Error in login', err);
