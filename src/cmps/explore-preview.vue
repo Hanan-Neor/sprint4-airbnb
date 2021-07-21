@@ -1,23 +1,23 @@
 <template>
   <section class="space-preview" @click="gotoSpaces">
     <!-- <router-link :to="'/space/'"> -->
-      <carousel>
-        <carousel-slide
-          v-for="slide in slides"
-          :key="slide"
-          class="carousel-slider"
-        >
-          <img :src="slide" :alt="slide" />
-        </carousel-slide>
-      </carousel>
+    <carousel>
+      <carousel-slide
+        v-for="(slide, idx) in slides"
+        :key="idx"
+        class="carousel-slider"
+      >
+        <img :src="slide" :alt="slide" />
+      </carousel-slide>
+    </carousel>
 
-      <div class="name-price flex">
-        <!-- <div>{{ explore.name }}</div> -->
-        <div>
-          {{ explore.loc.country }}
-        </div>
+    <div class="name-price flex">
+      <!-- <div>{{ explore.name }}</div> -->
+      <div>
+        {{ explore.loc.country }}
       </div>
-      <div class="distance">{{ distance }} kilometers away</div>
+    </div>
+    <div class="distance">{{ distance }} kilometers away</div>
 
     <!-- </router-link> -->
   </section>
@@ -25,9 +25,9 @@
 
 <script>
 import carousel from './space-app/carousel.vue';
-import carouselSlide from "./space-app/carouselSlide";
+import carouselSlide from './space-app/carouselSlide';
 export default {
-  name: "",
+  name: '',
   props: ['explore'], //todo send a locations from explores in parent element
   data() {
     return {
@@ -46,9 +46,9 @@ export default {
       if (this.picIdx === this.explore.imgUrls.length - 1) this.picIdx = 0;
       else this.picIdx++;
     },
-    gotoSpaces(){
-      this.$emit('gotoSpaces', this.explore.loc.country)
-    }
+    gotoSpaces() {
+      this.$emit('gotoSpaces', this.explore.loc.country);
+    },
   },
   computed: {
     imgForDisplay() {
@@ -86,7 +86,7 @@ export default {
 
           // this.distance = (Math.sqrt((position.coords.latitude - this.explore.loc.lat)**2+(position.coords.longitude-this.explore.loc.lng)**2))
           // d = d * 6371;
-          this.distance = d.toLocaleString("en-US", {
+          this.distance = d.toLocaleString('en-US', {
             minimumFractionDigits: 0,
             maximumFractionDigits: 0,
           });
@@ -106,9 +106,7 @@ export default {
   },
 };
 </script>
-<style scoped lang="scss">
-</style>
-
+<style scoped lang="scss"></style>
 
 <style>
 .app {

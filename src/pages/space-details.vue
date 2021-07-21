@@ -1,8 +1,8 @@
 <template>
   <div class="space-details main-layout" v-if="space.imgUrls">
     <h2 class="space-title-primary">{{ space.name }}</h2>
-     <chat-app :space="space" />
-<msg :spaceId="this.$route.params.spaceId" />
+    <chat-app :space="space" />
+    <msg :spaceId="this.$route.params.spaceId" />
     <div class="space-title-secondary">
       <div class="left-part">
         <div class="rating">
@@ -75,7 +75,7 @@
           </div>
         </li>
       </ul>
-      <review-list :reviews="space.reviews.slice(0, 6)"></review-list>
+      <review-list :reviews="reviewsToShow"></review-list>
     </div>
     <div class="map-container" v-if="this.space.loc.lat">
       <p class="map-title">Where you'll be</p>
@@ -86,10 +86,9 @@
 
     <chat-app :space="space" />
   </div>
-    <!-- <div v-else> -->
-    <img  v-else class="svg-img-loader" src="@/assets/img/loading.svg" />
+  <!-- <div v-else> -->
+  <img v-else class="svg-img-loader" src="@/assets/img/loading.svg" />
   <!-- </div> -->
-
 </template>
 
 <script>
@@ -105,17 +104,16 @@ import msg from './../cmps/msg.vue';
 
 export default {
   name: 'space-details',
-  async created(){
-    try{
-      socketService.emit("chat topic", this.$route.params.spaceId);
-      socketService.emit("spaceView", this.$route.params.spaceId);
+  async created() {
+    try {
+      socketService.emit('chat topic', this.$route.params.spaceId);
+      socketService.emit('spaceView', this.$route.params.spaceId);
       window.addEventListener('beforeunload', () => {
-         socketService.emit("removeSpaceView", this.$route.params.spaceId);
-       })
-
-    } catch(err) {
+        socketService.emit('removeSpaceView', this.$route.params.spaceId);
+      });
+    } catch (err) {
       console.log('error in created in space-details', err);
-      throw err
+      throw err;
     }
     // socketService.emit("spaceView", this.addSpaceView);
     // socketService.on("viewingSpace", this.showViewMsg);
@@ -125,7 +123,7 @@ export default {
   data() {
     return {
       // viewerCount: 0,
-      msg:'msg...',
+      msg: 'msg...',
       space: {
         loc: {},
         reviews: [],
@@ -166,9 +164,20 @@ export default {
   },
 
   computed: {
-    getMsg(){return this.msg},
+    reviewsToShow() {
+      const { reviews } = this.space;
+      if (!reviews) return;
+
+      return reviews.slice(0, 6);
+    },
+
+    getMsg() {
+      return this.msg;
+    },
     totalRate() {
       const { reviews } = this.space;
+      if (!reviews) return;
+
       const sums = reviews.map((r) => {
         const rateCategory = Object.values(r.rate);
         return rateCategory.reduce((acc, rc) => {
@@ -182,11 +191,13 @@ export default {
     },
 
     numOfReviews() {
+      if (!this.space.reviews) return;
       return this.space.reviews.length;
     },
 
     categoryRate() {
       const { reviews } = this.space;
+      if (!reviews) return;
       const acc = {
         accuracy: 0,
         checkin: 0,
@@ -195,7 +206,7 @@ export default {
         value: 0,
         location: 0,
       };
-      return reviews.reduce((acc, r) => {
+      const reviewsCatagoriesSum = reviews.reduce((acc, r) => {
         acc.accuracy += r.rate.accuracy;
         acc.checkin += r.rate.checkin;
         acc.communication += r.rate.communication;
@@ -204,6 +215,11 @@ export default {
         acc.location += r.rate.location;
         return acc;
       }, acc);
+
+      for (const [key, value] of Object.entries(reviewsCatagoriesSum)) {
+        reviewsCatagoriesSum[key] = +(value / reviews.length).toFixed(1);
+      }
+      return reviewsCatagoriesSum;
     },
   },
 
@@ -212,26 +228,26 @@ export default {
       return amenity.toLowerCase().replace(' ', '-');
     },
     reserveToSave(reserve) {
-        // console.log(reserve);
-        let order = reserve;
-        this.order.guests = order.guests;
-        this.order.startDate = order.date.start;
-        this.order.endDate = order.date.end;
-        order = this.order;
-        this.$store.dispatch({ type: 'saveOrder', order });
-        // tripToOrder
-        // this.$store.dispatch({ type: 'tripToOrder' });
-        // this.$store.commit('tripToOrder')
-        // console.log(this.order);
+      // console.log(reserve);
+      let order = reserve;
+      this.order.guests = order.guests;
+      this.order.startDate = order.date.start;
+      this.order.endDate = order.date.end;
+      order = this.order;
+      this.$store.dispatch({ type: 'saveOrder', order });
+      // tripToOrder
+      // this.$store.dispatch({ type: 'tripToOrder' });
+      // this.$store.commit('tripToOrder')
+      // console.log(this.order);
     },
-    showViewMsg(count){
+    showViewMsg(count) {
       console.log('viewing******!');
       this.msg = count;
       console.log(this.msg);
     },
-    showBokedMsg(){
+    showBokedMsg() {
       console.log('booked!');
-    }
+    },
   },
 
   watch: {
@@ -273,8 +289,8 @@ export default {
     spaceReserve,
     msg,
   },
-  beforeDestroy(){
-        socketService.emit("removeSpaceView", this.$route.params.spaceId);
-    }
+  beforeDestroy() {
+    socketService.emit('removeSpaceView', this.$route.params.spaceId);
+  },
 };
 </script>

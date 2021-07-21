@@ -78,13 +78,13 @@
 </template>
 
 <script>
-import carousel from "./carousel";
-import carouselSlide from "./carouselSlide";
-import { eventBusService } from "./../../services/event-bus.service.js";
+import carousel from './carousel';
+import carouselSlide from './carouselSlide';
+import { eventBusService } from './../../services/event-bus.service.js';
 
 export default {
-  name: "",
-  props: ["space"], //TODO convert to object
+  name: '',
+  props: ['space'], //TODO convert to object
   data() {
     return {
       picIdx: 0,
@@ -115,7 +115,7 @@ export default {
       // const user = this.$store.dispatch({ type: "getById"});
       const user = this.$store.getters.loggedinUser;
       if (!user) {
-        eventBusService.$emit("likedWithoutUser");
+        eventBusService.$emit('likedWithoutUser');
         return;
       }
       this.isLiked = !this.isLiked;
@@ -131,7 +131,7 @@ export default {
         });
         user.likedSpacesIds.splice(idx, 1);
       }
-      this.$store.dispatch({ type: "updateUser", user });
+      this.$store.dispatch({ type: 'updateUser', user });
     },
     prevPic() {
       if (this.picIdx === 0) this.picIdx = this.space.imgUrls.length - 1;
@@ -145,14 +145,14 @@ export default {
   computed: {
     likeColor() {
       // const user = this.$store.getters.loggedinUser;
-      if (!this.$store.getters.loggedinUser) return "rgba(0, 0, 0, 0.5)";
+      if (!this.$store.getters.loggedinUser) return 'rgba(0, 0, 0, 0.5)';
 
       // return this.$store.dispatch({ type: "getById"}).likedSpacesIds.includes(
       return this.$store.getters.loggedinUser.likedSpacesIds.includes(
         this.space._id
       )
-        ? "rgb(255, 56, 92)"
-        : "rgba(0, 0, 0, 0.5)";
+        ? 'rgb(255, 56, 92)'
+        : 'rgba(0, 0, 0, 0.5)';
     },
     islikedByUser() {
       // try {
@@ -208,7 +208,7 @@ export default {
 
           // this.distance = (Math.sqrt((position.coords.latitude - this.space.loc.lat)**2+(position.coords.longitude-this.space.loc.lng)**2))
           // d = d * 6371;
-          this.distance = d.toLocaleString("en-US", {
+          this.distance = d.toLocaleString('en-US', {
             minimumFractionDigits: 0,
             maximumFractionDigits: 0,
           });
@@ -221,9 +221,9 @@ export default {
       // navigator.geolocation.getCurrentPosition(sucssessCb,errorCb)
     },
     priceToShow() {
-      return this.space.price.toLocaleString("en-US", {
-        style: "currency",
-        currency: "USD",
+      return this.space.price.toLocaleString('en-US', {
+        style: 'currency',
+        currency: 'USD',
         // useGrouping:true,
         minimumFractionDigits: 0,
         maximumFractionDigits: 0,
@@ -232,6 +232,8 @@ export default {
 
     totalRate() {
       const { reviews } = this.space;
+      if (!reviews) return;
+
       const sums = reviews.map((r) => {
         const rateCategory = Object.values(r.rate);
         return rateCategory.reduce((acc, rc) => {
