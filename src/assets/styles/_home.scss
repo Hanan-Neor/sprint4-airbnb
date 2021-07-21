@@ -11,9 +11,11 @@
     // justify-content: center;
     // align-items: center;
   }
-  // .header-image-button {
-  // position: absolute;
-  // }
+  .header-image-button {
+    position: relative;
+    left: 10px;
+    top: 10px;
+  }
   & .space-list {
     & .carousel {
       @include aspect-ratio(1, 1);

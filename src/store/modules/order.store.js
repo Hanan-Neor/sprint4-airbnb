@@ -5,7 +5,7 @@ export const orderStore = {
     orders: [],
   },
   getters: {
-    totalGuests(state){
+    totalGuests(state) {
       // if (!state.orders.length) return
       // var totalGuests = 0
       // for (var order in state.orders){
@@ -14,14 +14,14 @@ export const orderStore = {
       // }
       // return totalGuests
 
-      const orders = Object.entries(state.orders)
-      if (!orders.length) return
-      var totalGuests = 0
-      orders.forEach(order => {
+      const orders = Object.entries(state.orders);
+      if (!orders.length) return;
+      var totalGuests = 0;
+      orders.forEach((order) => {
         // debugger
-        totalGuests += ( order[1].guests.adults + order[1].guests.kids) //TODO why do I need [1] here???
-      })
-      return totalGuests
+        totalGuests += order[1].guests.adults + order[1].guests.kids; //TODO why do I need [1] here???
+      });
+      return totalGuests;
     },
     orders(state) {
       return state.orders;
@@ -82,16 +82,6 @@ export const orderStore = {
       }
     },
     async removeOrder({ commit }, payload) {
-      // console.log(payload.orderId);
-      // return orderService
-      //   .remove(payload.orderId)
-      //   .then(() => {
-      //     commit(payload);
-      //   })
-      //   .catch((err) => {
-      //     console.log('Cannot remove order:', payload.orderId, err);
-      //     throw err;
-      //   });
       try {
         await orderService.remove(payload.orderId);
         commit(payload);

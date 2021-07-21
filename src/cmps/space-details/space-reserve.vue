@@ -21,13 +21,12 @@
       </div>
       <!-- <button class="gradient-btn">Book</button> -->
       <gradient-btn :text="'Book'"></gradient-btn>
-      <div v-if="total" class="total">
-        <p class="title">Total</p>
-        <p class="price">{{ total }}</p>
+      <div v-if="totalPrice && reserve.date.start" class="total">
+        <p class="title">Total:</p>
+        <p class="price">{{ totalPrice }}</p>
       </div>
     </form>
   </section>
-  <!-- </section> -->
 </template>
 
 <script>
@@ -35,8 +34,8 @@ import reserveDate from './reserve-date.vue';
 import reserveGuests from './reserve-guests.vue';
 import reserveGuests2 from './reserve-guests2.vue';
 import gradientBtn from '../gradient-btn.vue';
+
 export default {
-  // props: { space: Object, rate: Number, reviews: Number },
   props: ['space', 'rate', 'reviews'],
   data() {
     return {
@@ -52,21 +51,44 @@ export default {
 
         total: 0,
       },
+      days: 1,
     };
   },
 
-  methods: {
-    submit(value) {
-      // console.log(value);
-      this.$emit('reserve', this.reserve);
+  computed: {
+    totalPrice() {
+      return (
+        this.space.price *
+        this.days *
+        this.reserve.guests
+      ).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
     },
+  },
+
+  methods: {
+    async submit() {
+      console.log(this.reserve);
+      try {
+        await this.$store.dispatch({ type: 'saveOrder', order: this.reserve });
+        this.$router.push('/');
+      } catch (err) {
+        console.log('cannot submit order', err);
+      }
+    },
+
     dateToReserve2(date) {
       this.reserve.date.start = date[0];
       this.reserve.date.end = date[1];
-      // console.log('start',this.reserve.date.start,'end',this.reserve.date.end);
+      const start = new Date(this.reserve.date.start);
+      const end = new Date(this.reserve.date.end);
+      const diffInTime = end.getTime() - start.getTime();
+      this.days = diffInTime / (1000 * 3600 * 24);
+      this.reserve.total = this.space.price * this.days * this.reserve.guests;
     },
+
     guestsToSave2(guests) {
       this.reserve.guests = guests;
+      this.reserve.total = this.space.price * this.days * this.reserve.guests;
     },
   },
 

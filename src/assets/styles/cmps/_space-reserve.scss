@@ -47,4 +47,15 @@
       border: 0;
     }
   }
+
+  .total {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    font-family: 'cereal-Medium';
+    border-top: 1px solid $clr4;
+    padding-top: 0.5rem;
+    // .title{}
+    // .price{}
+  }
 }
