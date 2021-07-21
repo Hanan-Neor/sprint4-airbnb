@@ -19,8 +19,13 @@
         *{
             // justify-content: space-around;
         }
-        .buttons{
-            flex-wrap: nowrap;
+    }
+    .buttons{
+        display: flex;
+        flex-wrap: nowrap;
+        
+        button{
+            display: block;
         }
     }
 
