@@ -1,7 +1,8 @@
 <template>
   <div class="space-details main-layout" v-if="space.imgUrls">
     <h2 class="space-title-primary">{{ space.name }}</h2>
-    
+    {{}}
+    <msg :spaceId="this.$route.params.spaceId"/>
     <div class="space-title-secondary">
       <div class="left-part">
         <div class="rating">
@@ -86,7 +87,7 @@
       <p class="space-location">{{ space.loc.address }}</p>
     </div>
 <chat-app :space="space" />
-    <msg :spaceId="this.$route.params.spaceId" />
+    
   </div>
     <div v-else>
     <img class="svg-img-loader" src="@/assets/img/loading.svg" />
@@ -109,23 +110,19 @@ export default {
   name: 'space-details',
   async created() {
     try {
-      socketService.emit('chat topic', this.$route.params.spaceId);
-      socketService.emit('spaceView', this.$route.params.spaceId);
-      window.addEventListener('beforeunload', () => {
-        socketService.emit('removeSpaceView', this.$route.params.spaceId);
-      });
+      socketService.on("updateViewerCount", this.updateViewerCount);
+      await socketService.emit('newViewer', this.$route.params.spaceId);
+      this.ready = true
     } catch (err) {
       console.log('error in created in space-details', err);
       throw err;
     }
-    // socketService.emit("spaceView", this.addSpaceView);
-    // socketService.on("viewingSpace", this.showViewMsg);
-    // socketService.on("bookedSpace", this.showBookedMsg);
   },
 
   data() {
     return {
       // viewerCount: 0,
+      ready: false,
       msg: 'msg...',
       space: {
         loc: {},
@@ -227,6 +224,9 @@ export default {
   },
 
   methods: {
+    updateViewerCount(count){
+      console.log('count****', count);
+    },
     icon(amenity) {
       return amenity.toLowerCase().replace(' ', '-');
     },
@@ -293,7 +293,7 @@ export default {
     msg,
   },
   beforeDestroy() {
-    socketService.emit('removeSpaceView', this.$route.params.spaceId);
+    socketService.emit('removeViewer', this.$route.params.spaceId);
   },
 };
 </script>

@@ -10,10 +10,11 @@ export default {
     props:['spaceId'],
     created(){
         // socketService.emit("spaceView", this.spaceId);
-        socketService.on("viewingSpace", this.showViewMsg);
+        socketService.on("updateViewerCount", this.showViewMsg);
+        // socketService.on("viewingSpace", this.showViewMsg);
         //TODO add listener for removing a booked space
-        socketService.on("bookedSpace", this.showBookedMsg);
-        socketService.on("spaceReviewRemoved", this.removeSpaceView)
+        // socketService.on("bookedSpace", this.showBookedMsg);
+        // socketService.on("spaceReviewRemoved", this.removeSpaceView)
     },
     data(){
         return {
@@ -24,6 +25,7 @@ export default {
     },
     methods:{
         showViewMsg(count){
+            console.log('count ******', count);
             this.msg=count
         },
         showBookedMsg(){
@@ -39,10 +41,9 @@ export default {
             return this.msg
             }
     },
-    
-    // beforeDestroy(){
-    //     socketService.emit("removeSpaceView", this.spaceId);
-    // }
+    destroyed() {
+    socketService.off('updateViewerCount')
+    },
 
 }
 </script>
