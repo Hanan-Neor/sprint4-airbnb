@@ -1,0 +1,24 @@
+.back-office {
+  display: grid;
+  grid-template-columns: 300px auto;
+  position: relative;
+  .host-profile {
+    width: 75%;
+    position: sticky;
+    top: 1rem;
+    margin-bottom: auto;
+    min-height: 200px;
+    // height: 50%;
+  }
+
+  .host-order-list {
+    grid-column: -1;
+  }
+}
+.bottom-image {
+  width: 100%;
+}
+
+.hide {
+  display: none;
+}

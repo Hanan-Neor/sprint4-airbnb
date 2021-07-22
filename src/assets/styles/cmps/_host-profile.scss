@@ -1,0 +1,36 @@
+.host-profile {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  border: 1px solid $clr4;
+  border-radius: 15px;
+  padding: 1rem 0.5rem;
+
+  .profile-pic {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-start;
+
+    img {
+      object-fit: cover;
+      object-position: top;
+      width: 100%;
+    }
+  }
+  .host-name {
+    font-family: 'cereal-Medium';
+    font-size: 1.5rem;
+    margin: 0;
+  }
+
+  .link {
+    font-size: 1.125rem;
+    text-decoration: underline;
+    color: $clr2;
+  }
+}

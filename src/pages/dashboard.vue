@@ -1,28 +1,50 @@
 <template>
-  <div class="backoffice ">
-    <!-- <h1 v-if="host">Host dashboard: {{ host.fullname }}</h1> -->
-    <!-- <div class="stats flex">
+  <section>
+    <div class="back-office ">
+      <!-- <h1 v-if="host">Host dashboard: {{ host.fullname }}</h1> -->
+      <!-- <div class="stats flex">
       <p>average rating: {{ averageRating }}</p>
       <p>total guests: {{ totalGuests }}</p>
       <p>% occupancy {{ occupancy }}</p>
       <p>total likes: {{ totalLikes }}</p>
     </div> -->
-    <!-- <host-stats/> -->
-    <!-- <order-chart
+      <!-- <host-stats/> -->
+      <!-- <order-chart
       class="dashboard-chart"
       v-if="ready"
       :spaceNames="spaceNames"
       :spaceRatings="spaceRatings"
     /> -->
-    <!-- <host-space-list :host="host" :mySpaces="spaces" /> -->
-    <!-- <review-chart
+
+      <!-- <review-chart
       class="dashboard-chart"
       v-if="ready"
       :spaceNames="spaceNames"
       :spaceRatings="spaceRatings"
     /> -->
-    <host-order-list :host="host" />
-  </div>
+      <host-profile class="host-profile" :host="host"></host-profile>
+      <!-- <div class="bar">
+        <button class="bar-item bar-button" @click="openSection('orders')">
+          Orders
+        </button>
+        <button class="bar-item bar-button" @click="openSection">Spaces</button>
+        <button class="bar-item bar-button" @click="openSection">
+          Statitics
+        </button>
+      </div> -->
+      <!-- <host-space-list
+        class="host-order-list"
+        :host="host"
+        :mySpaces="spaces"
+      /> -->
+      <host-order-list class="host-order-list" :class="{ hide }" :host="host" />
+    </div>
+    <img
+      class="bottom-image full"
+      src="https://res.cloudinary.com/dymtestxz/image/upload/v1626975119/sprint4/cd29ad57-8934-4075-9d5c-6578863fb1dd_jeyprh.webp"
+      alt=""
+    />
+  </section>
 </template>
 
 <script>
@@ -31,6 +53,7 @@ import hostOrderList from '../cmps/backoffice/host-order-list.vue';
 import hostStats from '../cmps/backoffice/host-stats.vue';
 import orderChart from '../cmps/backoffice/order-chart.vue';
 import reviewChart from '../cmps/backoffice/review-chart.vue';
+import hostProfile from '../cmps/backoffice/host-profile.vue';
 
 export default {
   name: 'dashboard',
@@ -40,10 +63,12 @@ export default {
     hostStats,
     reviewChart,
     orderChart,
+    hostProfile,
   },
   data() {
     return {
       ready: false,
+      hide: false,
     };
   },
   computed: {
@@ -99,12 +124,12 @@ export default {
 </script>
 
 <style>
-.backoffice .stats p {
+/* .backoffice .stats p {
   border: 1px solid black;
   margin-right: 5px;
   padding: 5px;
-}
-canvas {
+} */
+/* canvas {
   height: 60vh;
-}
+} */
 </style>
