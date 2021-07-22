@@ -3,7 +3,7 @@
     <h2 class="space-title-primary">{{ space.name }}</h2>
     <!-- details page: {{getMsg}}  -->
 
-
+ <chat-app :space="space" />
     <msg :spaceId="spaceId" :msg="getMsg" v-if="showViewers" />
     <div class="space-title-secondary">
       <div class="left-part">
@@ -86,7 +86,7 @@
       <div class="" v-else>loading</div>
       <p class="space-location">{{ space.loc.address }}</p>
     </div>
-    <chat-app :space="space" />
+   
   </div>
   <div v-else>
     <img class="svg-img-loader" src="@/assets/img/loading.svg" />
@@ -230,8 +230,8 @@ export default {
   },
 
   methods: {
-    updateViewerCount(count){
-      console.log('count in page****', count);
+    updateViewerCount(count, socketid){ 
+      console.log('socket emitted*******', count, socketid);
       this.msg = count
     },
     icon(amenity) {
@@ -303,7 +303,6 @@ export default {
   },
   async beforeDestroy() {
     try{
-      console.log(this.spaceId, '***************')
       await socketService.emit('removeViewer', this.spaceId);
       // socketService.terminate();
     console.log('about to leave page', this.getMsg)

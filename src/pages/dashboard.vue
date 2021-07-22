@@ -1,6 +1,6 @@
 <template>
   <div class="backoffice">
-      <test />
+      <chatbox />
       <h1 v-if="host">Host dashboard: {{host.fullname}} </h1>
       <div class="stats flex">
           <p>average rating: {{averageRating}}</p> 
@@ -24,6 +24,7 @@ import hostOrderList from '../cmps/backoffice/host-order-list.vue'
 import hostStats from '../cmps/backoffice/host-stats.vue'
 import orderChart from '../cmps/backoffice/order-chart.vue'
 import reviewChart from '../cmps/backoffice/review-chart.vue'
+import chatbox from '../cmps/chatbox.vue'
 
 export default {
     name: 'dashboard',
@@ -33,6 +34,7 @@ export default {
         hostStats,
         reviewChart,
         orderChart,
+        chatbox,
     },
     data(){
         return {

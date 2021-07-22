@@ -193,9 +193,9 @@ export default {
         //   this.state = false
         this.showFilters = false;
       }
-      if(!document.querySelector('.guests-filter').contains(e.target)){
-        this.isGuestsClicked = false;
-      }
+      // if(!document.querySelector('.guests-filter').contains(e.target)){
+      //   this.isGuestsClicked = false;
+      // }
     },
 
     setShowFilters() {
