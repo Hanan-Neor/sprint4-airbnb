@@ -12,8 +12,10 @@
         alt=""
       />
       <h3 class="flexible-title">Not sure where to go? Perfect.</h3>
-      <div class="background">
-        <a class="header-image-button" @click="gotoSpaces"> I'm flexible </a>
+      <div class="background" @click="gotoSpaces">
+        <a class="header-image-button">
+          I'm flexible
+        </a>
       </div>
     </div>
 

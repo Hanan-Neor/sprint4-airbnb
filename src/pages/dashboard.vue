@@ -1,6 +1,7 @@
 <template>
   <div class="backoffice">
-      <h1 v-if="spaces">Host dashboard: {{host.fullname}} </h1>
+      <test />
+      <h1 v-if="host">Host dashboard: {{host.fullname}} </h1>
       <div class="stats flex">
           <p>average rating: {{averageRating}}</p> 
            <p>total guests: {{totalGuests}}</p>
@@ -9,9 +10,9 @@
           </div>
       <host-stats  />
       <!-- <order-chart /> -->
-       <order-chart v-if="ready" :spaceNames="spaceNames" :spaceRatings="spaceRatings" />
-      <review-chart />
+       <order-chart class="dashboard-chart" v-if="ready" :spaceNames="spaceNames" :spaceRatings="spaceRatings" />
       <host-space-list :host="host" :mySpaces="spaces"/>
+      <review-chart class="dashboard-chart" v-if="ready" :spaceNames="spaceNames" :spaceRatings="spaceRatings"/>
     <host-order-list :host="host" />
 
   </div>
@@ -48,7 +49,7 @@ export default {
         spaces(){return this.$store.getters.spaces},
 
         spaceRatings(){return this.$store.getters.spaceRatings;},
-         spaceNames(){return this.$store.getters.spaceNames;},
+        spaceNames(){return this.$store.getters.spaceNames;},
         
        
     },
@@ -79,5 +80,9 @@ export default {
         border: 1px solid black;
         padding: 5px;
         margin-bottom: 5px;
+    }
+    canvas{
+        height: 60vh
+
     }
 </style>

@@ -4,9 +4,11 @@
       <ul>
           <li v-for="order in orders" :key="order._id">
                {{order.stay.name}} {{order.guests}} 
-               <!-- id:{{order._id}} -->
+                {{order.status}}
                 <button @click="deleteOrder(order)">delete coming soon</button>
-              <button @click="editOrder(order)">edit coming soon</button>
+              <button @click="editOrder(order)">edit</button>
+              <button v-if="order.status === 'pending'" @click="confirmOrder(order)"> confirm </button>
+              <button v-if="order.status === 'pending'" @click="declineOrder(order)"> decline </button>
                </li>
       </ul>
   </div>
@@ -31,7 +33,7 @@ export default {
         }
     },
     computed:{
-         orders(){return this.$store.getters.orders;}
+         orders(){return this.$store.getters.orders;},
     },
     methods:{
         //TODO move this function to a store
@@ -59,9 +61,31 @@ export default {
             }
         },
         async editOrder(order){
-            alert('edit this order', order.name)
+           const newName = prompt('enter new name')
+            order.stay.name = newName
              try{ 
+                 const savedOrder = await this.$store.dispatch({type:'saveOrder', order})
+                    console.log('savedOrder', savedOrder);
+            
 
+            } catch (err) {
+                console.log('getOrdersForHost', err);
+                throw err;
+            }
+        },
+        async confirmOrder(order){
+            order.status = 'confirmed'
+             try{ 
+                 await this.$store.dispatch({type:'saveOrder', order})
+            } catch (err) {
+                console.log('getOrdersForHost', err);
+                throw err;
+            }
+        },
+        async declineOrder(order){
+            order.status = 'declined'
+             try{ 
+                 await this.$store.dispatch({type:'saveOrder', order})
             } catch (err) {
                 console.log('getOrdersForHost', err);
                 throw err;

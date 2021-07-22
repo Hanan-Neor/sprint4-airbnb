@@ -15,16 +15,16 @@ export const orderService = {
 };
 
 async function query(filterBy) {
-  try {//SERVER STORAGE
-    let orders = await httpService.get(`order`, filterBy); 
+  try {
+    //SERVER STORAGE
+    let orders = await httpService.get(`order`, filterBy);
     return orders;
   } catch (err) {
     console.log('error getting orders in service', this.filterBy);
     throw err;
   }
-  
-  return storageService.query(ORDERS_KEY);//CLIENT STORGE
 
+  return storageService.query(ORDERS_KEY); //CLIENT STORGE
 }
 
 function remove(orderId) {
@@ -33,22 +33,20 @@ function remove(orderId) {
 }
 
 async function save(order) {
-  try{
+  console.log(order);
+  try {
     if (order._id) {
       order = await httpService.put(`order/${order._id}`, order); //SERVER STORAGE
       return order; //SERVER STORAGE
-      return storageService.put(ORDERS_KEY, order);
     } else {
-      order = await httpService.post(`order`, order); //SERVER STORAGE
+      console.log('hi');
+      order = await httpService.post(`order/`, order); //SERVER STORAGE
       return order; //SERVER STORAGE
-      return storageService.post(ORDERS_KEY, order);
     }
-
-  } catch(err){
+  } catch (err) {
     console.log('error saving order in service', err);
-    throw err
+    throw err;
   }
-
 }
 
 function getById(orderId) {
