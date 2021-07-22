@@ -1,19 +1,24 @@
 <template>
   <section class="add-space">
+    <header class="add-space-header">
+      <div class="logo"></div>
+      <router-link to="/" class="exit-btn">Exit</router-link>
+    </header>
+
     <form class="add-space-form full">
-      <div class="welcome flex item">
+      <div class="welcome flex item" v-if="currentTab === 0">
         <div class="left-part"></div>
         <div class="right-part">
           <h1>Become a Host in 10 easy steps.</h1>
           <h2>Join us. We'll help you every step of the way</h2>
           <gradient-btn
             :text="'Let\'s go!'"
-            @click.native="nextSection('type')"
+            @click.native="nextPrev(1)"
           ></gradient-btn>
         </div>
       </div>
 
-      <div class="type flex item">
+      <div class="type flex item" v-if="currentTab === 1">
         <div class="left-part">
           <h1>What kind of place will you host?</h1>
         </div>
@@ -110,11 +115,14 @@
               <label for="radio10">Lighthouse</label>
             </li>
           </ul>
-          <button class="next-btn" @click="nextSection('location')"></button>
+          <nav-btns-add-form
+            :currentTab="currentTab"
+            @nextPrev="nextPrev"
+          ></nav-btns-add-form>
         </div>
       </div>
 
-      <div class="location flex item">
+      <div class="location flex item" v-if="currentTab === 2">
         <div class="left-part">
           <h1>Where's your place located?</h1>
         </div>
@@ -134,41 +142,49 @@
               />
             </div>
           </div>
-          <button class="next-btn" @click="nextSection('capacity')"></button>
+          <nav-btns-add-form
+            :currentTab="currentTab"
+            @nextPrev="nextPrev"
+          ></nav-btns-add-form>
         </div>
       </div>
 
-      <div class="capacity flex item">
+      <div class="capacity flex item" v-if="currentTab === 3">
         <div class="left-part">
           <h1>How many guests would you like to welcome?</h1>
         </div>
         <div class="right-part">
-          <label for="capacity">Guests:</label>
-          <div class="capacity-input">
-            <div
-              class="capacity-btn minus"
-              @click="
-                spaceToEdit.capacity
-                  ? spaceToEdit.capacity--
-                  : spaceToEdit.capacity
-              "
-            >
-              -
-            </div>
-            <input
-              type="text"
-              class="capacity-num"
-              v-model="spaceToEdit.capacity"
-            />
-            <div class="capacity-btn plus" @click="spaceToEdit.capacity++">
-              +
+          <div class="capacity-box">
+            <label for="capacity">Guests:</label>
+            <div class="capacity-input">
+              <div
+                class="capacity-btn minus"
+                @click="
+                  spaceToEdit.capacity
+                    ? spaceToEdit.capacity--
+                    : spaceToEdit.capacity
+                "
+              >
+                -
+              </div>
+              <input
+                type="text"
+                class="capacity-num"
+                v-model="spaceToEdit.capacity"
+              />
+              <div class="capacity-btn plus" @click="spaceToEdit.capacity++">
+                +
+              </div>
             </div>
           </div>
-          <button class="next-btn" @click="nextSection('amenities')"></button>
+          <nav-btns-add-form
+            :currentTab="currentTab"
+            @nextPrev="nextPrev"
+          ></nav-btns-add-form>
         </div>
       </div>
 
-      <div class="amenities flex item">
+      <div class="amenities flex item" v-if="currentTab === 4">
         <div class="left-part">
           <h1>Let guests know what your place has to offer</h1>
         </div>
@@ -235,103 +251,160 @@
               <label for="security-cameras">Security cameras</label>
             </div>
           </div>
-          <button class="next-btn" @click="nextSection('imgs')"></button>
+          <nav-btns-add-form
+            :currentTab="currentTab"
+            @nextPrev="nextPrev"
+          ></nav-btns-add-form>
         </div>
       </div>
 
-      <div class="imgs flex item">
+      <div class="imgs flex item" v-if="currentTab === 5">
         <div class="left-part">
           <h1>Next, let's add some photos of your place</h1>
         </div>
         <div class="right-part">
-          <h2>Add at least 5 photos</h2>
-          <div v-if="isLoading" class="lds-ellipsis">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+          <div class="right-part-content">
+            <h2>Add at least 5 photos</h2>
+            <div v-if="isLoading" class="lds-ellipsis">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div v-else class="imgs-upload">
+              <label class="cover-photo">
+                <img v-if="imgs[0]" :src="imgs[0]" alt="" />
+                <div v-else class="img-icon"></div>
+                <input type="file" id="imgUpload" @change="onUploadImg" />
+              </label>
+              <label>
+                <img v-if="imgs[1]" :src="imgs[1]" alt="" />
+                <div v-else class="img-icon"></div>
+
+                <input
+                  type="file"
+                  name=""
+                  id="imgUpload"
+                  @change="onUploadImg"
+                />
+              </label>
+              <label>
+                <img v-if="imgs[2]" :src="imgs[2]" alt="" />
+                <div v-else class="img-icon"></div>
+
+                <input
+                  type="file"
+                  name=""
+                  id="imgUpload"
+                  @change="onUploadImg"
+                />
+              </label>
+              <label>
+                <img v-if="imgs[3]" :src="imgs[3]" alt="" />
+                <div v-else class="img-icon"></div>
+
+                <input
+                  type="file"
+                  name=""
+                  id="imgUpload"
+                  @change="onUploadImg"
+                />
+              </label>
+              <label>
+                <img v-if="imgs[4]" :src="imgs[4]" alt="" />
+                <div v-else class="img-icon"></div>
+
+                <input
+                  type="file"
+                  name=""
+                  id="imgUpload"
+                  @change="onUploadImg"
+                />
+              </label>
+            </div>
           </div>
-          <div v-else class="imgs-upload">
-            <label class="cover-photo">
-              <img v-if="imgs[0]" :src="imgs[0]" alt="" />
-              <img v-else src="../assets/img/cloud-upload.svg" />
-              <input type="file" id="imgUpload" @change="onUploadImg" />
-            </label>
-            <label>
-              <img v-if="imgs[1]" :src="imgs[1]" alt="" />
-              <img v-else src="../assets/img/cloud-upload.svg" alt="" />
-              <input type="file" name="" id="imgUpload" @change="onUploadImg" />
-            </label>
-            <label>
-              <img v-if="imgs[2]" :src="imgs[2]" alt="" />
-              <img v-else src="../assets/img/cloud-upload.svg" alt="" />
-              <input type="file" name="" id="imgUpload" @change="onUploadImg" />
-            </label>
-            <label>
-              <img v-if="imgs[3]" :src="imgs[3]" alt="" />
-              <img v-else src="../assets/img/cloud-upload.svg" alt="" />
-              <input type="file" name="" id="imgUpload" @change="onUploadImg" />
-            </label>
-            <label>
-              <img v-if="imgs[4]" :src="imgs[4]" alt="" />
-              <img v-else src="../assets/img/cloud-upload.svg" alt="" />
-              <input type="file" name="" id="imgUpload" @change="onUploadImg" />
-            </label>
-          </div>
-          <button class="next-btn" @click="nextSection('name')"></button>
+          <nav-btns-add-form
+            :currentTab="currentTab"
+            @nextPrev="nextPrev"
+          ></nav-btns-add-form>
         </div>
       </div>
 
-      <div class="name flex item">
+      <div class="name flex item" v-if="currentTab === 6">
         <div class="left-part">
           <h1>Let's give your place a name</h1>
         </div>
         <div class="right-part">
-          <h2>Create your title</h2>
-          <textarea v-model="spaceToEdit.name" maxlength="50" rows="4" />
-          <button class="next-btn" @click="nextSection('description')"></button>
+          <div class="right-part-content">
+            <h2>Create your title</h2>
+            <textarea v-model="spaceToEdit.name" maxlength="50" rows="4" />
+          </div>
+          <nav-btns-add-form
+            :currentTab="currentTab"
+            @nextPrev="nextPrev"
+          ></nav-btns-add-form>
         </div>
       </div>
 
-      <div class="description flex item">
+      <div class="description flex item" v-if="currentTab === 7">
         <div class="left-part">
           <h1>Now, let's describe your place</h1>
         </div>
         <div class="right-part">
-          <h2>Create your description</h2>
-          <textarea name="" id="" rows="4" v-model="spaceToEdit.description">
+          <div class="right-part-content">
+            <h2>Create your description</h2>
+            <textarea name="" id="" rows="4" v-model="spaceToEdit.description">
 Get comfortable and enjoy plenty of extra room at this spacious place.</textarea
-          >
-          <button class="next-btn" @click="nextSection('price')"></button>
+            >
+          </div>
+          <nav-btns-add-form
+            :currentTab="currentTab"
+            @nextPrev="nextPrev"
+          ></nav-btns-add-form>
         </div>
       </div>
 
-      <div class="price flex item">
+      <div class="price flex item" v-if="currentTab === 8">
         <div class="left-part">
           <h1>Now for the fun part—set your price</h1>
         </div>
         <div class="right-part">
-          <div class="set-price">
-            <button
-              class="price-btn minus"
-              @click="
-                spaceToEdit.price ? spaceToEdit.price-- : spaceToEdit.price
-              "
-            ></button>
-            <input
-              type="text"
-              pattern="[0-9]*"
-              v-model.number="spaceToEdit.price"
-            />
-            <button
-              class="price-btn plus"
-              @click="spaceToEdit.price++"
-            ></button>
-          </div>
+          <div class="right-part-content">
+            <div class="set-price">
+              <button
+                class="price-btn minus"
+                @click="
+                  spaceToEdit.price ? spaceToEdit.price-- : spaceToEdit.price
+                "
+              ></button>
+              <input
+                type="text"
+                pattern="[0-9]*"
+                v-model.number="spaceToEdit.price"
+              />
+              <button
+                class="price-btn plus"
+                @click="spaceToEdit.price++"
+              ></button>
+            </div>
 
-          <p>per night</p>
-          <gradient-btn @click.native="save" :text="'Save'"></gradient-btn>
+            <p>per night</p>
+            <gradient-btn @click.native="save" :text="'Save'"></gradient-btn>
+          </div>
+          <nav-btns-add-form
+            :currentTab="currentTab"
+            @nextPrev="nextPrev"
+          ></nav-btns-add-form>
         </div>
+      </div>
+
+      <div class="steps">
+        <span
+          class="step"
+          :class="{ active: currentTab === idx, finish: currentTab > idx }"
+          v-for="idx of 8"
+          :key="idx"
+        ></span>
       </div>
     </form>
   </section>
@@ -340,13 +413,16 @@ Get comfortable and enjoy plenty of extra room at this spacious place.</textarea
 <script>
 import { spaceService } from './../services/space.service';
 import { uploadImg } from './../services/img.service';
+import { eventBusService } from './../services/event-bus.service';
 import gradientBtn from '../cmps/gradient-btn.vue';
+import navBtnsAddForm from '../cmps/nav-btns-add-form.vue';
 
 export default {
   name: 'spaceEditAdd',
   data() {
     return {
       isLoading: false,
+      currentTab: 0,
       spaceToEdit: spaceService.getEmptySpace(),
       amenities: {
         TV: false,
@@ -400,9 +476,16 @@ export default {
       }
     },
 
-    nextSection(nextSection) {
-      const nextSectionEl = document.querySelector(`.${nextSection}`);
-      nextSectionEl.scrollIntoView({ behavior: 'smooth' });
+    nextPrev(diff) {
+      this.currentTab += diff;
+    },
+
+    fixStepIndicator(n) {
+      const items = document.querySelectorAll('.item');
+      items.forEach((item) => {
+        item.className = item.className.replace(' active', '');
+      });
+      items[n] += ' active';
     },
   },
   computed: {
@@ -411,6 +494,8 @@ export default {
     },
   },
   created() {
+    eventBusService.$emit('hideHeader');
+    eventBusService.$emit('hideFooter');
     if (this.spaceId) {
       this.$store
         .dispatch({ type: 'getSpaceById', spaceId: this.spaceId })
@@ -420,8 +505,14 @@ export default {
     }
   },
 
+  destroyed() {
+    eventBusService.$emit('showHeader');
+    eventBusService.$emit('showFooter');
+  },
+
   components: {
     gradientBtn,
+    navBtnsAddForm,
   },
 };
 </script>

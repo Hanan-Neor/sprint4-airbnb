@@ -2,13 +2,8 @@
   box-sizing: border-box;
 }
 
-::selection {
-  // background-color: $clr1;
-  // color: $clr6;
-}
-
-html {
-}
+// html {
+// }
 
 body {
   font-family: 'cereal-regular';
@@ -69,7 +64,7 @@ a:hover {
 }
 
 *:focus {
-  outline:none;
+  outline: none;
 }
 .lds-ellipsis {
   display: inline-block;
