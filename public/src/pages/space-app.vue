@@ -40,6 +40,7 @@ export default {
     liked(spaceId){
       // alert('hi!')
         //TODO send liked to space-store
+        
     }
   }
 

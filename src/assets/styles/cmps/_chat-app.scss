@@ -1,0 +1,10 @@
+.chat-app{
+    background-color: #f0f0f0;
+    // height: 200px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    li{
+        list-style: none;
+    }
+}

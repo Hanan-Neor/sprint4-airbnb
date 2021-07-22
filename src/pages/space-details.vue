@@ -110,7 +110,7 @@ export default {
   async created() {
     try {
       socketService.on("updateViewerCount", this.updateViewerCount);
-      socketService.emit('newViewer', this.$route.params.spaceId);
+      socketService.emit('newViewer', this.spaceId);
       this.$store.commit({type:'showViewers'})
 // if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
 //   alert('before unload');
@@ -303,8 +303,9 @@ export default {
   },
   async beforeDestroy() {
     try{
+      socketService.emit('removeViewer', this.spaceId);
       console.log(this.spaceId, '***************')
-      await socketService.emit('removeViewer', this.spaceId);
+      // alert(123)
       // socketService.terminate();
     console.log('about to leave page', this.getMsg)
   } catch(err) {

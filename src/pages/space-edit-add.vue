@@ -417,6 +417,7 @@ import { uploadImg } from './../services/img.service';
 import { eventBusService } from './../services/event-bus.service';
 import gradientBtn from '../cmps/gradient-btn.vue';
 import navBtnsAddForm from '../cmps/nav-btns-add-form.vue';
+import { socketService } from '../services/socket.service';
 
 export default {
   name: 'spaceEditAdd',

@@ -1,4 +1,5 @@
 import { orderService } from '../../services/order.service.js';
+import { socketService } from '../../services/socket.service.js';
 
 export const orderStore = {
   state: {
@@ -63,6 +64,7 @@ export const orderStore = {
       try {
         const savedOrder = await orderService.save(order);
         commit({ type, order: savedOrder });
+        socketService.emit('spaceBooked', order.stay._id)
         return savedOrder;
       } catch (err) {
         console.log('Cannot save order', review, orderId);

@@ -1,5 +1,6 @@
 <template>
   <section class="space-preview">
+    <div class="liked-msg rotateOutUpRight" v-if="msg">{{msg}} </div>
     <router-link :to="'/space/' + space._id">
       <svg
         @click.prevent="like"
@@ -79,6 +80,7 @@
 import carousel from './carousel';
 import carouselSlide from './carouselSlide';
 import { eventBusService } from './../../services/event-bus.service.js';
+import { socketService } from '../../services/socket.service';
 
 export default {
   name: '',
@@ -93,6 +95,7 @@ export default {
       // likeColor: 'rgb(255, 56, 92)'
 
       slides: this.space.imgUrls,
+      msg:'',
     };
   },
   // watch:{
@@ -102,6 +105,22 @@ export default {
 
   // },
   methods: {
+    showLikeMsg(spaceId){
+      if (this.space._id === spaceId){
+        this.msg='' //this is so the amination will restart when this.msg is set //QUQU
+        console.log('space liked', spaceId);
+        this.msg = 'liked'
+      // setTimeout(() => {this.msg = ''}, 2000)      
+      }
+      }, 
+      showBookedMsg(spaceId){
+        if (this.space._id === spaceId){
+          this.msg = '' //this is so the amination will restart when this.msg is set //QUQU
+        console.log('booked', spaceId);
+        this.msg = 'booked'
+      // setTimeout(() => {this.msg = ''}, 2000)      
+      }
+      },
     isliked2() {
       // this.isLiked = this.islikedByUser
       this.isLiked = this.islikedByUser ? true : false;
@@ -115,6 +134,7 @@ export default {
 
       if (!user.likedSpacesIds.includes(this.space._id)) {
         user.likedSpacesIds.push(this.space._id);
+        socketService.emit('spaceLiked', this.space._id)
       } else {
         const idx = user.likedSpacesIds.findIndex((spaceId) => {
           return spaceId === this.space._id;
@@ -261,6 +281,9 @@ export default {
   },
   created() {
     this.isLiked = this.islikedByUser ? true : false;
+    socketService.emit('joinSpacePreview',this.space._id, 'spacePreview')
+    socketService.on('spaceLiked', this.showLikeMsg)
+    socketService.on('spaceBooked', this.showBookedMsg)
     // this.likeColor = ''
     // if(this.isLiked) this.likeColor = 'rgb(255, 56, 92)'
     // this.like()
@@ -272,6 +295,55 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 
 <style>
+.rotateOutUpRight {
+  -webkit-animation-name: rotateOutUpRight;
+  animation-name: rotateOutUpRight;
+  -webkit-animation-duration:3s;
+  animation-duration: 3s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  }
+  @-webkit-keyframes rotateOutUpRight {
+  0% {
+  -webkit-transform-origin: right bottom;
+  transform-origin: right bottom;
+  opacity: 1;
+  }
+  100% {
+  -webkit-transform-origin: right bottom;
+  transform-origin: right bottom;
+  -webkit-transform: rotate3d(0, 0, 1, 90deg);
+  transform: rotate3d(0, 0, 1, 90deg);
+  opacity: 0;
+  }
+  }
+  @keyframes rotateOutUpRight {
+  0% {
+  -webkit-transform-origin: right bottom;
+  transform-origin: right bottom;
+  opacity: 1;
+  }
+  100% {
+  -webkit-transform-origin: right bottom;
+  transform-origin: right bottom;
+  -webkit-transform: rotate3d(0, 0, 1, 90deg);
+  transform: rotate3d(0, 0, 1, 90deg);
+  opacity: 0;
+  }
+  } 
+.liked-msg{
+  top:6px;
+  right: 15px;
+  z-index: 1;
+  /* background-color: red; */
+  color: #FF385C;
+  background-color: white;
+  border-radius: 40%;
+  padding: 2px;
+  border: 2px solid #FF385C;
+  font-size: 12px;
+  position: absolute;
+}
 .app {
   display: flex;
   justify-content: center;
