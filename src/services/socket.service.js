@@ -20,7 +20,6 @@ function createSocketService() {
   var socket = io(baseUrl)
   const socketService = {
     async setup() {
-      // YaronB: Need to send a dummy ajax request as to setup the socket-session correctly
       await httpService.get('setup-session') //SERVER STORAGE
       socket = io(baseUrl, { reconnection: false}) //SERVER STORAGE
       // socket = io(baseUrl);

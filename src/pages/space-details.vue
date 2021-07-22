@@ -1,8 +1,10 @@
 <template>
   <div class="space-details main-layout" v-if="space.imgUrls">
     <h2 class="space-title-primary">{{ space.name }}</h2>
-    {{}}
-    <msg :spaceId="this.$route.params.spaceId"/>
+    <!-- details page: {{getMsg}}  -->
+
+
+    <msg :spaceId="spaceId" :msg="getMsg" v-if="showViewers" />
     <div class="space-title-secondary">
       <div class="left-part">
         <div class="rating">
@@ -105,31 +107,41 @@ import showMore from './../cmps/show-more.vue';
 import { spaceService } from '../services/space.service.js';
 import spaceReserve from './../cmps/space-details/space-reserve.vue';
 import msg from './../cmps/msg.vue';
+import { socketService } from '../services/socket.service';
 
 export default {
   name: 'space-details',
   async created() {
     try {
       socketService.on("updateViewerCount", this.updateViewerCount);
-      await socketService.emit('newViewer', this.$route.params.spaceId);
-      this.ready = true
+      socketService.emit('newViewer', this.$route.params.spaceId);
+      this.$store.commit({type:'showViewers'})
+// if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
+//   alert('before unload');
+// }
+
+
+      // this.ready = true
     } catch (err) {
       console.log('error in created in space-details', err);
       throw err;
     }
   },
+  beforeUnmount(){
+    alert('before unload');
+  },
 
   data() {
     return {
       // viewerCount: 0,
-      ready: false,
-      msg: 'msg...',
+      spaceId: this.$route.params.spaceId,
+      // ready: false,
+      msg: 'unset',
       space: {
         loc: {},
         reviews: [],
       },
       host: {},
-
       order: {
         hostId: '',
         createdAt: 0,
@@ -164,15 +176,15 @@ export default {
   },
 
   computed: {
+    showViewers(){
+      console.log('viewers open', this.$store.getters.showViewers);
+      return this.$store.getters.showViewers},
+    getMsg(){return this.msg},//TODO remove - this is for testing
     reviewsToShow() {
       const { reviews } = this.space;
       if (!reviews) return;
 
       return reviews.slice(0, 6);
-    },
-
-    getMsg() {
-      return this.msg;
     },
     totalRate() {
       const { reviews } = this.space;
@@ -189,12 +201,10 @@ export default {
       }, 0);
       return (sum / (reviews.length * 6)).toFixed(2);
     },
-
     numOfReviews() {
       if (!this.space.reviews) return;
       return this.space.reviews.length;
     },
-
     categoryRate() {
       const { reviews } = this.space;
       if (!reviews) return;
@@ -225,7 +235,8 @@ export default {
 
   methods: {
     updateViewerCount(count){
-      console.log('count****', count);
+      console.log('count in page****', count);
+      this.msg = count
     },
     icon(amenity) {
       return amenity.toLowerCase().replace(' ', '-');
@@ -248,7 +259,7 @@ export default {
       this.msg = count;
       console.log(this.msg);
     },
-    showBokedMsg() {
+    showBookedMsg() {
       console.log('booked!');
     },
   },
@@ -292,8 +303,16 @@ export default {
     spaceReserve,
     msg,
   },
-  beforeDestroy() {
-    socketService.emit('removeViewer', this.$route.params.spaceId);
+  async beforeDestroy() {
+    try{
+      console.log(this.spaceId, '***************')
+      await socketService.emit('removeViewer', this.spaceId);
+      // socketService.terminate();
+    console.log('about to leave page', this.getMsg)
+  } catch(err) {
+    console.log(err);
+    throw err
+  }
   },
 };
 </script>

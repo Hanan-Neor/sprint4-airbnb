@@ -7,10 +7,11 @@
               {{space.name}} by {{space.host.fullname}} 
               <!-- {{space._id}} -->
               <button @click="deleteSpace(space)">delete</button>
-              <button @click="editSpace(space)">edit coming soon</button>
+              <button @click="editSpace(space)">edit</button>
               </li>
          
       </ul>
+      <router-link :to="'/space/host/edit'">add a new space</router-link>
   </div>
 </template>
 
@@ -67,9 +68,13 @@ export default {
             }
         },
         async editSpace(space){
-            alert('edit this space', space.name)
+            //TODO remove these 2 lines when have edit form
+            const newName = prompt('enter new name')
+            space.name = newName
              try{ 
-
+                 const savedSpace = await this.$store.dispatch({type:'saveSpace', space})
+                    console.log('savedSpace', savedSpace);
+                    
             } catch (err) {
                 console.log('getSpacesForHost', err);
                 throw err;

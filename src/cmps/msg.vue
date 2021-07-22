@@ -1,16 +1,16 @@
 <template>
   <div class="msg">
-    <p>{{ getMsg }} people are viewing this space</p>
+    <p>{{ msg }}</p>
   </div>
 </template>
 
 <script>
 import { socketService } from '../services/socket.service';
 export default {
-    props:['spaceId'],
+    props:['spaceId', 'msg'],
     created(){
         // socketService.emit("spaceView", this.spaceId);
-        socketService.on("updateViewerCount", this.showViewMsg);
+        socketService.on("updateViewerCount", this.updateMsg);
         // socketService.on("viewingSpace", this.showViewMsg);
         //TODO add listener for removing a booked space
         // socketService.on("bookedSpace", this.showBookedMsg);
@@ -18,32 +18,44 @@ export default {
     },
     data(){
         return {
-        msg:0,
+        msgD:this.msg,
         viewerCount: 0
 
         }
     },
     methods:{
-        showViewMsg(count){
-            console.log('count ******', count);
-            this.msg=count
+        updateMsg(msg){
+            console.log('updaing msg in msg', msg);
+            this.msgD=msg
         },
-        showBookedMsg(){
-            console.log('showBookedMsg...');
-        },
-        removeSpaceView(){
-            this.msg -= 1
-            console.log('a space view removed', this.msg);
-        }
+        // showBookedMsg(){
+        //     console.log('showBookedMsg...');
+        // },
+        // removeSpaceView(){
+        //     this.msg -= 1
+        //     console.log('a space view removed', this.msgD);
+        // }
     },
     computed:{
-        getMsg(){
-            return this.msg
+        msgC(){
+            return this.msgD
             }
     },
-    destroyed() {
-    socketService.off('updateViewerCount')
-    },
+    // beforeDestroy() {
+    //     socketService.emit('removeViewer', this.$route.params.spaceId);
+    // socketService.off('updateViewerCount')
+    // },
+
+  //    async beforeDestroy() {
+  //   try{
+  //     await socketService.emit('removeViewer', this.$route.params.spaceId);
+      
+  //   console.log('about to leave page', this.getMsg)
+  // } catch(err) {
+  //   console.log(err);
+  //   throw err
+  // }
+  // },
 
 }
 </script>

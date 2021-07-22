@@ -3,6 +3,7 @@ import { filterService } from '../../services/filterFunctions';
 
 export const spaceStore = {
   state: {
+    showViewers: false,
     spaces: [],
     filterBy: {
       amenity: 'all',
@@ -19,6 +20,7 @@ export const spaceStore = {
     appPageSize: 10//TODO take out of cmps and pages and use only here - or use only in page w props //QUQU which is better
   },
   getters: {
+    showViewers(state){ return state.showViewers},
     spaceRatings(state){
       if (!state.spaces || !state.spaces.length) return 
       return state.spaces.map(space => {
@@ -109,6 +111,7 @@ export const spaceStore = {
         hostId: '',
       };console.log('filter clear');
     },
+    showViewers(state){state.showViewers = true}
     // addReview(state, { space }) {
     //   const idx = state.spaces.findIndex((t) => t._id === space._id);
     //   state.spaces.splice(idx, 1, space);
