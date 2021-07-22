@@ -58,7 +58,7 @@
           />
         </div>
 
-<!-- <div class="filter-div">
+        <!-- <div class="filter-div">
         <input
           type="date"
           placeholder="checkin"
@@ -74,14 +74,12 @@
         />
         </div> -->
 
-<div class="filter-div" :class="{ clicked: isDateClicked }">
-              <reserve-date @dateToReserve="dateToReserve2" @focus="clicked('date')" />
-      </div>
-
-
-
-
-
+        <div class="filter-div" :class="{ clicked: isDateClicked }">
+          <reserve-date
+            @dateToReserve="dateToReserve2"
+            @focus="clicked('date')"
+          />
+        </div>
 
         <div
           @click="toggleForm()"
@@ -103,31 +101,36 @@
           </div>
         </div>
 
-    <filter-form v-if="isGuestsClicked" @guestsCnt="setGuestsCnt" @set-filter="updateFilter" @close-form="toggleForm" />
-    <!-- <filter-form v-if="isFormOpen" @set-filter="updateFilter" @close-form="toggleForm" /> -->
+        <filter-form
+          v-if="isGuestsClicked"
+          @guestsCnt="setGuestsCnt"
+          @set-filter="updateFilter"
+          @close-form="toggleForm"
+        />
+        <!-- <filter-form v-if="isFormOpen" @set-filter="updateFilter" @close-form="toggleForm" /> -->
       </template>
     </form>
   </div>
 </template>
 
 <script>
-import filterForm from './filter-form.vue'
-import reserveDate from './space-details/reserve-date.vue'
+import filterForm from './filter-form.vue';
+import reserveDate from './space-details/reserve-date.vue';
 export default {
   created() {
     console.log(this.showingFilters);
   },
   data() {
     return {
-      isDateClicked:false,
+      isDateClicked: false,
       guestsClicked: false,
       isTextClicked: false,
       isGuestsClicked: false,
       filterBy: {
-        amenity: "all",
+        amenity: 'all',
         amenities: [],
-        type: "all",
-        location: "",
+        type: 'all',
+        location: '',
         // numGuests: 0,
         numGuests: 0,
         dates: { startDate: 0, endDate: 0 },
@@ -139,52 +142,51 @@ export default {
     };
   },
   methods: {
-    setGuestsCnt(gusets){
-        this.filterBy.numGuests=gusets
+    setGuestsCnt(gusets) {
+      this.filterBy.numGuests = gusets;
     },
     toggleForm() {
       this.formOpen = !this.formOpen;
     },
     async updateFilter(field, value) {
-
       this.filterBy.numGuests = value;
-      console.log("setting filter...", this.filterBy);
+      console.log('setting filter...', this.filterBy);
       try {
         this.$store.commit({
-          type: "setFilterField",
+          type: 'setFilterField',
           field: field,
           value: value,
         });
-        await this.$store.dispatch({ type: "loadSpaces" });
+        await this.$store.dispatch({ type: 'loadSpaces' });
       } catch (err) {
-        console.log("error in store moving to space-app from homepage", err);
+        console.log('error in store moving to space-app from homepage', err);
         throw err;
       }
     },
 
     clicked(x) {
       switch (x) {
-        case "Guests":
+        case 'Guests':
           this.isGuestsClicked = !this.isGuestsClicked;
           break;
-        case "Text":
+        case 'Text':
           this.isTextClicked = !this.isTextClicked;
           break;
-        case "date":
+        case 'date':
           this.isDateClicked = !this.isDateClicked;
           break;
       }
     },
     async filterSpaces() {
-      console.log("setting filter", this.filterBy.location);
+      console.log('setting filter', this.filterBy.location);
       try {
         await this.$store.commit({
-          type: "setFilter",
+          type: 'setFilter',
           filterBy: this.filterBy,
         });
-        this.$store.dispatch({ type: "loadSpaces" });
+        this.$store.dispatch({ type: 'loadSpaces' });
       } catch (err) {
-        console.log("error in space filter", "this.filterBy");
+        console.log('error in space filter', 'this.filterBy');
         throw err;
       }
     },
@@ -193,9 +195,9 @@ export default {
         //   this.state = false
         this.showFilters = false;
       }
-      if(!document.querySelector('.guests-filter').contains(e.target)){
-        this.isGuestsClicked = false;
-      }
+      // if(!document.querySelector('.guests-filter').contains(e.target)){
+      //   this.isGuestsClicked = false;
+      // }
     },
 
     setShowFilters() {
@@ -203,41 +205,42 @@ export default {
     },
   },
   mounted() {
-    document.addEventListener("click", this.close);
+    document.addEventListener('click', this.close);
   },
   beforeDestroy() {
-    document.removeEventListener("click", this.close);
+    document.removeEventListener('click', this.close);
   },
   computed: {
-    isFormOpen(){
-      return this.formOpen
+    isFormOpen() {
+      return this.formOpen;
     },
     buttonText() {
-        if (this.filterBy.location && !this.filterBy.numGuests) return `${this.filterBy.location} | Add guests`
-        if(!this.filterBy.location && this.filterBy.numGuests) return `Add location | ${this.filterBy.numGuests} Guests`
-        if(this.filterBy.location && this.filterBy.numGuests) return `${this.filterBy.location} | ${this.filterBy.numGuests} Guests`
-        return "Start your search";
+      if (this.filterBy.location && !this.filterBy.numGuests)
+        return `${this.filterBy.location} | Add guests`;
+      if (!this.filterBy.location && this.filterBy.numGuests)
+        return `Add location | ${this.filterBy.numGuests} Guests`;
+      if (this.filterBy.location && this.filterBy.numGuests)
+        return `${this.filterBy.location} | ${this.filterBy.numGuests} Guests`;
+      return 'Start your search';
 
       // if (this.filterBy.location){
       //   if(this.filterBy.numGuests) return `${this.filterBy.location} | ${this.filterBy.numGuests} Guests`;
       //   else return this.filterBy.location
-      //   } 
+      //   }
       // else {
       //   return "Start your search";
       // }
     },
     guestsText() {
-      return this.filterBy.numGuests ? this.filterBy.numGuests : "Add guests";
+      return this.filterBy.numGuests ? this.filterBy.numGuests : 'Add guests';
     },
     showingFilters() {
       return this.showFilters;
     },
   },
-  components:{
+  components: {
     filterForm,
-    reserveDate
-  }
+    reserveDate,
+  },
 };
 </script>
-
-

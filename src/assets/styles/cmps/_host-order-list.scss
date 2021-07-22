@@ -1,0 +1,78 @@
+.host-order-list {
+  margin-top: 2rem;
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    color: $clr2;
+
+    .host-order-item {
+      border: 1px solid $clr4;
+      border-radius: 15px;
+      padding: 0.5rem 2rem;
+
+      display: grid;
+      grid-template-columns: 75px 2fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      justify-content: center;
+      align-items: center;
+      .profile-pic {
+        grid-row: span 2;
+        height: 50px;
+        width: 50px;
+        // place-self: center;
+        border-radius: 50%;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+      }
+      .user-name {
+        font-family: 'cereal-Medium';
+        font-size: 1.125rem;
+        align-self: center;
+        margin: 0;
+      }
+      .order-details {
+        grid-row: 2/3;
+        grid-column: 2/3;
+      }
+      .order-panel {
+        grid-row: 2/3;
+        grid-column: 3;
+        justify-self: self-end;
+
+        & > * {
+          cursor: pointer;
+          background-color: white;
+          border: 0;
+          font-size: 1.125rem;
+          padding: 0.5rem;
+
+          &::before {
+            font-family: 'awesome-light';
+          }
+
+          &:hover {
+            color: $clr1;
+          }
+        }
+        .confirm {
+          &::before {
+            content: '\f00c';
+          }
+        }
+        .decline {
+          &::before {
+            content: '\f00d';
+          }
+        }
+        .edit {
+          &::before {
+            content: '\f304';
+          }
+        }
+      }
+    }
+  }
+}
