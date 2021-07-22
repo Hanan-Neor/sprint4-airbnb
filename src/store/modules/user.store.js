@@ -80,7 +80,8 @@ export const userStore = {
     async signup({ commit }, { userCred }) {
       try {
         const user = await userService.signup(userCred);
-        commit({ type: 'setLoggedinUser', user });
+        // commit({ type: 'setLoggedinUser', user });
+        commit({ type: 'setUser', user });
         return user;
       } catch (err) {
         console.log('userStore: Error in signup', err);

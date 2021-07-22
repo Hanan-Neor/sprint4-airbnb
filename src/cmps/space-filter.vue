@@ -12,7 +12,7 @@
         v-show="!showingFilters"
         class="start"
         @click="setShowFilters"
-        style="width: 300px"
+        style="width: fit-content"
       >
         <!-- <div>start your search</div> -->
         <div class="filter-div">{{ buttonText }}</div>
@@ -44,7 +44,10 @@
         </div>
       </div>
       <template v-if="showingFilters" style="width: fit-content">
-        <div class="text-filter filter-div" :class="{ clicked: isTextClicked }">
+        <div
+          class="text-filter filter-div filter-div-hover"
+          :class="{ clicked: isTextClicked }"
+        >
           <!-- <div></div> -->
           <label for="text">Location</label>
           <input
@@ -58,7 +61,7 @@
           />
         </div>
 
-<!-- <div class="filter-div">
+        <!-- <div class="filter-div">
         <input
           type="date"
           placeholder="checkin"
@@ -74,18 +77,20 @@
         />
         </div> -->
 
-<div class="filter-div" :class="{ clicked: isDateClicked }">
-              <reserve-date @dateToReserve="dateToReserve2" @focus="clicked('date')" />
-      </div>
+        <div
+          class="filter-div date-filter filter-div-hover"
+          :class="{ clicked: isDateClicked }"
+          @click="clicked('date')"
+          style="padding-top:0px;padding-bottom:0px;"
+        >
+          <!-- <label for="text">Location</label> -->
 
-
-
-
-
+          <reserve-date-filter @dateToReserve="dateToReserve" :dates="filterBy.dates" />
+        </div>
 
         <div
           @click="toggleForm()"
-          class="flex align-center"
+          class="flex align-center filter-div-hover"
           style="border-radius: 3rem"
           :class="{ clicked: isGuestsClicked }"
         >
@@ -103,23 +108,28 @@
           </div>
         </div>
 
-    <filter-form v-if="isGuestsClicked" @guestsCnt="setGuestsCnt" @set-filter="updateFilter" @close-form="toggleForm" />
-    <!-- <filter-form v-if="isFormOpen" @set-filter="updateFilter" @close-form="toggleForm" /> -->
+        <filter-form
+          v-if="isGuestsClicked"
+          @guestsCnt="setGuestsCnt"
+          @set-filter="updateFilter"
+          @close-form="toggleForm"
+        />
+        <!-- <filter-form v-if="isFormOpen" @set-filter="updateFilter" @close-form="toggleForm" /> -->
       </template>
     </form>
   </div>
 </template>
 
 <script>
-import filterForm from './filter-form.vue'
-import reserveDate from './space-details/reserve-date.vue'
+import filterForm from "./filter-form.vue";
+import reserveDateFilter from "./space-details/reserve-date-filter.vue";
 export default {
   created() {
     console.log(this.showingFilters);
   },
   data() {
     return {
-      isDateClicked:false,
+      isDateClicked: false,
       guestsClicked: false,
       isTextClicked: false,
       isGuestsClicked: false,
@@ -139,14 +149,19 @@ export default {
     };
   },
   methods: {
-    setGuestsCnt(gusets){
-        this.filterBy.numGuests=gusets
+    dateToReserve(date) {
+      this.filterBy.dates.startDate = date[0];
+      this.filterBy.dates.endDate = date[1];
+      // console.log(this.filterBy.dates.startDate,this.filterBy.dates.endDate);
+    },
+
+    setGuestsCnt(gusets) {
+      this.filterBy.numGuests = gusets;
     },
     toggleForm() {
       this.formOpen = !this.formOpen;
     },
     async updateFilter(field, value) {
-
       this.filterBy.numGuests = value;
       console.log("setting filter...", this.filterBy);
       try {
@@ -193,8 +208,15 @@ export default {
         //   this.state = false
         this.showFilters = false;
       }
-      if(!document.querySelector('.guests-filter').contains(e.target)){
-        this.isGuestsClicked = false;
+      if (document.querySelector(".guests-filter")) {
+        if (!document.querySelector(".guests-filter").contains(e.target)) {
+          this.isGuestsClicked = false;
+        }
+      }
+      if (document.querySelector(".date-filter")) {
+        if (!document.querySelector(".date-filter").contains(e.target)) {
+          this.isDateClicked = false;
+        }
       }
     },
 
@@ -209,19 +231,41 @@ export default {
     document.removeEventListener("click", this.close);
   },
   computed: {
-    isFormOpen(){
-      return this.formOpen
+    isFormOpen() {
+      return this.formOpen;
     },
     buttonText() {
-        if (this.filterBy.location && !this.filterBy.numGuests) return `${this.filterBy.location} | Add guests`
-        if(!this.filterBy.location && this.filterBy.numGuests) return `Add location | ${this.filterBy.numGuests} Guests`
-        if(this.filterBy.location && this.filterBy.numGuests) return `${this.filterBy.location} | ${this.filterBy.numGuests} Guests`
-        return "Start your search";
+      let buttonStng = ``;
+      if (
+        !this.filterBy.location &&
+        !this.filterBy.numGuests &&
+        !this.filterBy.dates.startDate &&
+        !this.filterBy.dates.endtDate
+      ) {
+        buttonStng += `Start your search`;
+      } else {
+        buttonStng += this.filterBy.location
+          ? this.filterBy.location+'  ∘ '
+          : ``;
+        buttonStng += this.filterBy.dates.startDate
+          ? this.filterBy.dates.startDate.toLocaleDateString()+' - '
+          : ``;
+        buttonStng += this.filterBy.dates.endDate
+          ? this.filterBy.dates.endDate.toLocaleDateString()+'  ∘ '
+          : ``;
+        buttonStng += this.filterBy.numGuests
+          ? this.filterBy.numGuests+' Guests'
+          : ``;
+      }
+      // return `Add location | ${this.filterBy.numGuests} Guests`
+      // if(this.filterBy.location && this.filterBy.numGuests) return `${this.filterBy.location} | ${this.filterBy.numGuests} Guests`
+      // return "Start your search";
+      return buttonStng;
 
       // if (this.filterBy.location){
       //   if(this.filterBy.numGuests) return `${this.filterBy.location} | ${this.filterBy.numGuests} Guests`;
       //   else return this.filterBy.location
-      //   } 
+      //   }
       // else {
       //   return "Start your search";
       // }
@@ -233,10 +277,10 @@ export default {
       return this.showFilters;
     },
   },
-  components:{
+  components: {
     filterForm,
-    reserveDate
-  }
+    reserveDateFilter,
+  },
 };
 </script>
 
