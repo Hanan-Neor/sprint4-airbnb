@@ -58,10 +58,10 @@ export const orderStore = {
         throw err;
       }
     },
-    async saveOrder({ commit }, payload) {
-      const type = payload.order._id ? 'updateOrder' : 'addOrder';
+    async saveOrder({ commit }, { order }) {
+      const type = order._id ? 'updateOrder' : 'addOrder';
       try {
-        const savedOrder = await orderService.save(payload.order);
+        const savedOrder = await orderService.save(order);
         commit({ type, order: savedOrder });
         return savedOrder;
       } catch (err) {

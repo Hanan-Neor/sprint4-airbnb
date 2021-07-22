@@ -1,18 +1,18 @@
- .svg-img-loader{
+.svg-img-loader {
   position: relative;
-  top:50%;
-  left:50%;
-  transform: translate(-50% ,-50%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .space-details {
   font-family: cereal-regular;
+  padding-top: 2rem;
   .space-title-primary {
     font-size: 1.625rem;
     margin: 0;
     margin-bottom: 12px;
     color: $clr2;
   }
-
 
   .space-title-secondary {
     display: flex;
