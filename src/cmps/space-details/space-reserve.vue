@@ -45,11 +45,7 @@ export default {
           end: '',
         },
         guests: 1,
-        // guests:{
-        //     adults:null
-        // }
-
-        total: 0,
+        totalPrice: 0,
       },
       days: 1,
     };
@@ -66,14 +62,15 @@ export default {
   },
 
   methods: {
-    async submit() {
-      console.log(this.reserve);
-      try {
-        await this.$store.dispatch({ type: 'saveOrder', order: this.reserve });
-        this.$router.push('/');
-      } catch (err) {
-        console.log('cannot submit order', err);
-      }
+    submit() {
+      if (!this.reserve.date.start) return;
+      this.$emit('reserve', this.reserve);
+      // try {
+      //   await this.$store.dispatch({ type: 'saveOrder', order: this.reserve });
+      //   this.$router.push('/');
+      // } catch (err) {
+      //   console.log('cannot submit order', err);
+      // }
     },
 
     dateToReserve2(date) {
@@ -83,12 +80,14 @@ export default {
       const end = new Date(this.reserve.date.end);
       const diffInTime = end.getTime() - start.getTime();
       this.days = diffInTime / (1000 * 3600 * 24);
-      this.reserve.total = this.space.price * this.days * this.reserve.guests;
+      this.reserve.totalPrice =
+        this.space.price * this.days * this.reserve.guests;
     },
 
     guestsToSave2(guests) {
       this.reserve.guests = guests;
-      this.reserve.total = this.space.price * this.days * this.reserve.guests;
+      this.reserve.totalPrice =
+        this.space.price * this.days * this.reserve.guests;
     },
   },
 

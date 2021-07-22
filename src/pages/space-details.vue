@@ -80,21 +80,17 @@
       <review-list :reviews="reviewsToShow"></review-list>
     </div>
 
-    
-
     <div class="map-container" v-if="this.space.loc.lat">
       <p class="map-title">Where you'll be</p>
       <google-maps :loc="space.loc" v-if="space.loc.lat"></google-maps>
       <div class="" v-else>loading</div>
       <p class="space-location">{{ space.loc.address }}</p>
     </div>
-<chat-app :space="space" />
-    
+    <chat-app :space="space" />
   </div>
-    <div v-else>
+  <div v-else>
     <img class="svg-img-loader" src="@/assets/img/loading.svg" />
   </div>
-
 </template>
 
 <script>
@@ -241,14 +237,16 @@ export default {
     icon(amenity) {
       return amenity.toLowerCase().replace(' ', '-');
     },
-    reserveToSave(reserve) {
-      // console.log(reserve);
-      let order = reserve;
-      this.order.guests = order.guests;
-      this.order.startDate = order.date.start;
-      this.order.endDate = order.date.end;
-      order = this.order;
-      this.$store.dispatch({ type: 'saveOrder', order });
+    async reserveToSave(reserve) {
+      this.order.guests = reserve.guests;
+      this.order.startDate = reserve.date.start;
+      this.order.endDate = reserve.date.end;
+      this.order.totalPrice = reserve.totalPrice;
+      try {
+        await this.$store.dispatch({ type: 'saveOrder', order: this.order });
+      } catch (error) {
+        console.log('cannot make order', error);
+      }
       // tripToOrder
       // this.$store.dispatch({ type: 'tripToOrder' });
       // this.$store.commit('tripToOrder')

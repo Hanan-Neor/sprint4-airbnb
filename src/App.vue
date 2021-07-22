@@ -15,11 +15,13 @@ export default {
   data() {
     return {};
   },
-  computed:{
-    coverVisibility(){
-      console.log(" ");
-      return [{'visible-cover': this.$store.getters.coverVisible}, {'hidden-cover': !this.$store.getters.coverVisible}]
-    }
+  computed: {
+    coverVisibility() {
+      return [
+        { 'visible-cover': this.$store.getters.coverVisible },
+        { 'hidden-cover': !this.$store.getters.coverVisible },
+      ];
+    },
   },
   components: {
     appHeader,
