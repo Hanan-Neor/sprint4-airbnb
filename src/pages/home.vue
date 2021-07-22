@@ -106,6 +106,7 @@ export default {
   },
   methods: {
     async gotoCountrySpaces(country) {
+      console.log(this.$router.history.current.name);
       this.$store.commit({
         type: "setFilterField",
         field: "country",
