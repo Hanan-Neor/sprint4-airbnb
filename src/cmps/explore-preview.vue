@@ -1,15 +1,16 @@
 <template>
   <section class="space-preview" @click="gotoSpaces">
     <!-- <router-link :to="'/space/'"> -->
-    <carousel>
+    <home-carousel >
       <carousel-slide
+      
         v-for="(slide, idx) in slides"
         :key="idx"
         class="carousel-slider"
       >
         <img :src="slide" :alt="slide" />
       </carousel-slide>
-    </carousel>
+    </home-carousel>
 
     <div class="name-price flex">
       <!-- <div>{{ explore.name }}</div> -->
@@ -24,7 +25,7 @@
 </template>
 
 <script>
-import carousel from './space-app/carousel.vue';
+import homeCarousel from './space-app/home-carousel.vue';
 import carouselSlide from './space-app/carouselSlide';
 export default {
   name: '',
@@ -43,6 +44,7 @@ export default {
       else this.picIdx--;
     },
     nextPic() {
+      // alert('hi')
       if (this.picIdx === this.explore.imgUrls.length - 1) this.picIdx = 0;
       else this.picIdx++;
     },
@@ -99,7 +101,7 @@ export default {
   },
   components: {
     carouselSlide,
-    carousel,
+    homeCarousel,
   },
   created() {
     this.distanceToShow;

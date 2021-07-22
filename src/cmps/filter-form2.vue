@@ -7,9 +7,9 @@
           <p class="comment">Ages 13 or above</p>
         </label>
         <div class="count-picker">
-          <button class="more" @click.stop="editGuests('adults', -1)">-</button>
+          <button class="more" @click="editGuests('adults', -1)">-</button>
           <input type="number" v-model="guests.adults" id="adults" />
-          <button class="less" @click.stop="editGuests('adults',1)">+</button>
+          <button class="less" @click="editGuests('adults',1)">+</button>
         </div>
       </div>
 
@@ -19,9 +19,9 @@
           <p class="comment">Ages 2-12</p>
         </label>
         <div class="count-picker">
-          <button class="more" @click.stop="editGuests('childen',-1)">-</button>
+          <button class="more" @click="editGuests('childen',-1)">-</button>
           <input type="number" v-model="guests.children" id="children" />
-          <button class="less" @click.stop="editGuests('children',1)">+</button>
+          <button class="less" @click="editGuests('children',1)">+</button>
         </div>
       </div>
 
@@ -31,9 +31,9 @@
           <p class="comment">Under 2</p>
         </label>
         <div class="count-picker">
-          <button class="more" @click.stop="editGuests('infants',-1)">-</button>
+          <button class="more" @click="editGuests('infants',-1)">-</button>
           <input type="number" v-model="guests.infants" id="infants"/>
-          <button class="less" @click.stop="editGuests('infants',1)">+</button>
+          <button class="less" @click="editGuests('infants',1)">+</button>
         </div>
       </div>
 
@@ -41,7 +41,7 @@
 
     <div class="submit">
       <div class="flex">
-        <button @click.stop="clearInput" class="clear">Clear</button>
+        <button @click="clearInput" class="clear">Clear</button>
 
         <button class="btn-save" @click="setFilter">save</button>
       </div>
@@ -51,6 +51,7 @@
 
 <script>
 export default {
+  // props:['guests'],
   data() {
     return {
       guests:{
@@ -65,7 +66,9 @@ export default {
         console.log('editing guests', type, direction);
       if (this.guests[type] === 0 && direction === -1) return;
       this.guests[type] += direction;
-      this.$emit('guestsCnt',this.gusets)
+
+      this.$emit("set-filter", 'numGuests', this.guests.adults + this.guests.children);
+
     },
     clearInput(){
       this.guests = {

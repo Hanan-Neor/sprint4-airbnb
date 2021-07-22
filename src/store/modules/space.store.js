@@ -89,7 +89,7 @@ export const spaceStore = {
       state.spaces.push(space);
     },
     setFilter(state, { filterBy }) {
-      debugger
+      // debugger
       state.filterBy = filterBy;
     },
     setFilterField(state, { field, value }) {
