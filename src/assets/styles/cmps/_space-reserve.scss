@@ -6,15 +6,26 @@
   border-radius: 15px;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
   position: sticky;
-  height: 75%;
+  margin-bottom: auto;
+  justify-self: flex-end;
+
   top: 0;
+  width: 95%;
 
   .space-reserve-details {
     display: flex;
     justify-content: space-between;
-    .rating {
+    align-items: center;
+    .price {
+      span {
+        font-family: 'cereal-Medium';
+        font-size: 1.125rem;
+      }
+    }
+    .rating-form {
       display: flex;
       gap: 0.4rem;
+      font-size: 0.9rem;
 
       .star::before {
         right: 35px;

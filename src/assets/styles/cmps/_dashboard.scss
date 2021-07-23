@@ -2,17 +2,40 @@
   display: grid;
   grid-template-columns: 300px auto;
   position: relative;
+  margin-top: 2rem;
   .host-profile {
     width: 75%;
     position: sticky;
     top: 1rem;
     margin-bottom: auto;
     min-height: 200px;
-    // height: 50%;
   }
 
-  .host-order-list {
-    grid-column: -1;
+  .container {
+    .tabs-nav {
+      display: flex;
+      gap: 3rem;
+      > * {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        cursor: pointer;
+        padding: 0.5rem 1rem;
+
+        &.active-tab::before {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 90px;
+          height: 5px;
+          background-color: $clr1;
+        }
+      }
+    }
+    .host-order-list {
+      grid-column: -1;
+    }
   }
 }
 .bottom-image {

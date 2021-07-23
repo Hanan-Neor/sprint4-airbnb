@@ -17,9 +17,16 @@
           <space-filter :style="searchPos" />
         </div>
 
-        <div class="flex" style="align-items: center">
+        <div class="flex" style="align-items: center; gap: 10px">
           <span v-if="isLarge" class="becomeHost" :style="hostColor"
             >Become a host</span
+          >
+          <router-link
+            :to="'/space'"
+            v-if="isLarge"
+            class="becomeHost explore"
+            :style="hostColor"
+            >Explore</router-link
           >
 
           <login
@@ -42,14 +49,17 @@
               />
             </button>
 
-        <ul class="nav pointer clear-list" v-if="isNavOpen">
-          <li v-if="!loggedInUser" @click="showLogin('login')"><span>login</span></li>
-          <li v-if="!loggedInUser" @click="showLogin('signup')"><span>signup</span></li>
-          <li v-if="loggedInUser" @click="logout"><span>logout</span></li>
-          <li><span>Host your home</span></li>
-        </ul>
-      </template>
-           
+            <ul class="nav pointer clear-list" v-if="isNavOpen">
+              <li v-if="!loggedInUser" @click="showLogin('login')">
+                <span>login</span>
+              </li>
+              <li v-if="!loggedInUser" @click="showLogin('signup')">
+                <span>signup</span>
+              </li>
+              <li v-if="loggedInUser" @click="logout"><span>logout</span></li>
+              <li><span>Host your home</span></li>
+            </ul>
+          </template>
 
           <!-- <div class=" full"> -->
 
@@ -128,12 +138,12 @@ export default {
           // boxShadow: this.isIntersecting ?"none" :"inherit",
           'font-size': this.isIntersecting ? '1rem' : '0.875rem',
           // width: this.isIntersecting ? "fit-content" : "300px",
-          position: this.isIntersecting ? "absolute":"relative",
+          position: this.isIntersecting ? 'absolute' : 'relative',
           // top: this.isIntersecting ? "150px" : "unset",
-          top: this.isIntersecting ? "calc(100vw/8)" : "unset",
-          left:this.isIntersecting ? "50%": "unset",
-          transform:this.isIntersecting ? "translateX(-50%)": "unset",
-          backgroung: this.isIntersecting ? "none" : "white",
+          top: this.isIntersecting ? 'calc(100vw/8)' : 'unset',
+          left: this.isIntersecting ? '50%' : 'unset',
+          transform: this.isIntersecting ? 'translateX(-50%)' : 'unset',
+          backgroung: this.isIntersecting ? 'none' : 'white',
         };
       } else {
         return {

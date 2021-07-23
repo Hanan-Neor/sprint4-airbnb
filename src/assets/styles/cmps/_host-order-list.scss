@@ -26,6 +26,12 @@
         display: flex;
         justify-content: center;
         align-items: flex-start;
+
+        img {
+          object-fit: contain;
+          object-position: top;
+          width: 100%;
+        }
       }
       .user-name {
         font-family: 'cereal-Medium';
@@ -58,6 +64,8 @@
           }
         }
         .confirm {
+          position: relative;
+
           &::before {
             content: '\f00c';
           }

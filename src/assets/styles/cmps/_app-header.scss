@@ -27,7 +27,7 @@ $header-side-padding: 42px;
   align-items: center; //for filter
   // padding: 0 $header-side-padding;
   box-shadow: 0 10px 10px -10px rgba(33, 35, 38, 0.1);
-  
+
   // box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   // margin-bottom: 38px;
   button {
@@ -67,20 +67,20 @@ $header-side-padding: 42px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     right: $header-side-padding;
     top: 70px;
-    right:80px;
+    right: 80px;
     background-color: white;
     border-radius: 10px;
     z-index: 3;
     padding: 10px 0px;
     line-height: 42px;
 
-      span{
-        padding-left: 15px;
-      }
+    span {
+      padding-left: 15px;
+    }
 
-      li:hover{
-          background-color: rgb(245, 245, 245);
-      }
+    li:hover {
+      background-color: rgb(245, 245, 245);
+    }
   }
 
   .bottom-nav {
@@ -153,5 +153,14 @@ $header-side-padding: 42px;
     background: transparent;
     font-size: 14px;
     margin-right: 8px;
+
+    &.explore {
+      text-decoration: none;
+      // &::before {
+      //   font-family: 'awesome-light';
+      //   font-size: 1.125rem;
+      //   content: '\f0ac';
+      // }
+    }
   }
 }

@@ -15,7 +15,6 @@
           <div class="price"><span> $133</span> / night</div>
         </div>
         <div class="space-panel">
-          <button class="delete"></button>
           <button class="edit"></button>
         </div>
       </li>

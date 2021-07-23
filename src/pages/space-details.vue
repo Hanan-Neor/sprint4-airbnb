@@ -3,7 +3,6 @@
     <h2 class="space-title-primary">{{ space.name }}</h2>
     <!-- details page: {{getMsg}}  -->
 
-
     <msg :spaceId="spaceId" :msg="getMsg" v-if="showViewers" />
     <div class="space-title-secondary">
       <div class="left-part">
@@ -23,10 +22,12 @@
     <div class="space-description-container">
       <div class="space-description-wrap">
         <div class="space-description-title">
-          <p class="title-sentence">
-            <!-- Entire {{ space.type }}, hosted by {{ host.fullname }} -->
-            {{ space.type }}, hosted by {{ host.fullname }}
-          </p>
+          <div class="container">
+            <p class="title-sentence">
+              {{ space.type }} hosted by {{ host.fullname }}
+            </p>
+            <p class="title-capacity">{{ space.capacity }} guests</p>
+          </div>
           <img class="avatar" :src="host.imgUrl" alt="" />
         </div>
 
@@ -109,13 +110,12 @@ export default {
   name: 'space-details',
   async created() {
     try {
-      socketService.on("updateViewerCount", this.updateViewerCount);
+      socketService.on('updateViewerCount', this.updateViewerCount);
       socketService.emit('newViewer', this.$route.params.spaceId);
-      this.$store.commit({type:'showViewers'})
-// if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
-//   alert('before unload');
-// }
-
+      this.$store.commit({ type: 'showViewers' });
+      // if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
+      //   alert('before unload');
+      // }
 
       // this.ready = true
     } catch (err) {
@@ -123,9 +123,9 @@ export default {
       throw err;
     }
   },
-  beforeUnmount(){
-    alert('before unload');
-  },
+  // beforeUnmount(){
+  //   alert('before unload');
+  // },
 
   data() {
     return {
@@ -172,10 +172,13 @@ export default {
   },
 
   computed: {
-    showViewers(){
+    showViewers() {
       console.log('viewers open', this.$store.getters.showViewers);
-      return this.$store.getters.showViewers},
-    getMsg(){return this.msg},//TODO remove - this is for testing
+      return this.$store.getters.showViewers;
+    },
+    getMsg() {
+      return this.msg;
+    }, //TODO remove - this is for testing
     reviewsToShow() {
       const { reviews } = this.space;
       if (!reviews) return;
@@ -230,9 +233,9 @@ export default {
   },
 
   methods: {
-    updateViewerCount(count){
+    updateViewerCount(count) {
       console.log('count in page****', count);
-      this.msg = count
+      this.msg = count;
     },
     icon(amenity) {
       return amenity.toLowerCase().replace(' ', '-');
@@ -302,15 +305,15 @@ export default {
     msg,
   },
   async beforeDestroy() {
-    try{
-      console.log(this.spaceId, '***************')
+    try {
+      console.log(this.spaceId, '***************');
       await socketService.emit('removeViewer', this.spaceId);
       // socketService.terminate();
-    console.log('about to leave page', this.getMsg)
-  } catch(err) {
-    console.log(err);
-    throw err
-  }
+      console.log('about to leave page', this.getMsg);
+    } catch (err) {
+      console.log(err);
+      throw err;
+    }
   },
 };
 </script>

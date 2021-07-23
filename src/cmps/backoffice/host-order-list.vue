@@ -3,7 +3,7 @@
     <ul class="clear-list">
       <li v-for="order in orders" :key="order._id" class="host-order-item">
         <div class="profile-pic">
-          <img v-if="order.buyer.imgUrl" src="order.buyer.imgUrl" alt="" />
+          <img v-if="order.buyer.imgUrl" :src="order.buyer.imgUrl" alt="" />
           <img v-else src="./../../assets/img/user.svg" alt="" />
         </div>
         <p class="user-name">{{ order.buyer.fullname }}</p>

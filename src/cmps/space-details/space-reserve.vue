@@ -3,10 +3,16 @@
     <!-- <section class="space-reserve-box"> -->
     <div class="space-reserve-details">
       <p class="price">
-        <span>{{ space.price }}</span> / night
+        <span>{{
+          space.price.toLocaleString('en-US', {
+            style: 'currency',
+            currency: 'USD',
+          })
+        }}</span>
+        / night
       </p>
 
-      <div class="rating">
+      <div class="rating-form">
         <p class="total-rate star">{{ rate }}</p>
         <span>•</span>
         <p class="number-reviews">({{ reviews }} reviews)</p>

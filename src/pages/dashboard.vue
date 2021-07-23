@@ -23,21 +23,36 @@
       :spaceRatings="spaceRatings"
     /> -->
       <host-profile class="host-profile" :host="host"></host-profile>
-      <!-- <div class="bar">
-        <button class="bar-item bar-button" @click="openSection('orders')">
-          Orders
-        </button>
-        <button class="bar-item bar-button" @click="openSection">Spaces</button>
-        <button class="bar-item bar-button" @click="openSection">
-          Statitics
-        </button>
-      </div> -->
-      <!-- <host-space-list
-        class="host-order-list"
-        :host="host"
-        :mySpaces="spaces"
-      /> -->
-      <host-order-list class="host-order-list" :class="{ hide }" :host="host" />
+      <div class="container">
+        <nav class="tabs-nav">
+          <div
+            class="orders"
+            :class="{ 'active-tab': currentTab === 0 }"
+            @click="toTab(0)"
+          >
+            Orders
+          </div>
+          <div
+            class="spaces"
+            :class="{ 'active-tab': currentTab === 1 }"
+            @click="toTab(1)"
+          >
+            Spaces
+          </div>
+        </nav>
+
+        <host-order-list
+          v-if="currentTab === 0"
+          class="host-order-list"
+          :host="host"
+        />
+        <host-space-list
+          v-if="currentTab === 1"
+          class="host-order-list"
+          :host="host"
+          :mySpaces="spaces"
+        />
+      </div>
     </div>
     <img
       class="bottom-image full"
@@ -68,7 +83,7 @@ export default {
   data() {
     return {
       ready: false,
-      hide: false,
+      currentTab: 0,
     };
   },
   computed: {
@@ -99,6 +114,12 @@ export default {
     },
     spaceNames() {
       return this.$store.getters.spaceNames;
+    },
+  },
+
+  methods: {
+    toTab(tab) {
+      this.currentTab = tab;
     },
   },
   async created() {

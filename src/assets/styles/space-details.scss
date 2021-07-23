@@ -61,7 +61,7 @@
     margin-top: 2rem;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.3rem;
+    gap: 3.5rem;
 
     .space-description-wrap {
       grid-column: span 2;
@@ -71,12 +71,11 @@
         justify-content: space-between;
         margin-bottom: 1rem;
         position: relative;
-
         &::before {
           content: '';
           position: absolute;
           width: 100%;
-          top: 42px;
+          bottom: 0;
           border-bottom: 1px solid $clr4;
         }
 
@@ -85,9 +84,14 @@
           font-size: 1.375rem;
         }
 
+        .title-capacity {
+          font-family: 'cereal-Medium';
+          font-size: 1rem;
+        }
+
         .avatar {
-          width: 35px;
-          height: 35px;
+          width: 55px;
+          height: 55px;
           border-radius: 50%;
           object-fit: cover;
         }
@@ -124,6 +128,7 @@
           text-transform: capitalize;
           padding-left: 25px;
           position: relative;
+          font-family: 'cereal-Book';
 
           &.tv::before {
             content: '\f26c';
