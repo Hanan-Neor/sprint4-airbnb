@@ -75,9 +75,7 @@ export default {
       }
     },
     setFilter() {
-      console.log("setting the filter");
       this.$emit("set-filter", 'numGuests', this.guests.adults + this.guests.children);
-      console.log("numGuests", this.guests.adults + this.guests.children);
       this.$emit("close-form");
     },
   },

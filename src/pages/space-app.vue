@@ -37,17 +37,11 @@ export default {
     numSpaces(){ return this.$store.getters.totalSpacesAllPages } //num spaces after filter before pagination
   },
   async created() {
-    console.log(this.$router.query);
-   
     try {
       // await this.$store.commit({ type: "clearFilter" });
       await this.$store.commit({type: 'setFilterField', field:'count', value:this.pageSize})
       await this.$store.commit({type: 'setFilterField', field:'currPage', value:1})
-      const spaces = await this.$store.dispatch({type: 'loadSpaces'})
-      console.log(spaces);
-      // const spacejson = JSON.stringify(spaces)
-      // console.log(spacejson);
-
+      await this.$store.dispatch({type: 'loadSpaces'})
     } catch(err) {
       console.log('error creating spaces in store');
       throw err;

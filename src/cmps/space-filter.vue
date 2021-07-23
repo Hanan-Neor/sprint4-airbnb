@@ -53,7 +53,7 @@
           <input
             @focus="clicked('Text')"
             @blur="clicked('Text')"
-            @input="filterSpaces"
+            @input="updateFilter('location', filterBy.location)"
             name="text"
             type="search"
             placeholder="Where are you going?"
@@ -138,8 +138,8 @@ export default {
         amenities: [],
         type: 'all',
         location: '',
-        // numGuests: 0,
         numGuests: 0,
+        // numGuests: this.$store.getters.filterBy.numGuests || 0,
         dates: { startDate: 0, endDate: 0 },
         count: 10, //take this value from parent
         currPage: 1,
@@ -154,7 +154,7 @@ export default {
       this.filterBy.dates.endDate = date[1];
       // console.log(this.filterBy.dates.startDate,this.filterBy.dates.endDate);
     },
-
+    
     setGuestsCnt(gusets) {
       this.filterBy.numGuests = gusets;
     },
@@ -162,7 +162,7 @@ export default {
       this.formOpen = !this.formOpen;
     },
     async updateFilter(field, value) {
-      this.filterBy.numGuests = value;
+      // this.filterBy.numGuests = value;
       console.log('setting filter...', this.filterBy);
       try {
         this.$store.commit({
@@ -170,7 +170,9 @@ export default {
           field: field,
           value: value,
         });
-        await this.$store.dispatch({ type: 'loadSpaces' });
+
+        //if we are on the explore page then reload the spaces
+        if (this.$router.history.current.name === 'space-app') await this.$store.dispatch({ type: 'loadSpaces' });       
       } catch (err) {
         console.log('error in store moving to space-app from homepage', err);
         throw err;
@@ -198,6 +200,7 @@ export default {
           filterBy: this.filterBy,
         });
         this.$store.dispatch({ type: 'loadSpaces' });
+        if (this.$router.history.current.name !== 'space-app') this.$router.push('/space')
       } catch (err) {
         console.log('error in space filter', 'this.filterBy');
         throw err;

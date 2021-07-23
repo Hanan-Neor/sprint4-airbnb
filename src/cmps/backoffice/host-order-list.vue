@@ -23,6 +23,7 @@
             @click="declineOrder(order)"
           ></button>
           <button class="edit" @click="editOrder(order)"></button>
+          <msg v-if="spaceBooked" />
         </div>
       </li>
     </ul>
@@ -48,6 +49,9 @@ export default {
     orders() {
       return this.$store.getters.orders;
     },
+    spaceBooked(){
+      // return 
+    }
   },
   methods: {
     //TODO move this function to a store
