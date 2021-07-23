@@ -1,7 +1,15 @@
 .space-filter{
+    background: rgb(247, 247, 247);
+    border:1px solid rgb(221, 221, 221);
+     border-radius: 32px;
+    //   z-index:0;
+       width:fit-content;
+
+       justify-self: center;
+
     cursor: pointer;
     color: $clr-form-text;
-    font-family: 'cereal-Medium';
+    font-family: 'cereal-Bold';
     text-overflow: ellipsis;
     white-space: nowrap;
     // overflow: hidden;
@@ -29,14 +37,25 @@
         padding: 1rem;
         width: fit-content;
     }
-    form {
+    // form {
+    .form {
         gap:5px;
         // border: 1px solid $clr-form-input-border;
     }
     .filter-div{
+        & > input{
+            width: 100%;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+
         flex:1;
         // width: fit-content;
-        padding: 0.875rem 2rem;
+        padding: 0.875rem 1.5rem;
         border-radius: 3rem;
         // width: min-content
         // &:hover {
@@ -46,11 +65,13 @@
 
     .filter-div-hover{
         &:hover {
-            background-color: rgb(241, 241, 241);
+            background-color: rgb(230, 230, 230);
         }
     }
+    
 
-     .clicked{
+    .clicked{
+        background-color: #fff;
         box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.15);
         &:hover{
             background-color: inherit;
@@ -101,16 +122,22 @@
     .reserve-date-filter{
         
         
-        input{
+         input{
+            &:hover {
+                cursor: pointer;
+                // background-color: lawngreen;
+            }
             // &::before{
             // content: 'Check in';
             // }
-            height: 60px;
+            // align-self: center;
+           height: 70px;
             padding: 0;
-            min-width:0%;
+            width:100%;
             // background-color: khaki;
         }
     }
+            
 
     
     input{
@@ -124,18 +151,18 @@
         font-family: 'cereal-Book';
         }
     }
-    button{
-        // position: absolute;
-        cursor: pointer;
+    // button{
+    //     // position: absolute;
+    //     cursor: pointer;
 
-        background-color: $clr-form-btn;
-        color: $clt-txt-btn;
-    background-size: 200% 200%;
-    transition: opacity 1.25s ease 0s;
-    background-image: radial-gradient(circle at center center, rgb(255, 56, 92) 0%, rgb(230, 30, 77) 27.5%, rgb(227, 28, 95) 40%, rgb(215, 4, 102) 57.5%, rgb(189, 30, 89) 75%, rgb(189, 30, 89) 100%);
-    background-position: calc((100 - var(--mouse-x, 0)) * 1%) calc((100 - var(--mouse-y, 0)) * 1%);
-    border:none;
-    }
+    //     background-color: $clr-form-btn;
+    //     color: $clt-txt-btn;
+    // background-size: 200% 200%;
+    // transition: opacity 1.25s ease 0s;
+    // background-image: radial-gradient(circle at center center, rgb(255, 56, 92) 0%, rgb(230, 30, 77) 27.5%, rgb(227, 28, 95) 40%, rgb(215, 4, 102) 57.5%, rgb(189, 30, 89) 75%, rgb(189, 30, 89) 100%);
+    // background-position: calc((100 - var(--mouse-x, 0)) * 1%) calc((100 - var(--mouse-y, 0)) * 1%);
+    // border:none;
+    // }
     .start{
         display: flex;
         justify-content: space-between;
@@ -145,7 +172,23 @@
     //   height: 55px;
     }
 
-      
+    //   .date-picker-class{
+          
+    //   }
+    //   .el-picker-panel.el-date-range-picker.el-popper.date-picker-class{
+    //       color: red !important;
+    //   }
+
+    //   .filterOpenDown{
+    //       position: absolute;
+    //     //   background-color: #fff;
+    //     background-color: brown;
+    //       top: 200px;
+    //   }
       
 }
 
+// position: absolute;
+// top: 69px;
+// left: 126px;
+// z-index: 2003;

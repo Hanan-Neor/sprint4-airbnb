@@ -2,23 +2,12 @@
 <template>
 <!-- TODO this is copied from space up - need to update later -->
   <div class="chat-app">
-    <!-- <div class="close-chat">x</div> -->
-    <div class="chat-header">
     <p>this is the chat room</p>
-
-    </div>
-
-    <div class="chat-body">
-
-
-   
-    <ul class="chat-body">
-      <li v-for="(msg, idx) in msgs" :key="idx" class="chat-item">
+    <ul>
+      <li v-for="(msg, idx) in msgs" :key="idx">
         <span>{{ msg.from }}: </span>{{ msg.txt }}
       </li>
     </ul>
- </div>
-
     <p v-if="getTyper">{{ getTyper }} is typing...</p>
     <form @submit.prevent="sendMsg">
       <input
@@ -72,7 +61,6 @@ export default {
         // TODO: next 2 lines not needed after connecting to backend
           // this.addMsg(this.msg)
           // setTimeout(()=>this.addMsg({from: 'Dummy', txt: 'Yey'}), 2000)
-          console.log('msg', this.msg);
           socketService.emit("chat newMsg", this.msg);
         this.msg = {
           from: this.$store.getters.loggedinUser.fullname,

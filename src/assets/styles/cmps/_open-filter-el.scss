@@ -1,0 +1,78 @@
+.open-filter-el{
+    display: flex;
+    align-items: center;
+    background: inherit;
+    border:1px solid rgb(221, 221, 221);
+     border-radius: 32px;
+      z-index:10;
+
+
+    cursor: pointer;
+    color: $clr-form-text;
+    font-family: 'cereal-Medium';
+    font-size: 0.875rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.1);
+
+    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.1);
+//   box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+
+    -moz-box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.1);
+
+    &:hover{
+        box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.15);
+        box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.15);
+        -moz-box-shadow: 0px 2px 10px 0px rgba(12, 8, 8, 0.15);
+    }
+    .search-icon-container{
+        // position: relative;
+        // left: 20px;
+        background-color: $clr1;
+        border-radius: 3rem;
+        padding: 10px;
+        width: fit-content;
+    }
+    .filter-div{
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+
+        flex:1;
+        // width: fit-content;
+        padding: 0.875rem 2rem;
+        border-radius: 3rem;
+        // width: min-content
+        // &:hover {
+        //     background-color: rgb(241, 241, 241);
+        // }
+    }
+
+    .filter-div-hover{
+        &:hover {
+            background-color: rgb(230, 230, 230);
+        }
+    }
+
+    
+    .filter-div-button{
+        padding: 7px;
+        border-radius: 3rem;
+    }
+    .detailsInEl-container{
+            gap: 10px;
+            
+            // justify-content: space-evenly;
+        .detailsInEl{
+            
+        // border-left: 1px solid rgb(221, 221, 221);;
+        // border-left: 1px solid black;;
+        }
+        .detailsInEl:first-child{
+        margin-left: 20px;
+        }
+    }
+
+      
+}

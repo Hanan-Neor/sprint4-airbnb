@@ -1,12 +1,15 @@
 $header-side-padding: 42px;
 
 .app-header {
+  
   &.hide {
     display: none;
   }
   .container {
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    // grid-template-rows: 1fr 1fr;
 
     & :nth-child(2) {
       justify-self: center;
@@ -17,13 +20,13 @@ $header-side-padding: 42px;
     }
   }
   height: 80px;
-  justify-content: space-between;
+  // justify-content: space-between;
   // position: fixed;
   // margin-bottom: 38px;
   // background-color: none;
-  right: 0;
-  left: 0;
-  top: 0;
+  // right: 0;
+  // left: 0;
+  // top: 0;
   align-items: center; //for filter
   // padding: 0 $header-side-padding;
   box-shadow: 0 10px 10px -10px rgba(33, 35, 38, 0.1);
@@ -61,7 +64,7 @@ $header-side-padding: 42px;
     font-family: 'cereal-Medium';
     font-size: 0.875rem;
 
-    position: fixed;
+    position: absolute;
     // height: 260px;
     min-width: 200px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -70,7 +73,7 @@ $header-side-padding: 42px;
     right:80px;
     background-color: white;
     border-radius: 10px;
-    z-index: 3;
+    z-index: 11;
     padding: 10px 0px;
     line-height: 42px;
 
@@ -153,5 +156,16 @@ $header-side-padding: 42px;
     background: transparent;
     font-size: 14px;
     margin-right: 8px;
+  }
+
+
+
+
+
+  &.filter-container{
+    z-index: 10;
+    background-color:inherit;
+    // background-color:red;
+
   }
 }

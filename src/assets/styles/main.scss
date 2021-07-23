@@ -21,8 +21,7 @@
 @import 'cmps/space-imgs';
 @import 'cmps/space-reserve';
 @import 'cmps/add-space-form';
-@import 'cmps/host-order-list';
-@import 'cmps/host-space-list';
+@import 'cmps/open-filter-el';
 
 @import './space-app';
 @import 'app';
@@ -33,7 +32,6 @@
 @import './cmps/nav-filter';
 @import './cmps/pagination';
 @import './cmps/filter-form';
-@import './cmps/chat-app'
 
 // body{
 //     @include for-mobile-layout {
