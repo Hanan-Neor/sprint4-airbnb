@@ -1,11 +1,9 @@
 <template>
-  <section>
+  <section :style="headerPos" style="width:100%">
     <!-- <div class="app-header flex" :style="diplayState"> -->
-    <nav class="app-header  main-layout" :style="headerPos" :class="{ hide }">
-      <div
-        class="container"
-        style="justify-content:space-between; align-items:center"
-      >
+    <!-- <div> -->
+    <nav class="app-header flex" :class="{ hide }">
+      <div class="container" style="">
         <router-link
           to="/"
           class="logo-container clear-link"
@@ -13,11 +11,15 @@
         >
           <div class="logo"></div>
         </router-link>
-        <div>
-          <space-filter :style="searchPos" />
+
+        <div class="" v-show="!showFilters" @click="showFilters = true">
+          <open-filter-el />
         </div>
 
-        <div class="flex" style="align-items: center; gap: 10px">
+        <div
+          class="flex"
+          style="align-items: center; justify-self: end; grid-column: 3/4"
+        >
           <span v-if="isLarge" class="becomeHost" :style="hostColor"
             >Become a host</span
           >
@@ -75,15 +77,25 @@
             </div>
           </div>
         </div>
+        <!-- <div style="grid-area: 2/1/3/4;justify-self: center;">
+          <space-filter :style="searchPos"  />
+
+        </div> -->
       </div>
     </nav>
+    <div class="app-header main-layout filter-container" v-if="showFilters">
+      <!-- <space-filter :style="searchPos"  @toggleFilters="showFilters=false" /> -->
+      <space-filter :style="filterBackground" @toggleFilters="toggleFilter" />
+    </div>
+    <!-- </div> -->
   </section>
 </template>
 
 <script>
-import spaceFilter from './space-filter.vue';
-import login from './login.vue';
+import spaceFilter from './app-header/space-filter.vue';
+import login from './app-header/login.vue';
 import { eventBusService } from './../services/event-bus.service.js';
+import OpenFilterEl from './app-header/open-filter-el.vue';
 
 export default {
   created() {
@@ -91,9 +103,11 @@ export default {
     eventBusService.$on('showHeader', this.toggleHeader);
     eventBusService.$on('headerFixed', (state) => {
       this.state = state;
+      this.showFilters = true;
     });
     eventBusService.$on('searchPos', (isIntersecting) => {
       this.isIntersecting = isIntersecting;
+      this.showFilters = isIntersecting;
     });
     eventBusService.$on('likedWithoutUser', () => {
       this.showLogin();
@@ -107,6 +121,7 @@ export default {
   components: {
     spaceFilter,
     login,
+    OpenFilterEl,
   },
   computed: {
     getLoginFormType() {
@@ -128,30 +143,13 @@ export default {
       return {
         position: this.state ? 'fixed' : 'relative',
         background: this.isIntersecting ? 'none' : 'white',
-        // color: this.isIntersecting ? 'white' : 'black',
         'z-index': 10,
       };
     },
-    searchPos() {
-      if (this.state) {
-        return {
-          // boxShadow: this.isIntersecting ?"none" :"inherit",
-          'font-size': this.isIntersecting ? '1rem' : '0.875rem',
-          // width: this.isIntersecting ? "fit-content" : "300px",
-          position: this.isIntersecting ? 'absolute' : 'relative',
-          // top: this.isIntersecting ? "150px" : "unset",
-          top: this.isIntersecting ? 'calc(100vw/8)' : 'unset',
-          left: this.isIntersecting ? '50%' : 'unset',
-          transform: this.isIntersecting ? 'translateX(-50%)' : 'unset',
-          backgroung: this.isIntersecting ? 'none' : 'white',
-        };
-      } else {
-        return {
-          'font-size': '0.875rem',
-          position: 'relative',
-          // width: "300px"
-        };
-      }
+    filterBackground() {
+      return {
+        background: this.isIntersecting ? '#fff' : 'rgb(247, 247, 247)',
+      };
     },
     hostColor() {
       return {
@@ -182,9 +180,16 @@ export default {
       // isIntersecting refers to background round
       isIntersecting: true,
       hide: false,
+      showFilters: false,
     };
   },
   methods: {
+    toggleFilter() {
+      if (!this.isIntersecting) {
+        this.showFilters = false;
+        // this.$store.dispatch({ type: 'showCover' });
+      }
+    },
     logout() {
       this.$store.dispatch({ type: 'logout' });
       this.toggleNav();
@@ -215,6 +220,12 @@ export default {
       this.hide = !this.hide;
     },
   },
+  //   mounted() {
+  //   document.addEventListener("click", this.close);
+  // },
+  // beforeDestroy() {
+  //   document.removeEventListener("click", this.close);
+  // },
 };
 </script>
 

@@ -99,21 +99,59 @@ export default {
     totalSpaceCapacity() {
       return this.$store.getters.totalSpaceCapacity;
     },
-    occupancy() {
-      return this.totalGuests / this.totalSpaceCapacity || 0;
+    data() {
+      return {
+        ready: false,
+      };
     },
-    totalLikes() {
-      return this.$store.getters.totalLikes;
-    },
-    spaces() {
-      return this.$store.getters.spaces;
-    },
+    computed: {
+      host() {
+        return this.$store.getters.loggedinUser;
+      },
+      averageRating() {
+        return this.$store.getters.getAverageRating;
+      },
+      totalGuests() {
+        return this.$store.getters.totalGuests;
+      },
+      totalSpaceCapacity() {
+        return this.$store.getters.totalSpaceCapacity;
+      },
+      occupancy() {
+        return this.totalGuests / this.totalSpaceCapacity || 0;
+      },
+      totalLikes() {
+        return this.$store.getters.totalLikes;
+      },
+      spaces() {
+        return this.$store.getters.spaces;
+      },
 
-    spaceRatings() {
-      return this.$store.getters.spaceRatings;
+      spaceRatings() {
+        return this.$store.getters.spaceRatings;
+      },
+      spaceNames() {
+        return this.$store.getters.spaceNames;
+      },
     },
-    spaceNames() {
-      return this.$store.getters.spaceNames;
+    async created() {
+      try {
+        const loggedinUser = await this.$store.dispatch({
+          type: 'loadLoggedInUser',
+        });
+        const hostId = loggedinUser._id;
+        await this.$store.commit({ type: 'clearFilter' });
+        await this.$store.commit({
+          type: 'setFilterField',
+          field: 'hostId',
+          value: hostId,
+        });
+        await this.$store.dispatch({ type: 'loadSpaces' });
+        this.ready = true;
+      } catch (err) {
+        console.log('error getting host in dashboard');
+        throw err;
+      }
     },
   },
 

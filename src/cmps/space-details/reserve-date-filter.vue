@@ -1,5 +1,6 @@
 <template>
-  <section class="date-picker" >
+  <section class="date-picker reserve-date-filter" >
+
     <el-date-picker
       @change="date"
       v-model="dates"
@@ -10,15 +11,15 @@
       style="background-color:inherit; border:0px; height=100%"
     >
     </el-date-picker>
+
   </section>
 </template>
 
 <script>
 export default {
-  props:['dates'],
   data() {
     return {
-      // dates: '',
+      dates: '',
     };
   },
 
