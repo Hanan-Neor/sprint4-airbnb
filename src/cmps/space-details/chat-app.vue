@@ -15,7 +15,7 @@
         <span>{{ msg.from }}: </span>{{ msg.txt }}
       </li>
     </ul>
-    <p v-if="getTyper">{{ getTyper }} is typing...</p>
+    <p class="typer-msg" v-if="getTyper">{{ getTyper }} is typing...</p>
     <form @submit.prevent="sendMsg">
       <input
         @input="showTypingMsg"
