@@ -2,8 +2,8 @@
 <template>
 <!-- TODO this is copied from space up - need to update later -->
   <div class="chat-app">
-    <p>this is the chat room</p>
-    <ul>
+    <p class="chat-header">this is the chat room</p>
+    <ul class="chat-msgs">
       <li v-for="(msg, idx) in msgs" :key="idx">
         <span>{{ msg.from }}: </span>{{ msg.txt }}
       </li>
@@ -17,6 +17,7 @@
         placeholder="Your msg"
       />
       <button>Send</button>
+      <button @click="toggleChatOpen">{{openClose}} </button>
     </form>
   </div>
 </template>
@@ -36,6 +37,7 @@ export default {
   },
   data() {
     return {
+      chatOpen: false,
       msg: {},
       msgs: [],
       topic: this.space._id,
@@ -47,8 +49,12 @@ export default {
     getTyper() {
       return this.typer;
     },
+    openClose(){ return this.chatOpen ? 'close' : 'chat' }
   },
   methods: {
+    toggleChatOpen(){
+      this.chatOpen = !this.chatOpen
+    },
     setTyper(typer) {
       this.typer = typer;
     },
