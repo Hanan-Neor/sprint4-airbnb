@@ -92,7 +92,7 @@
       <div class="" v-else>loading</div>
       <p class="space-location">{{ space.loc.address }}</p>
     </div>
-    <chat-app :space="space" />
+    <chat-app :space="space" :socketId="getSocketId"/>
   </div>
   <div v-else>
     <img class="svg-img-loader" src="@/assets/img/loading.svg" />
@@ -175,10 +175,12 @@ export default {
         },
         status: 'pending',
       },
+      socketId: '',
     };
   },
 
   computed: {
+    getSocketId(){return this.socketId},
     showViewers() {
       console.log('viewers open', this.$store.getters.showViewers);
       return this.$store.getters.showViewers;
@@ -255,6 +257,7 @@ export default {
       console.log(this.order);
       try {
         await this.$store.dispatch({ type: 'saveOrder', order: this.order });
+        socketService.emit('newOrder', this.order)
       } catch (error) {
         console.log('cannot make order', error);
       }
@@ -291,6 +294,19 @@ export default {
           this.order.stay._id = space._id;
           this.order.stay.name = space.name;
           this.order.stay.price = space.price;
+
+          //listeners
+          const isSpaceHost = space.host._id === this.$store.getters.loggedinUser
+          socketService.emit('newViewer', {spaceId: space._id, hostId: space.host._id, isSpaceHost:isSpaceHost })
+          socketService.on('socketId', socketId => {
+            this.socketId = socketId;
+            socketService.emit('joinSocketId', socketId)
+          })
+
+          //if he's the host, listen for someone joining his room
+          // if (){
+          //   socketService.emit(joinHostRoom)
+          // }
 
           // this.order.dest.country = this.space.loc.country;
           // this.order.dest.countryCode = this.space.loc.countryCode;

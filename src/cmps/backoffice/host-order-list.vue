@@ -35,17 +35,23 @@
 </template>
 
 <script>
+import { socketService } from '../../services/socket.service';
 export default {
-  props: ['host'],
+  props: ["host"],
   data() {
     return {};
   },
   async created() {
     try {
       const orders = await this.getOrdersForHost(); //loads orders in the store
-      console.log('orders', orders);
+      console.log("orders", orders);
+      socketService.emit('joinHostRoom', this.host._id)
+      socketService.on("orderSaved", order=> {
+        console.log('adding order store after orderSaved socket');
+        this.$store.commit({type: 'addOrder', order })
+      });
     } catch (err) {
-      console.log('error getting host in dashboard');
+      console.log("error getting host in dashboard");
       throw err;
     }
   },
@@ -56,70 +62,73 @@ export default {
   },
   methods: {
     //TODO move this function to a store
+    // showNewOrder(order){
+
+    // },
     async getOrdersForHost() {
       try {
         //
         const hostId = this.host._id;
-        await this.$store.commit({ type: 'clearFilter' });
+        await this.$store.commit({ type: "clearFilter" });
         // await this.$store.commit({type: 'setFilterField', field:'hostId', value:hostId})
-        await this.$store.dispatch({ type: 'loadOrders' });
+        await this.$store.dispatch({ type: "loadOrders" });
         return this.$store.getters.orders;
       } catch (err) {
-        console.log('getOrdersForHost', err);
+        console.log("getOrdersForHost", err);
         throw err;
       }
     },
     async deleteOrder(order) {
-      alert('delete this order', order.name);
+      alert("delete this order", order.name);
       try {
-        await this.$store.dispatch({ type: 'removeOrder', orderId: order._id });
-        await this.$store.dispatch({ type: 'loadOrders' });
+        await this.$store.dispatch({ type: "removeOrder", orderId: order._id });
+        await this.$store.dispatch({ type: "loadOrders" });
       } catch (err) {
-        console.log('getOrdersForHost', err);
+        console.log("getOrdersForHost", err);
         throw err;
       }
     },
     async editOrder(order) {
-      const newName = prompt('enter new name');
+      const newName = prompt("enter new name");
       order.stay.name = newName;
       try {
         const savedOrder = await this.$store.dispatch({
-          type: 'saveOrder',
+          type: "saveOrder",
           order,
         });
-        console.log('savedOrder', savedOrder);
+        console.log("savedOrder", savedOrder);
       } catch (err) {
-        console.log('getOrdersForHost', err);
+        console.log("getOrdersForHost", err);
         throw err;
       }
     },
     async confirmOrder(order) {
-      order.status = 'confirmed';
+      order.status = "confirmed";
       try {
-        await this.$store.dispatch({ type: 'saveOrder', order });
+        await this.$store.dispatch({ type: "saveOrder", order });
       } catch (err) {
-        console.log('getOrdersForHost', err);
+        console.log("getOrdersForHost", err);
         throw err;
       }
     },
     async declineOrder(order) {
-      order.status = 'declined';
+      order.status = "declined";
       try {
-        await this.$store.dispatch({ type: 'saveOrder', order });
+        await this.$store.dispatch({ type: "saveOrder", order });
       } catch (err) {
-        console.log('getOrdersForHost', err);
+        console.log("getOrdersForHost", err);
         throw err;
       }
     },
 
     guests(guests) {
-      return guests > 1 ? 'guests' : 'guest';
+      return guests > 1 ? "guests" : "guest";
     },
 
     price(price) {
-      return price.toLocaleString('en-US', {
-        style: 'currency',
-        currency: 'USD',
+      return price.toLocaleString("en-US", {
+        style: "currency",
+        currency: "USD",
       });
     },
 
@@ -128,16 +137,16 @@ export default {
       const diffInTime = new Date(end).getTime() - new Date(start).getTime();
       const totalDays = diffInTime / (1000 * 3600 * 24);
 
-      return `${totalDays} night${totalDays > 1 ? 's' : ''}`;
+      return `${totalDays} night${totalDays > 1 ? "s" : ""}`;
     },
 
     date(d) {
       const date = new Date(d);
       return (
-        ('' + date.getDate()).padStart(2, '0') +
-        '/' +
-        ('' + date.getMonth()).padStart(2, '0') +
-        '/' +
+        ("" + date.getDate()).padStart(2, "0") +
+        "/" +
+        ("" + date.getMonth()).padStart(2, "0") +
+        "/" +
         date.getFullYear()
       );
     },

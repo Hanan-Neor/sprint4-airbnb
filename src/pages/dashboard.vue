@@ -69,6 +69,7 @@ import hostStats from '../cmps/backoffice/host-stats.vue';
 import orderChart from '../cmps/backoffice/order-chart.vue';
 import reviewChart from '../cmps/backoffice/review-chart.vue';
 import hostProfile from '../cmps/backoffice/host-profile.vue';
+import { socketService } from '../services/socket.service';
 
 export default {
   name: 'dashboard',
