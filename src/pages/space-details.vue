@@ -245,6 +245,7 @@ export default {
       this.order.startDate = reserve.date.start;
       this.order.endDate = reserve.date.end;
       this.order.totalPrice = reserve.totalPrice;
+      console.log(this.order);
       try {
         await this.$store.dispatch({ type: 'saveOrder', order: this.order });
       } catch (error) {
@@ -279,6 +280,7 @@ export default {
           this.order.createdAt = Date.now();
           this.order.buyer._id = this.$store.getters.loggedinUser._id;
           this.order.buyer.fullname = this.$store.getters.loggedinUser.fullname;
+          this.order.buyer.imgUrl = this.$store.getters.loggedinUser.imgUrl;
           this.order.stay._id = space._id;
           this.order.stay.name = space.name;
           this.order.stay.price = space.price;
