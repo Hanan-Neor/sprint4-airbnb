@@ -36,7 +36,7 @@
 import { socketService } from './../../services/socket.service.js';
 export default {
   name: "chat-room",
-  props: ['space'],
+  props: ['space', 'socketId'],
   created() {
     // socketService.emit("chat topic", this.topic); //TODO possibly remove because this is also in the parent
     socketService.on("chat addMsg", this.addMsg);
@@ -69,6 +69,7 @@ export default {
   },
   methods: {
     setTyper(typer) {
+      debugger;
       this.typer = typer;
     },
     openChat(){
@@ -78,7 +79,7 @@ export default {
       this.isOpen = false
     },
     async addMsg(msg) {
-      await socketService.emit("typing", ""); //unsetting the typer
+      await socketService.emit("typing", {user:"", socketId:this.socketId}); //unsetting the typer
       this.msgs.push(msg);
     },
     async sendMsg() {
@@ -86,7 +87,8 @@ export default {
         // TODO: next 2 lines not needed after connecting to backend
           // this.addMsg(this.msg)
           // setTimeout(()=>this.addMsg({from: 'Dummy', txt: 'Yey'}), 2000)
-          socketService.emit("chat newMsg", this.msg);
+          console.log('sending Msg', this.msg, this.socketId);
+          socketService.emit("chat newMsg", {msg:this.msg, socketId:this.socketId});
         this.msg = {
           from: this.$store.getters.loggedinUser.fullname,
           txt: "",
@@ -96,7 +98,7 @@ export default {
       }
     },
     showTypingMsg() {
-      socketService.emit("typing", this.username);
+      socketService.emit("typing", {user:this.username, socketId:this.socketId});
     },
   },
 };

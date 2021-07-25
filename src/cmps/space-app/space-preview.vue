@@ -79,6 +79,7 @@
 import carousel from './carousel';
 import carouselSlide from './carouselSlide';
 import { eventBusService } from './../../services/event-bus.service.js';
+import { socketService } from '../../../public/src/services/socket.service';
 
 export default {
   name: '',
@@ -261,6 +262,12 @@ export default {
   },
   created() {
     this.isLiked = this.islikedByUser ? true : false;
+    socketService.on('orderSaved', spaceId => {
+      alert('space was booked')
+    })
+    socketService.on('spaceLiked', spaceId => {
+      alert('space was liked')
+    })
     // this.likeColor = ''
     // if(this.isLiked) this.likeColor = 'rgb(255, 56, 92)'
     // this.like()
