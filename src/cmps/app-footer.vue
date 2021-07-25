@@ -1,11 +1,15 @@
 <template>
   <div class="app-footer" :class="{ hide }">
     <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/space">Explore</router-link> |
-      <router-link to="/space/host/edit">add space</router-link> |
-      <router-link to="/about">about chatapp</router-link> |
-      <router-link to="/dashboard">dashboard</router-link> |
+      <router-link to="/">Home</router-link> 
+      <router-link to="/space">Explore</router-link> 
+      <router-link to="/space/host/edit">Host your Home</router-link> 
+      <router-link to="/about">about chatapp</router-link> 
+      <router-link to="/dashboard">Dashboard</router-link> 
+      <router-link to="/dashboard">Signup</router-link> 
+      <router-link to="/dashboard">Login</router-link> 
+      <router-link to="/dashboard">Israel</router-link> 
+      <router-link to="/dashboard">France</router-link> 
     </nav>
   </div>
 </template>

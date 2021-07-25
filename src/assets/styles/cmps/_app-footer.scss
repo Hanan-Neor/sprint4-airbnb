@@ -2,4 +2,47 @@
   &.hide {
     display: none;
   }
+  nav{
+    display: grid;
+    grid-template-columns: 1fr;
+
+    @include for-mobile-layout {
+    
+    }
+
+    @include for-narrow-layout {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    @include for-normal-layout {
+    }
+
+    @include for-wide-layout {
+    }
+
+  }
+  padding-top: 50px;
+  padding-bottom: 50px;
+  padding-right: 80px;
+  padding-left: 80px;
+  background-color: #F7F7F7;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif ;
+  font-size: 14px;
+  line-height: 20px;
+  // height: 100px;
+  // color: #484848;
+  color: #222222;
+  font-weight: 400;
+  border-top: 1px solid #dddddd;
+  a{
+    color: #484848;
+    margin-bottom: 12px;
+  }
+  a:hover{
+    // text-decoration: none;
+  }
+
+
+  
+
 }

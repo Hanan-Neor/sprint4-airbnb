@@ -33,16 +33,26 @@
           width: 100%;
         }
       }
+
       .user-name {
         font-family: 'cereal-Medium';
         font-size: 1.125rem;
         align-self: center;
         margin: 0;
       }
+
+      .price {
+        justify-self: flex-end;
+        span {
+          font-family: 'cereal-Medium';
+        }
+      }
+
       .order-details {
         grid-row: 2/3;
         grid-column: 2/3;
       }
+
       .order-panel {
         grid-row: 2/3;
         grid-column: 3;
@@ -63,6 +73,7 @@
             color: $clr1;
           }
         }
+
         .confirm {
           position: relative;
 
