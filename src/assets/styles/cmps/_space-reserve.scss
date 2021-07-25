@@ -1,4 +1,6 @@
 .space-reserve {
+  height: fit-content;
+
 
   @include for-mobile-layout {
    padding: 25px 0px;
