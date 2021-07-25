@@ -459,7 +459,7 @@ export default {
       this.$store
         .dispatch({ type: 'saveSpace', space: this.spaceToEdit })
         .then((savedSpace) => {
-          this.$router.push('/space');
+          this.$router.push('/dashboard');
           //   showMsg("space added/ removed");
         })
         .catch((err) => {
@@ -512,6 +512,12 @@ export default {
           this.spaceToEdit = JSON.parse(JSON.stringify(space));
         });
     }
+    this.spaceToEdit.name =
+      'Luxury 2 Bedroom Flat with Breathtaking City Views';
+    this.spaceToEdit.description =
+      "Experience London from this luxurious 2 Bedroom/2 Bathroom flat in one of London's most exclusive buildings. This one-of-a-kind flat has it all! Take in breathtaking views of London from the Sky Garden, relax in the beautifully furnished living room, cook in the modern kitchen, and sleep in the ultra-comfortable beds. You'll be in Vauxhall, where you'll find exceptional restaurants just steps from your front door and many major attractions within walking distance.I can't wait to host you!";
+    this.spaceToEdit.loc.country = 'England';
+    this.spaceToEdit.loc.address = 'London';
   },
 
   destroyed() {
