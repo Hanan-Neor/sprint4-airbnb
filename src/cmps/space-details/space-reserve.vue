@@ -22,11 +22,10 @@
     <form @submit.prevent="submit" value="value" class="space-reserve-form">
       <div class="options">
         <reserve-date @dateToReserve="dateToReserve2" />
-        <!-- <reserve-guests @guestsToSave="guestsToSave2" /> -->
         <reserve-guests2 :limit="space.capacity" @guestsCnt="guestsToSave2" />
       </div>
-      <!-- <button class="gradient-btn">Book</button> -->
-      <gradient-btn :text="'Book'"></gradient-btn>
+      <gradient-btn v-if="!booked" :text="'Book'"></gradient-btn>
+      <div v-else class="booked">Booked!</div>
       <div v-if="totalPrice && reserve.date.start" class="total">
         <p class="title">Total:</p>
         <p class="price">{{ totalPrice }}</p>
@@ -54,6 +53,7 @@ export default {
         totalPrice: 0,
       },
       days: 1,
+      booked: false,
     };
   },
 
@@ -71,23 +71,18 @@ export default {
     submit() {
       if (!this.reserve.date.start) return;
       this.$emit('reserve', this.reserve);
-      // try {
-      //   await this.$store.dispatch({ type: 'saveOrder', order: this.reserve });
-      //   this.$router.push('/');
-      // } catch (err) {
-      //   console.log('cannot submit order', err);
-      // }
+      this.booked = true;
     },
 
     dateToReserve2(date) {
-      this.reserve.date.start = date[0];
-      this.reserve.date.end = date[1];
-      const start = new Date(this.reserve.date.start);
-      const end = new Date(this.reserve.date.end);
+      const start = new Date(date[0]);
+      const end = new Date(date[1]);
       const diffInTime = end.getTime() - start.getTime();
       this.days = diffInTime / (1000 * 3600 * 24);
       this.reserve.totalPrice =
         this.space.price * this.days * this.reserve.guests;
+      this.reserve.date.start = start;
+      this.reserve.date.end = end;
     },
 
     guestsToSave2(guests) {
@@ -106,4 +101,4 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style></style>

@@ -2,7 +2,7 @@
   <section>
     <GmapMap
       :center="center"
-      :zoom="7"
+      :zoom="14"
       map-type-id="terrain"
       style="width: 100%; height: 480px"
     >

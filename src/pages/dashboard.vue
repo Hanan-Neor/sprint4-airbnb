@@ -99,67 +99,24 @@ export default {
     totalSpaceCapacity() {
       return this.$store.getters.totalSpaceCapacity;
     },
-    data() {
-      return {
-        ready: false,
-      };
+    occupancy() {
+      return this.totalGuests / this.totalSpaceCapacity || 0;
     },
-    computed: {
-      host() {
-        return this.$store.getters.loggedinUser;
-      },
-      averageRating() {
-        return this.$store.getters.getAverageRating;
-      },
-      totalGuests() {
-        return this.$store.getters.totalGuests;
-      },
-      totalSpaceCapacity() {
-        return this.$store.getters.totalSpaceCapacity;
-      },
-      occupancy() {
-        return this.totalGuests / this.totalSpaceCapacity || 0;
-      },
-      totalLikes() {
-        return this.$store.getters.totalLikes;
-      },
-      spaces() {
-        return this.$store.getters.spaces;
-      },
+    totalLikes() {
+      return this.$store.getters.totalLikes;
+    },
+    spaces() {
+      return this.$store.getters.spaces;
+    },
 
-      spaceRatings() {
-        return this.$store.getters.spaceRatings;
-      },
-      spaceNames() {
-        return this.$store.getters.spaceNames;
-      },
+    spaceRatings() {
+      return this.$store.getters.spaceRatings;
     },
-    async created() {
-      try {
-        const loggedinUser = await this.$store.dispatch({
-          type: 'loadLoggedInUser',
-        });
-        const hostId = loggedinUser._id;
-        await this.$store.commit({ type: 'clearFilter' });
-        await this.$store.commit({
-          type: 'setFilterField',
-          field: 'hostId',
-          value: hostId,
-        });
-        await this.$store.dispatch({ type: 'loadSpaces' });
-        this.ready = true;
-      } catch (err) {
-        console.log('error getting host in dashboard');
-        throw err;
-      }
+    spaceNames() {
+      return this.$store.getters.spaceNames;
     },
   },
 
-  methods: {
-    toTab(tab) {
-      this.currentTab = tab;
-    },
-  },
   async created() {
     try {
       const loggedinUser = await this.$store.dispatch({
@@ -179,16 +136,13 @@ export default {
       throw err;
     }
   },
+
+  methods: {
+    toTab(tab) {
+      this.currentTab = tab;
+    },
+  },
 };
 </script>
 
-<style>
-/* .backoffice .stats p {
-  border: 1px solid black;
-  margin-right: 5px;
-  padding: 5px;
-} */
-/* canvas {
-  height: 60vh;
-} */
-</style>
+<style></style>

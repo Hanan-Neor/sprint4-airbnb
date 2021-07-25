@@ -1,6 +1,7 @@
 <template>
   <div v-if="imgUrls" class="space-imgs" :class="pics">
     <img :src="img" v-for="(img, idx) in imgUrls.slice(0, 5)" :key="idx" />
+    
   </div>
 </template>
 

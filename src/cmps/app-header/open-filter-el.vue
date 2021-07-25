@@ -81,7 +81,7 @@ export default {
 
 
       detailsToShow(){
-          return 1
+          // return 1
             // return this.filterBy.numGuests
 
           if(this.filterBy.location)

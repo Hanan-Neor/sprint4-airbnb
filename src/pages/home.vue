@@ -1,8 +1,8 @@
 <template>
   <div class="home">
-    <div class="full" style="position: relative">
+    <div class="" style="position: relative">
       <img
-        class="top-bg full"
+        class="top-bg"
         src="https://sumberkimahill.com/wp-content/uploads/2019/01/Villa-Bali-Sea-view-Sumberkima-Hill-Retreat.JPG.jpg"
         alt=""
       />
@@ -19,7 +19,7 @@
       </div>
     </div>
 
-    <div class="list-container">
+    <div class="list-container full">
       <div class="list-titles">Discover locations</div>
       <explore-list @gotoSpaces="gotoCountrySpaces" :spaces="spaces" />
     </div>
@@ -38,7 +38,7 @@
       /> -->
     </div>
 
-    <div class="list-container">
+    <div class="list-container full">
       <div class="list-titles">Top rated spaces</div>
       <space-list :spaces="spaces" />
     </div>

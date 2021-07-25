@@ -1,7 +1,29 @@
 .space-filter{
+    // background-color: #fff;
+    @include for-mobile-layout {
+        position: absolute;
+        display: block;
+        width: 100vw;
+    }
+    @include for-narrow-layout {
+        position: absolute;
+        display: block;
+        width: 100vw;
+
+    }
+    @include for-normal-layout {
+        // display: flex;
+     border-radius: 32px;
+
+        position: unset;
+        width: fit-content;
+    }
+    @include for-wide-layout {
+    }
+ 
+  
     background: rgb(247, 247, 247);
     border:1px solid rgb(221, 221, 221);
-     border-radius: 32px;
     //   z-index:0;
        width:fit-content;
 
@@ -38,11 +60,22 @@
         width: fit-content;
     }
     // form {
-    .form {
+    & .form {
+        @include for-mobile-layout {
+            border-radius: 0;
+        }
+        @include for-narrow-layout {
+        }
+        @include for-normal-layout {
+            display: flex;
+        }
+        @include for-wide-layout {
+        }
         gap:5px;
         // border: 1px solid $clr-form-input-border;
     }
     .filter-div{
+        
         & > input{
             width: 100%;
             text-overflow: ellipsis;

@@ -19,10 +19,13 @@
     <el-date-picker
     popper-class="date-picker-class"
     size="large"
-    @input="date"
-      @change="date"
+     @change="date"
       v-model="dates"
       type="daterange"
+      range-separator=""
+      start-placeholder="CHECK-IN"
+      end-placeholder="CHECKOUT"
+
       style="background-color:inherit; border:0px; height=100%; width:100%; cursor:pointer"
       picker-options="pickerOptions"
     >

@@ -1,0 +1,35 @@
+
+
+        @include for-mobile-layout {
+           
+        }
+        @include for-narrow-layout {
+ 
+        }
+        @include for-normal-layout {
+        }
+        @include for-wide-layout {
+        }
+  
+    
+.main-layout {
+    @include for-mobile-layout {
+        // background-color: orange;
+        grid-template-columns: 1.5rem 1fr 1.5rem;
+    }
+
+    @include for-narrow-layout {
+        // background-color: yellow;
+        grid-template-columns: 1.5rem 1fr 1.5rem;
+    }
+
+    @include for-normal-layout {
+        // background-color: green;
+        grid-template-columns: 1.5rem 1fr 1.5rem;
+    }
+
+    @include for-wide-layout {
+        // background-color: blue;
+        grid-template-columns: 5rem 1fr 5rem;
+    }
+}
