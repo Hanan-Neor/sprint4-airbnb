@@ -3,7 +3,7 @@
     <h2 class="space-title-primary">{{ space.name }}</h2>
     <!-- details page: {{getMsg}}  -->
 
-    <!-- <msg :spaceId="spaceId" :msg="getMsg" v-if="showViewers" /> -->
+    <msg :spaceId="spaceId" :msg="getMsg" v-if="getMsg" />
     <div class="space-title-secondary">
       <div class="left-part">
         <div class="rating">
@@ -117,7 +117,7 @@ export default {
   name: 'space-details',
   async created() {
     try {
-      socketService.on('updateViewerCount', this.updateViewerCount);
+      
       this.$store.commit({ type: 'showViewers' });
     } catch (err) {
       console.log('error in created in space-details', err);
@@ -226,9 +226,9 @@ export default {
   },
 
   methods: {
-    updateViewerCount(count) {
-      console.log('count in page****', count);
-      this.msg = count;
+    updateViewerCount(msg) {
+      console.log('count in page****', msg);
+      this.msg = msg;
     },
     icon(amenity) {
       return amenity.toLowerCase().replace(' ', '-');
@@ -282,6 +282,7 @@ export default {
           //listeners
           const userId = this.$store.getters.loggedinUser._id; //TODO remove - this is for debugging
           const isSpaceHost = space.host._id === userId;
+            socketService.on('updateViewerCount', this.updateViewerCount);
           socketService.emit('newViewer', {
             spaceId: space._id,
             hostId: space.host._id,
@@ -295,13 +296,12 @@ export default {
           socketService.on('joinSocket', (socketId) => {
             //joinSocket is emitted by guest only, to host and guest
             this.socketId = socketId;
-            socketService.emit('joinSocketId');
+            socketService.emit('joinSocketId', socketId);
             // debugger
             // if (isSpaceHost) {
 
-            // }
+              // }
           });
-
           //if he's the host, listen for someone joining his room
           // if (){
           //   socketService.emit(joinHostRoom)
