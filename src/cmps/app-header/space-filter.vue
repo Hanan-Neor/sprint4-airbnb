@@ -1,6 +1,6 @@
 <template>
   <div class="space-filter full"  >
-    <div class=".form flex"  style="position:relative">
+    <div class="form"  style="position:relative">
     <!-- <form class="flex" :class="{ filterOpenDown: showingFilters }"> -->
 
       <!-- <form @submit.prevent="filterSpaces" class="flex"> -->
@@ -68,7 +68,7 @@
           />
         </div>
 
-        <div class="flex" style="position:relative;">
+        <div class="flex date-responsive" style="position:relative;">
           <div
             class="filter-div date-filter1 filter-div-hover"
             :class="{ clicked: isDate1Clicked }"

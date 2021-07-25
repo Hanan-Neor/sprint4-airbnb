@@ -1,7 +1,19 @@
 .review-list {
+  @include for-mobile-layout {
+   
+  }
+  @include for-narrow-layout {
+  }
+  @include for-normal-layout {
+  grid-template-columns: 1fr 1fr;
+
+  }
+  @include for-wide-layout {
+  }
+
   display: grid;
   width: 100%;
-  grid-template-columns: 1fr 1fr;
+  // grid-template-columns: 1fr 1fr;
   row-gap: 1rem;
   column-gap: 100px;
   margin-bottom: 4rem;

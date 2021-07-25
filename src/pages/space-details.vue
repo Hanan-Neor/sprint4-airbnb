@@ -19,12 +19,17 @@
     </div>
     <space-imgs :imgUrls="space.imgUrls" />
 
+    <!-- for mobile -->
+      <space-list :spaces="[space]" />
+<!-- / -->
+
+
     <div class="space-description-container">
       <div class="space-description-wrap">
         <div class="space-description-title">
           <div class="container">
             <p class="title-sentence">
-              {{ space.type }} hosted by {{ host.fullname }}
+              <span>{{ space.type }}</span><span> hosted by {{ host.fullname }}</span>
             </p>
             <p class="title-capacity">{{ space.capacity }} guests</p>
           </div>
@@ -105,6 +110,8 @@ import { spaceService } from '../services/space.service.js';
 import spaceReserve from './../cmps/space-details/space-reserve.vue';
 import msg from './../cmps/msg.vue';
 import { socketService } from '../services/socket.service';
+import DetailsImgPreview from '../cmps/space-details/details-img-preview.vue';
+import spaceList from '../cmps/space-app/space-list.vue'
 
 export default {
   name: 'space-details',
@@ -305,6 +312,8 @@ export default {
     showMore,
     spaceReserve,
     msg,
+    DetailsImgPreview,
+    spaceList
   },
   async beforeDestroy() {
     try {

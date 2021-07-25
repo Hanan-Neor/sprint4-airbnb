@@ -17,7 +17,19 @@ h4,
 h5,
 h6 {
   margin: 0 0 0.6em;
+  // line-height: 1;
+  @include for-mobile-layout {
+   
+  }
+  @include for-narrow-layout {
+  }
+  @include for-normal-layout {
   line-height: 1;
+
+  }
+  @include for-wide-layout {
+  }
+
 }
 
 section,
@@ -28,7 +40,18 @@ footer {
 
 p {
   margin: 0 0 1em;
-  max-width: 40ch;
+  // max-width: 40ch;
+  @include for-mobile-layout {
+   
+  }
+  @include for-narrow-layout {
+  }
+  @include for-normal-layout {
+    max-width: 40ch;
+  }
+  @include for-wide-layout {
+  }
+  
 }
 
 a {
