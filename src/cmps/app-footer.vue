@@ -8,8 +8,8 @@
       <router-link to="/dashboard">Dashboard</router-link> 
       <router-link to="/dashboard">Signup</router-link> 
       <router-link to="/dashboard">Login</router-link> 
-      <router-link to="/dashboard">Israel</router-link> 
-      <router-link to="/dashboard">France</router-link> 
+      <router-link to="/space">Israel</router-link> 
+      <router-link to="/space">France</router-link> 
     </nav>
   </div>
 </template>
