@@ -1,6 +1,6 @@
 <template>
-  <div class="home">
-    <div class="" style="position: relative">
+  <div class="home ">
+    <div class="full" style="position: relative">
       <img
         class="top-bg"
         src="https://sumberkimahill.com/wp-content/uploads/2019/01/Villa-Bali-Sea-view-Sumberkima-Hill-Retreat.JPG.jpg"
@@ -26,9 +26,10 @@
 
     <div class="breaker-image">
       <button class="breaker-image-btn" @click="showPage">
-        Get Inspired/host
+        <!-- Get Inspired/host -->
+        Try hosting
       </button>
-      <img
+      <img class=""
         src="https://www.wns.co.za/Portals/0/Images/HeaderBanner/desktop/1087/53/travel_HD.jpg"
         alt=""
       />
