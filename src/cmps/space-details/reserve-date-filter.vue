@@ -8,7 +8,7 @@
       range-separator=""
       start-placeholder="CHECK-IN"
       end-placeholder="CHECKOUT"
-      style="background-color:inherit; border:0px; height=100%"
+      style="background-color:inherit; border:0px; height=100%;"
     >
     </el-date-picker>
 
@@ -31,3 +31,4 @@ export default {
   },
 };
 </script>
+
