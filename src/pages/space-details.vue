@@ -3,7 +3,7 @@
     <h2 class="space-title-primary">{{ space.name }}</h2>
     <!-- details page: {{getMsg}}  -->
 
-    <msg :spaceId="spaceId" :msg="getMsg" v-if="showViewers" />
+    <!-- <msg :spaceId="spaceId" :msg="getMsg" v-if="showViewers" /> -->
     <div class="space-title-secondary">
       <div class="left-part">
         <div class="rating">

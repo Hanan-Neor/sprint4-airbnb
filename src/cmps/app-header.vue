@@ -63,7 +63,7 @@
                   <span>signup</span>
                 </li>
                 <li v-if="loggedInUser" @click="logout"><span>logout</span></li>
-                <li><span>Host your home</span></li>
+                <li @click="gotoAddSpace" ><span>Host your home</span></li>
               </ul>
             </template>
 
@@ -207,6 +207,9 @@ export default {
     };
   },
   methods: {
+    gotoAddSpace(){
+      this.$router.push('/space/host/edit')
+    },
     toggleFilter() {
       // if (!this.isIntersecting) {
       this.showFilters = false;

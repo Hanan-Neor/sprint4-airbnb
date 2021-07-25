@@ -8,7 +8,7 @@ $chat-padding: 25px;
 .chat-app{
     height: calc($chat-height + 50px);
     .btn-open, .btn-close{
-        height: $chat-height;
+        height: 50px;
         border-bottom-left-radius:15px;
         border-top-left-radius: 15px;
         background-color: white;
@@ -128,7 +128,7 @@ $chat-padding: 25px;
     }
     @keyframes slideOutRight {
     0% {
-    transform: translateX(0);
+    transform: translateX(100%); /*TODO change this so it closes with animation*/
     }
     100% {
     visibility: hidden;

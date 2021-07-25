@@ -76,6 +76,7 @@ export default {
       this.isOpen = true
     },
     closeChat(){
+      // setTimeout(() => this.isOpen = false, 3000)
       this.isOpen = false
     },
     async addMsg(msg) {
