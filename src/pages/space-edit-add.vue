@@ -353,9 +353,12 @@
         <div class="right-part">
           <div class="right-part-content">
             <h2>Create your description</h2>
-            <textarea name="" id="" rows="4" v-model="spaceToEdit.description">
-Get comfortable and enjoy plenty of extra room at this spacious place.</textarea
-            >
+            <textarea
+              name=""
+              id=""
+              rows="8"
+              v-model="spaceToEdit.description"
+            ></textarea>
           </div>
           <nav-btns-add-form
             :currentTab="currentTab"
@@ -373,7 +376,7 @@ Get comfortable and enjoy plenty of extra room at this spacious place.</textarea
             <div class="set-price">
               <button
                 class="price-btn minus"
-                @click="
+                @click.prevent="
                   spaceToEdit.price ? spaceToEdit.price-- : spaceToEdit.price
                 "
               ></button>
@@ -384,7 +387,7 @@ Get comfortable and enjoy plenty of extra room at this spacious place.</textarea
               />
               <button
                 class="price-btn plus"
-                @click="spaceToEdit.price++"
+                @click.prevent="spaceToEdit.price++"
               ></button>
             </div>
 
@@ -407,7 +410,6 @@ Get comfortable and enjoy plenty of extra room at this spacious place.</textarea
         ></span>
       </div>
     </form>
-
   </section>
 </template>
 
@@ -437,7 +439,13 @@ export default {
         'air-conditioning': false,
         'security-cameras': false,
       },
-      imgs: [],
+      imgs: [
+        'https://res.cloudinary.com/dymtestxz/image/upload/v1626394616/sprint4/spaces/3%20-%20Still%20Life%20St%20Paul%27s%20Executive/space/0a6eeebb-4c3e-4e6c-9bff-414012c215f4_hhgtvb.webp',
+        'https://res.cloudinary.com/dymtestxz/image/upload/v1626394617/sprint4/spaces/3%20-%20Still%20Life%20St%20Paul%27s%20Executive/space/91a8e796-2828-4412-847d-38ea1cdc2890_lo1c1l.webp',
+        'https://res.cloudinary.com/dymtestxz/image/upload/v1626394613/sprint4/spaces/3%20-%20Still%20Life%20St%20Paul%27s%20Executive/space/2e707f27-6214-4c56-b9de-751a25c2cfa8_v23goc.webp',
+        'https://res.cloudinary.com/dymtestxz/image/upload/v1626394612/sprint4/spaces/3%20-%20Still%20Life%20St%20Paul%27s%20Executive/space/7a7142c4-1e7c-4146-8d72-1efd04d872a9_lsxarl.webp',
+        'https://res.cloudinary.com/dymtestxz/image/upload/v1626394612/sprint4/spaces/3%20-%20Still%20Life%20St%20Paul%27s%20Executive/space/46ef9170-4b3d-42d4-b4e0-d7e7087c445e_jlonoa.webp',
+      ],
     };
   },
 
