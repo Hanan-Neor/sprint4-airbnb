@@ -69,6 +69,7 @@ export default {
   },
   methods: {
     setTyper(typer) {
+      debugger;
       this.typer = typer;
     },
     openChat(){
@@ -86,6 +87,7 @@ export default {
         // TODO: next 2 lines not needed after connecting to backend
           // this.addMsg(this.msg)
           // setTimeout(()=>this.addMsg({from: 'Dummy', txt: 'Yey'}), 2000)
+          console.log('sending Msg', this.msg, this.socketId);
           socketService.emit("chat newMsg", {msg:this.msg, socketId:this.socketId});
         this.msg = {
           from: this.$store.getters.loggedinUser.fullname,

@@ -20,16 +20,16 @@
     <space-imgs :imgUrls="space.imgUrls" />
 
     <!-- for mobile -->
-      <space-list :spaces="[space]" />
-<!-- / -->
-
+    <space-list :spaces="[space]" />
+    <!-- / -->
 
     <div class="space-description-container">
       <div class="space-description-wrap">
         <div class="space-description-title">
           <div class="container">
             <p class="title-sentence">
-              <span>{{ space.type }}</span><span> hosted by {{ host.fullname }}</span>
+              <span>{{ space.type }}</span
+              ><span> hosted by {{ host.fullname }}</span>
             </p>
             <p class="title-capacity">{{ space.capacity }} guests</p>
           </div>
@@ -92,7 +92,7 @@
       <div class="" v-else>loading</div>
       <p class="space-location">{{ space.loc.address }}</p>
     </div>
-    <chat-app :space="space" :socketId="getSocketId"/>
+    <chat-app :space="space" :socketId="getSocketId" />
   </div>
   <div v-else>
     <img class="svg-img-loader" src="@/assets/img/loading.svg" />
@@ -100,33 +100,33 @@
 </template>
 
 <script>
-import chatApp from './../cmps/space-details/chat-app.vue';
-import orderForm from './../cmps/space-details/order-form.vue';
-import reviewList from './../cmps/space-details/review-list.vue';
-import spaceImgs from './../cmps/space-details/space-imgs.vue';
-import googleMaps from './../cmps/google-maps.vue';
-import showMore from './../cmps/show-more.vue';
-import { spaceService } from '../services/space.service.js';
-import spaceReserve from './../cmps/space-details/space-reserve.vue';
-import msg from './../cmps/msg.vue';
-import { socketService } from '../services/socket.service';
-import DetailsImgPreview from '../cmps/space-details/details-img-preview.vue';
-import spaceList from '../cmps/space-app/space-list.vue'
+import chatApp from "./../cmps/space-details/chat-app.vue";
+import orderForm from "./../cmps/space-details/order-form.vue";
+import reviewList from "./../cmps/space-details/review-list.vue";
+import spaceImgs from "./../cmps/space-details/space-imgs.vue";
+import googleMaps from "./../cmps/google-maps.vue";
+import showMore from "./../cmps/show-more.vue";
+import { spaceService } from "../services/space.service.js";
+import spaceReserve from "./../cmps/space-details/space-reserve.vue";
+import msg from "./../cmps/msg.vue";
+import { socketService } from "../services/socket.service";
+import DetailsImgPreview from "../cmps/space-details/details-img-preview.vue";
+import spaceList from "../cmps/space-app/space-list.vue";
 
 export default {
-  name: 'space-details',
+  name: "space-details",
   async created() {
     try {
-      socketService.on('updateViewerCount', this.updateViewerCount);
-      socketService.emit('newViewer', this.$route.params.spaceId);
-      this.$store.commit({ type: 'showViewers' });
+      socketService.on("updateViewerCount", this.updateViewerCount);
+      // socketService.emit('newViewer', this.$route.params.spaceId);
+      this.$store.commit({ type: "showViewers" });
       // if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
       //   alert('before unload');
       // }
 
       // this.ready = true
     } catch (err) {
-      console.log('error in created in space-details', err);
+      console.log("error in created in space-details", err);
       throw err;
     }
   },
@@ -139,23 +139,23 @@ export default {
       // viewerCount: 0,
       spaceId: this.$route.params.spaceId,
       // ready: false,
-      msg: 'unset',
+      msg: "unset",
       space: {
         loc: {},
         reviews: [],
       },
       host: {},
       order: {
-        hostId: '',
+        hostId: "",
         createdAt: 0,
         buyer: {
-          _id: '',
-          fullname: '',
+          _id: "",
+          fullname: "",
         },
         totalPrice: 0,
 
-        startDate: '',
-        endDate: '',
+        startDate: "",
+        endDate: "",
         guests: 0,
         //     "guests": {
         //       "adults":,
@@ -169,20 +169,22 @@ export default {
         //   lng: null,
         // },
         stay: {
-          _id: '',
-          name: '',
+          _id: "",
+          name: "",
           price: 0,
         },
-        status: 'pending',
+        status: "pending",
       },
-      socketId: '',
+      socketId: "",
     };
   },
 
   computed: {
-    getSocketId(){return this.socketId},
+    getSocketId() {
+      return this.socketId;
+    },
     showViewers() {
-      console.log('viewers open', this.$store.getters.showViewers);
+      console.log("viewers open", this.$store.getters.showViewers);
       return this.$store.getters.showViewers;
     },
     getMsg() {
@@ -243,11 +245,11 @@ export default {
 
   methods: {
     updateViewerCount(count) {
-      console.log('count in page****', count);
+      console.log("count in page****", count);
       this.msg = count;
     },
     icon(amenity) {
-      return amenity.toLowerCase().replace(' ', '-');
+      return amenity.toLowerCase().replace(" ", "-");
     },
     async reserveToSave(reserve) {
       this.order.guests = reserve.guests;
@@ -256,10 +258,10 @@ export default {
       this.order.totalPrice = reserve.totalPrice;
       console.log(this.order);
       try {
-        await this.$store.dispatch({ type: 'saveOrder', order: this.order });
-        socketService.emit('newOrder', this.order)
+        await this.$store.dispatch({ type: "saveOrder", order: this.order });
+        socketService.emit("newOrder", this.order);
       } catch (error) {
-        console.log('cannot make order', error);
+        console.log("cannot make order", error);
       }
       // tripToOrder
       // this.$store.dispatch({ type: 'tripToOrder' });
@@ -267,17 +269,17 @@ export default {
       // console.log(this.order);
     },
     showViewMsg(count) {
-      console.log('viewing******!');
+      console.log("viewing******!");
       this.msg = count;
       console.log(this.msg);
     },
     showBookedMsg() {
-      console.log('booked!');
+      console.log("booked!");
     },
   },
 
   watch: {
-    '$route.params.spaceId': {
+    "$route.params.spaceId": {
       immediate: true,
       async handler() {
         const { spaceId } = this.$route.params;
@@ -296,12 +298,26 @@ export default {
           this.order.stay.price = space.price;
 
           //listeners
-          const isSpaceHost = space.host._id === this.$store.getters.loggedinUser
-          socketService.emit('newViewer', {spaceId: space._id, hostId: space.host._id, isSpaceHost:isSpaceHost })
-          socketService.on('socketId', socketId => {
+            const userId = this.$store.getters.loggedinUser._id //TODO remove - this is for debugging
+          const isSpaceHost = space.host._id === userId;
+          socketService.emit("newViewer", {
+            spaceId: space._id,
+            hostId: space.host._id,
+            isSpaceHost: isSpaceHost,
+          });
+          // socketService.on('socketId', socketId => {
+          //   this.socketId = socketId;
+          //   // debugger;
+          //   socketService.emit('joinSocketId', socketId)
+          // })
+          socketService.on("joinSocket", (socketId) => { //joinSocket is emitted by guest only, to host and guest
             this.socketId = socketId;
-            socketService.emit('joinSocketId', socketId)
-          })
+            socketService.emit("joinSocketId");
+            // debugger
+            // if (isSpaceHost) {
+
+            // }
+          });
 
           //if he's the host, listen for someone joining his room
           // if (){
@@ -314,7 +330,7 @@ export default {
           // this.order.dest.lat = this.space.loc.lat;
           // this.order.dest.lng = this.space.loc.lng;
         } catch (error) {
-          console.log('cannot get space', error);
+          console.log("cannot get space", error);
         }
       },
     },
@@ -329,14 +345,14 @@ export default {
     spaceReserve,
     msg,
     DetailsImgPreview,
-    spaceList
+    spaceList,
   },
   async beforeDestroy() {
     try {
-      console.log(this.spaceId, '***************');
-      await socketService.emit('removeViewer', this.spaceId);
+      console.log(this.spaceId, "***************");
+      await socketService.emit("removeViewer", this.spaceId);
       // socketService.terminate();
-      console.log('about to leave page', this.getMsg);
+      console.log("about to leave page", this.getMsg);
     } catch (err) {
       console.log(err);
       throw err;
