@@ -9,7 +9,9 @@
             class="logo-container clear-link"
             :style="logoStyle"
           >
-            <div class="logo"></div>
+            <div class="logo">
+              <span>travelbnb</span>
+            </div>
           </router-link>
 
           <div
@@ -109,37 +111,33 @@
 </template>
 
 <script>
-import spaceFilter from "./app-header/space-filter.vue";
-import login from "./app-header/login.vue";
-import { eventBusService } from "./../services/event-bus.service.js";
-import OpenFilterEl from "./app-header/open-filter-el.vue";
+import spaceFilter from './app-header/space-filter.vue';
+import login from './app-header/login.vue';
+import { eventBusService } from './../services/event-bus.service.js';
+import OpenFilterEl from './app-header/open-filter-el.vue';
 
 export default {
   created() {
-    eventBusService.$on("hideHeader", this.toggleHeader);
-    eventBusService.$on("showHeader", this.toggleHeader);
-    eventBusService.$on("headerFixed", (state) => {
+    eventBusService.$on('hideHeader', this.toggleHeader);
+    eventBusService.$on('showHeader', this.toggleHeader);
+    eventBusService.$on('headerFixed', (state) => {
       this.state = state;
 
       if (this.isLarge) {
         this.showFilters = true;
       }
     });
-    eventBusService.$on("searchPos", (isIntersecting) => {
+    eventBusService.$on('searchPos', (isIntersecting) => {
       this.isIntersecting = isIntersecting;
-      if(this.isLarge){
-
-      this.showFilters = isIntersecting;
+      if (this.isLarge) {
+        this.showFilters = isIntersecting;
       }
     });
-    eventBusService.$on("likedWithoutUser", () => {
+    eventBusService.$on('likedWithoutUser', () => {
       this.showLogin();
-      this.loginFormType = "login";
-      this.navOpen = false; //TODO this should not be needed here - change 'showLogin()'
-      // this.toggleNav();
+      this.loginFormType = 'login';
+      this.navOpen = false;
     });
-
-    // },3000)
   },
   components: {
     spaceFilter,
@@ -164,43 +162,38 @@ export default {
     },
     headerPos() {
       return {
-        position: this.state ? "fixed" : "relative",
-        background: this.isIntersecting ? "none" : "white",
-        "z-index": 10,
+        position: this.state ? 'fixed' : 'relative',
+        background: this.isIntersecting ? 'none' : 'white',
+        'z-index': 10,
       };
     },
     filterBackground() {
       return {
-        background: this.isIntersecting ? "#fff" : "rgb(247, 247, 247)",
+        background: this.isIntersecting ? '#fff' : 'rgb(247, 247, 247)',
       };
     },
     hostColor() {
       return {
-        color: this.isIntersecting ? "white" : "inherit",
+        color: this.isIntersecting ? 'white' : 'inherit',
       };
     },
     logoStyle() {
       if (this.state) {
         return {
-          color: this.isIntersecting ? "white" : "#ff385c",
+          color: this.isIntersecting ? 'white' : '#ff385c',
         };
       } else {
-        color: "#ff385c";
+        color: '#ff385c';
       }
     },
   },
   data() {
     return {
-      loginFormType: "", //'login' or 'signup'
+      loginFormType: '', //'login' or 'signup'
       loginOpen: false,
       navOpen: false,
       screenWidth: window.innerWidth,
-      // diplayState:{
-      //   position:'fixed'
-      // }
-      //state is false when nav is hidden
       state: false,
-      // isIntersecting refers to background round
       isIntersecting: true,
       hide: false,
       showFilters: false,
@@ -211,36 +204,32 @@ export default {
       this.$router.push('/space/host/edit')
     },
     toggleFilter() {
-      // if (!this.isIntersecting) {
       this.showFilters = false;
-      // this.$store.dispatch({ type: 'showCover' });
-      // }
     },
     logout() {
-      this.$store.dispatch({ type: "logout" });
+      this.$store.dispatch({ type: 'logout' });
       this.toggleNav();
-      if (this.$route.name === "space-details") this.$router.push("/");
+      if (this.$route.name === 'space-details') this.$router.push('/');
     },
     showLogin(formType) {
-      this.$store.dispatch({ type: "showCover" });
+      this.$store.dispatch({ type: 'showCover' });
       this.loginFormType = formType;
       this.loginOpen = true;
       this.toggleNav();
-      // console.log(this.isLoginOpen);
     },
     closeLogin() {
-      this.$store.dispatch({ type: "hideCover" });
+      this.$store.dispatch({ type: 'hideCover' });
       this.loginOpen = false;
     },
     toggleNav() {
       this.navOpen = !this.navOpen;
     },
     showWhishlist() {
-      alert("please add wishlists");
+      alert('please add wishlists');
     },
     showExplore() {
-      this.$store.commit({ type: "clearFilter" });
-      if (this.$router.path !== "/space") this.$router.push("/space");
+      this.$store.commit({ type: 'clearFilter' });
+      if (this.$router.path !== '/space') this.$router.push('/space');
     },
     toggleHeader() {
       this.hide = !this.hide;

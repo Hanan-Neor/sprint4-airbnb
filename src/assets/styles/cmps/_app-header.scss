@@ -35,7 +35,6 @@ $header-side-padding: 42px;
 
       @include for-mobile-layout {
         display: none;
-        
       }
       @include for-narrow-layout {
         display: none;
@@ -91,9 +90,13 @@ $header-side-padding: 42px;
   }
   .logo {
     height: 32px;
+    span {
+      font-size: 1.125rem;
+      margin-left: 0.5rem;
+    }
   }
   .nav {
-    font-family: "cereal-Medium";
+    font-family: 'cereal-Medium';
     font-size: 0.875rem;
 
     position: absolute;
@@ -142,7 +145,8 @@ $header-side-padding: 42px;
     border-top: 1px solid rgb(221, 221, 221);
     line-height: 1.43;
     color: #484848;
-    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
+      Helvetica Neue, sans-serif;
     margin: 0px auto;
     z-index: 3;
     .nav-item {
@@ -164,31 +168,30 @@ $header-side-padding: 42px;
     }
     .explore::before {
       font-size: 30px;
-      content: "\f002";
-      font-family: "awesome-solid";
+      content: '\f002';
+      font-family: 'awesome-solid';
     }
     .wishlists::before {
       font-size: 30px;
-      font-family: "awesome-light";
-      content: "\f004";
+      font-family: 'awesome-light';
+      content: '\f004';
     }
     .nav-login::before {
       font-size: 30px;
-      font-family: "awesome-light";
-      content: "\f2bd";
+      font-family: 'awesome-light';
+      content: '\f2bd';
     }
   }
   .logo-container2 {
     .logo2::before {
-      color:#ff385c;
+      color: #ff385c;
       font-size: 30px;
-      content: "\f7e5";
+      content: '\f7e5';
       // content: '\f2bd';
-      font-family: "awesome-solid";
+      font-family: 'awesome-solid';
       // font-family: 'awesome-light';
     }
 
-    
     color: #ff385c;
     cursor: pointer;
     width: fit-content;
@@ -203,15 +206,14 @@ $header-side-padding: 42px;
     }
     @include for-narrow-layout {
       display: none;
-
     }
     @include for-normal-layout {
       display: block;
       .logo::before {
         font-size: 30px;
-        content: "\f7e5";
+        content: '\f7e5';
         // content: '\f2bd';
-        font-family: "awesome-solid";
+        font-family: 'awesome-solid';
         // font-family: 'awesome-light';
       }
 
@@ -244,7 +246,6 @@ $header-side-padding: 42px;
     }
     @include for-narrow-layout {
       grid-column: span 3;
-
     }
     @include for-normal-layout {
       grid-column: 2/3;
