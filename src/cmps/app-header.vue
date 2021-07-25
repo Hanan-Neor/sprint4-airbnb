@@ -136,11 +136,8 @@ export default {
     eventBusService.$on('likedWithoutUser', () => {
       this.showLogin();
       this.loginFormType = 'login';
-      this.navOpen = false; //TODO this should not be needed here - change 'showLogin()'
-      // this.toggleNav();
+      this.navOpen = false;
     });
-
-    // },3000)
   },
   components: {
     spaceFilter,
@@ -196,12 +193,7 @@ export default {
       loginOpen: false,
       navOpen: false,
       screenWidth: window.innerWidth,
-      // diplayState:{
-      //   position:'fixed'
-      // }
-      //state is false when nav is hidden
       state: false,
-      // isIntersecting refers to background round
       isIntersecting: true,
       hide: false,
       showFilters: false,
@@ -209,10 +201,7 @@ export default {
   },
   methods: {
     toggleFilter() {
-      // if (!this.isIntersecting) {
       this.showFilters = false;
-      // this.$store.dispatch({ type: 'showCover' });
-      // }
     },
     logout() {
       this.$store.dispatch({ type: 'logout' });
@@ -224,7 +213,6 @@ export default {
       this.loginFormType = formType;
       this.loginOpen = true;
       this.toggleNav();
-      // console.log(this.isLoginOpen);
     },
     closeLogin() {
       this.$store.dispatch({ type: 'hideCover' });

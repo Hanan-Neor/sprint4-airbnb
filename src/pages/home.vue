@@ -1,5 +1,5 @@
 <template>
-  <div class="home ">
+  <div class="home">
     <div class="full" style="position: relative">
       <img
         class="top-bg"
@@ -18,9 +18,7 @@
       /> -->
       <h3 class="flexible-title">Not sure where to go? Perfect.</h3>
       <div class="background" @click="gotoSpaces">
-        <a class="header-image-button">
-          Explore new places
-        </a>
+        <a class="header-image-button"> Explore new places </a>
       </div>
     </div>
 
@@ -53,52 +51,44 @@
 </template>
 
 <script>
-import spaceList from './../cmps/space-app/space-list.vue';
-import exploreList from './../cmps/explore-list.vue';
-import { eventBusService } from './../services/event-bus.service.js';
-import msg from './../cmps/msg.vue';
+import spaceList from "./../cmps/space-app/space-list.vue";
+import exploreList from "./../cmps/explore-list.vue";
+import { eventBusService } from "./../services/event-bus.service.js";
+import msg from "./../cmps/msg.vue";
 // @ is an alias to /src
 
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
     spaceList,
     exploreList,
     msg,
   },
   created() {
-    this.$store.commit({ type: 'clearFilter' });
-    this.$store.commit({ type: 'setFilterField', field: 'count', value: 4 });
-    this.$store.dispatch({ type: 'loadSpaces' });
-    console.log('spaces in home', this.$store.getters.spaces);
-    eventBusService.$emit('headerFixed', true);
+    this.$store.commit({ type: "clearFilter" });
+    this.$store.commit({ type: "setFilterField", field: "count", value: 4 });
+    this.$store.dispatch({ type: "loadSpaces" });
+    console.log("spaces in home", this.$store.getters.spaces);
+    eventBusService.$emit("headerFixed", true);
     // eventbus.$emit('headerFixed', true)
 
     setTimeout(() => {
-      // const sectionOne = document.querySelector(".app-header")
-      const sectionOne = document.querySelector('.top-bg');
+      const sectionOne = document.querySelector(".top-bg");
       const options = {
-        // root:null,
         threshold: 1,
-        rootMargin: '0px',
+        rootMargin: "0px",
       };
 
-      const observer = new IntersectionObserver(function(entries, observer) {
+      const observer = new IntersectionObserver(function (entries, observer) {
         entries.forEach((entry) => {
-          // console.log(entry);
-          // console.log(entry.isIntersecting);
-          eventBusService.$emit('searchPos', entry.isIntersecting);
+          eventBusService.$emit("searchPos", entry.isIntersecting);
         });
       }, options);
-
       observer.observe(sectionOne);
     }, 1000);
   },
   destroyed() {
-    eventBusService.$emit('headerFixed', false);
-    // eventbus.$emit('headerFixed' , false)
-
-    // eventBusService.$off('headerFixed');
+    eventBusService.$emit("headerFixed", false);
   },
   computed: {
     spaces() {
@@ -108,22 +98,22 @@ export default {
   methods: {
     async gotoCountrySpaces(country) {
       this.$store.commit({
-        type: 'setFilterField',
-        field: 'country',
+        type: "setFilterField",
+        field: "country",
         value: country,
       });
       this.gotoSpaces();
     },
     async gotoSpaces() {
       try {
-        this.$router.push('/space');
+        this.$router.push("/space");
       } catch (err) {
-        console.log('error in store moving to space-app from homepage', err);
+        console.log("error in store moving to space-app from homepage", err);
         throw err;
       }
     },
     showPage() {
-      prompt('show host or explore page...');
+      prompt("show host or explore page...");
     },
   },
 };
