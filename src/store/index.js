@@ -12,6 +12,7 @@ export default new Vuex.Store({
   state: {
     screenWidth: window.innerWidth,
     coverVisible: false,
+    headerButtonStage:null,
   },
   getters: {
     screenWidth({ screenWidth }) { return screenWidth },
@@ -19,10 +20,12 @@ export default new Vuex.Store({
     isSmallScreen({ screenWidth }) { return screenWidth <= 720 },
     isLargeScreen({ screenWidth }) { return screenWidth > 720 },
     coverVisible(state) { return state.coverVisible },
+    isHeaderButtonStage(state){return state.headerButtonStage}
   },
   mutations: {
     showCover(state) { state.coverVisible = true; },
     hideCover(state) { state.coverVisible = false; },
+    headerButtonStage(state){state.headerButtonStage = state.isOpen}
   },
   actions: {
     showCover(a) {

@@ -76,7 +76,7 @@
             style="flex-direction: column;"
           >
             <label style="">Check in</label>
-            <div class="bind-text">
+            <div class="bind-text" :class="{ clicked2: filterBy.dates.startDate }">
               <!-- <div class="bind-text" :class="{ clicked: guestsClicked }"> -->
               {{ date1ToShow }}
               <!-- {{filterBy.dates.startDate.toLocaleDateString()}} -->
@@ -89,7 +89,7 @@
             style="flex-direction: column; align-items: unset"
           >
             <label style="">Check out</label>
-            <div class="bind-text">
+            <div class="bind-text" :class="{ clicked2: filterBy.dates.endDate }">
               <!-- <div class="bind-text" :class="{ clicked: guestsClicked }"> -->
               {{ date2ToShow }}
               <!-- {{filterBy.dates.endDate.toLocaleDateString()}} -->
@@ -191,12 +191,19 @@
 
 
 
-        <filter-form2 
+        <!-- <filter-form2 
           v-if="isGuestsClicked"
           @guestsCnt="setGuestsCnt"
           @set-filter="updateFilter"
           @close-form="toggleForm"
           :guests="filterBy.numGuests"
+        /> -->
+        <filter-form2 
+          v-if="formOpen"
+          @guestsCnt="setGuestsCnt"
+          @set-filter="updateFilter"
+          @close-form="toggleForm"
+          :guest2s="filterBy.numGuests"
         />
         </div>
 
@@ -313,11 +320,14 @@ export default {
     //   }
     // },
     close(e) {
-      // if(!document.querySelector(".filter-form"))return
-      // if (document.querySelector(".filter-form").contains(e.target))return
-      if (!this.$el.contains(e.target) && !document.querySelector(".open-filter-el").contains(e.target) )  {
+      // if (!this.$el.contains(e.target) && !document.querySelector(".open-filter-el").contains(e.target) )  {
+      //   this.$emit('toggleFilters')
+      // }
+      
+      // if (!this.$el.contains(e.target) && !document.querySelector(".app-header .container .open-filter-el-container").contains(e.target)) {
+      if (!this.$el.contains(e.target) && !document.querySelector(".app-header .container .duplicate-for-observer").contains(e.target)) {
         //   this.state = false
-        // this.showFilters = false;
+        // alert('hi from func')
         this.$emit('toggleFilters')
       }
       if (document.querySelector(".guests-filter1")) {
@@ -368,6 +378,9 @@ export default {
     document.removeEventListener("click", this.close);
   },
   computed: {
+    isFilterOpen(){
+        return this.$store.getters.isHeaderButtonStage
+    },
     // filterOpenDown(){
     //     return{
     //       position:(showingFilters) absolute

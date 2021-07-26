@@ -1,4 +1,16 @@
 .open-filter-el{
+    justify-content: space-between;
+    min-width: 300px;
+    & .clicked2{
+        //    font-family: 'cereal-Bold';
+        color: $clr2;
+           font-family: 'cereal-Medium';
+        }
+    & .starting-text{
+        margin-left: 20px;
+        color: $clr2;
+    font-family: 'cereal-Medium';
+    }
     
     display: flex;
     align-items: center;
@@ -9,10 +21,12 @@
      border-radius: 32px;
       z-index:10;
 
+    //   font-family: 'cereal-Book';
+      color: $clr3;
 
     cursor: pointer;
-    color: $clr-form-text;
-    font-family: 'cereal-Medium';
+    // color: $clr-form-text;
+    // font-family: 'cereal-Medium';
     font-size: 0.875rem;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -35,16 +49,16 @@
         background-color: $clr1;
         border-radius: 3rem;
         padding: 10px;
-        width: fit-content;
+        // width: fit-content;
     }
-    .filter-div{
+    & .filter-div{
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
 
         flex:1;
         // width: fit-content;
-        padding: 0.875rem 2rem;
+        // padding: 0.875rem 2rem;
         border-radius: 3rem;
         // width: min-content
         // &:hover {

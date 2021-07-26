@@ -126,17 +126,16 @@
     //     box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.15);
     // }
     .bind-text{
+        color: $clr3;
+        min-width: 4.875rem;
         font-family: 'cereal-Book';
         font-size: 0.875rem;
         &.clicked2{
-           font-family: 'cereal-Bold';
+        //    font-family: 'cereal-Bold';
+        color: $clr2;
+           font-family: 'cereal-Medium';
         }
-        // &::before{
-        //     content:'Add guests';
-        //     }
-        // &:active ::before{
-        //    content:none;
-        // }
+      
     }
     .guests-filter{
         display: flex;

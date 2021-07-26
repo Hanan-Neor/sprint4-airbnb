@@ -20,7 +20,7 @@
     popper-class="date-picker-class"
     size="large"
      @change="date"
-      v-model="dates"
+      v-model="datesChoosed"
       type="daterange"
       range-separator=""
       start-placeholder="CHECK-IN"
@@ -61,6 +61,7 @@ export default {
   data() {
     return {
       // dates: '',
+      datesChoosed:0,
       pickerOptions:{
 
           // onPick:
@@ -74,12 +75,17 @@ export default {
 
   methods: {
     date() {
-      this.dates = (this.dates)? this.dates : ''
-      this.$emit('dateToReserve', this.dates);
+      // this.dates = (this.dates)? this.dates : ''
+      this.datesChoosed = (this.datesChoosed)? this.datesChoosed : ''
+      this.$emit('dateToReserve', this.datesChoosed);
     },
     x(){
       this.$emit('x');
     }
   },
+  created(){
+    this.datesChoosed = this.dates
+
+  }
 };
 </script>
