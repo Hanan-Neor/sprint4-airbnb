@@ -34,6 +34,7 @@ function createSocketService() {
       else socket.off(eventName, cb);
     },
     emit(eventName, data) {
+      // debugger;
       socket.emit(eventName, data);
     },
     terminate() {

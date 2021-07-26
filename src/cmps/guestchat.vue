@@ -47,7 +47,7 @@ export default {
     socketService.on("show-typer", this.setTyper);
     this.username = this.$store.getters.loggedinUser.fullname;
     console.log(this.msg);
-    debugger
+    // debugger
     this.msg.from = this.username;
     // this.msgs = this.space.msgs || []
   },

@@ -82,7 +82,23 @@ import { eventBusService } from './../../services/event-bus.service.js';
 import { socketService } from '../../../public/src/services/socket.service';
 
 export default {
-  name: '',
+   created() {
+     this.isLiked = this.islikedByUser ? true : false;
+
+    // const spaceId = this.space._id
+    // debugger 
+    // this.likeColor = ''
+    // if(this.isLiked) this.likeColor = 'rgb(255, 56, 92)'
+    // this.like()
+    this.distanceToShow;
+  },
+  mounted(){
+    socketService.emit('joinSpacePreview',this.space._id)
+    socketService.on('spaceLiked', this.showLikeMsg)
+    socketService.on('orderSaved', this.showBookedMsg)
+
+  },
+  name: 'space-preview',
   props: ['space'], //TODO convert to object
   data() {
     return {
@@ -103,6 +119,22 @@ export default {
 
   // },
   methods: {
+    showLikeMsg(spaceId){
+      if (this.space._id === spaceId){
+        this.msg='' //this is so the amination will restart when this.msg is set //QUQU
+        console.log('space liked', spaceId);
+        this.msg = 'liked'
+      // setTimeout(() => {this.msg = ''}, 2000)      
+      }
+      }, 
+      showBookedMsg(spaceId){
+        if (this.space._id === spaceId){
+          this.msg = '' //this is so the amination will restart when this.msg is set //QUQU
+        console.log('booked', spaceId);
+        this.msg = 'booked'
+      // setTimeout(() => {this.msg = ''}, 2000)      
+      }
+      },
     isliked2() {
       // this.isLiked = this.islikedByUser
       this.isLiked = this.islikedByUser ? true : false;
@@ -116,6 +148,7 @@ export default {
 
       if (!user.likedSpacesIds.includes(this.space._id)) {
         user.likedSpacesIds.push(this.space._id);
+        socketService.emit('likeSpace', this.space._id)
       } else {
         const idx = user.likedSpacesIds.findIndex((spaceId) => {
           return spaceId === this.space._id;
@@ -260,19 +293,7 @@ export default {
     carouselSlide,
     carousel,
   },
-  created() {
-    this.isLiked = this.islikedByUser ? true : false;
-    socketService.on('orderSaved', spaceId => {
-      alert('space was booked')
-    })
-    socketService.on('spaceLiked', spaceId => {
-      alert('space was liked')
-    })
-    // this.likeColor = ''
-    // if(this.isLiked) this.likeColor = 'rgb(255, 56, 92)'
-    // this.like()
-    this.distanceToShow;
-  },
+ 
 };
 </script>
 

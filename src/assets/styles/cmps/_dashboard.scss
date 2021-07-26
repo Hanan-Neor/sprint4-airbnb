@@ -1,14 +1,61 @@
 .back-office {
-  display: grid;
-  grid-template-columns: 300px auto;
+  display: flex;
+  gap: 2rem;
   position: relative;
   margin-top: 2rem;
+
+  @include for-mobile-layout {
+    // background-color: orange;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @include for-narrow-layout {
+    // background-color: yellow;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @include for-normal-layout {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @include for-wide-layout {
+    // background-color: blue;
+    flex-direction: row;
+  }
+
   .host-profile {
-    width: 75%;
+    width: 20%;
     position: sticky;
-    top: 1rem;
+    top: 0;
     margin-bottom: auto;
+    margin-top: 1rem;
     min-height: 200px;
+    @include for-mobile-layout {
+      // background-color: orange;
+      position: unset;
+      width: 50%;
+    }
+
+    @include for-narrow-layout {
+      // background-color: yellow;
+      position: unset;
+      width: 50%;
+    }
+
+    @include for-normal-layout {
+      // background-color: green;
+      position: unset;
+      width: 50%;
+    }
+
+    @include for-wide-layout {
+      // background-color: blue;
+      position: sticky;
+      width: 20%;
+    }
   }
 
   .container {
@@ -33,9 +80,9 @@
         }
       }
     }
-    .host-order-list {
-      grid-column: -1;
-    }
+    // .host-order-list {
+    //   grid-column: -1;
+    // }
   }
 }
 .bottom-image {

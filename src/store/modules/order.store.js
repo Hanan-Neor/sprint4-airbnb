@@ -61,11 +61,13 @@ export const orderStore = {
     async saveOrder({ commit }, { order }) {
       const type = order._id ? 'updateOrder' : 'addOrder';
       try {
+        if (order._id) commit({ type:'updateOrder', order: order });
+        else commit({ type:'addOrder', order: savedOrder })
         const savedOrder = await orderService.save(order);
-        commit({ type, order: savedOrder });
-        return savedOrder;
+        // debugger
+        // return savedOrder;
       } catch (err) {
-        console.log('Cannot save order', review, orderId);
+        console.log('Cannot save order', order._id);
         throw err;
       }
     },

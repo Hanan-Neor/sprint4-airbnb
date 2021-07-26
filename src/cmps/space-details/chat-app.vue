@@ -69,7 +69,7 @@ export default {
   },
   methods: {
     setTyper(typer) {
-      debugger;
+      // debugger;
       this.typer = typer;
     },
     openChat(){
