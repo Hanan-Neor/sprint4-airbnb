@@ -1,27 +1,6 @@
 <template>
   <section>
     <div class="back-office ">
-      <!-- <h1 v-if="host">Host dashboard: {{ host.fullname }}</h1> -->
-      <!-- <div class="stats flex">
-      <p>average rating: {{ averageRating }}</p>
-      <p>total guests: {{ totalGuests }}</p>
-      <p>% occupancy {{ occupancy }}</p>
-      <p>total likes: {{ totalLikes }}</p>
-    </div> -->
-      <!-- <host-stats/> -->
-      <!-- <order-chart
-      class="dashboard-chart"
-      v-if="ready"
-      :spaceNames="spaceNames"
-      :spaceRatings="spaceRatings"
-    /> -->
-
-      <!-- <review-chart
-      class="dashboard-chart"
-      v-if="ready"
-      :spaceNames="spaceNames"
-      :spaceRatings="spaceRatings"
-    /> -->
       <host-profile class="host-profile" :host="host"></host-profile>
       <div class="container">
         <nav class="tabs-nav">

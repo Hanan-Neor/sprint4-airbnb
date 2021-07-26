@@ -4,11 +4,12 @@ export const utilService = {
   makeId,
   loadFromStorage,
   saveToStorage,
+  fakeReviewNumber,
 };
 
 function loadFromStorage(key) {
-  var val = localStorage.getItem(key)
-  return (val)? JSON.parse(val) : null;
+  var val = localStorage.getItem(key);
+  return val ? JSON.parse(val) : null;
 }
 
 function saveToStorage(key, val) {
@@ -36,3 +37,5 @@ function makeId(length = 5) {
   }
   return txt;
 }
+
+function fakeReviewNumber() {}

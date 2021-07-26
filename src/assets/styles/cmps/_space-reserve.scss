@@ -1,26 +1,22 @@
 .space-reserve {
   height: fit-content;
 
-
   @include for-mobile-layout {
-   padding: 25px 0px;
-   margin-bottom: 1rem;
+    padding: 25px 0px;
+    margin-bottom: 1rem;
   }
   @include for-narrow-layout {
-   padding: 25px 0px;
+    padding: 25px 0px;
 
-   margin-bottom: 1rem;
-
+    margin-bottom: 1rem;
   }
   @include for-normal-layout {
-  top: 0;
-  position: sticky;
+    top: 0;
+    position: sticky;
 
-  padding: 25px;
-  border: 1px solid $clr4;
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
-
-
+    padding: 25px;
+    border: 1px solid $clr4;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
   }
   @include for-wide-layout {
   }
@@ -31,7 +27,6 @@
   border-radius: 15px;
   margin-bottom: auto;
   justify-self: flex-end;
-
   // width: 95%;
 
   @include for-mobile-layout {
@@ -39,12 +34,10 @@
   @include for-narrow-layout {
   }
   @include for-normal-layout {
-  width: 95%;
-
+    width: 95%;
   }
   @include for-wide-layout {
   }
-
 
   .space-reserve-details {
     display: flex;
@@ -75,17 +68,14 @@
       border-radius: 8px;
       border: 1px solid $clr4;
       @include for-mobile-layout {
-   
       }
       @include for-narrow-layout {
       }
       @include for-normal-layout {
-      margin-bottom: 2rem;
-
+        margin-bottom: 2rem;
       }
       @include for-wide-layout {
       }
-    
 
       .date-picker {
         border-bottom: 1px solid $clr4;
