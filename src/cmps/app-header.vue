@@ -1,5 +1,5 @@
 <template>
-  <section :style="headerPos" style="width: 100%">
+  <section class="full" :style="headerPos" style="width: 100%">
     <!-- <div class="app-header flex" :style="diplayState"> -->
     <div>
       <nav class="app-header header-nav-responsive" :class="{ hide }">
@@ -26,7 +26,11 @@
             class="header-right-side-responsive"
             style="align-items: center; justify-self: end; grid-column: 3/4"
           >
-            <span v-if="isLarge" class="becomeHost" :style="hostColor"
+            <span
+              v-if="isLarge"
+              class="becomeHost"
+              :style="hostColor"
+              @click="gotoAddSpace"
               >Become a host</span
             >
             <router-link
@@ -51,6 +55,13 @@
                   alt=""
                 />
                 <img
+                  v-if="loggedInUser"
+                  class="avatar"
+                  :src="loggedInUser.imgUrl"
+                  alt="avatar"
+                />
+                <img
+                  v-else
                   class="avatar"
                   src="https://www.cnet.com/a/img/liJ9UZA87zs1viJiuEfVnL7YYfw=/940x0/2020/05/18/5bac8cc1-4bd5-4496-a8c3-66a6cd12d0cb/fb-avatar-2.jpg"
                   alt="avatar"
@@ -65,7 +76,7 @@
                   <span>signup</span>
                 </li>
                 <li v-if="loggedInUser" @click="logout"><span>logout</span></li>
-                <li @click="gotoAddSpace" ><span>Host your home</span></li>
+                <li @click="gotoAddSpace"><span>Host your home</span></li>
               </ul>
             </template>
 
@@ -200,8 +211,8 @@ export default {
     };
   },
   methods: {
-    gotoAddSpace(){
-      this.$router.push('/space/host/edit')
+    gotoAddSpace() {
+      this.$router.push('/space/host/edit');
     },
     toggleFilter() {
       this.showFilters = false;

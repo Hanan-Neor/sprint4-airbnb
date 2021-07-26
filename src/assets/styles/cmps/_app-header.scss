@@ -1,6 +1,8 @@
 $header-side-padding: 42px;
 
 .app-header {
+  box-shadow: 0 10px 10px -10px rgba(33, 35, 38, 0.1);
+
   &.header-nav-responsive {
     display: flex;
     @include for-mobile-layout {
@@ -75,6 +77,7 @@ $header-side-padding: 42px;
       // margin-left: 12px;
       left: 5px;
       top: 2px;
+      object-fit: cover;
     }
   }
   .hamburger {

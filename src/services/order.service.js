@@ -39,7 +39,6 @@ async function save(order) {
       order = await httpService.put(`order/${order._id}`, order); //SERVER STORAGE
       return order; //SERVER STORAGE
     } else {
-      console.log('hi');
       order = await httpService.post(`order/`, order); //SERVER STORAGE
       return order; //SERVER STORAGE
     }

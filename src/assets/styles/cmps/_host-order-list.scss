@@ -54,10 +54,8 @@
       }
 
       .order-panel {
-        grid-row: 2/3;
-        grid-column: 3;
-        justify-self: self-end;
-
+        display: flex;
+        justify-content: flex-end;
         & > * {
           cursor: pointer;
           background-color: white;
@@ -71,6 +69,22 @@
 
           &:hover {
             color: $clr1;
+          }
+
+          & > * {
+            cursor: pointer;
+            background-color: white;
+            border: 0;
+            font-size: 1.125rem;
+            padding: 0.5rem;
+
+            &::before {
+              font-family: 'awesome-light';
+            }
+
+            &:hover {
+              color: $clr1;
+            }
           }
         }
 
@@ -89,6 +103,20 @@
         .edit {
           &::before {
             content: '\f304';
+          }
+        }
+
+        .order-status {
+          .approved {
+            color: #77dd76;
+            border: 1px solid #77dd76;
+
+            border-radius: 8px;
+          }
+          .declined {
+            color: #ff6962;
+            border: 1px solid #ff6962;
+            border-radius: 8px;
           }
         }
       }
