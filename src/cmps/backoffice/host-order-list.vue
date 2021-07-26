@@ -105,18 +105,9 @@ export default {
       }
     },
     async confirmOrder(order) {
-<<<<<<< HEAD
-      order.status = "confirmed";
-      // debugger;
-      try {
-        await this.$store.dispatch({ type: "saveOrder", order });
-        // commit({ type:'updateOrder', order: savedOrder });
-        // await this.$store.dispatch({ type: "loadOrders" });
-=======
       order.status = 'confirmed';
       try {
         await this.$store.dispatch({ type: 'saveOrder', order });
->>>>>>> 25ad523f73a69dfdaf9487e5fc894e0efb96c14c
       } catch (err) {
         console.log('getOrdersForHost', err);
         throw err;
