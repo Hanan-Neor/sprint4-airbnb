@@ -1,17 +1,17 @@
 <template>
   <div
         class="open-filter-el start"
-        style="width: fit-content;"
+        
       >
       
         <!-- <div>start your search</div> -->
         <!-- <div class="filter-div">{{ buttonText }}</div> -->
         <div class="flex detailsInEl-container" v-if="detailsToShow" >
-            <div class="detailsInEl " style="locationTextStyle">{{locationToShow}}</div>
-            <div class="detailsInEl " style="dateTextStyle">{{date1ToShow}}  {{date2ToShow}}</div>
-            <div class="detailsInEl " style="guestsTextStyle">{{guestsText}}</div>
+            <div class="detailsInEl " style="locationTextStyle" :class="{ clicked2: filterBy.location }">{{locationToShow}}</div>
+            <div class="detailsInEl " style="dateTextStyle" :class="{ clicked2: filterBy.dates.startDate }">{{date1ToShow}}  {{date2ToShow}}</div>
+            <div class="detailsInEl " style="guestsTextStyle" :class="{ clicked2: filterBy.numGuests }">{{guestsText}}</div>
         </div>
-        <div class="filter-div" v-else>Start your search</div>
+        <div class="filter-div starting-text" v-else>Start your search</div>
         <div class="filter-div-button">
           <div class="search-icon-container">
             <svg
@@ -84,13 +84,13 @@ export default {
           // return 1
             // return this.filterBy.numGuests
 
-          if(this.filterBy.location)
-          return true
-          if(this.filterBy.dates.startDate)
-          return true
-          if(this.filterBy.location)
-          return true
-        //   return(this.filterBy.location||this.filterBy.dates.startDate||this.filterBy.dates.endDate||this.filterBy.numGuests)
+          // if(this.filterBy.location)
+          // return true
+          // if(this.filterBy.dates.startDate)
+          // return true
+          // if(this.filterBy.location)
+          // return true
+          return(this.filterBy.location||this.filterBy.dates.startDate||this.filterBy.dates.endDate||this.filterBy.numGuests)
         //   return true
         // return if(this.filterBy.numGuests ||this.filterBy.dates.startDate ||this.filterBy.location)
       }  
@@ -98,6 +98,7 @@ export default {
     },
     created(){
         this.filterBy=this.$store.getters.filterBy
+        console.log(this.filterBy);
     }
 
 }

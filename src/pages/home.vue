@@ -64,32 +64,6 @@ export default {
     exploreList,
     msg,
   },
-  created() {
-    this.$store.commit({ type: "clearFilter" });
-    this.$store.commit({ type: "setFilterField", field: "count", value: 4 });
-    this.$store.dispatch({ type: "loadSpaces" });
-    console.log("spaces in home", this.$store.getters.spaces);
-    eventBusService.$emit("headerFixed", true);
-    // eventbus.$emit('headerFixed', true)
-
-    setTimeout(() => {
-      const sectionOne = document.querySelector(".top-bg");
-      const options = {
-        threshold: 1,
-        rootMargin: "0px",
-      };
-
-      const observer = new IntersectionObserver(function (entries, observer) {
-        entries.forEach((entry) => {
-          eventBusService.$emit("searchPos", entry.isIntersecting);
-        });
-      }, options);
-      observer.observe(sectionOne);
-    }, 1000);
-  },
-  destroyed() {
-    eventBusService.$emit("headerFixed", false);
-  },
   computed: {
     spaces() {
       return this.$store.getters.spaces;
@@ -115,6 +89,39 @@ export default {
     showPage() {
       prompt("show host or explore page...");
     },
+  },
+
+
+
+
+  mounted() {
+    const sectionOne = document.querySelector(".top-bg");
+    const options = {
+      threshold: 1,
+      rootMargin: "0px",
+    };
+    const observer = new IntersectionObserver(function (entries) {
+      entries.forEach((entry) => {
+        eventBusService.$emit("searchPos", entry.isIntersecting);
+      });
+    }, options);
+    observer.observe(sectionOne);
+  },
+
+
+
+
+
+
+  created() {
+    this.$store.commit({ type: "clearFilter" });
+    this.$store.commit({ type: "setFilterField", field: "count", value: 4 });
+    this.$store.dispatch({ type: "loadSpaces" });
+    console.log("spaces in home", this.$store.getters.spaces);
+    eventBusService.$emit("headerFixed", true);
+  },
+  destroyed() {
+    eventBusService.$emit("headerFixed", false);
   },
 };
 </script>

@@ -10,7 +10,7 @@
           <button class="more" @click.stop="editGuests('adults', -1)">-</button>
           <!-- <input type="number" v-model="guests.adults" id="adults" /> -->
           {{guests.adults}}
-          <!-- {{guests}} -->
+          <!-- {{guests2}} -->
           <button class="less" @click.stop="editGuests('adults',1)">+</button>
         </div>
       </div>
@@ -57,6 +57,8 @@
 <script>
 export default {
   // props:['guests'],
+  props:['guests2'],
+
   data() {
     return {
       guests:{

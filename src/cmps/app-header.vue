@@ -1,5 +1,7 @@
 <template>
-  <section :style="headerPos" style="width: 100%">
+  <section :style="headerPos" style="width: 100%;
+  box-shadow: 0 10px 10px -10px rgba(33, 35, 38, 0.1);
+  ">
     <!-- <div class="app-header flex" :style="diplayState"> -->
     <div>
       <nav class="app-header header-nav-responsive" :class="{ hide }">
@@ -16,10 +18,12 @@
 
           <div
             class="open-filter-el-container"
-            v-show="!showFilters"
-            @click="showFilters = true"
+            style="position:relative"
+            @click="showFiltersFunc"
           >
-            <open-filter-el />
+          <div class="duplicate-for-observer fakeButton"
+          :class="{ hideFakeButton: showFilters }"></div>
+            <open-filter-el  v-if="!showFilters"/>
           </div>
 
           <div
@@ -78,6 +82,7 @@
             v-if="isLoginOpen"
             @close-login="closeLogin"
             :formType="getLoginFormType"
+            :showFilters2="showFilters"
           />
 
           <div class="bottom-nav">
@@ -200,11 +205,22 @@ export default {
     };
   },
   methods: {
+    showFiltersFunc(){
+      this.showFilters = true
+      // this.$store.commit('headerButtonStage',true)
+      // this.$store.dispatch({ type: 'headerButtonStage' , x:true})
+      // console.log(this.showFilters);
+    },
     gotoAddSpace(){
       this.$router.push('/space/host/edit')
     },
     toggleFilter() {
+      // alert('hi from toggle')
       this.showFilters = false;
+      // this.$store.commit('headerButtonStage',false)
+      // this.$store.dispatch({ type: 'headerButtonStage' , x:false})
+
+
     },
     logout() {
       this.$store.dispatch({ type: 'logout' });
