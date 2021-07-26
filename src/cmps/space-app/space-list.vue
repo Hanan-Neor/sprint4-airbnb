@@ -16,9 +16,15 @@
 
 
 <script>
+import { socketService } from '../../../public/src/services/socket.service';
 import spacePreview from "./space-preview.vue";
 export default {
   props: ["spaces"], 
+  created(){
+    this.spaces.forEach(space => {
+      socketService.emit('joinSpacePreview', space._id)
+    })
+  },
   name: "spaceList",
   methods: {
       liked(spaceId) {
