@@ -14,6 +14,11 @@
             <div class="logo">
               <span>travelbnb</span>
             </div>
+          <!-- <div class="logo3">
+
+            <img style="width:100%" src="@/assets/img/logo/logo3.png"/>
+          </div> -->
+
           </router-link>
 
           <div
@@ -99,6 +104,10 @@
           <div class="bottom-nav">
             <router-link to="/" class="logo-container2 clear-link nav-item">
               <div class="logo2"></div>
+              <!-- <div > -->
+            <!-- <img class="logo3 footer" src="@/assets/img/logo/logo3.png" style="" /> -->
+              <!-- </div> -->
+
               <p class="text">Home</p>
             </router-link>
 
