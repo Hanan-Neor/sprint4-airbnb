@@ -240,7 +240,7 @@ export default {
       this.order.totalPrice = reserve.totalPrice;
       console.log(this.order);
       try {
-        await this.$store.dispatch({ type: 'saveOrder', order: this.order });
+        await this.$store.dispatch({ type: 'saveOrder', order: this.order });//*************** */
         socketService.emit('newOrder', this.order);
       } catch (error) {
         console.log('cannot make order', error);
