@@ -28,7 +28,7 @@
     </div>
 
     <div class="breaker-image">
-      <button class="breaker-image-btn" @click="showPage">
+      <button class="breaker-image-btn" @click="showAddSpace">
         <!-- Get Inspired/host -->
         Try hosting
       </button>
@@ -86,8 +86,8 @@ export default {
         throw err;
       }
     },
-    showPage() {
-      prompt("show host or explore page...");
+    showAddSpace() {
+      this.$router.push('/space/host/edit');
     },
   },
 

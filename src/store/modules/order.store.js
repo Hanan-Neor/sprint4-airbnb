@@ -65,7 +65,7 @@ export const orderStore = {
         else commit({ type:'addOrder', order: savedOrder })
         const savedOrder = await orderService.save(order);
         // debugger
-        // return savedOrder;
+        return savedOrder;
       } catch (err) {
         console.log('Cannot save order', order._id);
         throw err;
