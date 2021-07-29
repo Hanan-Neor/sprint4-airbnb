@@ -60,10 +60,10 @@ export default {
   computed: {
     totalPrice() {
       return (
-        this.space.price *
-        this.days *
-        this.reserve.guests
-      ).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+        (this.space.price * this.days)
+          //* this.reserve.guests
+          .toLocaleString('en-US', { style: 'currency', currency: 'USD' })
+      );
     },
   },
 
