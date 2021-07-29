@@ -128,6 +128,7 @@
         </div>
       </nav>
       <div class="app-header main-layout filter-container" v-if="showFilters">
+      <!-- <div class="app-header main-layout filter-container" v-show="showFilters"> -->
         <!-- <space-filter :style="searchPos"  @toggleFilters="showFilters=false" /> -->
         <space-filter :style="filterBackground" @toggleFilters="toggleFilter" />
       </div>

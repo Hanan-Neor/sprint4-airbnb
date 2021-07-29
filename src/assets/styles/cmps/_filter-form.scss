@@ -95,7 +95,10 @@
                     border-color: rgb(176, 176, 176) ;
 
                         &:hover{
-                            border-color: rgb(34, 34, 34)
+                            border-color: rgb(34, 34, 34);
+                            & svg{
+                                color:rgb(34, 34, 34)
+                            }
                         }
                         &.zero{
                             color: rgb(235, 235, 235);

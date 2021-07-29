@@ -47,10 +47,14 @@
       <div class="list-titles">Top rated spaces</div>
       <space-list :spaces="spaces" />
     </div>
+<date-picker />
   </div>
+
+
 </template>
 
 <script>
+import datePicker from "./../cmps/date-picker.vue"
 import spaceList from "./../cmps/space-app/space-list.vue";
 import exploreList from "./../cmps/explore-list.vue";
 import { eventBusService } from "./../services/event-bus.service.js";
@@ -63,6 +67,7 @@ export default {
     spaceList,
     exploreList,
     msg,
+    datePicker
   },
   computed: {
     spaces() {
