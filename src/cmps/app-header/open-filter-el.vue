@@ -8,7 +8,9 @@
         <!-- <div class="filter-div">{{ buttonText }}</div> -->
         <div class="flex detailsInEl-container" v-if="detailsToShow" >
             <div class="detailsInEl " style="locationTextStyle" :class="{ clicked2: filterBy.location }">{{locationToShow}}</div>
+            <span style="height:24px; background-color:#DDDDDD;width:1px;"></span>
             <div class="detailsInEl " style="dateTextStyle" :class="{ clicked2: filterBy.dates.startDate }">{{date1ToShow}}  {{date2ToShow}}</div>
+            <span style="height:24px; background-color:#DDDDDD;width:1px;"></span>
             <div class="detailsInEl " style="guestsTextStyle" :class="{ clicked2: filterBy.numGuests }">{{guestsText}}</div>
         </div>
         <div class="filter-div starting-text" v-else>Start your search</div>

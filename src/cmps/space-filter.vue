@@ -208,16 +208,16 @@ export default {
         //   this.state = false
         this.showFilters = false;
       }
-      if (document.querySelector(".guests-filter")) {
-        if (!document.querySelector(".guests-filter").contains(e.target)) {
-          this.isGuestsClicked = false;
-        }
-      }
-      if (document.querySelector(".date-filter")) {
-        if (!document.querySelector(".date-filter").contains(e.target)) {
-          this.isDateClicked = false;
-        }
-      }
+      // if (document.querySelector(".guests-filter")) {
+      //   if (!document.querySelector(".guests-filter").contains(e.target)) {
+      //     this.isGuestsClicked = false;
+      //   }
+      // }
+      // if (document.querySelector(".date-filter")) {
+      //   if (!document.querySelector(".date-filter").contains(e.target)) {
+      //     this.isDateClicked = false;
+      //   }
+      // }
     },
 
     setShowFilters() {

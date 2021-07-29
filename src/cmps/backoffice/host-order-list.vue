@@ -107,7 +107,7 @@ export default {
     async confirmOrder(order) {
       order.status = 'confirmed';
       try {
-        await this.$store.dispatch({ type: 'saveOrder', order });
+        // await this.$store.dispatch({ type: 'saveOrder', order });
       } catch (err) {
         console.log('getOrdersForHost', err);
         throw err;
@@ -116,7 +116,7 @@ export default {
     async declineOrder(order) {
       order.status = 'declined';
       try {
-        await this.$store.dispatch({ type: 'saveOrder', order });
+        // await this.$store.dispatch({ type: 'saveOrder', order });
       } catch (err) {
         console.log('getOrdersForHost', err);
         throw err;
