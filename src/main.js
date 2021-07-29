@@ -9,8 +9,16 @@ import * as VueGoogleMaps from 'vue2-google-maps';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import locale from 'element-ui/lib/locale/lang/en';
-
 Vue.use(ElementUI, { locale });
+
+
+// import AirbnbStyleDatepicker from 'vue-airbnb-style-datepicker'
+// import 'vue-airbnb-style-datepicker/dist/vue-airbnb-style-datepicker.min.css'
+// const datepickerOptions = {}
+// Vue.use(AirbnbStyleDatepicker, datepickerOptions)
+// import { formatDistance, subDays } from 'date-fns'
+
+
 
 import './assets/styles/main.scss';
 
@@ -40,5 +48,7 @@ Vue.directive('click-outside', {
 new Vue({
   router,
   store,
+  // AirbnbStyleDatepicker,
+  
   render: (h) => h(App),
 }).$mount('#app');

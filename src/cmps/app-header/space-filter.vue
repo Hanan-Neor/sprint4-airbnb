@@ -68,12 +68,14 @@
           />
         </div>
 
+            <div style="width:0px;height:32px;align-self: center;border-right: 1px solid #DDDDDD"></div>
+
         <div class="flex date-responsive" style="position:relative;">
           <div
-            class="filter-div date-filter1 filter-div-hover"
+            class="filter-div filter-div-hover"
             :class="{ clicked: isDate1Clicked }"
             @click="clicked('date1')"
-            style="flex-direction: column;"
+            
           >
             <label style="">Check in</label>
             <div class="bind-text" :class="{ clicked2: filterBy.dates.startDate }">
@@ -82,11 +84,15 @@
               <!-- {{filterBy.dates.startDate.toLocaleDateString()}} -->
             </div>
           </div>
+
+
+            <div style="width:0px;height:32px;align-self: center;border-right: 1px solid #DDDDDD"></div>
+
+
           <div
             class="filter-div date-filter2 filter-div-hover"
             :class="{ clicked: isDate2Clicked }"
             @click="clicked('date2')"
-            style="flex-direction: column; align-items: unset"
           >
             <label style="">Check out</label>
             <div class="bind-text" :class="{ clicked2: filterBy.dates.endDate }">
@@ -95,7 +101,7 @@
               <!-- {{filterBy.dates.endDate.toLocaleDateString()}} -->
             </div>
           </div>
-          <div @click="clicked('date1'),clicked('date2')"
+          <!-- <div @click="clicked('date1'),clicked('date2')"
           style="               
                 opacity: 0.0;
                 position: absolute;
@@ -112,7 +118,7 @@
               @dateToReserve="dateToReserve"
               :dates="datesArray"
             />
-          </div>
+          </div> -->
         </div>
 
         <!-- <div class="filter-div">
@@ -141,12 +147,13 @@
           <reserve-date-filter @dateToReserve="dateToReserve" :dates="filterBy.dates" />
         </div> -->
 
+            <div style="width:0px;height:32px;align-self: center;border-right: 1px solid #DDDDDD"></div>
+
         <div
           @click="toggleForm()"
           class="flex align-center filter-div-hover"
           style="border-radius: 3rem;position:relative"
           :class="{ clicked: isGuestsClicked }"
-          
         >
           <div class="guests-filter filter-div" @click="clicked('Guests')">
             <div>
@@ -198,6 +205,7 @@
           @close-form="toggleForm"
           :guests="filterBy.numGuests"
         /> -->
+        </div>
         <filter-form2 
           v-if="formOpen"
           @guestsCnt="setGuestsCnt"
@@ -205,7 +213,6 @@
           @close-form="toggleForm"
           :guest2s="filterBy.numGuests"
         />
-        </div>
 
         <!-- <filter-form v-if="isFormOpen" @set-filter="updateFilter" @close-form="toggleForm" /> -->
       </template>
@@ -330,30 +337,25 @@ export default {
         // alert('hi from func')
         this.$emit('toggleFilters')
       }
-      if (document.querySelector(".guests-filter1")) {
-        if (!document.querySelector(".guests-filter1").contains(e.target)) {
-          this.isGuestsClicked = false;
-        }
-      }
-      // if (document.querySelector(".date-filter")) {
-      //   if (!document.querySelector(".date-filter").contains(e.target)) {
-      //     this.isDateClicked = false;
+      // if (document.querySelector(".guests-filter1")) {
+      //   if (!document.querySelector(".guests-filter1").contains(e.target)) {
+      //     this.isGuestsClicked = false;
       //   }
       // }
-      if (document.querySelector(".date-filter1")) {
-        // if (!document.querySelector(".date-filter1").contains(e.target)) {
-        if (
-          !document.querySelector(".date-filter1").contains(e.target) &&
-          !document.querySelector(".fake-date-filter").contains(e.target)
-        ) {
-          this.isDate1Clicked = false;
-        }
-      }
-      if (document.querySelector(".date-filter2")) {
-        if (!document.querySelector(".date-filter2").contains(e.target)) {
-          this.isDate2Clicked = false;
-        }
-      }
+      // if (document.querySelector(".date-filter1")) {
+      //   // if (!document.querySelector(".date-filter1").contains(e.target)) {
+      //   if (
+      //     !document.querySelector(".date-filter1").contains(e.target) &&
+      //     !document.querySelector(".fake-date-filter").contains(e.target)
+      //   ) {
+      //     this.isDate1Clicked = false;
+      //   }
+      // }
+      // if (document.querySelector(".date-filter2")) {
+      //   if (!document.querySelector(".date-filter2").contains(e.target)) {
+      //     this.isDate2Clicked = false;
+      //   }
+      // }
     },
 
     setShowFilters() {
@@ -365,14 +367,14 @@ export default {
     document.addEventListener("click", this.close);
     // document.addEventListener("mouseover", this.hovering);
 
-    document.querySelector('.el-range-input').addEventListener('mouseover', function () {
-        document.querySelector('.date-filter1').style.background = "rgb(230, 230, 230)";
-        document.querySelector('.date-filter2').style.background = "rgb(230, 230, 230)";
-    });
-    document.querySelector('.el-range-input').addEventListener('mouseleave', function () {
-        document.querySelector('.date-filter1').style.background = "inherit";
-        document.querySelector('.date-filter2').style.background = "inherit";
-    })
+    // document.querySelector('.el-range-input').addEventListener('mouseover', function () {
+    //     document.querySelector('.date-filter1').style.background = "rgb(230, 230, 230)";
+    //     document.querySelector('.date-filter2').style.background = "rgb(230, 230, 230)";
+    // });
+    // document.querySelector('.el-range-input').addEventListener('mouseleave', function () {
+    //     document.querySelector('.date-filter1').style.background = "inherit";
+    //     document.querySelector('.date-filter2').style.background = "inherit";
+    // })
   },
   beforeDestroy() {
     document.removeEventListener("click", this.close);

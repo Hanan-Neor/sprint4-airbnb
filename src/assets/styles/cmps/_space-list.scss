@@ -46,8 +46,8 @@
     // .el-icon-collection-tag{
     svg.like-button {
       position: absolute;
-      top: 20px;
-      right: 20px;
+      top: 15px;
+      right: 15px;
       z-index: 1;
       font-size: 27px;
       color: white;
@@ -95,7 +95,7 @@
         padding: 0;
         text-align: center;
         cursor: pointer;
-        opacity: 95%;
+        opacity: 0.95;
 
         i {
           font-weight: 700;

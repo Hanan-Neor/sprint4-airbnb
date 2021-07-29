@@ -71,7 +71,7 @@
         }
         @include for-wide-layout {
         }
-        gap:5px;
+        // gap:5px;
         // border: 1px solid $clr-form-input-border;
     }
     .filter-div{
@@ -82,6 +82,11 @@
             white-space: nowrap;
             overflow: hidden;
         }
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
@@ -147,9 +152,9 @@
 // position: relative;
     }
     .date-filter{
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        // display: flex;
+        // justify-content: center;
+        // align-items: center;
     }
     .reserve-date-filter{
         
@@ -175,7 +180,9 @@
     input{
         background-color: inherit;
         padding: 0;
-        font-family: 'cereal-Bold';
+        // font-family: 'cereal-Bold';
+        font-family: 'cereal-Medium';
+
         font-size: 0.875rem;
         border: 0px solid $clr-form-input-border;
         // border-radius: $form-border-radius;

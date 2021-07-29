@@ -3,54 +3,66 @@
     <div class="form-content">
       <div class="flex form-row">
         <label for="adults">
-          <p class="type">Adults</p>
-          <p class="comment">Ages 13 or above</p>
+          <div class="type">Adults</div>
+          <div class="comment">Ages 13 or above</div>
         </label>
         <div class="count-picker">
-          <button class="more" @click.stop="editGuests('adults', -1)">-</button>
+          <button class="more" :class="{zero : !guests.adults}" @click.stop="editGuests('adults', -1)">
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 5.33333; overflow: visible;"><path d="m2 16h28"></path></svg>
+            </button>
           <!-- <input type="number" v-model="guests.adults" id="adults" /> -->
           {{guests.adults}}
           <!-- {{guests2}} -->
-          <button class="less" @click.stop="editGuests('adults',1)">+</button>
+          <button class="less" @click.stop="editGuests('adults',1)">
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 5.33333; overflow: visible;"><path d="m2 16h28m-14-14v28"></path></svg>
+          </button>
         </div>
       </div>
 
             <div class="flex form-row">
         <label for="children">
-          <p class="type">Children</p>
-          <p class="comment">Ages 2-12</p>
+          <div class="type">Children</div>
+          <div class="comment">Ages 2-12</div>
         </label>
         <div class="count-picker">
-          <button class="more" @click.stop="editGuests('childen',-1)">-</button>
+          <button class="more" :class="{zero : !guests.children}" @click.stop="editGuests('children',-1)">
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 5.33333; overflow: visible;"><path d="m2 16h28"></path></svg>
+            </button>
           <!-- <input type="number" v-model="guests.children" id="children" /> -->
           {{guests.children}}
           <!-- {{guests}} -->
-          <button class="less" @click.stop="editGuests('children',1)">+</button>
+          <button class="less" @click.stop="editGuests('children',1)">
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 5.33333; overflow: visible;"><path d="m2 16h28m-14-14v28"></path></svg>
+            </button>
         </div>
       </div>
 
             <div class="flex form-row">
         <label for="infants">
-          <p class="type">Infants</p>
-          <p class="comment">Under 2</p>
+          <div class="type">Infants</div>
+          <div class="comment">Under 2</div>
         </label>
         <div class="count-picker">
-          <button class="more" @click.stop="editGuests('infants',-1)">-</button>
+          <button class="more" :class="{zero : !guests.infants}" @click.stop="editGuests('infants',-1)">
+            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 5.33333; overflow: visible;"><path d="m2 16h28"></path></svg>
+            </button>
           <!-- <input type="number" v-model="guests.infants" id="infants"/> -->
           {{guests.infants}}
-          <button class="less" @click.stop="editGuests('infants',1)">+</button>
+          <button class="less" @click.stop="editGuests('infants',1)">
+                        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 5.33333; overflow: visible;"><path d="m2 16h28m-14-14v28"></path></svg>
+            </button>
         </div>
       </div>
 
     </div>
 
-    <div class="submit">
+    <!-- <div class="submit">
       <div class="flex">
         <button @click="clearInput" class="clear">Clear</button>
 
         <button class="btn-save" @click="setFilter">save</button>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
