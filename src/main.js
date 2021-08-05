@@ -14,11 +14,28 @@ Vue.use(ElementUI, { locale });
 
 import AirbnbStyleDatepicker from 'vue-airbnb-style-datepicker'
 import 'vue-airbnb-style-datepicker/dist/vue-airbnb-style-datepicker.min.css'
-const datepickerOptions = {}
+const datepickerOptions = {
+  colors: {
+    // selected: '#00a699',
+    selected: 'rgb(34, 34, 34)',
+    inRange: 'rgb(116, 116, 116)',
+    selectedText: '#fff',
+    text: '#565a5c',
+    inRangeBorder: 'rgb(126, 126, 126)',
+    disabled: '#fff',
+    hoveredInRange: 'rgb(126, 126, 126)'
+  },
+}
 Vue.use(AirbnbStyleDatepicker, datepickerOptions)
 // import { formatDistance, subDays } from 'date-fns'
 
 
+import VCalendar from 'v-calendar';
+// Use v-calendar & v-date-picker components
+Vue.use(VCalendar, {
+  componentPrefix: 'vc',  // Use <vc-calendar /> instead of <v-calendar />
+  // ...,                // ...other defaults
+});
 
 import './assets/styles/main.scss';
 

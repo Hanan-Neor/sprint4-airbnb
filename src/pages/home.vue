@@ -54,6 +54,7 @@
 </template>
 
 <script>
+
 import datePicker from "./../cmps/date-picker.vue"
 import spaceList from "./../cmps/space-app/space-list.vue";
 import exploreList from "./../cmps/explore-list.vue";
@@ -67,7 +68,7 @@ export default {
     spaceList,
     exploreList,
     msg,
-    datePicker
+    datePicker,
   },
   computed: {
     spaces() {

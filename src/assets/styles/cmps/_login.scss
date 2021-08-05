@@ -5,11 +5,10 @@ $clr-form-text: #222222;
 
 $form-border-radius: 10px;
 
-
-.popup-form{
+.popup-form {
     // width: 571px;
     // height: 700px;
-    padding: 25px; 
+    padding: 25px;
     color: $clr-form-text;
     border: 1px solid $clr-form-input-border;
     // transform: translate(-50%, -50%);
@@ -17,75 +16,115 @@ $form-border-radius: 10px;
     z-index: 12 !important;
     background-color: white;
 
-    
-    .label-container{
+    .label-container {
         display: flex;
         flex-direction: column;
     }
-    input{
-        border: $clr-form-input-border;
-        border: 1px solid $clr-form-input-border;
+    .input-container {
+        position: relative;
+        // box-shadow: rgb(176 ,176,176) 0px 0px 0px 1px  inset;
+        border: 1px solid rgb(176, 176, 176);
+        border-radius: 0.5rem;
+        padding: 26px 12px 10px;
+
+        & .input-label {
+            text-align:left;
+            position: absolute;
+            // left: 0;
+            // top:50%;
+            top: 18px;
+            width: 100%;
+            // height: 100%;
+            // transform: translateY(-50%);
+            transition: -ms-transform 0.15s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s,
+            -webkit-transform 0.15s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s,
+            transform 0.15s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s ;
+            &.focused {
+                transform: translateY(-8px) scale(0.75);
+            }
+        }
+        & input {
+            display: block;
+            width: 90%; //??
+            font-size: 1rem;
+            height: fit-content;
+            // margin: 26px 12px 10px;
+            border: 0;
+            margin: 0;
+            padding: 0;
+        }
+        // border: $clr-form-input-border;
+        // border: 1px solid $clr-form-input-border;
     }
-    .num-input{
+    // input{
+    //     border: $clr-form-input-border;
+    //     border: 1px solid $clr-form-input-border;
+    // }
+    .num-input {
         height: 55px;
         width: 60px;
         border-radius: $form-border-radius;
         margin-bottom: 18px;
     }
-    button, .text-input{
+    button,
+    .text-input {
         height: 55px;
         width: 100%;
         border-radius: $form-border-radius;
         margin-bottom: 18px;
-    
     }
-    button{
+    button {
         background-color: $clr-form-btn;
         color: $clt-txt-btn;
         min-width: 200px;
-    background-size: 200% 200%;
-    transition: opacity 1.25s ease 0s;
-    background-image: radial-gradient(circle at center center, rgb(255, 56, 92) 0%, rgb(230, 30, 77) 27.5%, rgb(227, 28, 95) 40%, rgb(215, 4, 102) 57.5%, rgb(189, 30, 89) 75%, rgb(189, 30, 89) 100%);
-    background-position: calc((100 - var(--mouse-x, 0)) * 1%) calc((100 - var(--mouse-y, 0)) * 1%);
-    border:none;
+        background-size: 200% 200%;
+        transition: opacity 1.25s ease 0s;
+        background-image: radial-gradient(
+            circle at center center,
+            rgb(255, 56, 92) 0%,
+            rgb(230, 30, 77) 27.5%,
+            rgb(227, 28, 95) 40%,
+            rgb(215, 4, 102) 57.5%,
+            rgb(189, 30, 89) 75%,
+            rgb(189, 30, 89) 100%
+        );
+        background-position: calc((100 - var(--mouse-x, 0)) * 1%) calc((100 - var(--mouse-y, 0)) * 1%);
+        border: none;
     }
-    
 }
 
-.space-edit-add{
-    .popup-form{
+.space-edit-add {
+    .popup-form {
         width: 80%;
         margin: auto;
-        .amenities, .type{
+        .amenities,
+        .type {
             flex: 1;
         }
     }
-    button, input{
+    button,
+    input {
         max-width: 503px;
         // margin: auto;
     }
- 
- 
-  
 }
 
-.login{
+.login {
     // width: 571px;
     // height: 700px;
-    // padding: 25px; 
+    // padding: 25px;
     // color: $clr-form-text;
-    .close{
+    .close {
         position: absolute;
     }
-    .form-toggle{
-        color:rgb(215, 4, 102);
-        text-align: center; 
+    .form-toggle {
+        color: rgb(215, 4, 102);
+        text-align: center;
         p {
-
             margin: auto;
         }
     }
-    text-align: center; 
+    text-align: center;
     border: 1px solid $clr-form-input-border;
     position: fixed;
     top: 40%;

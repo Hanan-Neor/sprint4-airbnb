@@ -77,12 +77,14 @@ export default {
         },
             date1ToShow() {
       return this.filterBy.dates.startDate
-        ? this.filterBy.dates.startDate.toLocaleDateString()+' - '
+        // ? this.filterBy.dates.startDate.toLocaleDateString()+' - '
+        ? this.filterBy.dates.startDate+' - '
         : "Add dates";
     },
     date2ToShow() {
       return this.filterBy.dates.endDate
-        ? this.filterBy.dates.endDate.toLocaleDateString()
+        // ? this.filterBy.dates.endDate.toLocaleDateString()
+        ? this.filterBy.dates.endDate
         : "";
     },
     guestsText() {

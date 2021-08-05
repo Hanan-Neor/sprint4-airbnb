@@ -1,4 +1,4 @@
-.space-filter{
+.space-filter {
     // background-color: #fff;
     @include for-mobile-layout {
         position: absolute;
@@ -9,57 +9,73 @@
         position: absolute;
         display: block;
         width: 100vw;
-
     }
     @include for-normal-layout {
         // display: flex;
-     border-radius: 32px;
-     margin-bottom: 1rem;
+        border-radius: 32px;
+        margin-bottom: 1rem;
 
         position: unset;
         width: fit-content;
     }
     @include for-wide-layout {
     }
- 
-  
-    background: rgb(247, 247, 247);
-    border:1px solid rgb(221, 221, 221);
-    //   z-index:0;
-       width:fit-content;
 
-       justify-self: center;
+    .datepicker-trigger {
+        // .asd__month{
+
+        button {
+            background-color: unset;
+            border-radius: unset;
+            border: unset;
+            height: 100%;
+            width: 100%;
+        }
+        .asd__action-buttons {
+            button {
+                height: unset;
+                width: unset;
+            }
+        }
+        // }
+    }
+
+    background: rgb(247, 247, 247);
+    border: 1px solid rgb(221, 221, 221);
+    //   z-index:0;
+    width: fit-content;
+
+    justify-self: center;
 
     cursor: pointer;
     color: $clr-form-text;
-    font-family: 'cereal-Bold';
+    font-family: "cereal-Bold";
     text-overflow: ellipsis;
     white-space: nowrap;
     // overflow: hidden;
 
-    
     // box-shadow:  0px 1px 2px ,rgba(0 ,0 ,0 , .8),  0px 4px 12px ,rgba(0, 0, 0, .5);
 
     box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.1);
 
     box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.1);
-//   box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+    //   box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
 
     -moz-box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.1);
 
-    &:hover{
+    &:hover {
         box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.15);
         box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.15);
         -moz-box-shadow: 0px 2px 10px 0px rgba(12, 8, 8, 0.15);
     }
 
-    & .tab-seperator{
-        &.hidden{
+    & .tab-seperator {
+        &.hidden {
             opacity: 0;
         }
     }
 
-    .search-icon-container{
+    .search-icon-container {
         // position: relative;
         // left: 20px;
         background-color: $clr1;
@@ -82,9 +98,10 @@
         // gap:5px;
         // border: 1px solid $clr-form-input-border;
     }
-    .filter-div{
-        
-        & > input{
+    .filter-div {
+        position: relative;
+
+        & > input {
             width: 100%;
             text-overflow: ellipsis;
             white-space: nowrap;
@@ -94,12 +111,11 @@
         flex-direction: column;
         justify-content: center;
 
-
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
 
-        flex:1;
+        flex: 1;
         // width: fit-content;
         padding: 0.875rem 1.5rem;
         border-radius: 3rem;
@@ -107,69 +123,81 @@
         // &:hover {
         //     background-color: rgb(241, 241, 241);
         // }
+        & .clear-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.875rem;
+            position: absolute;
+            right: 18px;
+            width: auto;
+            background-color: rgb(235, 235, 235);
+            border-radius: 3rem;
+            padding: 2px;
+            &:active{
+                transform: scale(0.92)
+            }
+            &:hover {
+                background-color: rgb(221, 221, 221);
+            }
+        }
     }
 
-    .filter-div-hover{
+    .filter-div-hover {
         &:hover {
             background-color: rgb(230, 230, 230);
         }
     }
-    
 
-    .clicked{
+    .clicked {
         background-color: #fff;
         box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.15);
-        &:hover{
+        &:hover {
             // background-color: inherit;
             background-color: #fff;
         }
     }
-    .filter-div-button{
+    .filter-div-button {
         padding: 0.5625rem;
         border-radius: 3rem;
     }
 
-
-
-    label{
+    label {
         cursor: pointer;
         display: block;
         font-size: 0.75rem;
         margin-bottom: 2px;
-    } 
+    }
     // .text-filter:active{
     //     box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.15);
     // }
-    .bind-text{
+    .bind-text {
         color: $clr3;
         min-width: 4.875rem;
-        font-family: 'cereal-Book';
+        font-family: "cereal-Book";
         font-size: 0.875rem;
-        &.clicked2{
-        //    font-family: 'cereal-Bold';
-        color: $clr2;
-           font-family: 'cereal-Medium';
+        &.clicked2 {
+            //    font-family: 'cereal-Bold';
+            color: $clr2;
+            font-family: "cereal-Medium";
         }
-      
     }
-    .guests-filter{
+    .guests-filter {
         display: flex;
         // font-family: 'cereal-Medium';
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
 
-// position: relative;
+        // position: relative;
     }
-    .date-filter{
+    .date-filter {
         // display: flex;
         // justify-content: center;
         // align-items: center;
     }
-    .reserve-date-filter{
-        
-        
-         input{
+    .reserve-date-filter {
+        input {
             &:hover {
                 cursor: pointer;
                 // background-color: lawngreen;
@@ -178,26 +206,24 @@
             // content: 'Check in';
             // }
             // align-self: center;
-           height: 70px;
+            height: 70px;
             padding: 0;
-            width:100%;
+            width: 100%;
             // background-color: khaki;
         }
     }
-            
 
-    
-    input{
+    input {
         background-color: inherit;
         padding: 0;
         // font-family: 'cereal-Bold';
-        font-family: 'cereal-Medium';
+        font-family: "cereal-Medium";
 
         font-size: 0.875rem;
         border: 0px solid $clr-form-input-border;
         // border-radius: $form-border-radius;
-        &::placeholder{
-        font-family: 'cereal-Book';
+        &::placeholder {
+            font-family: "cereal-Book";
         }
     }
     // button{
@@ -212,17 +238,17 @@
     // background-position: calc((100 - var(--mouse-x, 0)) * 1%) calc((100 - var(--mouse-y, 0)) * 1%);
     // border:none;
     // }
-    .start{
+    .start {
         display: flex;
         justify-content: space-between;
         align-items: center;
-    //   width: 80vw;
-      width: 50vw;
-    //   height: 55px;
+        //   width: 80vw;
+        width: 50vw;
+        //   height: 55px;
     }
 
     //   .date-picker-class{
-          
+
     //   }
     //   .el-picker-panel.el-date-range-picker.el-popper.date-picker-class{
     //       color: red !important;
@@ -234,7 +260,6 @@
     //     background-color: brown;
     //       top: 200px;
     //   }
-      
 }
 
 // position: absolute;

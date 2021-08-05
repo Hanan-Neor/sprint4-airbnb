@@ -21,6 +21,7 @@
 
         <input class="text-input" type="text" v-model="loginCred.password" placeholder="User name" />
         <button>Login</button>
+
       </form>
 <hr>
       <form @submit.prevent="doSignup">

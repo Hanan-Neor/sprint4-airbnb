@@ -220,7 +220,7 @@ export default {
       navOpen: false,
       screenWidth: window.innerWidth,
       state: false,
-      isIntersecting: true,
+      isIntersecting: false,
       hide: false,
       showFilters: false,
     };

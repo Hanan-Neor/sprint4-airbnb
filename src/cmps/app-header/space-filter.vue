@@ -5,25 +5,37 @@
         <!-- ==================================================== Location ========================================================== -->
 
         <div
-            @click="clicked('Text')"
+          @click="clicked('Text')"
           @mouseover="hovered('Text')"
           @mouseout="unhovered('Text')"
           class="text-filter filter-div filter-div-hover"
           :class="{ clicked: isTextClicked }"
         >
+        <div @click.stop="clearFilter('Text')" v-if="isTextClicked && filterBy.location" class="clear-button" style="width:24px;height:24px">
+          <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 4; overflow: visible;"><path d="m6 6 20 20"></path><path d="m26 6-20 20"></path></svg>
+        </div>
           <!-- <div></div> -->
           <label for="text">Location</label>
           <input
+            @submit="filterSpaces"
+            autocomplete="off"
+            ref="location"
+            name="text"
+            type="text"
+            placeholder="Where are you going?"
+            v-model="filterBy.location"
+          />
+          <!-- <input
             @focus="clicked('Text-input')"
             @blur="clicked('Text-input')"
             @change="filterSpaces"
             autocomplete="off"
             ref="location"
             name="text"
-            type="search"
+            type="text"
             placeholder="Where are you going?"
             v-model="filterBy.location"
-          />
+          /> -->
         </div>
 
         <!-- ============================================================================================================== -->
@@ -46,23 +58,80 @@
         ></div>
 
         <!-- ==================================================== Dates ========================================================== -->
+        <!-- <div class="datepicker-trigger">
+      <input
+        type="text"
+        id="datepicker-trigger"
+        placeholder="Select dates"
+        :value="formatDates(dateOne, dateTwo)"
+      >
 
-        <div class="flex date-responsive" style="position: relative">
+      <AirbnbStyleDatepicker
+        :trigger-element-id="'datepicker-trigger'"
+        :mode="'range'"
+        :fullscreen-mobile="true"
+        :date-one="dateOne"
+        :date-two="dateTwo"
+        @date-one-selected="val => { dateOne = val }"
+        @date-two-selected="val => { dateTwo = val }"
+      />
+    </div> -->
+
+        <div
+            id="datepicker-trigger"
+
+          class="flex date-responsive datepicker-trigger"
+          style="position: relative"
+        >
+          <AirbnbStyleDatepicker
+            style="border-radius: 2rem; padding: 1rem 0; transition: 0s"
+            :show-action-buttons="true"
+            :offset-x="-180"
+            :offset-y="10"
+            :trigger-element-id="'datepicker-trigger'"
+            :mode="'range'"
+            :fullscreen-mobile="true"
+            :date-one="dateOne"
+            :date-two="dateTwo"
+            @date-one-selected="
+              (val) => {
+                dateOne = val;
+                isDate1Clicked = false;
+                isDate2Clicked = true;
+
+                filterBy.dates.startDate = new Date(dateOne).toLocaleDateString();
+              }
+            "
+            @date-two-selected="
+              (val) => {
+                dateTwo = val;
+                filterBy.dates.endDate = new Date(dateTwo).toLocaleDateString();
+
+              }
+            "
+            @closed="onClosedMethod"
+          />
+
           <div
+            id="datepicker-trigger"
             class="filter-div date-filter1 filter-div-hover"
             :class="{ clicked: isDate1Clicked }"
             @mouseover="hovered('date1')"
             @mouseout="unhovered('date1')"
             @click="clicked('date1')"
           >
-            <label style="">Check in</label>
+        <div @click.stop="clearFilter('Date')" v-if="isDate1Clicked && filterBy.dates.startDate" class="clear-button" style="width:24px;height:24px">
+          <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 4; overflow: visible;"><path d="m6 6 20 20"></path><path d="m26 6-20 20"></path></svg>
+        </div>
+
+            <label id="datepicker-trigger" style="">Check in</label>
             <div
+              id="datepicker-trigger"
               class="bind-text"
               :class="{ clicked2: filterBy.dates.startDate }"
             >
-              <!-- <div class="bind-text" :class="{ clicked: guestsClicked }"> -->
               {{ date1ToShow }}
-              <!-- {{filterBy.dates.startDate.toLocaleDateString()}} -->
+              <!-- {{dateOne}} -->
             </div>
           </div>
 
@@ -84,19 +153,26 @@
           ></div>
 
           <div
+            id="datepicker-trigger"
             class="filter-div date-filter2 filter-div-hover"
             :class="{ clicked: isDate2Clicked }"
             @mouseover="hovered('date2')"
             @mouseout="unhovered('date2')"
             @click="clicked('date2')"
           >
-            <label style="">Check out</label>
+        <div @click.stop="clearFilter('Date')" v-if="isDate2Clicked && filterBy.dates.endDate" class="clear-button" style="width:24px;height:24px">
+          <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 4; overflow: visible;"><path d="m6 6 20 20"></path><path d="m26 6-20 20"></path></svg>
+        </div>
+
+            <label id="datepicker-trigger" style="">Check out</label>
             <div
+              id="datepicker-trigger"
               class="bind-text"
               :class="{ clicked2: filterBy.dates.endDate }"
             >
               <!-- <div class="bind-text" :class="{ clicked: guestsClicked }"> -->
               {{ date2ToShow }}
+              <!-- {{dateTwo}} -->
               <!-- {{filterBy.dates.endDate.toLocaleDateString()}} -->
             </div>
           </div>
@@ -135,6 +211,10 @@
             @mouseout="unhovered('Guests')"
             @click="clicked('Guests')"
           >
+        <div @click.stop="clearFilter('Guests')" v-if="isGuestsClicked && filterBy.numGuests" class="clear-button" style="width:24px;height:24px;right:0px">
+          <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 4; overflow: visible;"><path d="m6 6 20 20"></path><path d="m26 6-20 20"></path></svg>
+        </div>
+
             <div>
               <label style="guestsStyle">Guests</label>
               <div class="bind-text" :class="{ clicked2: filterBy.numGuests }">
@@ -179,7 +259,7 @@
         </div>
 
         <filter-form2
-        class="filter-form-to-close"
+          class="filter-form-to-close"
           v-show="formOpen"
           @guestsCnt="setGuestsCnt"
           @set-filter="updateFilter"
@@ -205,6 +285,10 @@ export default {
   },
   data() {
     return {
+      dateFormat: "D MMM",
+      dateOne: "",
+      dateTwo: "",
+
       isTextHovered: false,
       isDate1Hovered: false,
       isDate2Hovered: false,
@@ -234,6 +318,28 @@ export default {
     };
   },
   methods: {
+    onClosedMethod() {
+      // console.log(new Date(this.dateOne));
+      // if(this.dateOne){
+      //   this.filterBy.dates.startDate = new Date(
+      //     this.dateOne
+      //   ).toLocaleDateString();
+      // }
+      // if(this.dateTwo){
+      //   this.filterBy.dates.endDate = new Date(this.dateTwo).toLocaleDateString();
+      // }
+    },
+    formatDates(dateOne, dateTwo) {
+      let formattedDates = "";
+      if (dateOne) {
+        formattedDates = format(dateOne, this.dateFormat);
+      }
+      if (dateTwo) {
+        formattedDates += " - " + format(dateTwo, this.dateFormat);
+      }
+      return formattedDates;
+    },
+
     dateToReserve(date) {
       console.log(date);
       this.datesArray = date;
@@ -265,13 +371,31 @@ export default {
       }
     },
 
+    clearFilter(x) {
+      switch (x) {
+        case "Guests":
+          this.filterBy.numGuests=0;
+          break;
+        case "Text":
+          this.filterBy.location='';
+          // this.$refs["location"].focus();
+          break;
+        case "Date":
+          this.dateOne='';
+          this.dateTwo='';
+          this.filterBy.dates.startDate=0;
+          this.filterBy.dates.endDate=0;
+          break;
+      }
+    },
     clicked(x) {
       switch (x) {
         case "Guests":
           this.isGuestsClicked = !this.isGuestsClicked;
           break;
         case "Text":
-            this.$refs['location'].focus()
+          this.isTextClicked = true;
+          this.$refs["location"].focus();
           break;
         case "Text-input":
           this.isTextClicked = !this.isTextClicked;
@@ -281,10 +405,12 @@ export default {
           break;
         case "date1":
           // this.isDate1Clicked = !this.isDate1Clicked;
-          this.isDate1Clicked =!this.isDate1Clicked;
+          this.isDate1Clicked = !this.isDate1Clicked;
+          this.isDate2Clicked = false;
           break;
         case "date2":
           this.isDate2Clicked = !this.isDate2Clicked;
+          this.isDate1Clicked = false;
           break;
       }
     },
@@ -337,6 +463,9 @@ export default {
           filterBy: this.filterBy,
         });
         this.$store.dispatch({ type: "loadSpaces" });
+
+          this.$emit("toggleFilters");
+          
       } catch (err) {
         console.log("error in space filter", "this.filterBy");
         throw err;
@@ -350,56 +479,58 @@ export default {
     //   }
     // },
     close(e) {
-      // if (!this.$el.contains(e.target) && !document.querySelector(".open-filter-el").contains(e.target) )  {
-      //   this.$emit('toggleFilters')
-      // }
-
-      // if (!this.$el.contains(e.target) && !document.querySelector(".app-header .container .open-filter-el-container").contains(e.target)) {
       if (
         !this.$el.contains(e.target) &&
         !document
           .querySelector(".app-header .container .duplicate-for-observer")
           .contains(e.target)
       ) {
-        //   this.state = false
-        // alert('hi from func')
         this.$emit("toggleFilters");
       }
+      if (document.querySelector(".text-filter")) {
+        if (!document.querySelector(".text-filter").contains(e.target)) {
+          this.isTextClicked = false;
+        }
+      }
       if (document.querySelector(".guests-filter")) {
-        if (!document.querySelector(".guests-filter").contains(e.target) && !document.querySelector(".filter-form-to-close").contains(e.target)) {
+        if (
+          !document.querySelector(".guests-filter").contains(e.target) &&
+          !document.querySelector(".filter-form-to-close").contains(e.target)
+        ) {
           this.isGuestsClicked = false;
         }
       }
       if (document.querySelector(".date-filter1")) {
         if (!document.querySelector(".date-filter1").contains(e.target)) {
-          this.isDate1Clicked = false;
+          if (document.querySelector('.asd__wrapper.asd__wrapper--datepicker-open')) {
+            if(!document.querySelector(".asd__wrapper.asd__wrapper--datepicker-open").contains(e.target)){
+              this.isDate1Clicked = false;
+            }
+          }else{
+              this.isDate1Clicked = false;
+          }
+
         }
       }
       if (document.querySelector(".date-filter2")) {
         if (!document.querySelector(".date-filter2").contains(e.target)) {
-          this.isDate2Clicked = false;
+          if (document.querySelector('.asd__wrapper.asd__wrapper--datepicker-open')) {
+            if(!document.querySelector(".asd__wrapper.asd__wrapper--datepicker-open").contains(e.target)){
+              this.isDate2Clicked = false;
+            }
+          }else{
+              this.isDate2Clicked = false;
+          }
         }
       }
       if (document.querySelector(".filter-form-to-close")) {
-        if (!document.querySelector(".filter-form-to-close").contains(e.target)
-            && !document.querySelector(".guests-filter").contains(e.target)) {
+        if (
+          !document.querySelector(".filter-form-to-close").contains(e.target) &&
+          !document.querySelector(".guests-filter").contains(e.target)
+        ) {
           this.formOpen = false;
         }
       }
-      // if (document.querySelector(".date-filter1")) {
-      //   // if (!document.querySelector(".date-filter1").contains(e.target)) {
-      //   if (
-      //     !document.querySelector(".date-filter1").contains(e.target) &&
-      //     !document.querySelector(".fake-date-filter").contains(e.target)
-      //   ) {
-      //     this.isDate1Clicked = false;
-      //   }
-      // }
-      // if (document.querySelector(".date-filter2")) {
-      //   if (!document.querySelector(".date-filter2").contains(e.target)) {
-      //     this.isDate2Clicked = false;
-      //   }
-      // }
     },
 
     setShowFilters() {
@@ -408,7 +539,10 @@ export default {
   },
   mounted() {
     document.addEventListener("click", this.close);
-    eventBusService.$on('buttonClicked', (type)=>{console.log(type); this.clicked(type)} );
+    eventBusService.$on("buttonClicked", (type) => {
+      console.log(type);
+      this.clicked(type);
+    });
 
     // document.addEventListener("mouseover", this.hovering);
 
@@ -435,12 +569,14 @@ export default {
     // },
     date1ToShow() {
       return this.filterBy.dates.startDate
-        ? this.filterBy.dates.startDate.toLocaleDateString()
+        ? // ? this.filterBy.dates.startDate.toLocaleDateString()
+          this.filterBy.dates.startDate
         : "Add dates";
     },
     date2ToShow() {
       return this.filterBy.dates.endDate
-        ? this.filterBy.dates.endDate.toLocaleDateString()
+        ? // ? this.filterBy.dates.endDate.toLocaleDateString()
+          this.filterBy.dates.endDate
         : "Add dates";
     },
     isFormOpen() {

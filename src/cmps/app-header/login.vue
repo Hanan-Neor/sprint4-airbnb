@@ -3,7 +3,9 @@
     <!-- <p>{{ msg }}</p> -->
 
       
-      <p @click="closeLogin" class="close pointer">x</p>
+      <div @click="closeLogin" class="close pointer">
+        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; fill: none; height: 16px; width: 16px; stroke: currentcolor; stroke-width: 3; overflow: visible;"><path d="m6 6 20 20"></path><path d="m26 6-20 20"></path></svg>
+      </div>
     <div v-if="loggedinUser">
       <h3>
         Loggedin User:
@@ -18,11 +20,15 @@
       <h4>{{title}}</h4>
       <h2>Welcome to Airbnb</h2>
       <form @submit.prevent="doLogin" v-if="isLoginForm">
+<div class="input-container" @click.prevent="userClicked" style="">
+        <div class="input-label" :class="{focused:isUserFocused}">Username</div>
+        <input v-show="isUserFocused"  class="text-input" type="text" placeholder="username" v-model="loginCred.username">
+</div>
 
-        <input class="text-input" type="text" placeholder="username" v-model="loginCred.username">
+        <input class="text-input" type="text" v-model="loginCred.password" placeholder="" />
+        <!-- <button>Login</button> -->
+      <gradient-btn v-if="!booked" :text="'Login'"></gradient-btn>
 
-        <input class="text-input" type="text" v-model="loginCred.password" placeholder="User name" />
-        <button>Login</button>
       </form>
       <form @submit.prevent="doSignup" v-else>
         <input
@@ -48,7 +54,9 @@
           v-model="signupCred.isHost"
           placeholder="Do you own a property"
         /> -->
-        <button>Signup</button>
+        <!-- <button>Signup</button> -->
+      <gradient-btn v-if="!booked" :text="'Signup'"></gradient-btn>
+
       </form>
 
 <div @click="toggleFormType" class="form-toggle pointer">
@@ -63,13 +71,16 @@
 </template>
 
 <script>
+import gradientBtn from '../gradient-btn.vue';
+
 export default {
   name: "test",
   props: ['formType'],
   data() {
     return {
+      isUserFocused:false,
       msg: "",
-      loginCred: { username: "user1", password: "123" },
+      loginCred: { username: "", password: "" },
       // signupCred: { username: "", password: "", fullname: "" },
        signupCred: { username: "", password: "", fullname: ""},
       loginForm: '',
@@ -92,6 +103,9 @@ export default {
     this.loginForm = this.formType === 'login'
   },
   methods: {
+    userClicked(){
+        this.isUserFocused = true
+    },
     async doLogin() {
       if (!this.loginCred.username) {
         this.msg = "Please enter username/password";
@@ -130,5 +144,8 @@ export default {
       this.$emit('close-login')
     }
   },
+  components:{
+    gradientBtn
+  }
 };
 </script>
