@@ -83,25 +83,29 @@ $header-side-padding: 42px;
     width: 77px;
     background-color: white;
     border-radius: 21px;
-    border: 1px solid #dddddd;
+    // border: 1px solid #dddddd;
+    border: 0;
+    box-shadow:  #dddddd 0px 0px 0px 1px;
+
     .avatar {
-      height: 80%;
-      vertical-align: middle;
-      position: relative;
-      height: 32px;
+      height: 100%;
       width: 32px;
+      // vertical-align: middle;
+      // position: relative;
+      // height: 32px;
+      // width: 32px;
       // margin-left: 12px;
-      left: 5px;
-      top: 2px;
+      // left: 5px;
+      // top: 2px;
       object-fit: cover;
     }
   }
   .hamburger {
     height: 16px;
     width: 16px;
-    position: relative;
-    top: 10px;
-    margin-left: 12px;
+    // position: relative;
+    // top: 10px;
+    // margin-left: 12px;
   }
   .logo2 {
     margin-bottom: 10px;
@@ -124,6 +128,23 @@ $header-side-padding: 42px;
       margin-left: 0.5rem;
     }
   }
+
+  .nav-div{
+    padding: 0.875rem;
+    cursor: pointer;
+      border-radius: 3rem;
+      height:100%;
+       align-items:center;
+    &:hover{
+      // background-color: brown;
+    // background: rgba(247, 247, 247,0.2);
+    background: rgba(189, 189, 189,0.2);
+
+    }
+  }
+
+
+
   .nav {
     font-family: 'cereal-Medium';
     font-size: 0.875rem;
@@ -257,7 +278,7 @@ $header-side-padding: 42px;
     cursor: pointer;
     background: transparent;
     font-size: 14px;
-    margin-right: 8px;
+    // margin-right: 8px;
 
     &.explore {
       text-decoration: none;

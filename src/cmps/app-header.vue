@@ -35,19 +35,28 @@
             class="header-right-side-responsive"
             style="align-items: center; justify-self: end; grid-column: 3/4"
           >
+
+          <div class="nav-div flex" @click="gotoAddSpace">
             <span
+            
               v-if="isLarge"
               class="becomeHost"
               :style="hostColor"
-              @click="gotoAddSpace"
+              
               >Become a host</span
             >
+            </div>
             <router-link
               :to="'/space'"
               v-if="isLarge"
               class="becomeHost explore"
               :style="hostColor"
-              >Explore</router-link
+              >
+          <div class="nav-div flex">
+
+              Explore
+              </div>
+              </router-link
             >
 
             <!-- <login
@@ -57,24 +66,30 @@
           /> -->
 
             <template v-if="isLarge">
-              <button class="flex pointer" @click="toggleNav">
-                <img
+              <button class="flex pointer" style="justify-content:space-between;align-items:center;padding:5px 5px 5px 12px" @click="toggleNav">
+                <!-- <div style="width:fit-content height:100%"> -->
+<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; fill: none; height: 16px; width: 16px; stroke: currentcolor; stroke-width: 3; overflow: visible;"><g fill="none" fill-rule="nonzero"><path d="m2 16h28"></path><path d="m2 24h28"></path><path d="m2 8h28"></path></g></svg>                <!-- <img
                   class="hamburger"
                   src="../assets/img/icons/hamburger.png"
                   alt=""
-                />
+                /> -->
+                <!-- </div> -->
+                <div style="width:fit-content; height:100%">
                 <img
                   v-if="loggedInUser"
                   class="avatar"
                   :src="loggedInUser.imgUrl"
                   alt="avatar"
                 />
-                <img
+                <svg v-else viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; height: 100%; width: 100%; fill: #717171;"><path d="m16 .7c-8.437 0-15.3 6.863-15.3 15.3s6.863 15.3 15.3 15.3 15.3-6.863 15.3-15.3-6.863-15.3-15.3-15.3zm0 28c-4.021 0-7.605-1.884-9.933-4.81a12.425 12.425 0 0 1 6.451-4.4 6.507 6.507 0 0 1 -3.018-5.49c0-3.584 2.916-6.5 6.5-6.5s6.5 2.916 6.5 6.5a6.513 6.513 0 0 1 -3.019 5.491 12.42 12.42 0 0 1 6.452 4.4c-2.328 2.925-5.912 4.809-9.933 4.809z"></path></svg>
+                <!-- <img
                   v-else
                   class="avatar"
                   src="https://www.cnet.com/a/img/liJ9UZA87zs1viJiuEfVnL7YYfw=/940x0/2020/05/18/5bac8cc1-4bd5-4496-a8c3-66a6cd12d0cb/fb-avatar-2.jpg"
                   alt="avatar"
-                />
+                /> -->
+
+                </div>
               </button>
 
               <ul class="nav pointer clear-list" v-if="isNavOpen">
@@ -226,6 +241,12 @@ export default {
     };
   },
   methods: {
+    //     close(e) {
+    //   if (!document.querySelector(".nav").contains(e.target)
+    //   ) {
+    //     this.isNavOpen = false;
+    //   }
+    // },
     showFiltersFunc(){
       this.showFilters = true
       // this.$store.commit('headerButtonStage',true)

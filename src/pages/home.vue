@@ -47,7 +47,7 @@
       <div class="list-titles">Top rated spaces</div>
       <space-list :spaces="spaces" />
     </div>
-<date-picker />
+<!-- <date-picker /> -->
   </div>
 
 

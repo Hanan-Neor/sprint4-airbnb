@@ -21,29 +21,51 @@ $form-border-radius: 10px;
         flex-direction: column;
     }
     .input-container {
+        cursor:text;
+        height: 3.5rem;
         position: relative;
-        // box-shadow: rgb(176 ,176,176) 0px 0px 0px 1px  inset;
-        border: 1px solid rgb(176, 176, 176);
+        box-shadow: rgb(176 ,176,176) 0px 0px 0px 1px  inset;
+        // border: 1px solid rgb(176, 176, 176);
         border-radius: 0.5rem;
         padding: 26px 12px 10px;
+        &.filled{
+        box-shadow: black 0px 0px 0px 1px  inset;
+        }
+        &.focused{
+            // border: 1.5px solid black;
+        box-shadow: black 0px 0px 0px 2px  inset;
+        }
 
-        & .input-label {
+        & .label-container {
             text-align:left;
             position: absolute;
             // left: 0;
             // top:50%;
-            top: 18px;
+            top: 20px;
             width: 100%;
             // height: 100%;
             // transform: translateY(-50%);
-            transition: -ms-transform 0.15s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s,
-            -webkit-transform 0.15s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s,
-            transform 0.15s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s ;
-            &.focused {
-                transform: translateY(-8px) scale(0.75);
+           
+            & .label{
+                color:    #717171;
+                width: fit-content;
+                // width: 100%;
+                transition: all 0.15s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s,
+                // transition: -ms-transform 0.15s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s,
+                -webkit-transform 0.15s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s,
+                transform 0.15s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s ;
+                &.focused {
+                // width: 100%;
+                    font-size: 0.75rem;
+                    transform: translateY(-10px);
+                    // transform: translateY(-12px) scale(0.75);
+                    // transform: translateY(-8px);
+                }
+    
             }
         }
         & input {
+            font-family: Cereal-Light;
             display: block;
             width: 90%; //??
             font-size: 1rem;
@@ -52,6 +74,7 @@ $form-border-radius: 10px;
             border: 0;
             margin: 0;
             padding: 0;
+            border-radius: 0;
         }
         // border: $clr-form-input-border;
         // border: 1px solid $clr-form-input-border;
@@ -118,6 +141,8 @@ $form-border-radius: 10px;
         position: absolute;
     }
     .form-toggle {
+        width: fit-content;
+        margin: 0 auto;
         color: rgb(215, 4, 102);
         text-align: center;
         p {
@@ -133,12 +158,22 @@ $form-border-radius: 10px;
 
     //for mob layout
 
-    width: 80vw;
+   
+    @include for-mobile-layout {
+        width:100vw;
+      }
+      @include for-narrow-layout {
+        width:100vw;
 
-    @include for-wide-layout {
+      }
+      @include for-normal-layout {
         width: 571px;
-        // height: 700px;
-    }
+
+      }
+      @include for-wide-layout {
+      }
+  
+
     // z-index: 1;
     // background-color: white;
 }

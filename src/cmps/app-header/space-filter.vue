@@ -3,7 +3,9 @@
     <div class="form" style="position: relative">
       <template style="width: fit-content">
         <!-- ==================================================== Location ========================================================== -->
-
+        <!-- <location :filterBy="filterBy"  @click="clicked('Text')"
+          @mouseover="hovered('Text')"
+          @mouseout="unhovered('Text')"></location> -->
         <div
           @click="clicked('Text')"
           @mouseover="hovered('Text')"
@@ -11,10 +13,33 @@
           class="text-filter filter-div filter-div-hover"
           :class="{ clicked: isTextClicked }"
         >
-        <div @click.stop="clearFilter('Text')" v-if="isTextClicked && filterBy.location" class="clear-button" style="width:24px;height:24px">
-          <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 4; overflow: visible;"><path d="m6 6 20 20"></path><path d="m26 6-20 20"></path></svg>
-        </div>
-          <!-- <div></div> -->
+          <div
+            @click.stop="clearFilter('Text')"
+            v-if="isTextClicked && filterBy.location"
+            class="clear-button"
+            style="width: 24px; height: 24px"
+          >
+            <svg
+              viewBox="0 0 32 32"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+              role="presentation"
+              focusable="false"
+              style="
+                display: block;
+                fill: none;
+                height: 12px;
+                width: 12px;
+                stroke: currentcolor;
+                stroke-width: 4;
+                overflow: visible;
+              "
+            >
+              <path d="m6 6 20 20"></path>
+              <path d="m26 6-20 20"></path>
+            </svg>
+          </div>
+
           <label for="text">Location</label>
           <input
             @submit="filterSpaces"
@@ -25,17 +50,6 @@
             placeholder="Where are you going?"
             v-model="filterBy.location"
           />
-          <!-- <input
-            @focus="clicked('Text-input')"
-            @blur="clicked('Text-input')"
-            @change="filterSpaces"
-            autocomplete="off"
-            ref="location"
-            name="text"
-            type="text"
-            placeholder="Where are you going?"
-            v-model="filterBy.location"
-          /> -->
         </div>
 
         <!-- ============================================================================================================== -->
@@ -78,8 +92,7 @@
     </div> -->
 
         <div
-            id="datepicker-trigger"
-
+          id="datepicker-trigger" 
           class="flex date-responsive datepicker-trigger"
           style="position: relative"
         >
@@ -96,17 +109,16 @@
             @date-one-selected="
               (val) => {
                 dateOne = val;
-                isDate1Clicked = false;
-                isDate2Clicked = true;
+                
+                updateDate1Filter();
 
-                filterBy.dates.startDate = new Date(dateOne).toLocaleDateString();
+               
               }
             "
             @date-two-selected="
               (val) => {
                 dateTwo = val;
-                filterBy.dates.endDate = new Date(dateTwo).toLocaleDateString();
-
+                updateDate2Filter();
               }
             "
             @closed="onClosedMethod"
@@ -120,16 +132,44 @@
             @mouseout="unhovered('date1')"
             @click="clicked('date1')"
           >
-        <div @click.stop="clearFilter('Date')" v-if="isDate1Clicked && filterBy.dates.startDate" class="clear-button" style="width:24px;height:24px">
-          <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 4; overflow: visible;"><path d="m6 6 20 20"></path><path d="m26 6-20 20"></path></svg>
-        </div>
+            <div
+              @click.stop="clearFilter('Date')"
+              v-if="isDate1Clicked && filterBy.dates.startDate"
+              class="clear-button"
+              style="width: 24px; height: 24px"
+            >
+              <svg
+                viewBox="0 0 32 32"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+                role="presentation"
+                focusable="false"
+                style="
+                  display: block;
+                  fill: none;
+                  height: 12px;
+                  width: 12px;
+                  stroke: currentcolor;
+                  stroke-width: 4;
+                  overflow: visible;
+                "
+              >
+                <path d="m6 6 20 20"></path>
+                <path d="m26 6-20 20"></path>
+              </svg>
+            </div>
 
             <label id="datepicker-trigger" style="">Check in</label>
             <div
               id="datepicker-trigger"
               class="bind-text"
-              :class="{ clicked2: filterBy.dates.startDate }"
+              :class="{ clicked2: filterBy.dates.startDate}"
             >
+            <!-- <div
+              id="datepicker-trigger"
+              class="bind-text"
+              :class="{ clicked2: filterBy.dates.startDate && dateOne }"
+            > -->
               {{ date1ToShow }}
               <!-- {{dateOne}} -->
             </div>
@@ -160,16 +200,44 @@
             @mouseout="unhovered('date2')"
             @click="clicked('date2')"
           >
-        <div @click.stop="clearFilter('Date')" v-if="isDate2Clicked && filterBy.dates.endDate" class="clear-button" style="width:24px;height:24px">
-          <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 4; overflow: visible;"><path d="m6 6 20 20"></path><path d="m26 6-20 20"></path></svg>
-        </div>
+            <div
+              @click.stop="clearFilter('Date')"
+              v-if="isDate2Clicked && filterBy.dates.endDate"
+              class="clear-button"
+              style="width: 24px; height: 24px"
+            >
+              <svg
+                viewBox="0 0 32 32"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+                role="presentation"
+                focusable="false"
+                style="
+                  display: block;
+                  fill: none;
+                  height: 12px;
+                  width: 12px;
+                  stroke: currentcolor;
+                  stroke-width: 4;
+                  overflow: visible;
+                "
+              >
+                <path d="m6 6 20 20"></path>
+                <path d="m26 6-20 20"></path>
+              </svg>
+            </div>
 
             <label id="datepicker-trigger" style="">Check out</label>
             <div
               id="datepicker-trigger"
               class="bind-text"
-              :class="{ clicked2: filterBy.dates.endDate }"
+              :class="{ clicked2: filterBy.dates.endDate}"
             >
+            <!-- <div
+              id="datepicker-trigger"
+              class="bind-text"
+              :class="{ clicked2: filterBy.dates.endDate && dateTwo }"
+            > -->
               <!-- <div class="bind-text" :class="{ clicked: guestsClicked }"> -->
               {{ date2ToShow }}
               <!-- {{dateTwo}} -->
@@ -211,9 +279,32 @@
             @mouseout="unhovered('Guests')"
             @click="clicked('Guests')"
           >
-        <div @click.stop="clearFilter('Guests')" v-if="isGuestsClicked && filterBy.numGuests" class="clear-button" style="width:24px;height:24px;right:0px">
-          <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 4; overflow: visible;"><path d="m6 6 20 20"></path><path d="m26 6-20 20"></path></svg>
-        </div>
+            <div
+              @click.stop="clearFilter('Guests')"
+              v-if="isGuestsClicked && filterBy.numGuests"
+              class="clear-button"
+              style="width: 24px; height: 24px; right: 0px"
+            >
+              <svg
+                viewBox="0 0 32 32"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+                role="presentation"
+                focusable="false"
+                style="
+                  display: block;
+                  fill: none;
+                  height: 12px;
+                  width: 12px;
+                  stroke: currentcolor;
+                  stroke-width: 4;
+                  overflow: visible;
+                "
+              >
+                <path d="m6 6 20 20"></path>
+                <path d="m26 6-20 20"></path>
+              </svg>
+            </div>
 
             <div>
               <label style="guestsStyle">Guests</label>
@@ -274,6 +365,8 @@
 </template>
 
 <script>
+import location from "./space-filter-cmps/location.vue";
+
 import { eventBusService } from "@/services/event-bus.service.js";
 
 import filterForm2 from "./filter-form2.vue";
@@ -317,7 +410,39 @@ export default {
       formOpen: false,
     };
   },
+  watch:{
+
+  },
   methods: {
+                
+    updateDate1Filter(){
+      if(this.dateOne){
+        if(this.dateOne > this.dateTwo) {
+            this.dateTwo='';
+             this.filterBy.dates.endDate =0
+        }
+        this.isDate1Clicked = false;
+                this.isDate2Clicked = true;
+        this.filterBy.dates.startDate = new Date(
+                   this.dateOne
+                 ).toLocaleDateString();
+      }else{
+        this.filterBy.dates.startDate = 0
+      }
+    },
+    updateDate2Filter(){
+      if(this.dateTwo){
+        // if(this.dateOne < this.dateTwo) {
+        //     this.dateOne='';
+        //      this.filterBy.dates.startDate =0
+        // }
+        this.filterBy.dates.endDate = new Date(
+                   this.dateTwo
+                 ).toLocaleDateString();
+      }else{
+        this.filterBy.dates.endtDate = 0
+      }
+    },
     onClosedMethod() {
       // console.log(new Date(this.dateOne));
       // if(this.dateOne){
@@ -374,17 +499,24 @@ export default {
     clearFilter(x) {
       switch (x) {
         case "Guests":
-          this.filterBy.numGuests=0;
+          this.filterBy.numGuests = 0;
           break;
         case "Text":
-          this.filterBy.location='';
+          this.filterBy.location = "";
           // this.$refs["location"].focus();
           break;
         case "Date":
-          this.dateOne='';
-          this.dateTwo='';
-          this.filterBy.dates.startDate=0;
-          this.filterBy.dates.endDate=0;
+          // console.log('before cleaning:','dateone'+ this.dateOne, 'datetwo' +this.dateTwo,'startdate'+this.filterBy.dates.startDate,'endedate'+this.filterBy.dates.endDate);
+          this.dateOne = "";
+          this.dateTwo = "";
+          this.filterBy.dates.startDate = 0;
+          this.filterBy.dates.endDate = 0;
+
+          if(this.isDate2Clicked){
+            this.isDate2Clicked = false;
+                this.isDate1Clicked = true;
+          }
+          // console.log('after cleaning:', this.dateOne,this.dateTwo,this.filterBy.dates.startDate,this.filterBy.dates.endDate);
           break;
       }
     },
@@ -404,13 +536,31 @@ export default {
           this.isDateClicked = !this.isDateClicked;
           break;
         case "date1":
+          if (this.isDate2Clicked) {
+            document.querySelector(".date-filter1").click();
+          this.isDate1Clicked = true;
+          }else{
+            this.isDate1Clicked = !this.isDate1Clicked;
+          }
           // this.isDate1Clicked = !this.isDate1Clicked;
-          this.isDate1Clicked = !this.isDate1Clicked;
+          // this.isDate1Clicked = !this.isDate1Clicked;
           this.isDate2Clicked = false;
+          this.isTextClicked = false;
+          this.isGuestsClicked = false;
+          this.formOpen = false;
+
           break;
         case "date2":
-          this.isDate2Clicked = !this.isDate2Clicked;
+          if (this.isDate1Clicked) {
+            document.querySelector(".date-filter2").click();
+          this.isDate2Clicked = true;
+          }else{
+            this.isDate2Clicked = !this.isDate2Clicked;
+          }
           this.isDate1Clicked = false;
+          this.isTextClicked = false;
+          this.isGuestsClicked = false;
+          this.formOpen = false;
           break;
       }
     },
@@ -464,8 +614,7 @@ export default {
         });
         this.$store.dispatch({ type: "loadSpaces" });
 
-          this.$emit("toggleFilters");
-          
+        this.$emit("toggleFilters");
       } catch (err) {
         console.log("error in space filter", "this.filterBy");
         throw err;
@@ -488,7 +637,11 @@ export default {
         this.$emit("toggleFilters");
       }
       if (document.querySelector(".text-filter")) {
-        if (!document.querySelector(".text-filter").contains(e.target)) {
+        if (
+          !document.querySelector(".text-filter").contains(e.target)
+          // || this.isDate1Clicked
+          // || document.querySelector(".datepicker-trigger").contains(e.target)
+        ) {
           this.isTextClicked = false;
         }
       }
@@ -502,24 +655,39 @@ export default {
       }
       if (document.querySelector(".date-filter1")) {
         if (!document.querySelector(".date-filter1").contains(e.target)) {
-          if (document.querySelector('.asd__wrapper.asd__wrapper--datepicker-open')) {
-            if(!document.querySelector(".asd__wrapper.asd__wrapper--datepicker-open").contains(e.target)){
+          if (
+            document.querySelector(
+              ".asd__wrapper.asd__wrapper--datepicker-open"
+            )
+          ) {
+            if (
+              !document
+                .querySelector(".asd__wrapper.asd__wrapper--datepicker-open")
+                .contains(e.target)
+            ) {
               this.isDate1Clicked = false;
             }
-          }else{
-              this.isDate1Clicked = false;
+          } else {
+            this.isDate1Clicked = false;
           }
-
         }
       }
       if (document.querySelector(".date-filter2")) {
         if (!document.querySelector(".date-filter2").contains(e.target)) {
-          if (document.querySelector('.asd__wrapper.asd__wrapper--datepicker-open')) {
-            if(!document.querySelector(".asd__wrapper.asd__wrapper--datepicker-open").contains(e.target)){
+          if (
+            document.querySelector(
+              ".asd__wrapper.asd__wrapper--datepicker-open"
+            )
+          ) {
+            if (
+              !document
+                .querySelector(".asd__wrapper.asd__wrapper--datepicker-open")
+                .contains(e.target)
+            ) {
               this.isDate2Clicked = false;
             }
-          }else{
-              this.isDate2Clicked = false;
+          } else {
+            this.isDate2Clicked = false;
           }
         }
       }
@@ -543,17 +711,6 @@ export default {
       console.log(type);
       this.clicked(type);
     });
-
-    // document.addEventListener("mouseover", this.hovering);
-
-    // document.querySelector('.el-range-input').addEventListener('mouseover', function () {
-    //     document.querySelector('.date-filter1').style.background = "rgb(230, 230, 230)";
-    //     document.querySelector('.date-filter2').style.background = "rgb(230, 230, 230)";
-    // });
-    // document.querySelector('.el-range-input').addEventListener('mouseleave', function () {
-    //     document.querySelector('.date-filter1').style.background = "inherit";
-    //     document.querySelector('.date-filter2').style.background = "inherit";
-    // })
   },
   beforeDestroy() {
     document.removeEventListener("click", this.close);
@@ -568,13 +725,17 @@ export default {
     //     }
     // },
     date1ToShow() {
-      return this.filterBy.dates.startDate
+      return (this.filterBy.dates.startDate)
+      // return (this.filterBy.dates.startDate&&this.dateOne)
+      // return (this.filterBy.dates.startDate && this.filterBy.dates.startDate!='Invalid Date')
         ? // ? this.filterBy.dates.startDate.toLocaleDateString()
           this.filterBy.dates.startDate
         : "Add dates";
     },
     date2ToShow() {
-      return this.filterBy.dates.endDate
+       return (this.filterBy.dates.endDate) 
+      //  return (this.filterBy.dates.endDate&&this.dateTwo) 
+     // return this.filterBy.dates.endDate
         ? // ? this.filterBy.dates.endDate.toLocaleDateString()
           this.filterBy.dates.endDate
         : "Add dates";
@@ -594,6 +755,7 @@ export default {
   components: {
     filterForm2,
     reserveDateFilter,
+    location,
   },
 };
 </script>
